@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tyra Hans - Product Designer Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -107,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div class="case-study-wrapper">
-                                    <a href="https://youtu.be/_VQFPJxFuJg?si=LybqMx8j_3DRCPyb&t=36" target="_blank">View short video (Case study in progress) <span class="arrow-blue">→</span></a>
+                                    <a href="https://youtu.be/_VQFPJxFuJg?si=LybqMx8j_3DRCPyb&t=36" target="_blank" class="case-study-link">View short video <span class="arrow-blue">→</span></a>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +150,7 @@
                                     <div class="achievement-col">
                                         <p class="achievement-text">Designed complex UI components catering to search, multi select and filter states</p>
                                         <div class="case-study-wrapper credify-case-study">
-                                            <a href="https://portfolio.moussonstudio.com/project/credify" target="_blank" class="case-study-link credify-link">Go to case study <span class="arrow-blue">→</span></a>
+                                            <a href="credify.html" class="case-study-link credify-link">Go to case study <span class="arrow-blue">→</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -227,6 +232,51 @@
                 viewer.style.display = 'none';
             }
         }
+
+        // GSAP ScrollTrigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        const smoothEase = "expo.out";
+        const smoothDuration = 1.4;
+
+        // 1. Hero Entrance
+        gsap.from(".name-graphic-img", { duration: 1.6, x: -60, opacity: 0, ease: smoothEase });
+        gsap.from(".hero-tagline", { duration: 1.2, y: 30, opacity: 0, delay: 0.2, ease: smoothEase });
+        gsap.from(".hero-title", { duration: 1.2, y: 40, opacity: 0, delay: 0.4, ease: smoothEase });
+        gsap.from(".resume-button", { duration: 1.2, y: 20, opacity: 0, delay: 0.6, ease: smoothEase });
+        gsap.from(".hero-companies", { duration: 1.2, opacity: 0, delay: 0.8, ease: smoothEase });
+
+        // 2. Work Section Header
+        gsap.from(".work-title", {
+            scrollTrigger: { trigger: ".work-title", start: "top 92%" },
+            duration: 1.2, y: 50, opacity: 0, ease: smoothEase
+        });
+
+        // 3. Project Reveals
+        const projects = gsap.utils.toArray('.project');
+        projects.forEach(project => {
+            gsap.from(project.querySelector('.project-header'), {
+                scrollTrigger: { trigger: project, start: "top 88%" },
+                duration: 1.2, y: 40, opacity: 0, ease: smoothEase
+            });
+            
+            gsap.from(project.querySelectorAll('.showcase-image'), {
+                scrollTrigger: { trigger: project.querySelector('.project-content'), start: "top 85%" },
+                duration: 1.4, y: 60, opacity: 0, stagger: 0.15, ease: smoothEase
+            });
+        });
+
+        // 4. Graphics Reveals
+        gsap.from(".work-history-image, .tools-image", {
+            scrollTrigger: { trigger: ".work-history-image", start: "top 88%" },
+            duration: 1.8, scale: 0.98, opacity: 0, ease: smoothEase
+        });
+
+        // 5. CTA Section
+        gsap.from(".cta-content", {
+            scrollTrigger: { trigger: ".cta-section", start: "top 88%" },
+            duration: 1.2, y: 40, opacity: 0, ease: smoothEase
+        });
     </script>
 </body>
 </html>

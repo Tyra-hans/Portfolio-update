@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credify Case Study - Tyra Hans</title>
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="case-study-page">
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
+                <nav class="nav">
+                    <a href="index.html#work" class="nav-link">My work</a>
+                    <a href="index.html#about" class="nav-link">About me</a>
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Case Study Hero -->
+        <section class="cs-hero">
+            <div class="container">
+                <div class="cs-hero-wrapper">
+                    <div class="cs-hero-content">
+                        <img src="assets/Credify logo.png" alt="Credify" class="cs-hero-logo">
+                        <h1 class="cs-hero-title">Digitizing trade for Ugandan importers</h1>
+                        <p class="cs-hero-description">
+                            Simplifying cross border trade, shipment tracking and credit access for businesses navigating the complex corridor between East Africa and China. <br><br>
+                            Credify contracted me for a brief period in 2025 to design their online solution.
+                        </p>
+                    </div>
+                    <div class="cs-hero-image">
+                        <div class="hero-image-container">
+                            <img src="assets/credify-mockup-hero.png" alt="Credify App Mockup" class="cs-hero-mockup">
+                            <button id="watchDemoBtn" class="watch-demo-btn">
+                                <span class="play-icon">▶</span> Watch demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="cs-challenge">
+            <div class="container">
+                <div class="cs-section-header">
+                    <p class="cs-label">THE CHALLENGE</p>
+                    <h2 class="cs-title">Fragmented systems lead to anxiety and lost revenue.</h2>
+                </div>
+                <div class="challenge-cards">
+                    <div class="challenge-row">
+                        <div class="challenge-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" class="challenge-icon">
+                                <g clip-path="url(#clip0_187_218)">
+                                <path d="M6.00369 17.0261C6.30959 18.1677 6.83735 19.2379 7.55684 20.1756C8.27633 21.1132 9.17347 21.9 10.197 22.4909C11.2206 23.0819 12.3505 23.4654 13.5223 23.6197C14.6941 23.774 15.8848 23.6959 17.0264 23.39C18.168 23.0841 19.2382 22.5564 20.1759 21.8369C21.1135 21.1174 21.9003 20.2203 22.4912 19.1967C23.0822 18.1732 23.4658 17.0432 23.62 15.8714C23.7743 14.6997 23.6962 13.509 23.3904 12.3673C23.0845 11.2257 22.5567 10.1555 21.8372 9.21786C21.1177 8.2802 20.2206 7.49343 19.197 6.90248C18.1735 6.31154 17.0435 5.92798 15.8718 5.77371C14.7 5.61944 13.5093 5.69748 12.3676 6.00338C11.226 6.30928 10.1558 6.83704 9.21817 7.55653C8.28051 8.27603 7.49374 9.17316 6.90279 10.1967C6.31184 11.2203 5.92828 12.3502 5.77402 13.522C5.61975 14.6938 5.69779 15.8845 6.00369 17.0261Z" stroke="#004172" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15.991 19.5264L13.9898 15.9215L9.86731 15.9909L17.5254 9.79781L15.991 19.5264Z" stroke="#004172" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_187_218">
+                                <rect width="24" height="24" fill="white" transform="translate(0 6.21166) rotate(-15)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                            <h3>Opaque tracking</h3>
+                            <p>importers rely on WhatsApp and phone calls for shipping updates lead to massive anxiety with logistical delays.</p>
+                        </div>
+                        <div class="challenge-card">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none" class="challenge-icon">
+                                <path d="M3.77412 8.13659C3.81279 7.34188 4.16557 6.59508 4.75486 6.06048C5.34415 5.52588 6.12167 5.24727 6.91638 5.28594L18.9022 5.86915C19.6969 5.90782 20.4437 6.2606 20.9783 6.84989C21.5129 7.43917 21.7915 8.2167 21.7528 9.0114L21.364 17.002C21.3254 17.7967 20.9726 18.5435 20.3833 19.0781C19.794 19.6127 19.0165 19.8913 18.2218 19.8526L6.23597 19.2694C5.44126 19.2307 4.69446 18.8779 4.15986 18.2887C3.62526 17.6994 3.34664 16.9218 3.38531 16.1271L3.77412 8.13659Z" stroke="#004172" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3.67676 10.1338L21.6555 11.0086" stroke="#004172" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.4292 15.3223L7.43919 15.3228" stroke="#004172" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.4243 15.5171L13.422 15.6143" stroke="#004172" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3>Credit Access</h3>
+                            <p>Traditional banks require heavy collateral, leaving small to medium importers without liquidity to grow.</p>
+                        </div>
+                    </div>
+                    <div class="challenge-card challenge-card-wide">
+                        <img src="assets/complex-payments.svg" alt="Complex payments" class="challenge-icon">
+                        <h3>Complex payments</h3>
+                        <p>High fees in international transfers and multi currency conversions eat into tight margins.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desktop Research -->
+        <section class="cs-research">
+            <div class="container">
+                <div class="cs-research-wrapper">
+                    <div class="cs-research-content">
+                        <p class="cs-label">DESKTOP RESEARCH</p>
+                        <h2 class="cs-title">Motorcycles are the top imported item in Uganda, followed closely by Gold.</h2>
+                        <div class="research-text">
+                            <p>According to Export Genious Dec 2023 - Nov 2024 import data, Uganda’s top import commodities during this time were:</p>
+                            <ul>
+                                <li>Motorcycles(inclg Mopeds) And Cycles Fitted (USD 3575.15 Million)</li>
+                                <li>Gold(including Gold Plated With Platinum)unwrought (USD 3178.12 Million)</li>
+                                <li>Petroleum Oils And Oils Obtained (USD 1448.38 Million),</li>
+                                <li>Self-propelled Bulldozers, angledozers Graders, levellers, scrapers, mechanical Shovels, (USD 957.31 Million). etc</li>
+                            </ul>
+                            <a href="https://www.trade.gov/country-commercial-guides/uganda-import-requirements-and-documentations" target="_blank" class="research-link">Source link</a>
+                        </div>
+                    </div>
+                    <div class="cs-research-image">
+                        <img src="assets/motorbike-container.png" alt="Motorbikes in container" class="research-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visuals -->
+        <section class="cs-data">
+            <div class="container">
+               
+                <div class="treemap-container">
+                    <img src="assets/treemap-chart.svg" alt="Import Commodities Treemap" class="treemap-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Import Partners -->
+        <section class="cs-partners">
+            <div class="container">
+                <div class="cs-partners-header">
+                    <h2 class="cs-title">China, India and UAE among Uganda’s Top Import Partners</h2>
+                    <p class="cs-description">
+                        China (USD 7775.73 Million) stood on top in the list of countries from where Uganda imported commodities during Dec 2023 to Nov 2024. <br>
+                        Followed by India (USD 6578.92 Million), United Arab Emirates (USD 2399.13 Million), Tanzania (USD 2344.71 Million), and Kenya (USD 1470.12 Million).
+                    </p>
+                </div>
+                <div class="partners-map">
+                    <img src="assets/world-map-stats.png" alt="World Map Import Stats" class="map-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- User Interviews -->
+        <section class="cs-interviews">
+            <div class="container">
+                <div class="cs-interviews-wrapper">
+                    <div class="cs-interviews-content">
+                        <p class="cs-label">USER INTERVIEWS</p>
+                        <div class="interview-point">
+                            <h3>Participants expressed difficulty in understanding Import Requirements & Regulations.</h3>
+                            <p>Navigating import licenses, the ‘negative list’, and taxes is not easy for the average importer.</p>
+                        </div>
+                        <div class="interview-point">
+                            <h3>Customers rely on various 3rd party tools for visibility of cargo, financing</h3>
+                            <p>
+                                Importers often rely on third-party agents and don't have visibility of cargo once it lands at Mombasa Port.<br><br>
+                                Many importers borrow from informal lenders at high interest rates due to lack of access to invoice-based financing.<br><br>
+                                Payments are typically done through multiple apps and channels, adding complexity and friction.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="cs-interviews-image">
+                        <img src="assets/shoes-interview.png" alt="User Interview Context" class="interview-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution & Scope -->
+        <section class="cs-solution">
+            <div class="container">
+                <div class="cs-solution-grid">
+                    <div class="solution-col">
+                        <p class="cs-label">THE SOLUTION</p>
+                        <h2 class="cs-title">Based on the learnings, we aimed to simplify and increase visibility</h2>
+                        <p class="cs-description">
+                            Understanding the logistical and financial complexity faced by Ugandans importing goods—such as inland tracking difficulties, evolving fuel import policies, and rising import costs—shaped our product strategy for Credify.<br><br>
+                            We prioritized clarity, accessibility, and automation to replace opaque, offline systems with intuitive digital experiences.<br><br>
+                            The app simplifies key pain points like shipment tracking, wallet interest, and loan eligibility with clear feedback and real-time status updates, empowering users navigating volatile forex rates and unpredictable last-mile delivery.
+                        </p>
+                    </div>
+                    <div class="scope-col">
+                        <h3 class="cs-title">Scope of MVP</h3>
+                        <ul class="scope-list">
+                            <li><strong>Authentication:</strong> Secure login with wallet PIN</li>
+                            <li><strong>Dashboard:</strong> Overview of loans, wallet balance, active shipments</li>
+                            <li><strong>Shipping:</strong> Create shipment requests, view quotations, track shipments</li>
+                            <li><strong>Payments:</strong> Manage invoice payments and shipping fees</li>
+                            <li><strong>Loans:</strong> Request loans, see eligibility tiers, repayment status</li>
+                            <li><strong>Wallet:</strong> Top-up, withdraw, interest view, statements</li>
+                            <li><strong>Shipping Tracking:</strong> Visibility from port to delivery—with known gaps in inland tracking addressed through UI cues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Grid -->
+        <section class="cs-app-grid">
+            <div class="container">
+                <img src="assets/credify-screenshot-grid.png" alt="Credify App Interface Grid" class="app-grid-img gallery-image">
+            </div>
+        </section>
+
+        <!-- Design Deep Dives -->
+        <section class="cs-deep-dive">
+            <div class="container">
+                <div class="deep-dive-item">
+                    <h2 class="cs-title">Prioritized clarity by using supporting copy that expounds the meaning of the term in a language users understand</h2>
+                    <img src="assets/screenshot-container-type.png" alt="Clarity in UI" class="deep-dive-img gallery-image">
+                </div>
+                <div class="deep-dive-item">
+                    <h2 class="cs-title">Data-heavy screens (e.g., wallet interest, shipping quotes) were designed to be digestible on mobile</h2>
+                    <img src="assets/screenshot-data-heavy.png" alt="Data Heavy Screens" class="deep-dive-img gallery-image">
+                </div>
+                <div class="deep-dive-item">
+                    <h2 class="cs-title">Replacing skepticism with trust by providing real time updates and shipment tracking</h2>
+                    <img src="assets/screenshot-tracking.png" alt="Shipment Tracking" class="deep-dive-img gallery-image">
+                </div>
+                <div class="deep-dive-item">
+                    <h2 class="cs-title">Other screens</h2>
+                    <div class="other-screens-grid">
+                        <img src="assets/screenshot-other-1.png" alt="Other App Screen 1" class="other-img gallery-image">
+                        <img src="assets/screenshot-other-2.png" alt="Other App Screen 2" class="other-img gallery-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="cs-conclusion">
+            <div class="container">
+                <div class="conclusion-content">
+                    <h2 class="cs-title">While still in pilot, Credify now has a functional MVP with:</h2>
+                    <ul class="conclusion-list">
+                        <li>A simplified, mobile-first interface</li>
+                        <li>Clear flows for top-ups, loan eligibility, and shipment tracking</li>
+                        <li>Interfaces designed to support users with limited digital or logistical literacy</li>
+                    </ul>
+                    <a href="https://www.credify.africa/" target="_blank" class="case-study-link">
+                        Credify Website <span class="arrow-blue">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Case Study Footer Navigation -->
+    <section class="cs-footer-nav">
+        <div class="container">
+            <div class="footer-nav-wrapper">
+                <a href="index.html#work" class="footer-nav-prev">
+                    ← Previous
+                </a>
+                <a href="#" class="footer-nav-next">
+                    Next →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+        </div>
+    </footer>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewer" class="image-viewer">
+        <span class="close-viewer">&times;</span>
+        <div class="viewer-nav">
+            <button class="nav-btn prev-btn">←</button>
+            <button class="nav-btn next-btn">→</button>
+        </div>
+        <img class="viewer-content" id="fullImage">
+        <div class="viewer-counter" id="imageCounter">1 / 1</div>
+    </div>
+
+    <!-- Video Viewer Modal -->
+    <div id="videoViewer" class="video-viewer">
+        <span class="close-video">&times;</span>
+        <div class="video-container">
+            <video id="demoVideo" controls>
+                <source src="assets/demo (1).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-credit">compilation by Credify</p>
+        </div>
+    </div>
+
+    <script>
+        const viewer = document.getElementById('imageViewer');
+        const viewerImg = document.getElementById('fullImage');
+        const counter = document.getElementById('imageCounter');
+        const closeBtn = document.querySelector('.close-viewer');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const galleryImages = document.querySelectorAll('.gallery-image');
+
+        const videoViewer = document.getElementById('videoViewer');
+        const watchDemoBtn = document.getElementById('watchDemoBtn');
+        const closeVideoBtn = document.querySelector('.close-video');
+        const demoVideo = document.getElementById('demoVideo');
+        
+        let currentIndex = 0;
+        const images = Array.from(galleryImages).map(img => img.src);
+
+        function updateViewer(index) {
+            currentIndex = index;
+            viewerImg.src = images[currentIndex];
+            counter.innerText = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        galleryImages.forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.onclick = function() {
+                viewer.style.display = 'flex';
+                updateViewer(index);
+            }
+        });
+
+        // Video Modal Logic
+        watchDemoBtn.onclick = function() {
+            videoViewer.style.display = 'flex';
+            demoVideo.play();
+        }
+
+        closeVideoBtn.onclick = function() {
+            videoViewer.style.display = 'none';
+            demoVideo.pause();
+            demoVideo.currentTime = 0;
+        }
+
+        videoViewer.onclick = function(event) {
+            if (event.target == videoViewer) {
+                closeVideoBtn.onclick();
+            }
+        }
+
+        prevBtn.onclick = function(e) {
+            e.stopPropagation();
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = images.length - 1;
+            updateViewer(newIndex);
+        }
+
+        nextBtn.onclick = function(e) {
+            e.stopPropagation();
+            let newIndex = currentIndex + 1;
+            if (newIndex >= images.length) newIndex = 0;
+            updateViewer(newIndex);
+        }
+
+        closeBtn.onclick = function() {
+            viewer.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == viewer) {
+                viewer.style.display = 'none';
+            }
+            if (event.target == videoViewer) {
+                closeVideoBtn.onclick();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (viewer.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') prevBtn.click();
+                if (e.key === 'ArrowRight') nextBtn.click();
+                if (e.key === 'Escape') closeBtn.click();
+            }
+            if (videoViewer.style.display === 'flex') {
+                if (e.key === 'Escape') closeVideoBtn.click();
+            }
+        });
+
+        // GSAP ScrollTrigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Global animation settings for smoothness
+        const smoothEase = "expo.out";
+        const smoothDuration = 1.4;
+
+        // 1. Hero Content Entrance
+        gsap.from(".cs-hero-logo", { duration: smoothDuration, y: 40, opacity: 0, ease: smoothEase });
+        gsap.from(".cs-hero-title", { duration: smoothDuration, y: 40, opacity: 0, delay: 0.15, ease: smoothEase });
+        gsap.from(".cs-hero-description", { duration: smoothDuration, y: 40, opacity: 0, delay: 0.3, ease: smoothEase });
+        gsap.from(".cs-hero-mockup", { duration: 1.6, scale: 0.95, opacity: 0, delay: 0.5, ease: smoothEase });
+        gsap.from(".watch-demo-btn", { duration: smoothDuration, y: 30, opacity: 0, delay: 0.7, ease: smoothEase });
+
+        // 2. Generic Section Reveals (Labels and Titles)
+        const sections = gsap.utils.toArray('section');
+        sections.forEach(section => {
+            const label = section.querySelector('.cs-label');
+            const title = section.querySelector('.cs-title');
+            const description = section.querySelector('.cs-description');
+
+            if (label) {
+                gsap.from(label, {
+                    scrollTrigger: { trigger: label, start: "top 92%" },
+                    duration: 1, y: 20, opacity: 0, ease: "power2.out"
+                });
+            }
+
+            if (title) {
+                gsap.from(title, {
+                    scrollTrigger: { trigger: title, start: "top 88%" },
+                    duration: smoothDuration, y: 40, opacity: 0, delay: 0.1, ease: smoothEase
+                });
+            }
+
+            if (description) {
+                gsap.from(description, {
+                    scrollTrigger: { trigger: description, start: "top 88%" },
+                    duration: smoothDuration, y: 30, opacity: 0, delay: 0.2, ease: smoothEase
+                });
+            }
+        });
+
+        // 3. Challenge Cards Stagger Reveal
+        gsap.from(".challenge-card", {
+            scrollTrigger: {
+                trigger: ".challenge-cards",
+                start: "top 85%"
+            },
+            duration: 1.2,
+            y: 60,
+            opacity: 0,
+            stagger: 0.1,
+            ease: smoothEase
+        });
+
+        // 4. Image Reveals (Mockups and Charts)
+        const revealImages = gsap.utils.toArray('.research-img, .treemap-img, .map-img, .interview-img, .app-grid-img, .deep-dive-img, .other-img');
+        revealImages.forEach(img => {
+            gsap.from(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top 88%",
+                    toggleActions: "play none none none"
+                },
+                duration: 1.5,
+                y: 50,
+                opacity: 0,
+                scale: 0.99,
+                ease: smoothEase
+            });
+        });
+
+        // 5. Solution and Conclusion points stagger
+        gsap.utils.toArray(".scope-list, .conclusion-list").forEach(list => {
+            gsap.from(list.querySelectorAll("li"), {
+                scrollTrigger: {
+                    trigger: list,
+                    start: "top 88%"
+                },
+                duration: 1,
+                x: -30,
+                opacity: 0,
+                stagger: 0.08,
+                ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>
