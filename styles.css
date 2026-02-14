@@ -32,9 +32,17 @@ a {
 }
 
 /* Header */
-/* .header {
-    padding: 10px 0;
-} */
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(252, 252, 252, 0.95); /* matching body background with slight transparency */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 65, 114, 0.05);
+}
 
 .header-content {
     display: flex;
@@ -70,13 +78,19 @@ a {
 .nav-link-button {
     background-color: #0091ff;
     color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 14px 28px;
+    border-radius: 50px;
     line-height: 1;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 145, 255, 0.2);
 }
 
 .nav-link-button:hover {
-    opacity: 0.9;
+    background-color: #007ce0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 145, 255, 0.3);
+    opacity: 1;
 }
 
 /* Hero Section */
@@ -121,19 +135,23 @@ a {
 
 .resume-button {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -1.12px;
     line-height: 12.80px;
     background-color: #0091ff;
     color: #ffffff;
-    padding: 16px 24px;
-    border-radius: 4px;
+    padding: 14px 28px;
+    border-radius: 50px;
     width: fit-content;
-    transition: opacity 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 145, 255, 0.2);
 }
 
 .resume-button:hover {
-    opacity: 0.9;
+    background-color: #007ce0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 145, 255, 0.3);
+    opacity: 1;
 }
 
 .hero-right {
@@ -603,11 +621,19 @@ a {
 
 .cta-button {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     background-color: #0091ff;
     color: #ffffff;
-    padding: 16px 32px;
-    border-radius: 4px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(0, 145, 255, 0.2);
+}
+
+.cta-button:hover {
+    background-color: #007ce0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 145, 255, 0.3);
 }
 
 .cta-links {
