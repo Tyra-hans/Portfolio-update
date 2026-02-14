@@ -5,12 +5,51 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #fcfcfc;
     color: #004172;
     line-height: 1.5;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hardware acceleration for smoother animations */
+.name-graphic-img,
+.hero-tagline,
+.hero-title,
+.resume-button,
+.hero-companies,
+.work-title,
+.project-header,
+.showcase-image,
+.work-history-image,
+.tools-image,
+.cta-content,
+.cs-hero-logo,
+.cs-hero-title,
+.cs-hero-description,
+.cs-hero-mockup,
+.watch-demo-btn,
+.cs-label,
+.cs-title,
+.cs-description,
+.challenge-card,
+.research-img,
+.treemap-img,
+.map-img,
+.interview-img,
+.app-grid-img,
+.deep-dive-img,
+.other-img,
+.scope-list li,
+.conclusion-list li {
+    will-change: transform, opacity;
 }
 
 img {

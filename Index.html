@@ -236,46 +236,49 @@
         // GSAP ScrollTrigger Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        const smoothEase = "expo.out";
-        const smoothDuration = 1.4;
+        // Smoothen GSAP performance
+        gsap.ticker.lagSmoothing(1000, 16);
+
+        const smoothEase = "power2.out";
+        const smoothDuration = 1.0;
 
         // 1. Hero Entrance
-        gsap.from(".name-graphic-img", { duration: 1.6, x: -60, opacity: 0, ease: smoothEase });
-        gsap.from(".hero-tagline", { duration: 1.2, y: 30, opacity: 0, delay: 0.2, ease: smoothEase });
-        gsap.from(".hero-title", { duration: 1.2, y: 40, opacity: 0, delay: 0.4, ease: smoothEase });
-        gsap.from(".resume-button", { duration: 1.2, y: 20, opacity: 0, delay: 0.6, ease: smoothEase });
-        gsap.from(".hero-companies", { duration: 1.2, opacity: 0, delay: 0.8, ease: smoothEase });
+        gsap.from(".name-graphic-img", { duration: 1.2, x: -30, opacity: 0, ease: smoothEase });
+        gsap.from(".hero-tagline", { duration: 0.8, y: 15, opacity: 0, delay: 0.2, ease: smoothEase });
+        gsap.from(".hero-title", { duration: 0.8, y: 20, opacity: 0, delay: 0.4, ease: smoothEase });
+        gsap.from(".resume-button", { duration: 0.8, y: 10, opacity: 0, delay: 0.6, ease: smoothEase });
+        gsap.from(".hero-companies", { duration: 0.8, opacity: 0, delay: 0.8, ease: smoothEase });
 
         // 2. Work Section Header
         gsap.from(".work-title", {
-            scrollTrigger: { trigger: ".work-title", start: "top 92%" },
-            duration: 1.2, y: 50, opacity: 0, ease: smoothEase
+            scrollTrigger: { trigger: ".work-title", start: "top 95%" },
+            duration: 0.8, y: 25, opacity: 0, ease: smoothEase
         });
 
         // 3. Project Reveals
         const projects = gsap.utils.toArray('.project');
         projects.forEach(project => {
             gsap.from(project.querySelector('.project-header'), {
-                scrollTrigger: { trigger: project, start: "top 88%" },
-                duration: 1.2, y: 40, opacity: 0, ease: smoothEase
+                scrollTrigger: { trigger: project, start: "top 90%" },
+                duration: 0.8, y: 20, opacity: 0, ease: smoothEase
             });
             
             gsap.from(project.querySelectorAll('.showcase-image'), {
                 scrollTrigger: { trigger: project.querySelector('.project-content'), start: "top 85%" },
-                duration: 1.4, y: 60, opacity: 0, stagger: 0.15, ease: smoothEase
+                duration: 1.0, y: 30, opacity: 0, stagger: 0.1, ease: smoothEase
             });
         });
 
         // 4. Graphics Reveals
         gsap.from(".work-history-image, .tools-image", {
-            scrollTrigger: { trigger: ".work-history-image", start: "top 88%" },
-            duration: 1.8, scale: 0.98, opacity: 0, ease: smoothEase
+            scrollTrigger: { trigger: ".work-history-image", start: "top 90%" },
+            duration: 1.2, scale: 0.99, opacity: 0, ease: smoothEase
         });
 
         // 5. CTA Section
         gsap.from(".cta-content", {
-            scrollTrigger: { trigger: ".cta-section", start: "top 88%" },
-            duration: 1.2, y: 40, opacity: 0, ease: smoothEase
+            scrollTrigger: { trigger: ".cta-section", start: "top 90%" },
+            duration: 0.8, y: 25, opacity: 0, ease: smoothEase
         });
     </script>
 </body>
