@@ -20,9 +20,13 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
-                <nav class="nav">
-                    <!-- <a href="#work" class="nav-link">My work</a>
-                    <a href="#about" class="nav-link">About me</a> -->
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav" id="nav">
+                    <a href="work.html" class="nav-link">Work</a>
                     <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
                 </nav>
             </div>
@@ -38,7 +42,7 @@
                         <img src="assets/Name_graphic.png" alt="HELLO my name is Tyra Hans" class="name-graphic-img">
                     </div>
                     <div class="hero-tagline-container">
-                        <p class="hero-tagline">Product designer with 5 years experience</p>
+                        <p class="hero-tagline">Product designer with 6 years experience</p>
                 
                     </div>
                 </div>
@@ -68,26 +72,28 @@
     <section id="work" class="work-section">
         <div class="container">
             <div class="work-header">
-                <h2 class="work-title">See my <span class="work-title-highlight">work</span> <span class="arrow">→</span></h2>
+                <a href="work.html" style="text-decoration: none; color: inherit;">
+                    <h2 class="work-title">See my <span class="work-title-highlight">work</span> <span class="arrow">→</span></h2>
+                </a>
             </div>
 
             <!-- ServCraft Project -->
             <div class="project">
                 <div class="project-header">
-                    <a href="servcraft.html"><img src="assets/servcraft-logo.png" alt="ServCraft" class="project-logo"></a>
+                    <a href="servcraft.html" target="_blank"><img src="assets/servcraft-logo.png" alt="ServCraft" class="project-logo"></a>
                     <div class="project-intro">
-                        <h3 class="project-title"><a href="servcraft.html" style="text-decoration: none; color: inherit;">Field service management software <br>for large teams in South Africa</a></h3>
+                        <h3 class="project-title"><a href="servcraft.html" target="_blank" style="text-decoration: none; color: inherit;">Field service management software <br>for large teams in South Africa</a></h3>
                         <p class="project-subtitle">Security, plumbing, HVAC and similar service industries</p>
                     </div>
                 </div>
                 <div class="project-content">
                     <div class="project-showcase servcraft-showcase">
                         <div class="showcase-main">
-                            <a href="servcraft.html"><img src="assets/SC bento.png" alt="ServCraft Main View" class="showcase-image"></a>
+                            <a href="servcraft.html" target="_blank"><img src="assets/SC bento.png" alt="ServCraft Main View" class="showcase-image"></a>
                         </div>
                         <div class="showcase-side">
-                            <a href="servcraft.html"><img src="assets/SC mobile.png" alt="ServCraft Mobile App" class="showcase-image"></a>
-                            <a href="servcraft.html"><img src="assets/SC scheduler.png" alt="ServCraft Scheduler" class="showcase-image"></a>
+                            <a href="servcraft.html" target="_blank"><img src="assets/SC mobile.png" alt="ServCraft Mobile App" class="showcase-image"></a>
+                            <a href="servcraft.html" target="_blank"><img src="assets/SC scheduler.png" alt="ServCraft Scheduler" class="showcase-image"></a>
                         </div>
                     </div>
                     <div class="project-details servcraft-details">
@@ -112,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="case-study-wrapper">
-                                    <a href="servcraft.html" class="case-study-link">Go to case study <span class="arrow-blue">→</span></a>
+                                    <a href="servcraft.html" target="_blank" class="case-study-link">Go to case study <span class="arrow-blue">→</span></a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +156,7 @@
                                     <div class="achievement-col">
                                         <p class="achievement-text">Designed complex UI components catering to search, multi select and filter states</p>
                                         <div class="case-study-wrapper credify-case-study">
-                                            <a href="credify.html" class="case-study-link credify-link">Go to case study <span class="arrow-blue">→</span></a>
+                                            <a href="credify.html" target="_blank" class="case-study-link credify-link">Go to case study <span class="arrow-blue">→</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -200,7 +206,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+            <div class="footer-content-wrapper">
+                <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+                <p class="footer-text">Tyra Hans 2025</p>
+            </div>
         </div>
     </footer>
 
@@ -279,6 +288,25 @@
         gsap.from(".cta-content", {
             scrollTrigger: { trigger: ".cta-section", start: "top 90%" },
             duration: 0.8, y: 25, opacity: 0, ease: smoothEase
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
         });
     </script>
 </body>
