@@ -2061,6 +2061,627 @@ a {
     }
 }
 
+/* ServCraft Case Study Specific Styles */
+.cs-intro {
+    padding: 81px 0;
+    background-color: #fcfcfc;
+}
+
+.cs-intro-wrapper {
+    max-width: 830px;
+}
+
+.cs-intro-content {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.cs-intro-main-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3b3f42;
+    margin: 0;
+}
+
+.cs-intro-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.cs-intro-highlight-bold {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.29;
+    color: #000000;
+    margin: 0;
+}
+
+.cs-intro-highlight-italic {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    line-height: 1.5;
+    color: #2f3a42;
+    margin: 0;
+}
+
+/* Problem Section */
+.cs-problem {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.cs-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #004172;
+    line-height: 1;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.cs-section-subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #004172;
+    line-height: 1.29;
+    margin-bottom: 24px;
+    margin-top: 0;
+}
+
+.cs-body-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3b3f42;
+    margin: 0 0 16px 0;
+}
+
+.cs-problem-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.cs-problem-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 707px;
+}
+
+.cs-problem-paragraph {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #3b3f42;
+    margin: 0;
+}
+
+.cs-problem-image-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-screenshot-image {
+    width: 80%;
+    max-width: 1159px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cs-image-caption {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.56px;
+    line-height: 1;
+    color: #444444;
+    text-align: center !important;
+    margin: 12px auto 0 auto;
+}
+
+.cs-customer-suggestion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-customer-diagram {
+    width: 80%;
+    max-width: 1365px;
+    height: auto;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Challenge Section */
+.cs-challenge-section {
+    padding: 80px 0;
+    background-color: #fcfcfc;
+}
+
+.cs-challenge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 48px;
+    max-width: 707px;
+}
+
+.cs-role-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 707px;
+    margin-top: 48px;
+}
+
+.cs-role-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #004172;
+    margin: 0;
+}
+
+/* Discovery Section */
+.cs-discovery {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.cs-discovery-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.cs-discovery-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+    max-width: 707px;
+}
+
+.cs-quote-container {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.cs-quote-icon-wrapper {
+    flex-shrink: 0;
+    width: 8px;
+    display: flex;
+}
+
+.cs-quote-text {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.32;
+    color: #3b3f42;
+    margin: 0;
+}
+
+.cs-workaround-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-diagram-image {
+    width: 80%;
+    max-width: 1365px;
+    height: auto;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Scope Section */
+.cs-scope {
+    padding: 80px 0;
+    background-color: #fcfcfc;
+}
+
+.cs-scope-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* margin-bottom: 48px; */
+}
+
+.cs-constraints-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 48px;
+}
+
+.cs-constraint-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-constraint-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #3b3f42;
+    margin: 0;
+}
+
+/* Heuristics Section */
+.cs-heuristics {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.cs-heuristics-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 48px;
+}
+
+.cs-critical-finding {
+    display: flex;
+    gap: 32px;
+    margin: 32px 0;
+    align-items: flex-start;
+    max-width: 707px;
+}
+
+.cs-finding-icon-wrapper {
+    flex-shrink: 0;
+    width: 8px;
+    display: flex;
+}
+
+.cs-finding-quote {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.32;
+    color: #3b3f42;
+    margin: 0;
+}
+
+.cs-findings-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0 48px 0;
+}
+
+.cs-heuristics-link-wrapper {
+    text-align: center;
+    margin: 48px 0;
+}
+
+.cs-heuristics-thumbnail-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.cs-heuristics-thumbnail-link:hover {
+    transform: scale(1.02);
+}
+
+.cs-heuristics-thumbnail {
+    max-width: 1000px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* PDF Modal */
+.pdf-modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.pdf-modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    background: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: visible;
+    box-shadow: none;
+    border: none;
+}
+
+.pdf-modal-header {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.pdf-modal-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.pdf-external-link {
+    color: #fff;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.pdf-external-link:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.pdf-close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.pdf-close-btn:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.pdf-viewer-container {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.pdf-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+@media screen and (max-width: 768px) {
+    .pdf-modal {
+        padding: 20px;
+    }
+}
+
+/* Redesign Section */
+.cs-redesign {
+    padding: 80px 0;
+    background-color: #fcfcfc;
+}
+
+.cs-redesign-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* margin-bottom: 48px; */
+}
+
+.cs-solution-item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 80px;
+    margin-top: 64px;
+}
+
+.cs-solution-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 707px;
+}
+
+.cs-solution-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #3b3f42;
+    margin: 0;
+}
+
+.cs-solution-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-solution-screenshot {
+    width: 80%;
+    max-width: 1055px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cs-settings-comparison {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cs-settings-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cs-settings-screenshot {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Outcomes Section */
+.cs-outcomes {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.cs-outcomes-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.cs-outcomes-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer Navigation */
+.cs-footer-nav {
+    padding: 60px 0;
+    border-top: 1px solid #ececec;
+}
+
+.cs-content-640 {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: left;
+}
+
+.highlight-blue {
+    color: #167DF2;
+}
+
+@media screen and (max-width: 768px) {
+    .cs-content-640 {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .cs-constraints-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .cs-settings-comparison {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-hero-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .cs-footer-nav-wrapper {
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cs-intro,
+    .cs-problem,
+    .cs-challenge-section,
+    .cs-discovery,
+    .cs-scope,
+    .cs-heuristics,
+    .cs-redesign,
+    .cs-outcomes {
+        padding: 60px 0;
+    }
+
+    .cs-section-title {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .cs-section-subtitle {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .cs-quote-container {
+        gap: 16px;
+    }
+
+    .cs-quote-text {
+        font-size: 14px;
+    }
+
+    .cs-settings-comparison {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .cs-section-title {
+        font-size: 20px;
+    }
+
+    .cs-section-subtitle {
+        font-size: 16px;
+    }
+
+    .cs-constraints-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
 /* Small Mobile (480px and below) */
 @media screen and (max-width: 480px) {
     .container {

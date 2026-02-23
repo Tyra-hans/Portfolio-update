@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServCraft Case Study - Tyra Hans Product Designer</title>
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
+                <nav class="nav">
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Case Study Page Content -->
+    <div class="case-study-page">
+        <!-- Hero Section -->
+        <section class="cs-hero">
+            <div class="container">
+                <div class="cs-hero-wrapper">
+                    <div class="cs-hero-content cs-content-640">
+                        <svg class="cs-hero-logo" viewBox="0 0 190 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <image href="assets/servcraft-logo-dark.svg" width="190" height="43"/>
+                        </svg>
+                        <h1 class="cs-hero-title">Designing an Intuitive Scheduling Experience for Field Service Optimization</h1>
+                        <p class="cs-hero-description">Security, plumbing, HVAC and similar service industries</p>
+                    </div>
+                    <div class="hero-image-container">
+                        <img src="assets/SC scheduler modal.png" alt="Appointments Interface" class="cs-hero-mockup">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="cs-intro">
+            <div class="container">
+                <div class="cs-intro-wrapper cs-content-640">
+                    <div class="cs-intro-content">
+                        <p class="cs-intro-main-text">I led the UX and UI redesign of the Appointments module at ServCraft, a field service management platform used by medium to large businesses across South Africa.</p>
+                        
+                        <div class="cs-intro-highlights">
+                            <p class="cs-intro-highlight-bold">What started as a cluttered, unpredictable scheduler became an intuitive, transparent tool that field teams could trust with their daily operations.</p>
+                            <p class="cs-intro-highlight-italic">To comply with legal requirements, I have omitted and obfuscated confidential information in this case study. All information in this case study is my own and does not necessarily reflect the views of ServCraft.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem Section -->
+        <section class="cs-problem">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-subtitle">A Scheduler That Had <span class="highlight-blue">Grown Beyond Itself.</span></h2>
+                </div>
+                
+                <div class="cs-problem-wrapper">
+                    <div class="cs-problem-text-block cs-content-640">
+                        <p class="cs-problem-paragraph"><strong>ServCraft serves the complex, high-volume operations of South African service businesses: security firms, plumbers, HVAC companies, and similar industries.</strong> At the heart of daily operations sits the scheduler. The tool teams rely on to coordinate jobs, appointments, and technicians across the day.</p>
+                        
+                        <p class="cs-problem-paragraph">Over time, it had accumulated features, patches, and workarounds. It still functioned, but not well. Customers were vocal about it. Support tickets piled up. Users were inventing their own workarounds just to get through the day. Some sent in their own diagrams of how scheduling actually works for them on the tools they use.</p>
+                    </div>
+
+                    <div class="cs-problem-image-group">
+                        <img src="assets/appointments-original.png" alt="Original Scheduler Screen" class="cs-screenshot-image gallery-image">
+                        <p class="cs-image-caption cs-content-640">Original scheduler screen</p>
+                    </div>
+                </div>
+    
+                <div class="cs-customer-suggestion-group">
+                    <img src="assets/Customer image.png" alt="Customer Suggestion Diagram" class="cs-customer-diagram gallery-image">
+                    <p class="cs-image-caption cs-content-640">Customer suggestion</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Challenge Section -->
+        <section class="cs-challenge-section">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">The Challenge</h2>
+                    <h3 class="cs-section-subtitle">Fix What's Broken <span class="highlight-blue">Without Breaking What Works</span></h3>
+
+                    <div class="cs-challenge-text">
+                        <p class="cs-body-text">The scheduler was deeply embedded in the daily routines of an active, vocal user base. Any misstep would be felt immediately by users, and the ServCraft support team fielding the fallout.</p>
+                        
+                        <p class="cs-body-text">My goals were to make the scheduling experience intuitive and predictable for both admin users and field technicians, give users visibility and control over the system's behaviour, and scope the redesign feasibly within the team's engineering bandwidth.</p>
+                    </div>
+
+                    <div class="cs-role-section">
+                        <h3 class="cs-role-title">My Role</h3>
+                        <p class="cs-body-text">I was the sole designer on a cross-functional team of three developers, one product manager, and one QA engineer. I owned the end-to-end design process from initial research and evaluation through to final UI delivery and handoff.
+    The team was hybrid: I worked fully remotely alongside one other remote team member, with the rest based in the office. Strong async communication, thorough documentation, and structured handoffs were crucial parts of the process.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kickoff & Discovery Section -->
+        <section class="cs-discovery">
+            <div class="container">
+                <div class="cs-content-640">
+                    <div class="cs-discovery-header">
+                        <h2 class="cs-section-title">Kickoff</h2>
+                        <h3 class="cs-section-subtitle">The Complaints Were the Brief</h3>
+                    </div>
+
+                    <div class="cs-discovery-content">
+                        <p class="cs-body-text">The project began with users telling us something was wrong.
+    Support tickets consistently flagged the scheduler as confusing and unreliable. What sharpened the picture most was the customers who went further, writing in to describe how they thought the scheduler should work, and sharing screenshots of their own systems as reference.</p>
+                        
+                        <p class="cs-body-text">One customer wrote:</p>
+
+                        <div class="cs-quote-container">
+                            <div class="cs-quote-icon-wrapper">
+                                <svg class="cs-quote-icon" width="8" height="105" viewBox="0 0 8 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="8" height="105" fill="#167DF2" rx="6"/>
+                                </svg>
+                            </div>
+                            <p class="cs-quote-text">"The current ServCraft dashboard appears quite busy, with all jobs displaying in a uniform blue. This makes it difficult to distinguish between job types or statuses at a glance, and we're concerned this could lead to important items being overlooked. Is there a way to customise the dashboard to more closely resemble our existing layout, particularly with the ability to apply colour coding based on job stage?"</p>
+                        </div>
+
+                        <p class="cs-body-text">This kind of unsolicited, constructive frustration is a signal worth taking seriously. These users were not abandoning the product. They were invested enough to show us exactly how to fix it.</p>
+                        
+                        <p class="cs-body-text">A further symptom surfaced in the data. Customers were creating job statuses named "Monday - Booked Job", "Tuesday - Booked Job", and similar, using a workflow step to do the job the scheduler should have been doing. A status is meant to represent a stage in a job's lifecycle. Using it as a scheduling workaround points directly to a gap in the tool.</p>
+                    </div>
+                </div>
+
+                <div class="cs-workaround-section">
+                    <img src="assets/customer-status-diagram.svg" alt="Customer Using Job Statuses as Workaround" class="cs-diagram-image gallery-image">
+                    <p class="cs-image-caption cs-content-640">Customer using job statuses to indicate jobs to be done on that day</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scope & Constraints Section -->
+        <section class="cs-scope">
+            <div class="container">
+                <div class="cs-content-640">
+                    <div class="cs-scope-header">
+                        <h2 class="cs-section-title">Scope and Constraints</h2>
+                        <h3 class="cs-section-subtitle">A Complex System with a <span class="highlight-blue">Vocal User Base and Limited Runway</span></h3>
+                    </div>
+                    <p class="cs-body-text">Three factors shaped every decision in this project.</p>
+                </div>
+
+                <div class="cs-constraints-grid cs-content-640">
+                    <div class="cs-constraint-item">
+                            <h4 class="cs-constraint-title">Complexity</h4>
+                            <p class="cs-body-text">The scheduler had evolved over time, with functionality that was deeply embedded and not always visible. Schedulers are inherently difficult to build. Third-party libraries exist, but they introduce their own risks: limited customisation, dependency on external updates, long-term maintenance overhead, and cost. Whether to build on the existing foundation or introduce new components required careful consideration at every step.</p>
+                        </div>
+
+                        <div class="cs-constraint-item">
+                            <h4 class="cs-constraint-title">Users</h4>
+                            <p class="cs-body-text">The customer base was highly active and reacted quickly to product changes. This was not a peripheral feature. It was central to how teams ran their day. A poorly managed rollout would not just frustrate users; it would generate a wave of support requests and erode trust at a critical point in the product's maturity.</p>
+                        </div>
+
+                        <div class="cs-constraint-item">
+                            <h4 class="cs-constraint-title">Bandwidth</h4>
+                            <p class="cs-body-text">Engineering capacity was limited. The redesign had to be tightly scoped and strategically phased to remain feasible without pulling the team away from other priorities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heuristics Evaluation Section -->
+        <section class="cs-heuristics">
+            <div class="container">
+                <div class="cs-content-640">
+                    <div class="cs-heuristics-header">
+                        <h2 class="cs-section-title">The Discovery</h2>
+                        <h3 class="cs-section-subtitle">A <span class="highlight-blue">Heuristic Evaluation</span> Revealed the Depth of the Problem</h3>
+                    </div>
+
+                    <p class="cs-body-text">Before moving to solutions, I needed to understand the full shape of the problem. I conducted a heuristic evaluation of the Appointments module, assessing the interface against Nielsen's 10 Usability Heuristics.</p>
+                    
+                    <p class="cs-body-text">Six issues emerged. Three were critical.</p>
+
+                    <div class="cs-critical-finding">
+                        <div class="cs-finding-icon-wrapper">
+                            <svg class="cs-finding-icon" width="8" height="42" viewBox="0 0 8 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="8" height="42" fill="#DADADA" rx="6"/>
+                            </svg>
+                        </div>
+                        <p class="cs-finding-quote">"The system automatically sends an email to customers the moment an appointment is created, with no confirmation prompt and no way to stop it. Users have no idea it is happening."</p>
+                    </div>
+
+                    <div class="cs-findings-details cs-content-640">
+                        <p class="cs-body-text">For a tool used by service teams managing real client relationships, this was the kind of silent action that erodes trust fast and carries real consequences for the customer, the user, and ServCraft's reputation.</p>
+                        
+                        <p class="cs-body-text">Beyond that, the page itself did little to orient users on arrival. There were no appointments in view, no guidance, no indication of what to do next. Just a jobs list and an empty calendar. Users were left to piece together the workflow on their own.</p>
+                        
+                        <p class="cs-body-text">Search made things worse. Filtering the jobs list simultaneously collapsed the scheduler, stripping away the very view needed to complete a booking. The two most important tasks on the page; finding a job and scheduling it, could not be done at the same time.</p>
+                        
+                        <p class="cs-body-text">Rounding out the findings: a cluttered settings drawer with no save confirmation, a scheduler that broke down visually as appointment volume grew, and status colours that failed basic accessibility contrast standards.</p>
+                    </div>
+                </div>
+
+                <div class="cs-heuristics-link-wrapper cs-content-640">
+                    <a href="javascript:void(0)" class="cs-heuristics-thumbnail-link" id="openHeuristicsModal">
+                        <img src="assets/Heuristics thumbnail.png" alt="Heuristics Evaluation Thumbnail" class="cs-heuristics-thumbnail">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PDF Modal -->
+        <div id="pdfModal" class="pdf-modal">
+            <div class="pdf-modal-content">
+                <div class="pdf-modal-header">
+                    <div class="pdf-modal-controls">
+                        <a href="assets/Appointments_Heuristic_Evaluation.pdf" target="_blank" class="pdf-external-link" title="Open in separate page">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                        <button class="pdf-close-btn" id="closePdfModal">&times;</button>
+                    </div>
+                </div>
+                <div class="pdf-viewer-container">
+                    <iframe src="assets/Appointments_Heuristic_Evaluation.pdf" class="pdf-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Redesign Section -->
+        <section class="cs-redesign">
+            <div class="container">
+                <div class="cs-content-640">
+                    <div class="cs-redesign-header">
+                        <h2 class="cs-section-title">The Redesign</h2>
+                        <h3 class="cs-section-subtitle">Four Problems. Four <span class="highlight-blue">Clear Solutions</span></h3>
+                    </div>
+
+                    <p class="cs-body-text">The evaluation surfaced clear friction points: users arriving on a page with no context, search and scheduling working against each other, a configuration panel that obscured rather than helped, and a system sending emails without permission. Each problem had a corresponding solution.</p>
+
+                    <!-- Solution 1 -->
+                    <div class="cs-solution-item">
+                        <div class="cs-solution-text-block">
+                            <h4 class="cs-solution-title">Provide immediate visibility of key appointment information.</h4>
+                            <p class="cs-body-text">When users land on the Appointments page, they now see upcoming and relevant appointments without having to search or piece information together. The page communicates its state from the moment it loads, reducing disorientation and giving users a clear starting point for their work.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-solution-image-container">
+                    <img src="assets/scheduler-redesigned.png" alt="Redesigned Scheduler Screen" class="cs-solution-screenshot gallery-image">
+                    <p class="cs-image-caption cs-content-640">Re-designed scheduler screen</p>
+                </div>
+                <div class="cs-solution-image-container">
+                    <img src="assets/Appointments (2).png" alt="Scheduler Timeline View" class="cs-solution-screenshot gallery-image">
+                    <p class="cs-image-caption cs-content-640">Interactive timeline for granular appointment management and scheduling</p>
+                </div>
+
+                <div class="cs-content-640">
+                    <!-- Search Results -->
+                    <div class="cs-solution-item">
+                        <div class="cs-solution-text-block">
+                            <h4 class="cs-solution-title">Search and filter without losing context.</h4>
+                            <p class="cs-body-text">The search experience was optimized to allow users to filter through vast amounts of data while maintaining the visual context of the scheduler. Results are displayed clearly with actionable statuses, allowing for quick pivots between finding and managing jobs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-solution-image-container">
+                    <img src="assets/Appointments_ Search results.png" alt="Scheduler Search Results" class="cs-solution-screenshot gallery-image">
+                    <p class="cs-image-caption cs-content-640">Optimized search results view with advanced filtering</p>
+                </div>
+
+                <div class="cs-content-640">
+                    <!-- Solution 2 -->
+                    <div class="cs-solution-item">
+                        <div class="cs-solution-text-block">
+                            <h4 class="cs-solution-title">Restructure the settings drawer with clear hierarchy.</h4>
+                            <p class="cs-body-text">The settings panel was rebuilt to group related options into distinct, labelled sections: colour coding, display information, and advanced settings. A clear save action confirms when changes have been applied. Users can now scan, understand, and adjust their configuration without feeling overwhelmed by an undifferentiated list of controls.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-settings-comparison">
+                    <div class="cs-settings-image-wrapper">
+                        <img src="assets/scheduler-old-settings.png" alt="Old Scheduler Settings" class="cs-settings-screenshot gallery-image">
+                        <p class="cs-image-caption cs-content-640">Old scheduler settings</p>
+                    </div>
+                    <div class="cs-settings-image-wrapper">
+                        <img src="assets/scheduler-new-settings.png" alt="New Scheduler Settings" class="cs-settings-screenshot gallery-image">
+                        <p class="cs-image-caption cs-content-640">Re-designed scheduler settings</p>
+                    </div>
+                </div>
+
+                <div class="cs-content-640">
+                    <!-- Solution 3 -->
+                    <div class="cs-solution-item">
+                        <div class="cs-solution-text-block">
+                            <h4 class="cs-solution-title">Give users full control over customer communications.</h4>
+                            <p class="cs-body-text">The most trust-damaging behaviour in the product was addressed directly. When creating an appointment, users now encounter an explicit notification step: choose who to notify, preview the message before it sends, and decide whether to send at all. Customer communication became a deliberate action, not a side effect.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-solution-image-container">
+                    <img src="assets/scheduler-notifications.png" alt="Scheduler Notifications Control" class="cs-solution-screenshot gallery-image">
+                    <p class="cs-image-caption cs-content-640">Transparency and control when creating an appointment</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outcomes Section -->
+        <section class="cs-outcomes">
+            <div class="container">
+                <div class="cs-content-640">
+                    <div class="cs-outcomes-header">
+                        <h2 class="cs-section-title">Outcomes and Lessons Learned</h2>
+                        <h3 class="cs-section-subtitle">Giving Teams Back Their <span class="highlight-blue">Confidence</span></h3>
+                    </div>
+
+                    <div class="cs-outcomes-content cs-content-640">
+                        <p class="cs-body-text">The redesigned scheduler gave field service teams a tool they could rely on. One that displayed information clearly, responded predictably, and never acted without their knowledge.</p>
+                        
+                        <p class="cs-body-text">Colour coding customisation addressed one of the longest-standing requests from the customer base.</p>
+                        
+                        <p class="cs-body-text">Communication controls eliminated the most trust-damaging behaviour in the product.</p>
+                        
+                        <p class="cs-body-text">Structural improvements to the page and settings experience reduced the friction that had made the scheduler feel more like a puzzle than a tool.</p>
+
+                        <p class="cs-body-text">The most significant lesson: when users go out of their way to tell you how something should work, that is not noise. That is the brief. The customers who sent in their own scheduling screenshots and colour-coded diagrams were doing the research for us. Getting closer to that signal earlier would have sharpened the project from the start.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Navigation -->
+        <section class="cs-footer-nav">
+            <div class="container">
+                <div class="footer-nav-wrapper">
+                    <a href="credify.html" class="footer-nav-prev">
+                        ← Previous
+                    </a>
+                    <a href="credify.html" class="footer-nav-next">
+                        Next →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewer" class="image-viewer">
+        <span class="close-viewer">&times;</span>
+        <div class="viewer-nav">
+            <button class="nav-btn prev-btn">←</button>
+            <button class="nav-btn next-btn">→</button>
+        </div>
+        <img class="viewer-content" id="fullImage">
+        <div class="viewer-counter" id="imageCounter">1 / 1</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+        </div>
+    </footer>
+
+    <script>
+        // GSAP ScrollTrigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.ticker.lagSmoothing(1000, 16);
+
+        const smoothEase = "power2.out";
+        const smoothDuration = 1.0;
+
+        // Hero Entrance
+        gsap.from(".cs-hero-logo", { duration: 1.2, y: -30, opacity: 0, ease: smoothEase });
+        gsap.from(".cs-hero-title", { duration: 0.8, y: 20, opacity: 0, delay: 0.2, ease: smoothEase });
+        gsap.from(".cs-hero-description", { duration: 0.8, y: 15, opacity: 0, delay: 0.4, ease: smoothEase });
+        gsap.from(".cs-hero-mockup", { duration: 0.8, x: 30, opacity: 0, delay: 0.3, ease: smoothEase });
+
+        // Section Reveals
+        gsap.from(".cs-section-title", {
+            scrollTrigger: { trigger: ".cs-section-title", start: "top 95%" },
+            duration: 0.8, y: 25, opacity: 0, ease: smoothEase
+        });
+
+        gsap.from(".cs-section-image", {
+            scrollTrigger: { trigger: ".cs-section-image", start: "top 90%" },
+            duration: 1.0, y: 30, opacity: 0, ease: smoothEase,
+            stagger: 0.1
+        });
+
+        // Content reveals
+        gsap.from(".cs-description", {
+            scrollTrigger: { trigger: ".cs-outcomes", start: "top 80%" },
+            duration: 0.8, y: 15, opacity: 0, ease: smoothEase,
+            stagger: 0.05
+        });
+
+        // PDF Modal Logic
+        const pdfModal = document.getElementById('pdfModal');
+        const openModalBtn = document.getElementById('openHeuristicsModal');
+        const closeModalBtn = document.getElementById('closePdfModal');
+
+        openModalBtn.addEventListener('click', () => {
+            pdfModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            pdfModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+
+        // Image Viewer Logic
+        const viewer = document.getElementById('imageViewer');
+        const viewerImg = document.getElementById('fullImage');
+        const counter = document.getElementById('imageCounter');
+        const closeImageViewerBtn = document.querySelector('.close-viewer');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const galleryImages = document.querySelectorAll('.gallery-image');
+        
+        let currentIndex = 0;
+        const images = Array.from(galleryImages).map(img => img.src);
+
+        function updateViewer(index) {
+            currentIndex = index;
+            viewerImg.src = images[currentIndex];
+            counter.innerText = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        galleryImages.forEach((img, index) => {
+            img.style.cursor = 'pointer';
+            img.onclick = function() {
+                viewer.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                updateViewer(index);
+            }
+        });
+
+        closeImageViewerBtn.onclick = function() {
+            viewer.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        prevBtn.onclick = function(e) {
+            e.stopPropagation();
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = images.length - 1;
+            updateViewer(newIndex);
+        }
+
+        nextBtn.onclick = function(e) {
+            e.stopPropagation();
+            let newIndex = currentIndex + 1;
+            if (newIndex >= images.length) newIndex = 0;
+            updateViewer(newIndex);
+        }
+
+        window.onclick = function(event) {
+            if (event.target == viewer) {
+                closeImageViewerBtn.onclick();
+            }
+            if (event.target === pdfModal) {
+                closeModalBtn.click();
+            }
+        };
+
+        // Close on backdrop click (already handled above for modal but combined here for clarity)
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (pdfModal.style.display === 'flex') closeModalBtn.click();
+                if (viewer.style.display === 'flex') closeImageViewerBtn.onclick();
+            }
+            if (viewer.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') prevBtn.click();
+                if (e.key === 'ArrowRight') nextBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
