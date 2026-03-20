@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musings - Tyra Hans Product Designer</title>
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/lucide-static/font/lucide.css" rel="stylesheet">
+    
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav" id="nav">
+                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="musings.html" class="nav-link active">Musings</a>
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="musings-page">
+        <!-- Musings Hero -->
+        <section class="musings-hero">
+            <div class="musings-hero-content">
+                <h1 class="musings-title">Musings</h1>
+                <p class="musings-subtitle">Thoughts on design, process, and the industry.</p>
+            </div>
+            <!-- <div class="musings-hero-video-wrapper">
+                <video class="musings-hero-video" autoplay loop muted playsinline>
+                    <source src="assets/demo (1).mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div> -->
+        </section>
+
+        <!-- Articles Section -->
+        <section class="musings-section">
+            <div class="container">
+                <h2 class="section-heading">Medium Articles</h2>
+                <div class="musings-grid">
+                    <!-- Article 1 -->
+                    <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card">
+                        <div class="musing-card-image">
+                            <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover">
+                        </div>
+                        <div class="musing-card-content">
+                            <div class="musing-card-header-row">
+                                <h3 class="musing-card-title">When Designers are Treated like AI</h3>
+                            </div>
+                            <p class="musing-card-description">Exploring the intersection of human creativity and artificial intelligence in the design process.</p>
+                            <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </div>
+                    </a>
+
+                    <!-- Article 2 -->
+                    <a href="https://tyrahans.medium.com/they-asked-me-for-a-rate-card-what-should-i-do-75a5b0d5bf47" target="_blank" class="musing-card">
+                        <div class="musing-card-image">
+                            <img src="https://miro.medium.com/v2/resize:fit:964/1*diJgw9MesYOROf_eqhrQQQ.png" alt="They asked me for a rate card cover">
+                        </div>
+                        <div class="musing-card-content">
+                            <div class="musing-card-header-row">
+                                <h3 class="musing-card-title">They asked me for a rate card. What should I do?</h3>
+                            </div>
+                            <p class="musing-card-description">Practical advice for designers on pricing their work and navigating business conversations.</p>
+                            <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="musings-section">
+            <div class="container">
+                <h2 class="section-heading">Videos</h2>
+                <div class="video-musing">
+                    <div class="video-wrapper" id="videoWrapper" data-video-id="_VQFPJxFuJg" data-video-title="Design reel 2025">
+                        <!-- Thumbnail -->
+                        <img src="https://img.youtube.com/vi/_VQFPJxFuJg/hqdefault.jpg" alt="Design reel 2025 Video Thumbnail" class="video-thumbnail-img">
+                        
+                        <!-- Play Button Overlay -->
+                        <div class="video-play-overlay">
+                            <div class="play-icon-circle">
+                                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading Spinner (hidden by default) -->
+                        <div class="video-loading-state" id="videoLoading" style="display: none;">
+                            <div class="spinner"></div>
+                        </div>
+                        
+                        <!-- Error Fallback (hidden by default) -->
+                        <div class="video-error-fallback" id="videoError" style="display: none;">
+                            <p>Video unavailable — <a href="https://www.youtube.com/watch?v=_VQFPJxFuJg" target="_blank" rel="noopener noreferrer">watch on YouTube</a></p>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Design reel 2025</h3>
+                        <p class="video-description">A recap of some of the work done in 2025.</p>
+                        <p class="video-link-cta">Featured video content</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content-wrapper">
+                <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+                <p class="footer-text">Tyra Hans 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP ScrollTrigger Animations
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.ticker.lagSmoothing(1000, 16);
+
+        const smoothEase = "power2.out";
+        const smoothDuration = 1.0;
+
+        // Page Title
+        gsap.from(".musings-title", { 
+            duration: 0.8, 
+            y: 20, 
+            opacity: 0, 
+            ease: smoothEase
+        });
+
+        gsap.from(".musings-subtitle", { 
+            duration: 0.8, 
+            y: 20, 
+            opacity: 0, 
+            delay: 0.2,
+            ease: smoothEase
+        });
+
+        // Cards Reveal
+        gsap.from(".musing-card", {
+            scrollTrigger: { 
+                trigger: ".musings-grid", 
+                start: "top 90%"
+            },
+            duration: 0.8,
+            y: 30,
+            opacity: 0,
+            stagger: 0.1,
+            ease: smoothEase
+        });
+
+        // Video Reveal
+        gsap.from(".video-musing", {
+            scrollTrigger: { 
+                trigger: ".video-musing", 
+                start: "top 90%"
+            },
+            duration: 0.8,
+            y: 30,
+            opacity: 0,
+            ease: smoothEase
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Click to Play Video Implementation
+        const videoWrapper = document.getElementById('videoWrapper');
+        const videoLoading = document.getElementById('videoLoading');
+        const videoError = document.getElementById('videoError');
+        
+        if (videoWrapper) {
+            videoWrapper.addEventListener('click', () => {
+                // Prevent multiple clicks
+                if (videoWrapper.classList.contains('video-loading') || videoWrapper.classList.contains('video-error')) {
+                    return;
+                }
+                
+                const videoId = videoWrapper.getAttribute('data-video-id');
+                const videoTitle = videoWrapper.getAttribute('data-video-title') || 'YouTube video';
+                
+                // Show loading state
+                videoWrapper.classList.add('video-loading');
+                videoLoading.style.display = 'flex';
+                
+                // Create iframe with improved reliability
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', '100%');
+                iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`);
+                iframe.setAttribute('title', videoTitle);
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.style.display = 'none';
+                
+                // Handle successful load
+                iframe.onload = () => {
+                    videoLoading.style.display = 'none';
+                    iframe.style.display = 'block';
+                    videoWrapper.classList.remove('video-loading');
+                };
+                
+                // Handle load error
+                iframe.onerror = () => {
+                    videoLoading.style.display = 'none';
+                    videoError.style.display = 'flex';
+                    videoWrapper.classList.remove('video-loading');
+                    videoWrapper.classList.add('video-error');
+                };
+                
+                // Set a timeout fallback in case onload doesn't fire (some browsers)
+                setTimeout(() => {
+                    if (videoLoading.style.display !== 'none') {
+                        iframe.style.display = 'block';
+                        videoLoading.style.display = 'none';
+                        videoWrapper.classList.remove('video-loading');
+                    }
+                }, 2000);
+                
+                // Clear the wrapper and add the iframe
+                videoWrapper.innerHTML = '';
+                videoWrapper.appendChild(iframe);
+            });
+        }
+    </script>
+</body>
+</html>

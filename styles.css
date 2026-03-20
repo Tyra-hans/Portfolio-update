@@ -856,7 +856,7 @@ a {
 }
 
 /* Animation Optimizations */
-.cs-hero-logo, .cs-hero-title, .cs-hero-description, .cs-hero-mockup, .watch-demo-btn,
+.cs-hero-logo, .cs-hero-title, .cs-hero-description, .cs-hero-mockup, .cs-hero-video,
 .cs-label, .cs-title, .cs-description, .challenge-card,
 .research-img, .treemap-img, .map-img, .interview-img, .app-grid-img, .deep-dive-img, .other-img,
 .scope-list li, .conclusion-list li,
@@ -1198,94 +1198,21 @@ a {
     gap: 32px;
 }
 
-.watch-demo-btn {
-    background-color: #004172;
-    color: #ffffff;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 16px 32px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 65, 114, 0.2);
-}
-
-.watch-demo-btn:hover {
-    background-color: #002d4f;
-    transform: translateY(-2px);
-}
-
-.play-icon {
-    font-size: 14px;
-}
-
-/* Video Viewer */
-.video-viewer {
-    display: none;
-    position: fixed;
-    z-index: 2500;
-    left: 0;
-    top: 0;
+.cs-hero-video {
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    justify-content: center;
-    align-items: center;
-}
-
-.video-container {
-    width: 90%;
-    max-width: 1000px;
-    position: relative;
+    height: auto;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-}
-
-.video-container video {
-    width: 100%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     display: block;
+    background-color: #fcfcfc;
 }
 
-.video-credit {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    font-weight: 600;
-    pointer-events: none;
-}
-
-.close-video {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 60px;
-    height: 60px;
-    background-color: #004172;
-    color: white;
-    font-size: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    border: none;
-    z-index: 2501;
-}
-
-.close-video:hover {
-    background-color: #002d4f;
-    transform: rotate(90deg);
+/* Credify Hero - Wide Video Layout */
+.credify-hero .cs-hero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 60px;
+    place-items: start center;
 }
 
 /* CS Challenge */
@@ -3656,5 +3583,356 @@ a {
     .light-bg-section {
         height: auto;
         margin-top: 0;
+    }
+}
+
+/* Musings Page */
+.musings-page {
+    padding: 100px 0;
+}
+
+.musings-hero {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.musings-title {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -4.90px;
+    line-height: 1.1;
+    color: #004172;
+    margin-bottom: 24px;
+}
+
+.musings-subtitle {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #004172;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9; /* Slightly less than 1 but very readable */
+}
+
+.musings-hero-content {
+    margin-bottom: 60px;
+}
+
+.musings-hero-video-wrapper {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 65, 114, 0.1);
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.musings-hero-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+.musings-section {
+    margin-bottom: 120px;
+}
+
+.section-heading {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -1.68px;
+    color: #004172;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+    opacity: 0.7; /* Adjusted for consistency */
+}
+
+.musings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.musing-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 65, 114, 0.15); /* Increased visibility */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    text-decoration: none; /* Ensure no link underline */
+    opacity: 1 !important; /* Force visibility */
+}
+
+.musing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 65, 114, 0.15);
+    border-color: rgba(0, 145, 255, 0.4);
+}
+
+.musing-card-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background-color: #f4f7fa; /* Added subtle background for white illustrations */
+    border-bottom: 1px solid rgba(0, 65, 114, 0.05);
+}
+
+.musing-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    mix-blend-mode: multiply; /* Helps white background images blend into the subtle grey container */
+}
+
+.musing-card:hover .musing-card-image img {
+    transform: scale(1.05);
+}
+
+.musing-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+}
+
+.musing-card-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0; /* Icons removed */
+}
+
+.musing-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1.25;
+    color: #004172 !important;
+    margin: 0;
+}
+
+.musing-card-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #3b3f42 !important; /* Consistent with other cards */
+    opacity: 1 !important;
+}
+
+.musing-card-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0091ff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    opacity: 1 !important;
+}
+
+.video-musing {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 40px; /* Restored padding for embedded view */
+    border-radius: 24px;
+    border: 1px solid rgba(0, 65, 114, 0.12);
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 65, 114, 0.05);
+    cursor: pointer; /* Added for thumbnail clickability */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-thumbnail-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+.video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.play-icon-circle {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0, 145, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 32px;
+    box-shadow: 0 10px 30px rgba(0, 145, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.video-wrapper:hover .play-icon-circle {
+    transform: scale(1.1);
+    background-color: #0091ff;
+}
+
+.video-wrapper:hover .video-thumbnail-img {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.video-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.video-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1.6px;
+    color: #004172;
+    margin: 0;
+}
+
+.video-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #3b3f42;
+    margin: 0;
+}
+
+.video-link-cta {
+    font-size: 14px;
+    font-weight: 600;
+    color: #004172;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Video Loading State */
+.video-loading-state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 4;
+    border-radius: 16px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #0091ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Video Error Fallback */
+.video-error-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+}
+
+.video-error-fallback p {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.video-error-fallback a {
+    color: #0091ff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.video-error-fallback a:hover {
+    color: #0075cc;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+    .musings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-musing {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .musings-title {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+    
+    .musing-card {
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px;
+    }
+    
+    .video-title {
+        font-size: 24px;
     }
 }

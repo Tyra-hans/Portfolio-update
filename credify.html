@@ -27,7 +27,7 @@
                 </button>
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
-                    <a href="about.html" class="nav-link">About</a>
+                    <a href="musings.html" class="nav-link">Musings</a>
                     <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
                 </nav>
             </div>
@@ -36,7 +36,7 @@
 
     <main>
         <!-- Case Study Hero -->
-        <section class="cs-hero">
+        <section class="cs-hero credify-hero">
             <div class="container">
                 <div class="cs-hero-wrapper">
                     <div class="cs-hero-content">
@@ -49,10 +49,10 @@
                     </div>
                     <div class="cs-hero-image">
                         <div class="hero-image-container">
-                            <img src="assets/credify-mockup-hero.png" alt="Credify App Mockup" class="cs-hero-mockup">
-                            <button id="watchDemoBtn" class="watch-demo-btn">
-                                <span class="play-icon">▶</span> Watch demo
-                            </button>
+                            <video class="cs-hero-video" autoplay loop muted playsinline>
+                                <source src="assets/demo (1).mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
@@ -294,18 +294,6 @@
         <div class="viewer-counter" id="imageCounter">1 / 1</div>
     </div>
 
-    <!-- Video Viewer Modal -->
-    <div id="videoViewer" class="video-viewer">
-        <span class="close-video">&times;</span>
-        <div class="video-container">
-            <video id="demoVideo" controls>
-                <source src="assets/demo (1).mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p class="video-credit">compilation by Credify</p>
-        </div>
-    </div>
-
     <script>
         const viewer = document.getElementById('imageViewer');
         const viewerImg = document.getElementById('fullImage');
@@ -315,11 +303,6 @@
         const nextBtn = document.querySelector('.next-btn');
         const galleryImages = document.querySelectorAll('.gallery-image');
 
-        const videoViewer = document.getElementById('videoViewer');
-        const watchDemoBtn = document.getElementById('watchDemoBtn');
-        const closeVideoBtn = document.querySelector('.close-video');
-        const demoVideo = document.getElementById('demoVideo');
-        
         let currentIndex = 0;
         const images = Array.from(galleryImages).map(img => img.src);
 
@@ -336,24 +319,6 @@
                 updateViewer(index);
             }
         });
-
-        // Video Modal Logic
-        watchDemoBtn.onclick = function() {
-            videoViewer.style.display = 'flex';
-            demoVideo.play();
-        }
-
-        closeVideoBtn.onclick = function() {
-            videoViewer.style.display = 'none';
-            demoVideo.pause();
-            demoVideo.currentTime = 0;
-        }
-
-        videoViewer.onclick = function(event) {
-            if (event.target == videoViewer) {
-                closeVideoBtn.onclick();
-            }
-        }
 
         prevBtn.onclick = function(e) {
             e.stopPropagation();
@@ -377,9 +342,6 @@
             if (event.target == viewer) {
                 viewer.style.display = 'none';
             }
-            if (event.target == videoViewer) {
-                closeVideoBtn.onclick();
-            }
         }
 
         // Keyboard navigation
@@ -388,9 +350,6 @@
                 if (e.key === 'ArrowLeft') prevBtn.click();
                 if (e.key === 'ArrowRight') nextBtn.click();
                 if (e.key === 'Escape') closeBtn.click();
-            }
-            if (videoViewer.style.display === 'flex') {
-                if (e.key === 'Escape') closeVideoBtn.click();
             }
         });
 
@@ -427,8 +386,7 @@
         gsap.from(".cs-hero-logo", { duration: smoothDuration, y: 30, opacity: 0, ease: smoothEase });
         gsap.from(".cs-hero-title", { duration: smoothDuration, y: 30, opacity: 0, delay: 0.15, ease: smoothEase });
         gsap.from(".cs-hero-description", { duration: smoothDuration, y: 30, opacity: 0, delay: 0.3, ease: smoothEase });
-        gsap.from(".cs-hero-mockup", { duration: 1.4, scale: 0.97, opacity: 0, delay: 0.5, ease: smoothEase });
-        gsap.from(".watch-demo-btn", { duration: smoothDuration, y: 20, opacity: 0, delay: 0.7, ease: smoothEase });
+        gsap.from(".cs-hero-video", { duration: 1.4, scale: 0.97, opacity: 0, delay: 0.5, ease: smoothEase });
 
         // 2. Generic Section Reveals (Labels and Titles)
         const sections = gsap.utils.toArray('section');
