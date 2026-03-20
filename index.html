@@ -27,6 +27,7 @@
                 </button>
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
+                    <a href="about.html" class="nav-link">About</a>
                     <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
                 </nav>
             </div>
@@ -35,31 +36,50 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-wrapper">
-                <div class="hero-left">
-                    <div class="hero-name-graphic">
-                        <img src="assets/Name_graphic.png" alt="HELLO my name is Tyra Hans" class="name-graphic-img">
+        <div class="hero-main-white">
+            <div class="container">
+                <div class="hero-layout">
+                    <!-- Left Column -->
+                    <div class="hero-col hero-col-left">
+                        <h1 class="hero-headline">Transforming complex challenges into simple, intuitive experiences.</h1>
+                        <div class="hero-intro-name">
+                            <span class="intro-text">Hello, my name is</span>
+                            <img src="assets/tyra-hans-signature.png" alt="Tyra Hans" class="signature-image">
+                        </div>
+                        <p class="intro-subtitle">I'm a full stack product designer with 6 years experience.</p>
                     </div>
-                    <div class="hero-tagline-container">
-                        <p class="hero-tagline">Product designer with 6 years experience</p>
-                
+
+                    <!-- Center Column -->
+                    <div class="hero-col hero-col-center">
+                        <div class="hero-person-wrapper">
+                            <img src="assets/hero-portrait.png" alt="Tyra Hans - Product Designer" class="hero-person-image">
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="hero-col hero-col-right">
+                        <p class="hero-description">I collaborate with multi-disciplinary teams to create solutions that are thoughtful, efficient, and grounded in real user context.</p>
                     </div>
                 </div>
-                <div class="hero-right">
-                    <h2 class="hero-title">Transforming complex challenges <br>into simple, intuitive experiences.</h2>
-                     <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="resume-button">See my resume</a>
+            </div>
+        </div>
+        <div class="hero-bottom-gradient">
+            <div class="container">
+                <div class="hero-content-bottom">
+                    <div class="hero-intro-footer">
+                        <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="resume-button"></a>
+                    </div>
                     <div class="hero-companies">
-                        <div class="company-current">
+                        <div class="company-group">
                             <p class="company-label">Currently at</p>
-                            <a href="https://www.servcraft.co.za/" target="_blank"><img src="assets/servcraft-logo.png" alt="ServCraft" class="company-logo" ></a>
+                            <img src="assets/servcraft-logo.png" alt="ServCraft" class="company-logo">
                         </div>
-                        <div class="company-previous">
-                            <p class="company-label">Previously</p>
-                            <div class="company-logos">
-                                <a href="https://www.credify.africa/" target="_blank"><img src="assets/Credify logo.png" alt="Credify" class="company-logo-img"></a>
+                        <div class="company-group">
+                            <p class="company-label">Previously at</p>
+                            <div class="previous-companies">
+                                <img src="assets/Credify logo.png" alt="Credify" class="prev-logo">
                                 <span class="and-text">and</span>
-                                <a href="https://www.onafriq.com/" target="_blank"><img src="assets/onafriq-logo.png" alt="Onafriq" class="company-logo-img"></a>
+                                <img src="assets/onafriq-logo.png" alt="Onafriq" class="prev-logo">
                             </div>
                         </div>
                     </div>
@@ -72,95 +92,43 @@
     <section id="work" class="work-section">
         <div class="container">
             <div class="work-header">
-                <a href="work.html" style="text-decoration: none; color: inherit;">
-                    <h2 class="work-title">See my <span class="work-title-highlight">work</span> <span class="arrow">→</span></h2>
-                </a>
+                <h2 class="work-title">Selected <span class="work-highlight">work</span></h2>
+                <a href="work.html" class="all-projects-link">All projects</a>
             </div>
 
-            <!-- ServCraft Project -->
-            <div class="project">
-                <div class="project-header">
-                    <a href="servcraft.html" target="_blank"><img src="assets/servcraft-logo.png" alt="ServCraft" class="project-logo"></a>
-                    <div class="project-intro">
-                        <h3 class="project-title"><a href="servcraft.html" target="_blank" style="text-decoration: none; color: inherit;">Field service management software <br>for large teams in South Africa</a></h3>
-                        <p class="project-subtitle">Security, plumbing, HVAC and similar service industries</p>
+            <div class="work-grid">
+                <!-- ServCraft Project -->
+                <div class="work-card">
+                    <div class="work-card-image-wrapper">
+                        <a href="servcraft.html" class="work-card-link-overlay"></a>
+                        <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Project" class="work-card-image">
                     </div>
-                </div>
-                <div class="project-content">
-                    <div class="project-showcase servcraft-showcase">
-                        <div class="showcase-main">
-                            <a href="servcraft.html" target="_blank"><img src="assets/SC bento.png" alt="ServCraft Main View" class="showcase-image"></a>
-                        </div>
-                        <div class="showcase-side">
-                            <a href="servcraft.html" target="_blank"><img src="assets/SC mobile.png" alt="ServCraft Mobile App" class="showcase-image"></a>
-                            <a href="servcraft.html" target="_blank"><img src="assets/SC scheduler.png" alt="ServCraft Scheduler" class="showcase-image"></a>
-                        </div>
-                    </div>
-                    <div class="project-details servcraft-details">
-                        <div class="project-location servcraft-location">
-                            <img src="assets/south-africa-flag.png" alt="South Africa" class="flag-icon">
-                            <p class="location-text">Servcraft is based in South Africa</p>
-                        </div>
-                        <div class="project-description servcraft-description">
-                            <div class="description-intro">
-                                <p class="description-text">Creating a design library, designing key features and <br> <span>visualizing product solutions.</span></p>
-                                <p class="description-label">Key achievements</p>
+                    <div class="work-card-content">
+                        <p class="work-card-title">Designing an Intuitive Scheduling Experience for Field Service Optimization</p>
+                        <div class="work-card-footer">
+                            <div class="work-card-location">
+                                <img src="assets/south-africa-flag.png" alt="South Africa" class="work-flag">
+                                <p class="work-card-meta">Servcraft is based in South Africa</p>
                             </div>
-                            <div class="achievements">
-                                <div class="achievements-grid">
-                                    <div class="achievement-col">
-                                        <p class="achievement-text">Designed a robust scheduling feature allowing users to schedule events and set up appointments.</p>
-                                        <p class="achievement-text">Created a design library achieving consistency and significantly shortening design time.</p>
-                                    </div>
-                                    <div class="achievement-col">
-                                        <p class="achievement-text">Designed a simple approach to a complex and tax compliant billing system.</p>
-                                        <p class="achievement-text">Redesigned crucial pages in the web and mobile apps, and website.</p>
-                                    </div>
-                                </div>
-                                <div class="case-study-wrapper">
-                                    <a href="servcraft.html" target="_blank" class="case-study-link">Go to case study <span class="arrow-blue">→</span></a>
-                                </div>
-                            </div>
+                            <a href="servcraft.html" class="work-card-cta">Go to case study <span class="arrow-cta">→</span></a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Credify Project -->
-            <div class="project credify-project">
-                <div class="project-header credify-header">
-                    <img src="assets/Credify logo.png" alt="Credify" class="project-logo credify-logo">
-                    <h3 class="project-title">Buying goods from suppliers in China, <br> and shipping them to Uganda.</h3>
-                </div>
-                <div class="project-content credify-content">
-                    <div class="credify-showcase-wrapper">
-                        <img src="assets/credify-showcase.png" alt="Credify Project Showcase" class="showcase-image credify-showcase">
+                <!-- Credify Project -->
+                <div class="work-card">
+                    <div class="work-card-image-wrapper">
+                        <a href="credify.html" class="work-card-link-overlay"></a>
+                        <img src="assets/credify-thumbnail-new.png" alt="Credify Project" class="work-card-image">
                     </div>
-                    <div class="project-details credify-details">
-                        <div class="project-location credify-location">
-                            <img src="assets/us-flag.png" alt="United States" class="flag-icon">
-                            <p class="location-text">Credify is based in the US, and has locations in China and Uganda</p>
-                        </div>
-                        <div class="project-description credify-description-wrapper">
-                            <div class="description-intro credify-intro">
-                                <h4 class="credify-heading">Simplifying a complex task in a complex <br>industry - shipping.</h4>
-                                <!-- <h4 class="credify-subheading">Buying goods from China and shipping them to Uganda.</h4> -->
-                                <p class="description-label">Key achievements</p>
+                    <div class="work-card-content">
+                        <p class="work-card-title">Digitizing trade for Ugandan importers</p>
+                        <div class="work-card-footer">
+                            <div class="work-card-location">
+                                <img src="assets/us-flag.png" alt="United States" class="work-flag">
+                                <p class="work-card-meta">Credify is based in the US, and has locations in China and Uganda</p>
                             </div>
-                            <div class="achievements credify-achievements">
-                                <div class="achievements-grid credify-grid">
-                                    <div class="achievement-col">
-                                        <p class="achievement-text">Designed a simplified ordering and tracking feature that allows traders to purchase goods in china and have them delivered to Uganda.</p>
-                                        <p class="achievement-text">Designed a loan and interest feature to help users meet their required capital to purchase goods.</p>
-                                    </div>
-                                    <div class="achievement-col">
-                                        <p class="achievement-text">Designed complex UI components catering to search, multi select and filter states</p>
-                                        <div class="case-study-wrapper credify-case-study">
-                                            <a href="credify.html" target="_blank" class="case-study-link credify-link">Go to case study <span class="arrow-blue">→</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <a href="credify.html" class="work-card-cta">Go to case study <span class="arrow-cta">→</span></a>
                         </div>
                     </div>
                 </div>
@@ -169,22 +137,72 @@
     </section>
 
     <!-- Work History Section -->
-    <section class="work-history-section">
-        <div class="container">
-            <div class="clipboard-container">
-                <img src="assets/Work_history_graphic.png" alt="Work history" class="work-history-image">
+    <section class="work-history-section frame-15143">
+        <h2 class="work-history-title">Work history</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">July 2025 - PRESENT</div>
+                <div class="timeline-role">
+                    <h3 class="role-title">Product designer</h3>
+                    <div class="role-company">
+                        <span class="company-name">ServCraft</span>
+                        <span class="company-description">Field service management software</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">March - July 2025</div>
+                <div class="timeline-role">
+                    <h3 class="role-title">UI | UX designer</h3>
+                    <div class="role-company">
+                        <span class="company-name">Credify</span>
+                        <span class="company-description">Logistics and trade finance mobile app</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2022 - 2025</div>
+                <div class="timeline-role">
+                    <h3 class="role-title">Design lead</h3>
+                    <div class="role-company">
+                        <span class="company-name">Onafriq</span>
+                        <span class="company-description">Fintech</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2022 - 2025</div>
+                <div class="timeline-role">
+                    <h3 class="role-title">Product designer</h3>
+                    <div class="role-company">
+                        <span class="company-name">Mideva Labs</span>
+                        <span class="company-description">HCD Design lab</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2020</div>
+                <div class="timeline-role">
+                    <h3 class="role-title">Front end developer</h3>
+                    <div class="role-company">
+                        <span class="company-name">Imprint Africa</span>
+                        <span class="company-description">Tech consulting</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Tools Section -->
     <section class="tools-section">
-        <div class="tools-background">
-            <div class="container">
-                <h2 class="tools-title">Tools I find <span class="tools-title-highlight">most useful</span></h2>
-                <div class="tools-container">
-                    <img src="assets/Tools_graphic.png" alt="Tools logos" class="tools-image">
-                </div>
+        <div class="container">
+            <h2 class="tools-title">Tools I find <span class="tools-highlight">most useful</span></h2>
+            <div class="tools-grid">
+                <img src="assets/tools-logos.svg" alt="Tools logos grid" class="tools-logos">
             </div>
         </div>
     </section>
@@ -192,13 +210,13 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Looking for a designer? <span class="cta-title-highlight">Let's chat!</span></h2>
+            <div class="cta-wrapper">
+                <h2 class="cta-title">Looking for a designer? <span class="cta-highlight">Let's chat!</span></h2>
                 <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="cta-button">See my resume</a>
-            </div>
-            <div class="cta-links">
-                <a href="mailto:tyraoyuohans@gmail.com" class="cta-link">tyraoyuohans@gmail.com</a>
-                <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="cta-link">Linkedin</a>
+                <div class="cta-footer-links">
+                    <a href="mailto:tyraoyuohans@gmail.com" class="cta-footer-link">tyraoyuohans@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="cta-footer-link">Linkedin</a>
+                </div>
             </div>
         </div>
     </section>
@@ -254,7 +272,7 @@
         // 1. Hero Entrance
         gsap.from(".name-graphic-img", { duration: 1.2, x: -30, opacity: 0, ease: smoothEase });
         gsap.from(".hero-tagline", { duration: 0.8, y: 15, opacity: 0, delay: 0.2, ease: smoothEase });
-        gsap.from(".hero-title", { duration: 0.8, y: 20, opacity: 0, delay: 0.4, ease: smoothEase });
+        gsap.from(".hero-headline", { duration: 0.8, y: 20, opacity: 0, delay: 0.4, ease: smoothEase });
         gsap.from(".resume-button", { duration: 0.8, y: 10, opacity: 0, delay: 0.6, ease: smoothEase });
         gsap.from(".hero-companies", { duration: 0.8, opacity: 0, delay: 0.8, ease: smoothEase });
 
