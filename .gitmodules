@@ -1,0 +1,3 @@
+[submodule ".claude/worktrees/relaxed-merkle"]
+	path = .claude/worktrees/relaxed-merkle
+	url = https://github.com/Tyra-hans/Portfolio-update.git

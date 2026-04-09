@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/lucide-static/font/lucide.css" rel="stylesheet">
     
     <!-- GSAP for Smooth Animations -->
@@ -100,42 +100,30 @@
                         </div>
                     </a>
                 </div>
-            </div>
-        </section>
 
-        <!-- Video Section -->
-        <section class="musings-section">
-            <div class="container">
-                <h2 class="section-heading">Videos</h2>
-                <div class="video-musing">
-                    <div class="video-wrapper" id="videoWrapper" data-video-id="_VQFPJxFuJg" data-video-title="Design reel 2025">
-                        <!-- Thumbnail -->
-                        <img src="https://img.youtube.com/vi/_VQFPJxFuJg/hqdefault.jpg" alt="Design reel 2025 Video Thumbnail" class="video-thumbnail-img">
-                        
-                        <!-- Play Button Overlay -->
-                        <div class="video-play-overlay">
-                            <div class="play-icon-circle">
-                                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                            </div>
-                        </div>
-                        
-                        <!-- Loading Spinner (hidden by default) -->
-                        <div class="video-loading-state" id="videoLoading" style="display: none;">
-                            <div class="spinner"></div>
-                        </div>
-                        
-                        <!-- Error Fallback (hidden by default) -->
-                        <div class="video-error-fallback" id="videoError" style="display: none;">
-                            <p>Video unavailable — <a href="https://www.youtube.com/watch?v=_VQFPJxFuJg" target="_blank" rel="noopener noreferrer">watch on YouTube</a></p>
+            <!-- Video -->
+            <div class="video-musing">
+                <div class="video-wrapper" id="videoWrapper" data-video-id="_VQFPJxFuJg" data-video-title="Design reel 2025">
+                    <img src="https://img.youtube.com/vi/_VQFPJxFuJg/hqdefault.jpg" alt="Design reel 2025 Video Thumbnail" class="video-thumbnail-img">
+                    <div class="video-play-overlay">
+                        <div class="play-icon-circle">
+                            <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                         </div>
                     </div>
-                    <div class="video-info">
-                        <h3 class="video-title">Design reel 2025</h3>
-                        <p class="video-description">A recap of some of the work done in 2025.</p>
-                        <p class="video-link-cta">Featured video content</p>
+                    <div class="video-loading-state" id="videoLoading" style="display: none;">
+                        <div class="spinner"></div>
+                    </div>
+                    <div class="video-error-fallback" id="videoError" style="display: none;">
+                        <p>Video unavailable — <a href="https://www.youtube.com/watch?v=_VQFPJxFuJg" target="_blank" rel="noopener noreferrer">watch on YouTube</a></p>
                     </div>
                 </div>
+                <div class="video-info">
+                    <h3 class="video-title">Design reel 2025</h3>
+                    <p class="video-description">A recap of some of the work done in 2025.</p>
+                    <p class="video-link-cta">Featured video content</p>
+                </div>
             </div>
+        </div><!-- /container -->
         </section>
     </div>
 

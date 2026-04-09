@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- GSAP for Smooth Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -58,7 +62,7 @@
 
                     <!-- Right Column -->
                     <div class="hero-col hero-col-right">
-                        <p class="hero-description">I collaborate with multi-disciplinary teams to create solutions that are thoughtful, efficient, and grounded in real user context.</p>
+                        <p class="hero-description">I use AI as a co-designer to move faster, take on more responsibility, and explore new interaction models — including agentic workflows, voice, and multimodal UX.</p>
                     </div>
                 </div>
             </div>
@@ -66,9 +70,6 @@
         <div class="hero-bottom-gradient">
             <div class="container">
                 <div class="hero-content-bottom">
-                    <div class="hero-intro-footer">
-                        <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="resume-button"></a>
-                    </div>
                     <div class="hero-companies">
                         <div class="company-group">
                             <p class="company-label">Currently at</p>
@@ -132,43 +133,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Musings Preview Section -->
-    <section class="musings-preview-section">
-        <div class="container">
-            <div class="work-header">
-                <h2 class="work-title">Latest <span class="work-highlight">musings</span></h2>
-                <a href="musings.html" class="all-projects-link">All musings</a>
-            </div>
-            <div class="musings-grid">
-                <!-- Article 1 -->
-                <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card">
-                    <div class="musing-card-image">
-                        <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover">
-                    </div>
-                    <div class="musing-card-content">
-                        <h3 class="musing-card-title">The Design System Every Small Team Couldn't Afford to Build, But Now Can.</h3>
-                        <p class="musing-card-date">March 28, 2026</p>
-                        <p class="musing-card-description">How AI levels the playing field for small product teams drowning in an opaque codebase.</p>
-                        <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
-                    </div>
-                </a>
-
-                <!-- Article 2 -->
-                <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card">
-                    <div class="musing-card-image">
-                        <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover">
-                    </div>
-                    <div class="musing-card-content">
-                        <h3 class="musing-card-title">When Designers are Treated like AI</h3>
-                        <p class="musing-card-date">May 12, 2025</p>
-                        <p class="musing-card-description">Exploring the intersection of human creativity and artificial intelligence in the design process.</p>
-                        <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
-                    </div>
-                </a>
             </div>
         </div>
     </section>
@@ -244,15 +208,82 @@
         </div>
     </section>
 
+    <!-- Musings Preview Section -->
+    <section class="musings-preview-section">
+        <div class="container">
+            <div class="work-header">
+                <h2 class="work-title">Latest <span class="work-highlight">musings</span></h2>
+                <a href="musings.html" class="all-projects-link">All musings</a>
+            </div>
+            <div class="musings-grid">
+                <!-- Article 1 -->
+                <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card">
+                    <div class="musing-card-image">
+                        <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover">
+                    </div>
+                    <div class="musing-card-content">
+                        <h3 class="musing-card-title">The Design System Every Small Team Couldn't Afford to Build, But Now Can.</h3>
+                        <p class="musing-card-date">March 28, 2026</p>
+                        <p class="musing-card-description">How AI levels the playing field for small product teams drowning in an opaque codebase.</p>
+                        <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                    </div>
+                </a>
+
+                <!-- Article 2 -->
+                <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card">
+                    <div class="musing-card-image">
+                        <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover">
+                    </div>
+                    <div class="musing-card-content">
+                        <h3 class="musing-card-title">When Designers are Treated like AI</h3>
+                        <p class="musing-card-date">May 12, 2025</p>
+                        <p class="musing-card-description">Exploring the intersection of human creativity and artificial intelligence in the design process.</p>
+                        <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section (full-width) -->
+    <section class="video-fullwidth-section">
+        <div class="video-fullwidth-wrapper" id="heroVideoWrapper">
+            <div id="heroYouTubePlayer"></div>
+            <div class="video-controls-overlay" id="heroVideoControls">
+                <div class="video-controls-bar">
+                    <button class="vcb-btn" id="heroPlayPauseBtn" aria-label="Pause video">
+                        <svg id="pauseIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                        <svg id="playIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </button>
+                    <button class="vcb-btn" id="heroMuteBtn" aria-label="Unmute video">
+                        <svg id="muteIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                        <svg id="unmuteIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-wrapper">
-                <h2 class="cta-title">Looking for a designer? <span class="cta-highlight">Let's chat!</span></h2>
-                <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="cta-button">See my resume</a>
-                <div class="cta-footer-links">
+                <div class="cta-focus-block">
+                    <p class="hero-focus-label">Currently exploring</p>
+                    <div class="cta-tag-row">
+                        <span class="cta-tag">Agentic AI workflows</span>
+                        <span class="cta-tag">Voice &amp; zero-UI</span>
+                        <span class="cta-tag">Multimodal UX</span>
+                    </div>
+                </div>
+                <div class="cta-main">
+                    <h2 class="cta-title">Looking for a designer? <span class="cta-highlight">Let's chat!</span></h2>
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="cta-button">See my resume</a>
+                </div>
+                <div class="cta-contact">
                     <a href="mailto:tyraoyuohans@gmail.com" class="cta-footer-link">tyraoyuohans@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="cta-footer-link">Linkedin</a>
+                    <span class="cta-dot">·</span>
+                    <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="cta-footer-link">LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -275,87 +306,197 @@
     </div>
 
     <script>
+        // Image Viewer Modal
         const viewer = document.getElementById('imageViewer');
         const viewerImg = document.getElementById('fullImage');
         const closeBtn = document.querySelector('.close-viewer');
         const clickableImages = document.querySelectorAll('.clickable-image');
-
         clickableImages.forEach(img => {
-            img.onclick = function() {
-                viewer.style.display = 'flex';
-                viewerImg.src = this.src;
-            }
+            img.onclick = function() { viewer.style.display = 'flex'; viewerImg.src = this.src; }
         });
+        closeBtn.onclick = function() { viewer.style.display = 'none'; }
+        window.onclick = function(e) { if (e.target == viewer) viewer.style.display = 'none'; }
 
-        closeBtn.onclick = function() {
-            viewer.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            if (event.target == viewer) {
-                viewer.style.display = 'none';
-            }
-        }
-
-        // GSAP ScrollTrigger Animations
+        // ── Lenis smooth scroll ──────────────────────────────────────────
+        const lenis = new Lenis({
+            duration: 0.85,
+            easing: (t) => 1 - Math.pow(1 - t, 3),
+            smoothWheel: true,
+            wheelMultiplier: 1.1
+        });
         gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
 
-        // Smoothen GSAP performance
-        gsap.ticker.lagSmoothing(1000, 16);
-
-        const smoothEase = "power2.out";
-        const smoothDuration = 1.0;
-
-        // 1. Hero Entrance
-        gsap.from(".name-graphic-img", { duration: 1.2, x: -30, opacity: 0, ease: smoothEase });
-        gsap.from(".hero-tagline", { duration: 0.8, y: 15, opacity: 0, delay: 0.2, ease: smoothEase });
-        gsap.from(".hero-headline", { duration: 0.8, y: 20, opacity: 0, delay: 0.4, ease: smoothEase });
-        gsap.from(".resume-button", { duration: 0.8, y: 10, opacity: 0, delay: 0.6, ease: smoothEase });
-        gsap.from(".hero-companies", { duration: 0.8, opacity: 0, delay: 0.8, ease: smoothEase });
-
-        // 2. Work Section Header
-        gsap.from(".work-title", {
-            scrollTrigger: { trigger: ".work-title", start: "top 95%" },
-            duration: 0.8, y: 25, opacity: 0, ease: smoothEase
-        });
-
-        // 3. Project Reveals
-        const projects = gsap.utils.toArray('.project');
-        projects.forEach(project => {
-            gsap.from(project.querySelector('.project-header'), {
-                scrollTrigger: { trigger: project, start: "top 90%" },
-                duration: 0.8, y: 20, opacity: 0, ease: smoothEase
+        // ── Word-split helper ────────────────────────────────────────────
+        function splitWords(el) {
+            const raw = el.innerHTML;
+            // preserve inner <span> tags (e.g. highlight spans) by working on text nodes only
+            el.childNodes.forEach(node => {
+                if (node.nodeType === 3) { // text node
+                    const words = node.textContent.split(/(\s+)/);
+                    const frag = document.createDocumentFragment();
+                    words.forEach(part => {
+                        if (/\s+/.test(part)) {
+                            frag.appendChild(document.createTextNode(part));
+                        } else if (part) {
+                            const mask = document.createElement('span');
+                            mask.className = 'reveal-mask';
+                            const inner = document.createElement('span');
+                            inner.className = 'reveal-word';
+                            inner.textContent = part;
+                            mask.appendChild(inner);
+                            frag.appendChild(mask);
+                        }
+                    });
+                    node.replaceWith(frag);
+                } else if (node.nodeType === 1) { // element node (span.work-highlight etc.)
+                    const mask = document.createElement('span');
+                    mask.className = 'reveal-mask';
+                    const inner = document.createElement('span');
+                    inner.className = 'reveal-word';
+                    inner.innerHTML = node.outerHTML;
+                    mask.appendChild(inner);
+                    node.replaceWith(mask);
+                }
             });
-            
-            gsap.from(project.querySelectorAll('.showcase-image'), {
-                scrollTrigger: { trigger: project.querySelector('.project-content'), start: "top 85%" },
-                duration: 1.0, y: 30, opacity: 0, stagger: 0.1, ease: smoothEase
+            return el.querySelectorAll('.reveal-word');
+        }
+
+        // ── Hero entrance ────────────────────────────────────────────────
+        const headlineWords = splitWords(document.querySelector('.hero-headline'));
+        gsap.from(headlineWords, {
+            yPercent: 105, duration: 1.0, stagger: 0.045, ease: 'power3.out', delay: 0.15
+        });
+        gsap.from('.hero-intro-name', { y: 22, opacity: 0, duration: 0.8, delay: 0.55, ease: 'power2.out' });
+        gsap.from('.intro-subtitle',  { y: 22, opacity: 0, duration: 0.8, delay: 0.7,  ease: 'power2.out' });
+        gsap.from('.hero-person-image', { scale: 1.06, opacity: 0, duration: 1.3, delay: 0.1, ease: 'power2.out' });
+        gsap.from('.hero-description',  { y: 22, opacity: 0, duration: 0.8, delay: 0.5, ease: 'power2.out' });
+        gsap.from('.hero-content-bottom', { y: 18, opacity: 0, duration: 0.8, delay: 1.0, ease: 'power2.out' });
+
+        // ── Work section ─────────────────────────────────────────────────
+        const workTitles = document.querySelectorAll('.work-title');
+        workTitles.forEach(el => {
+            const words = splitWords(el);
+            gsap.from(words, {
+                scrollTrigger: { trigger: el, start: 'top 88%' },
+                yPercent: 105, duration: 0.85, stagger: 0.05, ease: 'power3.out'
             });
         });
 
-        // 4. Graphics Reveals
-        gsap.from(".work-history-image, .tools-image", {
-            scrollTrigger: { trigger: ".work-history-image", start: "top 90%" },
-            duration: 1.2, scale: 0.99, opacity: 0, ease: smoothEase
+        gsap.utils.toArray('.work-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 90%' },
+                y: 45, opacity: 0, duration: 0.8, delay: i * 0.1, ease: 'power3.out',
+                clearProps: 'transform,opacity'
+            });
         });
 
-        // 5. CTA Section
-        gsap.from(".cta-content", {
-            scrollTrigger: { trigger: ".cta-section", start: "top 90%" },
-            duration: 0.8, y: 25, opacity: 0, ease: smoothEase
+        // ── Work history ─────────────────────────────────────────────────
+        const historyTitle = document.querySelector('.work-history-title');
+        if (historyTitle) {
+            const words = splitWords(historyTitle);
+            gsap.from(words, {
+                scrollTrigger: { trigger: historyTitle, start: 'top 88%' },
+                yPercent: 105, duration: 0.85, stagger: 0.05, ease: 'power3.out'
+            });
+        }
+        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: { trigger: item, start: 'top 92%' },
+                x: -28, opacity: 0, duration: 0.65, delay: i * 0.07, ease: 'power2.out'
+            });
         });
 
-        // Mobile Menu Toggle
+        // ── Tools section ────────────────────────────────────────────────
+        gsap.from('.tools-title, .tools-logos', {
+            scrollTrigger: { trigger: '.tools-section', start: 'top 88%' },
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out'
+        });
+
+        // ── Musings cards ────────────────────────────────────────────────
+        gsap.utils.toArray('.musing-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 92%' },
+                y: 35, opacity: 0, duration: 0.75, delay: i * 0.1, ease: 'power2.out'
+            });
+        });
+
+        // ── Full-width video reveal ───────────────────────────────────────
+        gsap.from('.video-fullwidth-section', {
+            scrollTrigger: { trigger: '.video-fullwidth-section', start: 'top 85%' },
+            opacity: 0,
+            y: 30,
+            duration: 1.0,
+            ease: 'power2.out'
+        });
+
+        // ── CTA section ──────────────────────────────────────────────────
+        const ctaTitle = document.querySelector('.cta-title');
+        if (ctaTitle) {
+            const words = splitWords(ctaTitle);
+            gsap.from(words, {
+                scrollTrigger: { trigger: '.cta-section', start: 'top 88%' },
+                yPercent: 105, duration: 0.85, stagger: 0.04, ease: 'power3.out'
+            });
+        }
+        gsap.from('.cta-button, .cta-footer-links', {
+            scrollTrigger: { trigger: '.cta-section', start: 'top 88%' },
+            y: 20, opacity: 0, duration: 0.7, stagger: 0.12, delay: 0.3, ease: 'power2.out'
+        });
+
+        // ── Hero portrait parallax ───────────────────────────────────────
+        gsap.to('.hero-person-image', {
+            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 },
+            y: -30, ease: 'none'
+        });
+
+        // ── Full-width YouTube autoplay video ────────────────────────────
+        var heroPlayer, heroPlaying = true, heroMuted = true;
+
+        window.onYouTubeIframeAPIReady = function() {
+            heroPlayer = new YT.Player('heroYouTubePlayer', {
+                videoId: '_VQFPJxFuJg',
+                playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: '_VQFPJxFuJg', controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
+                events: { onReady: function(e) { e.target.playVideo(); } }
+            });
+        };
+
+        document.getElementById('heroPlayPauseBtn').addEventListener('click', function() {
+            if (!heroPlayer) return;
+            if (heroPlaying) {
+                heroPlayer.pauseVideo(); heroPlaying = false;
+                document.getElementById('pauseIcon').style.display = 'none';
+                document.getElementById('playIcon').style.display = 'block';
+            } else {
+                heroPlayer.playVideo(); heroPlaying = true;
+                document.getElementById('pauseIcon').style.display = 'block';
+                document.getElementById('playIcon').style.display = 'none';
+            }
+        });
+
+        document.getElementById('heroMuteBtn').addEventListener('click', function() {
+            if (!heroPlayer) return;
+            if (heroMuted) {
+                heroPlayer.unMute(); heroMuted = false;
+                document.getElementById('muteIcon').style.display = 'none';
+                document.getElementById('unmuteIcon').style.display = 'block';
+            } else {
+                heroPlayer.mute(); heroMuted = true;
+                document.getElementById('muteIcon').style.display = 'block';
+                document.getElementById('unmuteIcon').style.display = 'none';
+            }
+        });
+
+        // ── Mobile menu ──────────────────────────────────────────────────
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
-
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             nav.classList.toggle('active');
             document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
         });
-
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
