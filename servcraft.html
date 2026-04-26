@@ -8,6 +8,7 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "whnfdpjsli");
     </script>
+    <script>clarity("set", "page_type", "case_study"); clarity("set", "project", "servcraft");</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ServCraft Case Study - Tyra Hans Product Designer</title>
@@ -35,7 +36,7 @@
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
                     <a href="musings.html" class="nav-link">Musings</a>
-                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button" onclick="clarity('event','resume_download')">See my resume</a>
                 </nav>
             </div>
         </div>
@@ -456,7 +457,8 @@
 
         openModalBtn.addEventListener('click', () => {
             pdfModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
+            clarity('event', 'pdf_open');
         });
 
         closeModalBtn.addEventListener('click', () => {
@@ -488,6 +490,7 @@
                 viewer.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
                 updateViewer(index);
+                clarity('event', 'image_gallery_open');
             }
         });
 

@@ -8,6 +8,7 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "whnfdpjsli");
     </script>
+    <script>clarity("set", "page_type", "homepage");</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tyra Hans - Product Designer Portfolio</title>
@@ -39,7 +40,7 @@
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
                     <a href="musings.html" class="nav-link">Musings</a>
-                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button">See my resume</a>
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="nav-link nav-link-button" onclick="clarity('event','resume_download')">See my resume</a>
                 </nav>
             </div>
         </div>
@@ -108,7 +109,7 @@
                 <!-- ServCraft Project -->
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
-                        <a href="servcraft.html" class="work-card-link-overlay"></a>
+                        <a href="servcraft.html" class="work-card-link-overlay" onclick="clarity('event','case_study_click')"></a>
                         <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Project" class="work-card-image">
                     </div>
                     <div class="work-card-content">
@@ -118,7 +119,7 @@
                                 <img src="assets/south-africa-flag.png" alt="South Africa" class="work-flag">
                                 <p class="work-card-meta">Servcraft is based in South Africa</p>
                             </div>
-                            <a href="servcraft.html" class="work-card-cta">Go to case study <span class="arrow-cta">→</span></a>
+                            <a href="servcraft.html" class="work-card-cta" onclick="clarity('event','case_study_click')">Go to case study <span class="arrow-cta">→</span></a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +127,7 @@
                 <!-- Credify Project -->
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
-                        <a href="credify.html" class="work-card-link-overlay"></a>
+                        <a href="credify.html" class="work-card-link-overlay" onclick="clarity('event','case_study_click')"></a>
                         <img src="assets/credify-thumbnail-new.png" alt="Credify Project" class="work-card-image">
                     </div>
                     <div class="work-card-content">
@@ -136,7 +137,7 @@
                                 <img src="assets/us-flag.png" alt="United States" class="work-flag">
                                 <p class="work-card-meta">Credify is based in the US, and has locations in China and Uganda</p>
                             </div>
-                            <a href="credify.html" class="work-card-cta">Go to case study <span class="arrow-cta">→</span></a>
+                            <a href="credify.html" class="work-card-cta" onclick="clarity('event','case_study_click')">Go to case study <span class="arrow-cta">→</span></a>
                         </div>
                     </div>
                 </div>
@@ -224,7 +225,7 @@
             </div>
             <div class="musings-grid">
                 <!-- Article 1 -->
-                <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card">
+                <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card" onclick="clarity('event','medium_article_click')">
                     <div class="musing-card-image">
                         <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover">
                     </div>
@@ -237,7 +238,7 @@
                 </a>
 
                 <!-- Article 2 -->
-                <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card">
+                <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card" onclick="clarity('event','medium_article_click')">
                     <div class="musing-card-image">
                         <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover">
                     </div>
@@ -285,12 +286,12 @@
                 </div>
                 <div class="cta-main">
                     <h2 class="cta-title">Looking for a designer? <span class="cta-highlight">Let's chat!</span></h2>
-                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="cta-button">See my resume</a>
+                    <a href="assets/Tyra Resume 2025 (1).pdf" target="_blank" class="cta-button" onclick="clarity('event','resume_download')">See my resume</a>
                 </div>
                 <div class="cta-contact">
-                    <a href="mailto:tyraoyuohans@gmail.com" class="cta-footer-link">tyraoyuohans@gmail.com</a>
+                    <a href="mailto:tyraoyuohans@gmail.com" class="cta-footer-link" onclick="clarity('event','email_click')">tyraoyuohans@gmail.com</a>
                     <span class="cta-dot">·</span>
-                    <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="cta-footer-link">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="cta-footer-link" onclick="clarity('event','linkedin_click')">LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -478,6 +479,7 @@
                 document.getElementById('playIcon').style.display = 'block';
             } else {
                 heroPlayer.playVideo(); heroPlaying = true;
+                clarity('event', 'video_play');
                 document.getElementById('pauseIcon').style.display = 'block';
                 document.getElementById('playIcon').style.display = 'none';
             }
