@@ -9,6 +9,14 @@
         })(window, document, "clarity", "script", "whnfdpjsli");
     </script>
     <script>clarity("set", "page_type", "musings");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRRW9BX0MN');
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musings - Tyra Hans Product Designer</title>
@@ -37,7 +45,7 @@
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
                     <a href="musings.html" class="nav-link active">Musings</a>
-                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="clarity('event','resume_download')">See my resume</a>
+                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
             </div>
         </div>
@@ -64,7 +72,7 @@
                 <h2 class="section-heading">Medium Articles</h2>
                 <div class="musings-grid">
                     <!-- Article 1 -->
-                    <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card" onclick="clarity('event','medium_article_click')">
+                    <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card" onclick="track('medium_article_click')">
                         <div class="musing-card-image">
                             <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover">
                         </div>
@@ -79,7 +87,7 @@
                     </a>
 
                     <!-- Article 2 -->
-                    <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card" onclick="clarity('event','medium_article_click')">
+                    <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card" onclick="track('medium_article_click')">
                         <div class="musing-card-image">
                             <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover">
                         </div>
@@ -94,7 +102,7 @@
                     </a>
 
                     <!-- Article 3 -->
-                    <a href="https://tyrahans.medium.com/they-asked-me-for-a-rate-card-what-should-i-do-75a5b0d5bf47" target="_blank" class="musing-card" onclick="clarity('event','medium_article_click')">
+                    <a href="https://tyrahans.medium.com/they-asked-me-for-a-rate-card-what-should-i-do-75a5b0d5bf47" target="_blank" class="musing-card" onclick="track('medium_article_click')">
                         <div class="musing-card-image">
                             <img src="https://miro.medium.com/v2/resize:fit:964/1*diJgw9MesYOROf_eqhrQQQ.png" alt="They asked me for a rate card cover">
                         </div>
@@ -220,7 +228,7 @@
         
         if (videoWrapper) {
             videoWrapper.addEventListener('click', () => {
-                clarity('event', 'video_play');
+                track('video_play');
                 // Prevent multiple clicks
                 if (videoWrapper.classList.contains('video-loading') || videoWrapper.classList.contains('video-error')) {
                     return;

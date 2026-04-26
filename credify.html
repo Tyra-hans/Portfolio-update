@@ -9,6 +9,14 @@
         })(window, document, "clarity", "script", "whnfdpjsli");
     </script>
     <script>clarity("set", "page_type", "case_study"); clarity("set", "project", "credify");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRRW9BX0MN');
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credify Case Study - Tyra Hans</title>
@@ -36,7 +44,7 @@
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
                     <a href="musings.html" class="nav-link">Musings</a>
-                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="clarity('event','resume_download')">See my resume</a>
+                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
             </div>
         </div>
@@ -259,7 +267,7 @@
                         <li>Clear flows for top-ups, loan eligibility, and shipment tracking</li>
                         <li>Interfaces designed to support users with limited digital or logistical literacy</li>
                     </ul>
-                    <a href="https://www.credify.africa/" target="_blank" class="case-study-link" onclick="clarity('event','external_project_click')">
+                    <a href="https://www.credify.africa/" target="_blank" class="case-study-link" onclick="track('external_project_click')">
                         Credify Website <span class="arrow-blue">→</span>
                     </a>
                 </div>
@@ -325,7 +333,7 @@
             img.onclick = function() {
                 viewer.style.display = 'flex';
                 updateViewer(index);
-                clarity('event', 'image_gallery_open');
+                track('image_gallery_open');
             }
         });
 
