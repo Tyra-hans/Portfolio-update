@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "whnfdpjsli");
+    </script>
+    <script>clarity("set", "page_type", "case_study"); clarity("set", "project", "speedi");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRRW9BX0MN');
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedi Case Study - Tyra Hans</title>
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="case-study-page">
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav" id="nav">
+                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="musings.html" class="nav-link">Musings</a>
+                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ══════════════════════════════════════
+             HERO
+        ══════════════════════════════════════ -->
+        <section class="speedi-hero">
+            <img src="assets/speedi-hero-banner.png" alt="Speedi — Made for it." class="speedi-hero-banner-img">
+
+            <!-- Video with cursor-following spinning label -->
+            <div class="speedi-video-container" id="speediVideoContainer">
+                <video
+                    id="speediHeroVideo"
+                    class="speedi-hero-video"
+                    src="assets/speedi-ad.mov"
+                    autoplay
+                    loop
+                    muted
+                    playsinline>
+                </video>
+
+                <!-- Cursor-following circular spinning text label -->
+                <div class="speedi-cursor-label" id="speediCursorLabel" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="speedi-cursor-svg" xmlns="http://www.w3.org/2000/svg">
+                        <path id="speediCirclePath"
+                            d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                            fill="none"/>
+                        <text class="speedi-cursor-text">
+                            <textPath href="#speediCirclePath" id="speediCircleText">
+                                PLAY WITH SOUND · PLAY WITH SOUND ·
+                            </textPath>
+                        </text>
+                    </svg>
+                    <div class="speedi-cursor-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             PROBLEM — Theft, unsafe roads
+        ══════════════════════════════════════ -->
+        <section class="speedi-section speedi-problem-section">
+            <div class="container">
+                <div class="speedi-problem-grid">
+                    <div class="speedi-problem-image-wrap">
+                        <img src="assets/speedi-rider-hero.png" alt="Speedi rider" class="speedi-problem-img">
+                    </div>
+                    <div class="speedi-problem-content">
+                        <p class="speedi-section-label">The Problem</p>
+                        <h2 class="speedi-section-title">Theft, unsafe roads and unforgiving conditions</h2>
+                        <p class="speedi-section-body">Africa's EV market is growing — but most e-bikes arriving on local roads were designed for European and Asian markets. Speedi was conceptualized around the real demands of African cyclists.</p>
+                        <ul class="speedi-feature-list">
+                            <li>Durable and damage-proof hardware</li>
+                            <li>High contrast for day and night conditions</li>
+                            <li>Waterproof batteries</li>
+                            <li>Fast-charging and long-lasting charge</li>
+                            <li>Easy interconnectivity to Bluetooth devices and accessories</li>
+                            <li>Built-in rider safety features</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- UI screens horizontal scroll -->
+                <div class="speedi-screens-row">
+                    <div class="speedi-screen-item">
+                        <img src="assets/speedi-ui-radio.png" alt="Radio screen — 106.5 NRG Radio">
+                    </div>
+                    <div class="speedi-screen-item">
+                        <img src="assets/speedi-ui-music.png" alt="Music screen — Soul lovers">
+                    </div>
+                    <div class="speedi-screen-item">
+                        <img src="assets/speedi-ui-speed.png" alt="Speedometer screen — Muthiga 12 k/hr">
+                    </div>
+                    <div class="speedi-screen-item">
+                        <img src="assets/speedi-ui-battery.png" alt="Battery screen — 108 Watts 72%">
+                    </div>
+                </div>
+                <p class="speedi-screens-caption">Display UI screens designed for Speedi — glanceable data for every riding moment.</p>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             SECURITY — Cyclists targeted
+        ══════════════════════════════════════ -->
+        <section class="speedi-section speedi-security-section">
+            <div class="container">
+                <div class="speedi-security-grid">
+                    <div class="speedi-security-content">
+                        <p class="speedi-section-label">Security</p>
+                        <h2 class="speedi-section-title">Cyclists get targeted. Speedi is built with that in mind.</h2>
+                        <p class="speedi-section-body">In Nairobi, major corridors like Ngong Road, Thika Road, and General Waruinge Street have been flagged as hotspots for crimes targeting cyclists — from phone snatching to the theft of high-value components like derailleurs, saddles, and lights.</p>
+                        <p class="speedi-section-body">Stolen parts move fast through informal markets, often before they can be traced. Speedi's integrated design reduces exposed, detachable parts — and its low-profile display doesn't advertise value the way a mounted phone does.</p>
+                    </div>
+                    <div class="speedi-security-image-wrap">
+                        <img src="assets/speedi-lock.png" alt="Bike lock" class="speedi-lock-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             DISPLAY — Secured display
+        ══════════════════════════════════════ -->
+        <section class="speedi-section speedi-display-section">
+            <div class="container">
+                <p class="speedi-section-label">The Display</p>
+                <h2 class="speedi-section-title speedi-display-title">Secured display, <br>
+Confidence in your ride</h2>
+                <p class="speedi-section-body speedi-display-body">Speedi's display integrates flush into the handlebar frame — giving you glanceable data, long battery life, and a profile low enough to stay out of sight and out of reach. Intuitive by design. Secure by build.</p>
+
+                <div class="speedi-display-grid">
+                    <img src="assets/speedi-thumbnail.png" alt="Speedi display — dark studio" class="speedi-display-grid-img">
+                    <img src="assets/speedi-rider-landscape.png" alt="Speedi rider on savanna road" class="speedi-display-grid-img">
+                </div>
+
+                <div class="speedi-display-full-wrap">
+                    <img src="assets/speedi-handlebar-road.png" alt="Speedi handlebar display on Kenyan road" class="speedi-display-full-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             SAFETY — Life saving features
+        ══════════════════════════════════════ -->
+        <section class="speedi-safety-section">
+            <img src="assets/speedi-safety.png" alt="Cyclist fallen on road with Speedi emergency UI" class="speedi-safety-bg">
+            <div class="speedi-safety-overlay"></div>
+            <div class="speedi-safety-content">
+                <div class="container">
+                    <p class="speedi-section-label speedi-label-light">Safety</p>
+                    <h2 class="speedi-safety-title">Life saving safety features</h2>
+                    <div class="speedi-stats-row">
+                        <div class="speedi-stat">
+                            <p class="speedi-stat-number">7</p>
+                            <p class="speedi-stat-label">Cyclists lost their<br>lives in Jan 2026</p>
+                        </div>
+                        <div class="speedi-stat">
+                            <p class="speedi-stat-number">12.5%</p>
+                            <p class="speedi-stat-label">Increase in<br>road fatalities</p>
+                        </div>
+                        <div class="speedi-stat">
+                            <p class="speedi-stat-number">76%</p>
+                            <p class="speedi-stat-label">Of all road fatalities are cyclists,<br>pedestrians, and motorcyclists</p>
+                        </div>
+                    </div>
+                    <div class="speedi-safety-body-wrap">
+                        <p class="speedi-safety-body">In January 2026 alone, at least 7 cyclists died in road accidents in Kenya. By Q1's end, fatalities had risen 12.5% — with vulnerable road users making up 76% of all deaths.</p>
+                        <p class="speedi-safety-body">In an emergency, every second matters. When Speedi is connected to your phone, the app helps you call and text your emergency contact the moment a fall is detected. No fumbling. No delay.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             CONNECTIVITY — Connected to every device
+        ══════════════════════════════════════ -->
+        <section class="speedi-section speedi-connect-section" style="background:#F9F9F9; overflow:hidden; padding-top: 80px; padding-bottom: 0;">
+            <div class="container">
+                <div class="speedi-connect-grid">
+                    <div class="speedi-connect-content">
+                        <p class="speedi-section-label">Connectivity</p>
+                        <h2 class="speedi-section-title">Connected to every device that keeps you safe</h2>
+                        <p class="speedi-section-body">Speedi pairs with your phone and wearables so your ride is never isolated. If something goes wrong, your emergency contact gets the call — automatically.</p>
+                        <p class="speedi-section-body">When a fall is detected, the Speedi app notifies your emergency contact with your location and a distress message, while your smartwatch prompts you to confirm — giving you control even in the worst moments.</p>
+                    </div>
+                    <div class="speedi-connect-image-wrap">
+                        <img src="assets/speedi-watch.png" alt="Smartwatch showing Speedi Call for help screen" class="speedi-watch-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             PROCESS — AI-Augmented Sprint
+        ══════════════════════════════════════ -->
+        <section class="speedi-section speedi-process-section">
+            <div class="container">
+                <p class="speedi-section-label">Process</p>
+                <h2 class="speedi-section-title speedi-process-title">Designing for Africa: An AI-Augmented Conceptualization Sprint</h2>
+                <p class="speedi-section-body speedi-process-intro">From first assumption to finished concept — in a single, structured sprint using Figma, Gemini, ChatGPT, Higgsfield, and DaVinci Resolve.</p>
+
+                <!-- Tool logos -->
+                <div class="speedi-tool-logos">
+                    <svg class="speedi-tool-logo" height="40" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Figma">
+                        <path d="M19 28.5C19 25.9804 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.9804 19 28.5 19C31.0196 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.9804 38 28.5C38 31.0196 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.0196 38 28.5 38C25.9804 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.0196 19 28.5Z" fill="#1ABCFE"/>
+                        <path d="M0 47.5C0 44.9804 1.00089 42.5641 2.78249 40.7825C4.56408 39.0009 6.98044 38 9.5 38H19V47.5C19 50.0196 17.9991 52.4359 16.2175 54.2175C14.4359 55.9991 12.0196 57 9.5 57C6.98044 57 4.56408 55.9991 2.78249 54.2175C1.00089 52.4359 0 50.0196 0 47.5Z" fill="#0ACF83"/>
+                        <path d="M19 0V19H28.5C31.0196 19 33.4359 17.9991 35.2175 16.2175C36.9991 14.4359 38 12.0196 38 9.5C38 6.98044 36.9991 4.56408 35.2175 2.78249C33.4359 1.00089 31.0196 0 28.5 0H19Z" fill="#FF7262"/>
+                        <path d="M0 9.5C0 12.0196 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98044 19 9.5 19H19V0H9.5C6.98044 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.98044 0 9.5Z" fill="#F24E1E"/>
+                        <path d="M0 28.5C0 31.0196 1.00089 33.4359 2.78249 35.2175C4.56408 36.9991 6.98044 38 9.5 38H19V19H9.5C6.98044 19 4.56408 20.0009 2.78249 21.7825C1.00089 23.5641 0 25.9804 0 28.5Z" fill="#A259FF"/>
+                    </svg>
+                    <img src="assets/speedi-logo-higgsfield.png" alt="Higgsfield" class="speedi-tool-logo speedi-tool-logo-img">
+                    <svg class="speedi-tool-logo" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Gemini">
+                        <path d="M20 40C20 37.2333 19.4667 34.6333 18.4 32.2C17.3667 29.7667 15.95 27.65 14.15 25.85C12.35 24.05 10.2333 22.6333 7.8 21.6C5.36667 20.5333 2.76667 20 0 20C2.76667 20 5.36667 19.4833 7.8 18.45C10.2333 17.3833 12.35 15.95 14.15 14.15C15.95 12.35 17.3667 10.2333 18.4 7.8C19.4667 5.36667 20 2.76667 20 0C20 2.76667 20.5167 5.36667 21.55 7.8C22.6167 10.2333 24.05 12.35 25.85 14.15C27.65 15.95 29.7667 17.3833 32.2 18.45C34.6333 19.4833 37.2333 20 40 20C37.2333 20 34.6333 20.5333 32.2 21.6C29.7667 22.6333 27.65 24.05 25.85 25.85C24.05 27.65 22.6167 29.7667 21.55 32.2C20.5167 34.6333 20 37.2333 20 40Z" fill="url(#gemG2)"/>
+                        <text x="52" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="600" fill="#1a1a2e">Gemini</text>
+                        <defs>
+                            <linearGradient id="gemG2" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#4285F4"/>
+                                <stop offset="100%" stop-color="#9B72CB"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <svg class="speedi-tool-logo" height="36" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="ChatGPT">
+                        <path d="M37.532 16.87a9.963 9.963 0 00-.856-8.184 10.078 10.078 0 00-10.855-4.835 9.964 9.964 0 00-7.505-3.360 10.079 10.079 0 00-9.612 6.977 9.967 9.967 0 00-6.664 4.834 10.08 10.08 0 001.24 11.817 9.965 9.965 0 00.856 8.185 10.079 10.079 0 0010.855 4.835 9.965 9.965 0 007.504 3.36 10.079 10.079 0 009.617-6.981 9.967 9.967 0 006.663-4.834 10.079 10.079 0 00-1.243-11.814zM22.498 37.886a7.474 7.474 0 01-4.799-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 00.655-1.134V19.054l3.366 1.944a.12.12 0 01.066.092v9.299a7.505 7.505 0 01-7.49 7.496zM6.392 31.006a7.471 7.471 0 01-.894-5.023c.06.036.162.099.237.141l7.964 4.6a1.297 1.297 0 001.308 0l9.724-5.614v3.888a.12.12 0 01-.048.103l-8.051 4.649a7.504 7.504 0 01-10.24-2.744zM4.297 13.62A7.469 7.469 0 018.2 10.333c0 .068-.004.19-.004.274v9.201a1.294 1.294 0 00.654 1.132l9.723 5.614-3.366 1.944a.12.12 0 01-.114.012L7.044 23.86a7.504 7.504 0 01-2.747-10.24zm27.658 6.437l-9.724-5.615 3.367-1.943a.121.121 0 01.114-.012l8.048 4.648a7.498 7.498 0 01-1.158 13.528v-9.476a1.293 1.293 0 00-.647-1.13zm3.35-5.043c-.059-.037-.162-.099-.236-.141l-7.965-4.6a1.298 1.298 0 00-1.308 0l-9.723 5.614v-3.888a.12.12 0 01.048-.103l8.05-4.645a7.497 7.497 0 0111.135 7.763zm-21.063 6.929l-3.367-1.944a.12.12 0 01-.065-.092v-9.299a7.497 7.497 0 0112.293-5.756 6.94 6.94 0 00-.236.134l-7.965 4.6a1.294 1.294 0 00-.654 1.132l-.006 11.225zm1.829-3.943l4.33-2.501 4.332 2.498v4.996l-4.330 2.500-4.332-2.500V18z" fill="#1a1a2e"/>
+                    </svg>
+                    <img src="assets/speedi-logo-davinci.png" alt="DaVinci Resolve" class="speedi-tool-logo speedi-tool-logo-img">
+                </div>
+
+                <!-- Process steps -->
+                <div class="speedi-process-steps">
+                    <div class="speedi-process-step">
+                        <p class="speedi-process-step-label">01 — Defining the problem</p>
+                        <h3 class="speedi-process-step-title">Starting from what Africa actually needs</h3>
+                        <p class="speedi-process-step-body">Africa's EV market is growing — but most e-bikes arriving on local roads were designed for someone else. I started by mapping the real demands of African cyclists: unpredictable infrastructure, personal safety risks, and the constant threat of theft.</p>
+                    </div>
+                    <div class="speedi-process-step">
+                        <p class="speedi-process-step-label">02 — Desktop research</p>
+                        <h3 class="speedi-process-step-title">AI-assisted, grounded in real data</h3>
+                        <p class="speedi-process-step-body">With assumptions documented, I used AI-assisted research to compare them to real data — validating what the market already knew and surfacing patterns that shaped every design decision that followed.</p>
+                    </div>
+                    <div class="speedi-process-step">
+                        <p class="speedi-process-step-label">03 — Ideation</p>
+                        <h3 class="speedi-process-step-title">Designing for Africa, not adapting for it</h3>
+                        <p class="speedi-process-step-body">Instead of adapting a foreign design for local use, I asked a different question: what would an e-bike display look like if Africa was the primary market? That reframe drove every ideation decision — from what information to surface, to how the hardware fits into the rider's environment.</p>
+                    </div>
+                    <div class="speedi-process-step">
+                        <p class="speedi-process-step-label">04 — Conceptualization</p>
+                        <h3 class="speedi-process-step-title">From static concept to motion in a single sprint</h3>
+                        <p class="speedi-process-step-body">Display UI designed in Figma. Lifestyle imagery generated with Gemini to show the product in real context. Video sequences produced using Higgsfield's Seedance 2.0 model, then assembled in DaVinci Resolve with audio and supporting footage — moving from static concept to motion presentation entirely within this sprint.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             CASE STUDY FOOTER
+        ══════════════════════════════════════ -->
+        <section class="speedi-cs-footer">
+            <img src="assets/speedi-logo.png" alt="Speedi" class="speedi-cs-footer-logo">
+            <p class="speedi-cs-footer-tagline">Made for it.</p>
+        </section>
+
+    </main>
+
+    <!-- Case Study Footer Nav -->
+    <section class="cs-footer-nav">
+        <div class="container">
+            <div class="footer-nav-wrapper">
+                <a href="work.html" class="footer-nav-prev">← All work</a>
+                <a href="servcraft.html" class="footer-nav-next">Next →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Site Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content-wrapper">
+                <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+                <p class="footer-text">Tyra Hans 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Mobile nav ─────────────────────────────────────────────
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+        nav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            });
+        });
+
+        // ── Video — autoplay muted, click to unmute, cursor label ──
+        (function () {
+            const container = document.getElementById('speediVideoContainer');
+            const video     = document.getElementById('speediHeroVideo');
+            const label     = document.getElementById('speediCursorLabel');
+            const textEl    = document.getElementById('speediCircleText');
+
+            if (!container || !video) return;
+
+            // Only show cursor interaction on non-touch devices
+            const isTouch = window.matchMedia('(hover: none)').matches;
+            if (isTouch) return;
+
+            container.addEventListener('mouseenter', () => {
+                label.classList.add('visible');
+                track('speedi_video_hover');
+            });
+            container.addEventListener('mouseleave', () => {
+                label.classList.remove('visible');
+            });
+
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                label.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+            });
+
+            container.addEventListener('click', () => {
+                video.muted = !video.muted;
+                if (!video.muted) {
+                    video.play();
+                    textEl.textContent = 'CLICK TO MUTE · CLICK TO MUTE · ';
+                    label.classList.add('playing');
+                    track('speedi_video_unmute');
+                } else {
+                    textEl.textContent = 'PLAY WITH SOUND · PLAY WITH SOUND · ';
+                    label.classList.remove('playing');
+                    track('speedi_video_mute');
+                }
+            });
+        })();
+
+        // ── GSAP scroll animations ─────────────────────────────────
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.speedi-section').forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: { trigger: section, start: 'top 85%' },
+                opacity: 0,
+                y: 40,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+
+        gsap.from('.speedi-stat', {
+            scrollTrigger: { trigger: '.speedi-stats-row', start: 'top 80%' },
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: 'power2.out'
+        });
+
+        gsap.from('.speedi-process-step', {
+            scrollTrigger: { trigger: '.speedi-process-steps', start: 'top 80%' },
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out'
+        });
+
+        gsap.from('.speedi-screen-item', {
+            scrollTrigger: { trigger: '.speedi-screens-row', start: 'top 85%' },
+            opacity: 0,
+            x: 30,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power2.out'
+        });
+    </script>
+
+</body>
+</html>
