@@ -4441,6 +4441,7 @@ body {
 .speedi-hero-banner-img {
     width: 100%;
     height: auto;
+    aspect-ratio: 5664 / 2104;
     display: block;
     margin-bottom: 48px;
 }
