@@ -135,9 +135,10 @@
 
                 <!-- ServCraft Project -->
                 <div class="work-card">
-                    <div class="work-card-image-wrapper">
+                    <div class="work-card-image-wrapper" id="scCardWrapper">
                         <a href="servcraft.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Project" class="work-card-image">
+                        <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Project" class="work-card-image" id="scCardThumb">
+                        <video class="work-card-hover-video" id="scCardVideo" src="assets/demo-timeline-week.mov" muted playsinline loop preload="none"></video>
                     </div>
                     <div class="work-card-content">
                         <p class="work-card-title">Designing an Intuitive Scheduling Experience for Field Service Optimization</p>
@@ -537,6 +538,21 @@
             wrapper.addEventListener('mouseleave', () => {
                 video.pause();
                 video.currentTime = 2;
+            });
+        })();
+
+        // ── ServCraft card hover video preview ───────────────────────────
+        (function () {
+            const wrapper = document.getElementById('scCardWrapper');
+            const video   = document.getElementById('scCardVideo');
+            if (!wrapper || !video) return;
+            wrapper.addEventListener('mouseenter', () => {
+                video.currentTime = 0;
+                video.play().catch(() => {});
+            });
+            wrapper.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
             });
         })();
 

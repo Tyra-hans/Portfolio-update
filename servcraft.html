@@ -64,21 +64,12 @@
                     <p class="cs-hero-description">Security, plumbing, HVAC and similar service industries</p>
                 </div>
 
-                <!-- Two Column Layout -->
-                <div class="cs-hero-wrapper">
-                    <!-- Left: Blue Background with Mockup Grid -->
-                    <div class="cs-hero-left">
-                        <img src="assets/SC bento.png" alt="ServCraft UI mockups and components grid" class="cs-mockup-grid">
-                    </div>
-
-                    <!-- Right: Product Images -->
-                    <div class="cs-hero-right">
-                        <div class="cs-product-images">
-                            <img src="assets/SC mobile.png" alt="ServCraft mobile app interface" class="cs-product-image">
-                            <img src="assets/SC scheduler.png" alt="ServCraft desktop scheduler interface" class="cs-product-image">
-                        </div>
-                    </div>
+                <!-- Hero Feature Video -->
+                <div class="sc-hero-video-wrapper" id="scHeroVideoWrapper">
+                    <img src="assets/scheduler-redesigned.png" alt="ServCraft scheduler preview" class="sc-hero-video-thumb">
+                    <video src="assets/demo-timeline-week.mov" class="sc-hero-video-preview" id="scHeroVideo" muted playsinline loop preload="none"></video>
                 </div>
+
             </div>
         </section>
 
@@ -310,6 +301,17 @@
                     <p class="cs-image-caption cs-content-640">Interactive timeline for granular appointment management and scheduling</p>
                 </div>
 
+                <div class="cs-solution-image-container">
+                    <video src="assets/demo-timeline-week.mov" class="cs-demo-video" autoplay loop muted playsinline></video>
+                    <p class="cs-image-caption cs-content-640">Switching between timeline and week views</p>
+                </div>
+
+
+                <div class="cs-solution-image-container">
+                    <video src="assets/demo-drag-drop.mov" class="cs-demo-video" autoplay loop muted playsinline></video>
+                    <p class="cs-image-caption cs-content-640">Dragging and dropping a job onto the scheduler</p>
+                </div>
+
                 <div class="cs-content-640">
                     <!-- Search Results -->
                     <div class="cs-solution-item">
@@ -323,6 +325,11 @@
                 <div class="cs-solution-image-container">
                     <img src="assets/Appointments_ Search results.png" alt="Scheduler Search Results" class="cs-solution-screenshot gallery-image">
                     <p class="cs-image-caption cs-content-640">Optimized search results view with advanced filtering</p>
+                </div>
+
+                <div class="cs-solution-image-container">
+                    <video src="assets/demo-search.mov" class="cs-demo-video" autoplay loop muted playsinline></video>
+                    <p class="cs-image-caption cs-content-640">Search and filter in action</p>
                 </div>
 
                 <div class="cs-content-640">
@@ -543,6 +550,21 @@
                 if (e.key === 'ArrowRight') nextBtn.click();
             }
         });
+
+        // ServCraft hero hover-play video
+        (function () {
+            const wrapper = document.getElementById('scHeroVideoWrapper');
+            const video   = document.getElementById('scHeroVideo');
+            if (!wrapper || !video) return;
+            wrapper.addEventListener('mouseenter', () => {
+                video.currentTime = 0;
+                video.play().catch(() => {});
+            });
+            wrapper.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        })();
 
         // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
