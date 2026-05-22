@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Text</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body { background: #000; }
+
+    #section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateZ(0);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.72) 100%);
+    }
+
+    #text-wrap {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 2rem;
+      will-change: transform, opacity;
+    }
+
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+      font-weight: 300;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.4rem;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 5.5vw, 6rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    /* word mask setup — JS fills these */
+    .w-outer {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .w-inner {
+      display: inline-block;
+      transform: translateY(110%);
+    }
+
+    .subtitle {
+      margin-top: 1.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.6rem, 0.85vw, 0.72rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.9;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="section">
+    <video id="bg-video" src="assets/video_meal.mp4" poster="assets/poster_meal.jpg"
+      autoplay muted loop playsinline></video>
+    <div class="overlay"></div>
+    <div id="text-wrap">
+      <span class="eyebrow">Culinary Excellence</span>
+      <h1>In flight gourmet meals<br>by michelin star chefs</h1>
+      <p class="subtitle">Freshly cooked exquisite meals<br>assured to have you taken care of</p>
+    </div>
+  </div>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="scroll-text.js"></script>
+</body>
+</html>

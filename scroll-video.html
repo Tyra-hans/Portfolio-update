@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury private flying</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fff; }
+
+    #scroll-container { height: calc(1600vh + 2400px); }
+
+    #sticky-wrap {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #fff; /* reveals naturally as video-wrap shrinks */
+    }
+
+    /* ── intro text ── */
+    #text-block {
+      position: absolute;
+      z-index: 3;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    #text-block .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.68rem, 0.92vw, 0.78rem);
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+    #text-block h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3rem, 6vw, 6.5rem);
+      font-weight: 300;
+      color: #0d0d0d;
+      letter-spacing: -0.01em;
+      line-height: 1.0;
+    }
+
+    /* ── videos ── */
+    /* wrapper — GSAP owns opacity + y for the intro reveal */
+    #video-reveal {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+    #video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      transform: scale(0.36);
+      transform-origin: 50% 78%;
+      will-change: transform, border-radius;
+    }
+    #video-wrap video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateZ(0);
+    }
+    #video2, #video3 { opacity: 0; }
+
+    /* ── staff text (right side only — left card IS the video) ── */
+    #staff-section {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      left: 44vw;           /* sits to the right of where video card lands */
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5vw 0 4vw;
+      pointer-events: none;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .sh-line1, .sh-line2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 3.6vw, 4.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .sh-line1 { font-weight: 300; color: #0d0d0d; }
+    .sh-line2 { font-weight: 300; font-style: italic; color: #888; margin-bottom: 2rem; }
+
+    /* word mask containers — written by JS */
+    .w-outer { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .w-inner  { display: inline-block; }
+
+    /* ── meals overlay ── */
+    #meals-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .meals-overlay-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.72) 100%);
+    }
+    #meals-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 2rem;
+      will-change: transform, opacity;
+    }
+    .meals-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.68rem, 0.86vw, 0.76rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.4rem;
+      display: block;
+    }
+    #meals-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 5.5vw, 6rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+    .meals-w-outer { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .meals-w-inner { display: inline-block; }
+    .meals-subtitle {
+      margin-top: 1.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.7rem, 0.88vw, 0.78rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.92);
+      line-height: 1.9;
+    }
+
+    .staff-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.7rem, 0.88vw, 0.78rem);
+      font-weight: 300;
+      color: #555;
+      line-height: 1.9;
+      letter-spacing: 0.1em;
+    }
+    /* ── logo carousel ── */
+    #clients-section {
+      background: #fff;
+      padding: 6rem 0 5rem;
+      overflow: hidden;
+      border-top: 1px solid #e8e8e8;
+    }
+    .clients-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .clients-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.68rem, 0.84vw, 0.74rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #777;
+    }
+    .marquee-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+      user-select: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+      mask-image:         linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    }
+    .marquee-row {
+      display: flex;
+      width: max-content;
+      will-change: transform;
+    }
+    .marquee-row.row-fwd  { animation: marquee-fwd  38s linear infinite; }
+    .marquee-row.row-rev  { animation: marquee-rev  42s linear infinite; }
+    @keyframes marquee-fwd {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes marquee-rev {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+    .logo-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 3.6rem;
+      flex-shrink: 0;
+    }
+    .logo-item img {
+      height: 42px;
+      width: auto;
+      opacity: 0.28;
+      filter: grayscale(1);
+      transition: opacity 0.3s;
+      pointer-events: none;
+      user-select: none;
+    }
+    .logo-item:hover img { opacity: 0.6; }
+    /* ── cabin section ── */
+    #cabin-scroll { height: 380vh; }
+
+    #cabin-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    #cabin-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      will-change: clip-path;
+      z-index: 2;
+    }
+    #cabin-wrap video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translateZ(0);
+    }
+
+    #cabin-text {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 46vw; right: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5vw 0 3vw;
+      pointer-events: none;
+    }
+    .cabin-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.68rem, 0.84vw, 0.74rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+    .cabin-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 4vw, 5rem);
+      font-weight: 300;
+      color: #0d0d0d;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+    }
+    .cabin-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.7rem, 0.88vw, 0.78rem);
+      font-weight: 300;
+      color: #333;
+      letter-spacing: 0.1em;
+      line-height: 1.9;
+    }
+
+    /* ── video3: shift crop down to centre on the brooch/scarf area ── */
+    #video3 { object-position: center 58%; }
+
+    /* ── cabin dark overlay (fades in on exit) ── */
+    #cabin-overlay {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    /* ── CTA word mask ── */
+    .cta-w-outer { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .cta-w-inner { display: inline-block; }
+
+    /* ── top navigation ── */
+    #top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4vw;
+      background: transparent;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 30px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply; /* removes white bg on any light content */
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    #top-nav:hover .nav-links {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.64rem, 0.8vw, 0.72rem);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.55);
+      transition: opacity 0.25s;
+    }
+    .nav-links a:hover { opacity: 0.55; }
+
+    /* ── CTA section ── */
+    #cta-section {
+      background: #0d0d0d;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 4vw;
+    }
+    .cta-inner { max-width: 660px; width: 100%; }
+    .cta-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.68rem, 0.84vw, 0.74rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.8rem;
+      display: block;
+    }
+    .cta-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(3rem, 5.5vw, 6.5rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.6rem;
+    }
+    .cta-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.72rem, 0.9vw, 0.8rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.58);
+      letter-spacing: 0.1em;
+      line-height: 2;
+      margin-bottom: 3.2rem;
+    }
+    .cta-form {
+      display: flex;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .cta-form input[type="email"] {
+      flex: 1;
+      padding: 0.95rem 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.56rem, 0.7vw, 0.62rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-right: none;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.2); }
+    .cta-form input[type="email"]:focus { border-color: rgba(255,255,255,0.28); }
+    .cta-form button {
+      padding: 0.95rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.5rem, 0.62vw, 0.56rem);
+      font-weight: 300;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #0d0d0d;
+      background: #fff;
+      border: 1px solid #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.3s, color 0.3s;
+    }
+    .cta-form button:hover { background: transparent; color: #fff; }
+
+    /* ── footer ── */
+    #site-footer {
+      background: #080808;
+      padding: 3.5rem 4vw 2.2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 2rem;
+    }
+    /* ── footer logo badge (PNG on dark bg) ── */
+    .footer-logo-badge {
+      background: #fff;
+      border-radius: 4px;
+      padding: 5px 9px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .footer-logo { height: 22px; width: auto; display: block; }
+
+    /* ── staff CTA ── */
+    .staff-cta {
+      display: inline-block;
+      margin-top: 2.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.62rem, 0.76vw, 0.68rem);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #0d0d0d;
+      text-decoration: none;
+      border-bottom: 1px solid #0d0d0d;
+      padding-bottom: 0.15em;
+      opacity: 0;
+      pointer-events: auto;
+      transition: color 0.25s, border-bottom-color 0.25s;
+    }
+    .staff-cta:hover { color: #888; border-bottom-color: #888; }
+
+    /* ── meals CTA ── */
+    .meals-cta {
+      display: inline-block;
+      margin-top: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.62rem, 0.76vw, 0.68rem);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+      padding-bottom: 0.15em;
+      opacity: 0;
+      pointer-events: auto;
+      transition: color 0.25s, border-bottom-color 0.25s;
+    }
+    .meals-cta:hover { color: #fff; border-bottom-color: rgba(255,255,255,0.7); }
+    .footer-nav { display: flex; gap: 2.4rem; flex-wrap: wrap; }
+    .footer-nav a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.62rem, 0.76vw, 0.68rem);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.52);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .footer-nav a:hover { color: rgba(255,255,255,0.85); }
+    .footer-copy {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.6rem, 0.7vw, 0.64rem);
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+    }
+
+    /* ── Intro heading word-mask ── */
+    .hw-outer { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .hw-inner  { display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────────────────────── -->
+  <nav id="top-nav">
+    <a href="#" class="nav-logo">
+      <img src="assets/plane-logo.png" alt="Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Our Fleet</a></li>
+      <li><a href="#">Crew</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="scroll-container">
+    <div id="sticky-wrap">
+
+      <div id="text-block">
+        <p class="eyebrow">Private Aviation</p>
+        <h1>Luxury private<br>flying</h1>
+      </div>
+
+      <div id="video-reveal">
+        <div id="video-wrap">
+          <video id="video1" src="assets/scroll_v1.mp4" poster="assets/poster_v1.jpg" preload="auto" muted playsinline></video>
+          <video id="video2" src="assets/scroll_v2.mp4" preload="auto" muted playsinline></video>
+          <video id="video3" src="assets/scroll_v3.mp4" preload="auto" muted playsinline></video>
+        </div>
+      </div>
+
+      <!-- Meals hold overlay — fades over the frozen video frame -->
+      <div id="meals-overlay">
+        <div class="meals-overlay-bg"></div>
+        <div id="meals-text">
+          <span class="meals-eyebrow">Culinary Excellence</span>
+          <h2 id="meals-heading">In flight gourmet meals<br>by michelin star chefs</h2>
+          <p class="meals-subtitle">Freshly cooked exquisite meals<br>assured to have you taken care of</p>
+          <a href="#" class="meals-cta">Book a menu crafting and taste test</a>
+        </div>
+      </div>
+
+      <!-- Text only — the shrunken video IS the left card -->
+      <div id="staff-section">
+        <p class="sh-line1">Professional and capable staff</p>
+        <p class="sh-line2">ready to meet your needs.</p>
+        <p class="staff-subtitle">Globally sourced staff trained in hospitality<br>Switzerland's finest institutions</p>
+        <a href="#" class="staff-cta">Book a test flight</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Logo Carousel ─────────────────────────────────────────────────── -->
+  <section id="clients-section">
+    <div class="clients-header">
+      <p class="clients-eyebrow">Trusted by C-Suite Executives Worldwide</p>
+    </div>
+
+    <div class="marquee-wrap">
+
+      <!-- Row 1 — scrolls left -->
+      <div class="marquee-row row-fwd">
+        <span class="logo-item"><img src="assets/logos/quantumglow.png"    alt="QuantumGlow"></span>
+        <span class="logo-item"><img src="assets/logos/etherealedge.png"   alt="EtherealEdge"></span>
+        <span class="logo-item"><img src="assets/logos/swift.png"          alt="Swift"></span>
+        <span class="logo-item"><img src="assets/logos/proconnect.png"     alt="ProConnect Solutions"></span>
+        <span class="logo-item"><img src="assets/logos/pixelpulse.png"     alt="PixelPulse"></span>
+        <span class="logo-item"><img src="assets/logos/lumina.png"         alt="Lumina"></span>
+        <span class="logo-item"><img src="assets/logos/essence.png"        alt="Essence"></span>
+        <span class="logo-item"><img src="assets/logos/chroma.png"         alt="Chroma"></span>
+        <span class="logo-item"><img src="assets/logos/bodo.png"           alt="Bo Do"></span>
+        <span class="logo-item"><img src="assets/logos/ascend.png"         alt="Ascend Records"></span>
+        <!-- duplicate for seamless loop -->
+        <span class="logo-item"><img src="assets/logos/quantumglow.png"    alt="QuantumGlow"></span>
+        <span class="logo-item"><img src="assets/logos/etherealedge.png"   alt="EtherealEdge"></span>
+        <span class="logo-item"><img src="assets/logos/swift.png"          alt="Swift"></span>
+        <span class="logo-item"><img src="assets/logos/proconnect.png"     alt="ProConnect Solutions"></span>
+        <span class="logo-item"><img src="assets/logos/pixelpulse.png"     alt="PixelPulse"></span>
+        <span class="logo-item"><img src="assets/logos/lumina.png"         alt="Lumina"></span>
+        <span class="logo-item"><img src="assets/logos/essence.png"        alt="Essence"></span>
+        <span class="logo-item"><img src="assets/logos/chroma.png"         alt="Chroma"></span>
+        <span class="logo-item"><img src="assets/logos/bodo.png"           alt="Bo Do"></span>
+        <span class="logo-item"><img src="assets/logos/ascend.png"         alt="Ascend Records"></span>
+      </div>
+
+      <!-- Row 2 — scrolls right -->
+      <div class="marquee-row row-rev">
+        <span class="logo-item"><img src="assets/logos/muse.png"           alt="Muse"></span>
+        <span class="logo-item"><img src="assets/logos/traverse.png"       alt="Traverse"></span>
+        <span class="logo-item"><img src="assets/logos/nexus-networks.png" alt="Nexus Networks"></span>
+        <span class="logo-item"><img src="assets/logos/core-concepts.png"  alt="Core Concepts Inc."></span>
+        <span class="logo-item"><img src="assets/logos/echo.png"           alt="Echo"></span>
+        <span class="logo-item"><img src="assets/logos/prismpulse.png"     alt="PrismPulse"></span>
+        <span class="logo-item"><img src="assets/logos/artfuel.png"        alt="Artfuel"></span>
+        <span class="logo-item"><img src="assets/logos/melominds-music.png" alt="MeloMinds Music"></span>
+        <span class="logo-item"><img src="assets/logos/melominds-icon.png" alt="MeloMinds"></span>
+        <!-- duplicate for seamless loop -->
+        <span class="logo-item"><img src="assets/logos/muse.png"           alt="Muse"></span>
+        <span class="logo-item"><img src="assets/logos/traverse.png"       alt="Traverse"></span>
+        <span class="logo-item"><img src="assets/logos/nexus-networks.png" alt="Nexus Networks"></span>
+        <span class="logo-item"><img src="assets/logos/core-concepts.png"  alt="Core Concepts Inc."></span>
+        <span class="logo-item"><img src="assets/logos/echo.png"           alt="Echo"></span>
+        <span class="logo-item"><img src="assets/logos/prismpulse.png"     alt="PrismPulse"></span>
+        <span class="logo-item"><img src="assets/logos/artfuel.png"        alt="Artfuel"></span>
+        <span class="logo-item"><img src="assets/logos/melominds-music.png" alt="MeloMinds Music"></span>
+        <span class="logo-item"><img src="assets/logos/melominds-icon.png" alt="MeloMinds"></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Cabin Section ────────────────────────────────────────────────── -->
+  <div id="cabin-scroll">
+    <div id="cabin-sticky">
+
+      <div id="cabin-wrap">
+        <video id="cabin-video" src="assets/cabin.mp4" preload="auto" muted playsinline></video>
+      </div>
+      <div id="cabin-overlay"></div>
+
+      <div id="cabin-text">
+        <p class="cabin-eyebrow">Onboard Experience</p>
+        <h2 class="cabin-heading">Luxury crafted<br>interiors</h2>
+        <p class="cabin-sub">with fully stocked amenities</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CTA Section ──────────────────────────────────────────────────── -->
+  <section id="cta-section">
+    <div class="cta-inner">
+      <span class="cta-eyebrow">Reserve Your Journey</span>
+      <h2 class="cta-heading">Fly private,<br>fly refined.</h2>
+      <p class="cta-sub">Submit your travel details and our team<br>will be in touch within 24 hours.</p>
+      <form class="cta-form" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" autocomplete="email">
+        <button type="submit">Request a Flight</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo-badge">
+          <img src="assets/plane-logo.png" class="footer-logo" alt="Logo">
+        </div>
+        <nav class="footer-nav">
+          <a href="#">Home</a>
+          <a href="#">Our Fleet</a>
+          <a href="#">Crew</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+      <p class="footer-copy">© 2026 Luxury Private Flying. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="scroll-video.js"></script>
+  <script src="cabin.js"></script>
+</body>
+</html>
