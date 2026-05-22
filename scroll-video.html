@@ -526,13 +526,35 @@
       transition: color 0.25s;
     }
     .footer-nav a:hover { color: rgba(255,255,255,0.85); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
     .footer-copy {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(0.6rem, 0.7vw, 0.64rem);
       font-weight: 300;
       letter-spacing: 0.14em;
       color: rgba(255,255,255,0.35);
-      text-align: center;
+    }
+    .footer-back-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.6rem, 0.72vw, 0.65rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding-bottom: 0.12em;
+      transition: color 0.25s, border-bottom-color 0.25s;
+    }
+    .footer-back-btn:hover {
+      color: rgba(255,255,255,0.85);
+      border-bottom-color: rgba(255,255,255,0.5);
     }
 
     /* ── Intro heading word-mask ── */
@@ -697,7 +719,10 @@
           <a href="#">Contact</a>
         </nav>
       </div>
-      <p class="footer-copy">© 2026 Luxury Private Flying. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Luxury Private Flying. All rights reserved.</p>
+        <a href="index.html" class="footer-back-btn">← Back to portfolio</a>
+      </div>
     </div>
   </footer>
 
