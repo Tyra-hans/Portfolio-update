@@ -2,6 +2,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const cabinVideo = document.getElementById('cabin-video');
 
+// Force load on mobile (same policy as scroll-video.js)
+cabinVideo.load();
+
 // Set initial clip-path through GSAP so both from/to use identical units,
 // avoiding browser computed-style px conversion that breaks interpolation.
 gsap.set('#cabin-wrap', { clipPath: 'inset(16% 55.68% 16% 2.32% round 14px)' });

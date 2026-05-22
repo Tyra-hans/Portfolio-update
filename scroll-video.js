@@ -11,6 +11,11 @@ const videoWrap = document.getElementById('video-wrap');
 const textBlock = document.getElementById('text-block');
 const container = document.getElementById('scroll-container');
 
+// Mobile browsers ignore preload="auto" — explicitly start loading all videos
+// so duration is available for scrubbing without a user gesture (muted + playsinline
+// are already set, which satisfies iOS 10+ and modern Android autoplay policies).
+[video1, video2, video3].forEach(v => v.load());
+
 const ZOOM_END   = 0.09;  // intro zoom finishes at 9% scroll
 const VIDEO_END  = 0.72;  // videos scrub until 72% scroll
 const SCALE_FROM = 0.36;  // initial thumbnail scale
