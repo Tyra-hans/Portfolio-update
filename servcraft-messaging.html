@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "whnfdpjsli");
+    </script>
+    <script>clarity("set", "page_type", "case_study"); clarity("set", "project", "servcraft_messaging");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRRW9BX0MN');
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServCraft Messaging Redesign - Tyra Hans Product Designer</title>
+    <meta name="description" content="How a pricing change became the catalyst for fixing years of design debt in ServCraft's messaging feature.">
+    <meta property="og:title" content="ServCraft Messaging Redesign | Tyra Hans">
+    <meta property="og:description" content="How a pricing change became the catalyst for fixing years of design debt in ServCraft's messaging feature.">
+    <meta property="og:image" content="https://tyra-hans.github.io/Portfolio-update/assets/hero-portrait.png">
+    <meta property="og:url" content="https://tyra-hans.github.io/Portfolio-update/servcraft-messaging.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav class="nav" id="nav">
+                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="musings.html" class="nav-link">Musings</a>
+                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="case-study-page">
+
+        <!-- ── Hero ── -->
+        <section class="cs-hero">
+            <div class="container">
+                <div class="cs-hero-header">
+                    <svg class="cs-hero-logo" viewBox="0 0 190 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <image href="assets/servcraft-logo-dark.svg" width="190" height="43"/>
+                    </svg>
+                    <h1 class="cs-hero-title">Redesigning the Messaging Experience:<br>From Debt to Deliberate</h1>
+                    <p class="cs-hero-description">Field service management · Communications · B2B SaaS</p>
+                </div>
+
+                <!-- Project meta strip -->
+                <div class="msg-meta-strip">
+                    <div class="msg-meta-item">
+                        <span class="msg-meta-label">My role</span>
+                        <span class="msg-meta-value">Product designer</span>
+                    </div>
+                    <div class="msg-meta-divider"></div>
+                    <div class="msg-meta-item">
+                        <span class="msg-meta-label">Platform</span>
+                        <span class="msg-meta-value">Web app</span>
+                    </div>
+                    <div class="msg-meta-divider"></div>
+                    <div class="msg-meta-item">
+                        <span class="msg-meta-label">Timeline</span>
+                        <span class="msg-meta-value">2 months</span>
+                    </div>
+                    <div class="msg-meta-divider"></div>
+                    <div class="msg-meta-item">
+                        <span class="msg-meta-label">Status</span>
+                        <span class="msg-meta-value msg-meta-status">Shipped · monitoring</span>
+                    </div>
+                </div>
+
+                <!-- Hero image -->
+                <div style="width:100%;max-width:900px;height:480px;border-radius:16px;margin-top:40px;margin-left:auto;margin-right:auto;background:#d0dce8;"></div>
+            </div>
+        </section>
+
+        <!-- ── Intro ── -->
+        <section class="cs-intro">
+            <div class="container">
+                <div class="cs-intro-wrapper cs-content-640">
+                    <div class="cs-intro-content">
+                        <div class="cs-intro-highlights">
+                            <p class="cs-intro-highlight-bold">When email volume became a paid add-on, the question became: is this experience good enough to charge for? The pricing change became the catalyst for fixing years of design and tech debt.</p>
+                            <p class="cs-intro-highlight-italic">Confidential information has been omitted or obfuscated. All content is my own and does not reflect the views of ServCraft.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Context ── -->
+        <section class="cs-problem">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">Context</h2>
+                    <h3 class="cs-section-subtitle">The Business Shift That <span class="highlight-blue">Started Everything</span></h3>
+                    <p class="cs-body-text">ServCraft serves field service businesses — plumbers, electricians, HVAC and security firms — that send high volumes of job-related messages daily. The messaging feature had never had a designer look at it. When email became a paid add-on, it needed one.</p>
+                    <p class="cs-body-text">The 2-month timeline reflects the full project span. The design work itself was more focused, but competing priorities, stability work, and other business demands forced several pauses and de-prioritisations along the way before this shipped.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Baseline Research ── -->
+        <section class="cs-discovery">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">Baseline Research</h2>
+                    <p class="cs-body-text">I pulled session recordings from Clarity across customers with different usage levels to establish a baseline: what was working, what was being avoided, what patterns had formed.</p>
+                </div>
+
+                <!-- Finding cards -->
+                <div class="msg-findings-grid">
+                    <div class="msg-finding-card">
+                        <span class="msg-finding-number">01</span>
+                        <h4 class="msg-finding-title">Templates: well-loved</h4>
+                        <p class="cs-body-text" style="margin:0;">One sweeping motion: load template, review, send. Faster users did it in a single flow. This had to stay intact.</p>
+                    </div>
+                    <div class="msg-finding-card">
+                        <span class="msg-finding-number">02</span>
+                        <h4 class="msg-finding-title">Send: easy to use</h4>
+                        <p class="cs-body-text" style="margin:0;">Users reached it naturally and completed the action. Worth protecting.</p>
+                    </div>
+                    <div class="msg-finding-card">
+                        <span class="msg-finding-number">03</span>
+                        <h4 class="msg-finding-title">Communication is core</h4>
+                        <p class="cs-body-text" style="margin:0;">Messaging is central to how ServCraft customers run their business. Customer data showed averages of 1,000 to 3,000 emails sent monthly across segments — this is a high-use, high-stakes feature.</p>
+                    </div>
+                    <div class="msg-finding-card">
+                        <span class="msg-finding-number">04</span>
+                        <h4 class="msg-finding-title">Mixed compose behaviour</h4>
+                        <p class="cs-body-text" style="margin:0;">A significant number of sessions showed users typing messages from scratch rather than using templates. Templates were faster, but freeform composing was a real pattern that the redesign had to support without friction.</p>
+                    </div>
+                </div>
+
+                <!-- Raw before screenshot -->
+                <div class="cs-solution-image-container" style="margin-top:48px;">
+                    <span class="cs-image-badge old-design">Before</span>
+                    <img src="assets/Old design.png" alt="ServCraft communication screen before redesign" class="cs-solution-screenshot">
+                    <p class="cs-image-caption cs-content-640">The communication screen before any changes, built lean, without a designer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Screen Breakdown ── -->
+        <section class="cs-heuristics">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">Breaking Down the Screen</h2>
+                    <h3 class="cs-section-subtitle">Breaking Down the <span class="highlight-blue">UI Design of the Screen</span></h3>
+                    <p class="cs-body-text">I annotated every element of the compose screen. Six issues stood out:</p>
+                    <ul class="msg-issues-list">
+                        <li>Recipient section: two always-open panels with no clear hierarchy, likely slowing users down</li>
+                        <li>Load Template button isolated from the compose area</li>
+                        <li>Replacement tags far from the text toolbar, and the double curly bracket syntax is not user-friendly</li>
+                        <li>SMS Credits buried and disconnected from the send flow</li>
+                        <li>Attachment area lacked clear state and a distinct action to add files</li>
+                    </ul>
+                </div>
+                <div class="cs-solution-image-container">
+                    <img src="assets/Messaging page analysis.png" alt="Annotated breakdown of the ServCraft communication screen" class="cs-solution-screenshot">
+                    <p class="cs-image-caption cs-content-640">Annotated screen breakdown shared with the team</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Benchmarking ── -->
+        <section class="cs-scope" style="background-color:#ffffff;">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">Benchmarking</h2>
+                    <h3 class="cs-section-subtitle">Looking at <span class="highlight-blue">Some Inspiration</span></h3>
+                    <p class="cs-body-text">I looked at how other SaaS tools handle multi-channel messaging. Two patterns stood out: single-composer channel toggling, and surfacing recipient context inline.</p>
+                </div>
+                <div class="cs-solution-image-container" style="margin-top:32px;">
+                    <img src="assets/Messaging inspo.png" alt="Benchmarking: messaging patterns from other SaaS tools" class="cs-solution-screenshot">
+                    <p class="cs-image-caption cs-content-640">Messaging patterns from other SaaS tools used as reference</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Scope & Constraints ── -->
+        <section class="cs-scope">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">Scope and Constraints</h2>
+                    <h3 class="cs-section-subtitle">A Long List, Cut Down to <span class="highlight-blue">What Was Actually Feasible</span></h3>
+                    <p class="cs-body-text">The breakdown surfaced more than V1 could hold. We went through the list together and made hard calls.</p>
+                </div>
+
+                <!-- Deferred items -->
+                <div class="msg-deferred-grid">
+                    <div class="msg-deferred-item">
+                        <div class="msg-deferred-header">
+                            <span class="msg-deferred-label">Deferred to V2</span>
+                            <h4 class="msg-deferred-title">Message send-state visibility</h4>
+                        </div>
+                        <p class="cs-body-text" style="margin:0;">Required backend state management changes outside V1 scope.</p>
+                    </div>
+                    <div class="msg-deferred-item">
+                        <div class="msg-deferred-header">
+                            <span class="msg-deferred-label">Deferred to V2</span>
+                            <h4 class="msg-deferred-title">SMS enabling setting</h4>
+                        </div>
+                        <p class="cs-body-text" style="margin:0;">Underlying settings architecture made this a larger lift than it appeared. Added to backlog with clear rationale.</p>
+                    </div>
+                </div>
+
+                <div class="cs-content-640" style="margin-top:40px;">
+                    <div class="msg-scope-note">
+                        <p class="cs-body-text" style="margin:0;">What remained was still a meaningful amount of work: 6 tasks across recipient selection, the compose experience, replacement tags, SMS credits, and attachment handling. All shipped in V1.</p>
+                    </div>
+                </div>
+
+                <!-- Task list -->
+                <div class="cs-solution-image-container" style="margin-top:40px;">
+                    <img src="assets/Messaging task breakdown.png" alt="Communication redesign task list" class="cs-solution-screenshot">
+                    <p class="cs-image-caption cs-content-640">The scoped task list. 6 of 7 tasks shipped in V1. SMS enabling deferred.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── The Redesign intro ── -->
+        <section class="cs-redesign" style="padding-bottom:0;">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">The Redesign</h2>
+                    <h3 class="cs-section-subtitle">What Users Showed Us. <span class="highlight-blue">What We Changed.</span></h3>
+                    <p class="cs-body-text">Many teams had built deep habits around the existing flow. Each change had to earn adoption from both new users and established ones already embedded in the product.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 01: Replacement tags -->
+        <section class="msg-solution-section msg-solution-odd">
+            <div class="container">
+                <div class="msg-solution-header">
+                    <span class="msg-solution-number">01</span>
+                    <h4 class="msg-solution-title">Replacement tags: from brackets to something human</h4>
+                    <p class="cs-body-text">Curly bracket syntax reached long-term technical users. Green pill tags triggered by <strong>@</strong> follow a pattern familiar from messaging apps, bringing personalisation to the same depth, accessible to everyone.</p>
+                </div>
+            </div>
+            <div class="msg-ba-grid">
+                <div class="msg-img-block">
+                    <p class="msg-img-label">Before</p>
+                    <img src="assets/old replacement tags.png" alt="Old curly bracket replacement tags" class="msg-ba-img">
+                </div>
+                <div class="msg-img-block">
+                    <p class="msg-img-label">After</p>
+                    <img src="assets/replacement tags.png" alt="Redesigned replacement tags" class="msg-ba-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 02: Contact selector -->
+        <section class="msg-solution-section msg-solution-even">
+            <div class="container">
+                <div class="msg-solution-header">
+                    <span class="msg-solution-number">02</span>
+                    <h4 class="msg-solution-title">Contact selector: one field instead of many</h4>
+                    <p class="cs-body-text">Customers and employees lived in separate always-open panels that dominated the screen. A single field with search surfaces job-relevant contacts first. Faster to reach, easier to confirm.</p>
+                </div>
+            </div>
+            <div class="msg-ba-grid">
+                <div class="msg-img-block">
+                    <p class="msg-img-label">Before</p>
+                    <img src="assets/Old contact selector.png" alt="Old separate contact panels" class="msg-ba-img">
+                </div>
+                <div class="msg-img-block">
+                    <p class="msg-img-label">After</p>
+                    <img src="assets/Tool bar and single contact selector.png" alt="Redesigned single contact selector" class="msg-ba-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 03: Attachments -->
+        <section class="msg-solution-section msg-solution-odd">
+            <div class="container">
+                <div class="msg-solution-header">
+                    <span class="msg-solution-number">03</span>
+                    <h4 class="msg-solution-title">Attachments: removing the dead end</h4>
+                    <p class="cs-body-text">The attachment area lacked clarity — the state and the action to add files were not visually distinct. The redesign cleaned up the layout and made both clear at a glance.</p>
+                </div>
+            </div>
+            <div class="msg-ba-grid">
+                <div class="msg-img-block">
+                    <p class="msg-img-label">Before</p>
+                    <img src="assets/Old design.png" alt="Old attachment area" class="msg-ba-img">
+                </div>
+                <div class="msg-img-block">
+                    <p class="msg-img-label">After</p>
+                    <img src="assets/Attachments updated.png" alt="Redesigned attachment area" class="msg-ba-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution 04: Layout -->
+        <section class="msg-solution-section msg-solution-even">
+            <div class="container">
+                <div class="msg-solution-header">
+                    <span class="msg-solution-number">04</span>
+                    <h4 class="msg-solution-title">Layout: making it feel designed</h4>
+                    <p class="cs-body-text">The updated layout groups related controls, keeps templates prominent at the top where users start, and surfaces SMS credits inline with the send flow.</p>
+                </div>
+            </div>
+            <div class="msg-ba-grid">
+                <div class="msg-img-block">
+                    <p class="msg-img-label">Before</p>
+                    <img src="assets/Old design.png" alt="Old layout" class="msg-ba-img">
+                </div>
+                <div class="msg-img-block">
+                    <p class="msg-img-label">After</p>
+                    <img src="assets/Updated messaging.png" alt="Redesigned layout" class="msg-ba-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Results ── -->
+        <section class="msg-results-section">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title" style="color:#a8c8f0;">Early Signals</h2>
+                    <h3 class="cs-section-subtitle" style="color:#ffffff;">What the Data <span style="color:#5aabff;">Showed After Launch</span></h3>
+                    <p class="cs-body-text" style="color:#b8cfe0;">I returned to the same Clarity metrics used to establish the baseline. Three questions going in: did the redesign reduce friction, are users completing tasks more smoothly, and is email volume increasing? Not all are answerable yet.</p>
+                </div>
+
+                <!-- Bar chart: before / after dead clicks -->
+                <div class="msg-compare-chart">
+                    <div class="msg-chart-row">
+                        <div class="msg-chart-meta">
+                            <span class="msg-chart-metric">Dead clicks</span>
+                            <span class="msg-chart-delta">−40% improvement</span>
+                        </div>
+                        <div class="msg-chart-bars">
+                            <div class="msg-bar-wrap">
+                                <span class="msg-bar-period">8–14 June</span>
+                                <div class="msg-bar msg-bar-before" style="width:40.8%;">
+                                    <span class="msg-bar-value">20.40%</span>
+                                </div>
+                            </div>
+                            <div class="msg-bar-wrap">
+                                <span class="msg-bar-period">29 Jun–5 Jul</span>
+                                <div class="msg-bar msg-bar-after" style="width:24.52%;">
+                                    <span class="msg-bar-value">12.26%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="msg-chart-divider"></div>
+
+                    <div class="msg-chart-context">
+                        <div class="msg-chart-context-item">
+                            <span class="msg-chart-context-label">Sessions (before)</span>
+                            <span class="msg-chart-context-value">299</span>
+                        </div>
+                        <div class="msg-chart-context-item">
+                            <span class="msg-chart-context-label">Sessions (after)</span>
+                            <span class="msg-chart-context-value">310</span>
+                        </div>
+                        <div class="msg-chart-context-item">
+                            <span class="msg-chart-context-label">Rage clicks</span>
+                            <span class="msg-chart-context-value">0 in both periods</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-content-640" style="margin-top:48px;">
+                    <p class="cs-body-text" style="color:#b8cfe0;">Session recordings show adoption has been seamless. Users move through the compose flow smoothly, and the single contact selector appears to be reducing time spent on recipient selection. The dead click reduction directly validates the attachment label fix and the broader UI cleanup.</p>
+                </div>
+
+                <!-- What we're still watching -->
+                <div class="msg-watching-list">
+                    <div class="msg-watching-item">Email and SMS volume trends have too many variables to attribute cleanly — new users, seasonal business patterns, and upcoming WhatsApp integration will all affect the numbers.</div>
+                    <div class="msg-watching-item">Revenue from the paid email tier is being tracked as adoption of the add-on grows.</div>
+                    <div class="msg-watching-item">The remaining 12.26% dead click rate is under investigation, likely tied to UI elements outside V1 scope.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Reflection ── -->
+        <section class="cs-redesign">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">Reflection</h2>
+                    <h3 class="cs-section-subtitle">What This Project Taught Me</h3>
+
+                    <div class="msg-learnings-list">
+                        <div class="msg-learning-item">
+                            <span class="msg-learning-number">1</span>
+                            <div>
+                                <p class="cs-body-text"><strong>Baseline before redesign.</strong> Session data gathered first made it possible to separate signal from noise and measure whether the redesign worked.</p>
+                            </div>
+                        </div>
+                        <div class="msg-learning-item">
+                            <span class="msg-learning-number">2</span>
+                            <div>
+                                <p class="cs-body-text"><strong>Pricing pressure is a legitimate design brief.</strong> "We're charging for this now" sharpened scope and gave the team a shared reason to prioritise.</p>
+                            </div>
+                        </div>
+                        <div class="msg-learning-item">
+                            <span class="msg-learning-number">3</span>
+                            <div>
+                                <p class="cs-body-text"><strong>Scope discipline is a design skill.</strong> Naming what's deferred — and why — keeps the backlog honest and the team moving.</p>
+                            </div>
+                        </div>
+                        <div class="msg-learning-item">
+                            <span class="msg-learning-number">4</span>
+                            <div>
+                                <p class="cs-body-text"><strong>Tech debt in the UI is a user experience problem.</strong> Unlabelled elements and mismatched fields erode trust and signal a product built for speed, not for the person using it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back link -->
+        <section class="cs-back-section">
+            <div class="container">
+                <div class="cs-content-640" style="padding:40px 0 80px;">
+                    <a href="work.html" class="cs-back-link">← Back to all work</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Case Study Footer Navigation -->
+    <section class="cs-footer-nav">
+        <div class="container">
+            <div class="footer-nav-wrapper">
+                <a href="servcraft.html" class="footer-nav-prev">
+                    ← Previous
+                </a>
+                <a href="credify.html" class="footer-nav-next">
+                    Next →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-full-inner">
+                <div class="footer-full-top">
+                    <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+                    <div class="footer-full-right">
+                        <h3 class="footer-heading">Let's work together</h3>
+                        <div class="footer-contact-row">
+                            <a href="mailto:tyraoyuohans@gmail.com" class="footer-contact-link">tyraoyuohans@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="footer-contact-link">LinkedIn</a>
+                            <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="footer-book-btn" onclick="track('book_call_click')">Book a call</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-copy">Tyra Hans 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lightbox
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('img.cs-solution-screenshot, img.msg-ba-img').forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', () => {
+                    // Build sibling list: if inside a msg-ba-grid, use those images; otherwise just this one
+                    const grid = img.closest('.msg-ba-grid');
+                    const siblings = grid
+                        ? Array.from(grid.querySelectorAll('img.msg-ba-img'))
+                        : [img];
+                    let current = siblings.indexOf(img);
+
+                    // Overlay
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:32px;';
+
+                    // Image
+                    const bigImg = document.createElement('img');
+                    bigImg.src = siblings[current].src;
+                    bigImg.style.cssText = 'max-width:82vw;max-height:88vh;border-radius:10px;box-shadow:0 0 80px rgba(0,0,0,0.6);object-fit:contain;transition:opacity 0.15s;';
+                    overlay.appendChild(bigImg);
+
+                    function showImg(index) {
+                        bigImg.style.opacity = '0';
+                        setTimeout(() => {
+                            bigImg.src = siblings[index].src;
+                            bigImg.style.opacity = '1';
+                        }, 150);
+                    }
+
+                    // Nav buttons (only if there are siblings)
+                    if (siblings.length > 1) {
+                        const btnStyle = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;font-size:24px;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;';
+
+                        const prevBtn = document.createElement('button');
+                        prevBtn.innerHTML = '&#8592;';
+                        prevBtn.style.cssText = btnStyle + 'left:20px;';
+                        prevBtn.addEventListener('click', e => {
+                            e.stopPropagation();
+                            current = (current - 1 + siblings.length) % siblings.length;
+                            showImg(current);
+                        });
+
+                        const nextBtn = document.createElement('button');
+                        nextBtn.innerHTML = '&#8594;';
+                        nextBtn.style.cssText = btnStyle + 'right:20px;';
+                        nextBtn.addEventListener('click', e => {
+                            e.stopPropagation();
+                            current = (current + 1) % siblings.length;
+                            showImg(current);
+                        });
+
+                        overlay.appendChild(prevBtn);
+                        overlay.appendChild(nextBtn);
+                    }
+
+                    // Close on backdrop click (not on nav buttons)
+                    overlay.addEventListener('click', e => {
+                        if (e.target === overlay || e.target === bigImg) overlay.remove();
+                    });
+
+                    // Keyboard: Escape closes, arrows navigate
+                    function onKey(e) {
+                        if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); }
+                        if (e.key === 'ArrowRight' && siblings.length > 1) { current = (current + 1) % siblings.length; showImg(current); }
+                        if (e.key === 'ArrowLeft' && siblings.length > 1) { current = (current - 1 + siblings.length) % siblings.length; showImg(current); }
+                    }
+                    document.addEventListener('keydown', onKey);
+                    overlay.addEventListener('click', e => { if (e.target === overlay || e.target === bigImg) document.removeEventListener('keydown', onKey); });
+
+                    document.body.appendChild(overlay);
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('.cs-hero-title', { y: 30, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.1 });
+            gsap.from('.cs-hero-description', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.25 });
+            gsap.from('.msg-meta-strip', { y: 16, opacity: 0, duration: 0.7, ease: 'power2.out', delay: 0.4 });
+
+            gsap.utils.toArray('.cs-section-title, .cs-section-subtitle').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: 'top 90%' },
+                    y: 24, opacity: 0, duration: 0.75, ease: 'power2.out'
+                });
+            });
+
+            gsap.utils.toArray('.msg-finding-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 92%' },
+                    y: 20, opacity: 0, duration: 0.6, delay: i * 0.08, ease: 'power2.out'
+                });
+            });
+
+            gsap.utils.toArray('.msg-deferred-item').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: { trigger: item, start: 'top 92%' },
+                    y: 20, opacity: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out'
+                });
+            });
+
+            gsap.utils.toArray('.msg-before-after').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: 'top 90%' },
+                    y: 30, opacity: 0, duration: 0.8, ease: 'power2.out'
+                });
+            });
+
+            gsap.utils.toArray('.msg-stat-item').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: { trigger: '.msg-results-section', start: 'top 80%' },
+                    y: 24, opacity: 0, duration: 0.7, delay: i * 0.12, ease: 'power2.out'
+                });
+            });
+
+            // Solution section headers
+            gsap.utils.toArray('.msg-solution-header').forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: { trigger: el, start: 'top 88%' },
+                    y: 24, opacity: 0, duration: 0.75, ease: 'power2.out'
+                });
+            });
+
+            // Before/after grids — simple fade up
+            gsap.utils.toArray('.msg-ba-grid').forEach(grid => {
+                gsap.from(grid, {
+                    scrollTrigger: { trigger: grid, start: 'top 88%' },
+                    y: 24, opacity: 0, duration: 0.8, ease: 'power2.out'
+                });
+            });
+
+            gsap.utils.toArray('.msg-learning-item').forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: { trigger: item, start: 'top 92%' },
+                    x: -20, opacity: 0, duration: 0.65, delay: i * 0.08, ease: 'power2.out'
+                });
+            });
+
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

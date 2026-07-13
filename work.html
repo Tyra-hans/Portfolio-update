@@ -20,6 +20,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work - Tyra Hans Product Designer</title>
+    <meta name="description" content="Selected case studies by Tyra Hans — field service software, fintech mobile apps, e-bike UX, and a production-grade design system.">
+    <meta property="og:title" content="Work — Tyra Hans Product Designer">
+    <meta property="og:description" content="Selected case studies and projects by Tyra Hans — from field service scheduling to e-bike UX and fintech.">
+    <meta property="og:image" content="https://tyra-hans.github.io/Portfolio-update/assets/hero-portrait.png">
+    <meta property="og:url" content="https://tyra-hans.github.io/Portfolio-update/work.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Work — Tyra Hans Product Designer">
+    <meta name="twitter:description" content="Selected case studies and projects by Tyra Hans — from field service scheduling to e-bike UX and fintech.">
+    <meta name="twitter:image" content="https://tyra-hans.github.io/Portfolio-update/assets/hero-portrait.png">
     <link rel="icon" type="image/png" href="assets/favicon2black.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +53,7 @@
                 </button>
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
+                    <a href="about.html" class="nav-link">About</a>
                     <a href="musings.html" class="nav-link">Musings</a>
                     <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
@@ -58,58 +69,10 @@
                 <h1 class="work-page-title">Previous work</h1>
                 
                 <div class="previous-work-items">
-                    <!-- Speedi -->
-                    <div class="work-item work-item-featured">
-                        <div class="work-item-image-wrapper">
-                            <img src="assets/speedi-thumbnail.png" alt="Speedi E-Bike" class="work-item-image">
-                            <span class="work-item-badge">New</span>
-                        </div>
-                        <div class="work-item-content">
-                            <div class="work-item-header">
-                                <span class="work-item-category">Product Design · Concept</span>
-                                <h2 class="work-item-title">Speedi</h2>
-                            </div>
-                            <div class="work-item-description-block">
-                                <p class="work-item-description">A smart e-bike display designed from the ground up for the African market — built around real Kenyan road conditions, not adapted from a foreign product.</p>
-                                <p class="work-item-description">Safety alerts, theft resistance, and seamless device connectivity for riders navigating demanding urban and rural terrain.</p>
-                            </div>
-                            <div class="work-item-meta">
-                                <span class="work-item-meta-item">AI-augmented</span>
-                                <span class="work-item-meta-item">Hardware UX</span>
-                                <span class="work-item-meta-item">East Africa</span>
-                            </div>
-                            <span class="work-item-cta">View case study →</span>
-                        </div>
-                        <a href="speedi.html" class="work-item-link" onclick="track('case_study_click')"></a>
-                    </div>
-
-                    <!-- ServCraft UI -->
-                    <a href="https://servcraft-ui.netlify.app/?path=/docs/introduction--docs" target="_blank" class="work-item" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;" onclick="track('external_project_click')">
-                        <div class="work-item-image-wrapper">
-                            <img src="assets/SC bento.png" alt="ServCraft UI Design System" class="work-item-image">
-                            <span class="work-item-status-progress">In progress</span>
-                        </div>
-                        <div class="work-item-content">
-                            <div class="work-item-header">
-                                <span class="work-item-category">Design System</span>
-                                <h2 class="work-item-title">ServCraft UI</h2>
-                            </div>
-                            <div class="work-item-description-block">
-                                <p class="work-item-description">A design system and component library built for ServCraft's field service management platform — extracted directly from production code, not scaffolded from scratch.</p>
-                                <p class="work-item-description">52 documented components across 9 categories, giving a small team enterprise-grade infrastructure without the enterprise budget or the 6–8 week sprint.</p>
-                            </div>
-                            <div class="work-item-meta">
-                                <span class="work-item-meta-item">Design system</span>
-                                <span class="work-item-meta-item">Claude Code</span>
-                                <span class="work-item-meta-item">Storybook</span>
-                            </div>
-                        </div>
-                    </a>
-
                     <!-- ServCraft -->
                     <div class="work-item work-item-featured">
                         <div class="work-item-image-wrapper">
-                            <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Scheduler" class="work-item-image">
+                            <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Scheduler" class="work-item-image" loading="lazy">
                         </div>
                         <div class="work-item-content">
                             <div class="work-item-header">
@@ -129,10 +92,33 @@
                         <a href="servcraft.html" target="_blank" class="work-item-link" onclick="track('case_study_click')"></a>
                     </div>
 
+                    <!-- ServCraft Messaging (hidden)
+                    <div class="work-item">
+                        <div class="work-item-image-wrapper">
+                            <img src="assets/Updated messaging.png" alt="ServCraft messaging redesign" class="work-item-image" loading="lazy">
+                            <span class="work-item-badge">New</span>
+                        </div>
+                        <div class="work-item-content">
+                            <div class="work-item-header">
+                                <span class="work-item-category">Product Design · B2B SaaS</span>
+                                <h2 class="work-item-title">ServCraft Messaging Redesign</h2>
+                            </div>
+                            <p class="work-item-description-large">A pricing change became the catalyst for clearing years of design debt. Four changes shipped: replacement tags, contact selector, attachments, and layout.</p>
+                            <div class="work-item-meta">
+                                <span class="work-item-meta-item">Communications</span>
+                                <span class="work-item-meta-item">Debt reduction</span>
+                                <span class="work-item-meta-item">B2B SaaS</span>
+                            </div>
+                            <span class="work-item-cta">View case study →</span>
+                        </div>
+                        <a href="servcraft-messaging.html" class="work-item-link" onclick="track('case_study_click')"></a>
+                    </div>
+                    -->
+
                     <!-- Credify -->
                     <div class="work-item">
                         <div class="work-item-image-wrapper">
-                            <img src="assets/credify-thumbnail-new.png" alt="Credify" class="work-item-image">
+                            <img src="assets/credify-thumbnail-new.png" alt="Credify" class="work-item-image" loading="lazy">
                         </div>
                         <div class="work-item-content">
                             <div class="work-item-header">
@@ -148,6 +134,29 @@
                         </div>
                         <a href="credify.html" target="_blank" class="work-item-link" onclick="track('case_study_click')"></a>
                     </div>
+
+                    <!-- ServCraft UI -->
+                    <a href="https://servcraft-ui.netlify.app/?path=/docs/introduction--docs" target="_blank" class="work-item" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;" onclick="track('external_project_click')">
+                        <div class="work-item-image-wrapper">
+                            <img src="assets/SC bento.png" alt="ServCraft UI Design System" class="work-item-image" loading="lazy">
+                            <span class="work-item-badge">Featured</span>
+                            <span class="work-item-status-progress">In progress</span>
+                        </div>
+                        <div class="work-item-content">
+                            <div class="work-item-header">
+                                <span class="work-item-category">Design System</span>
+                                <h2 class="work-item-title">ServCraft UI</h2>
+                            </div>
+                            <div class="work-item-description-block">
+                                <p class="work-item-description">A design system and component library built for ServCraft's field service management platform — extracted directly from production code. 52 documented components across 9 categories, giving a small team enterprise-grade infrastructure without the enterprise budget.</p>
+                            </div>
+                            <div class="work-item-meta">
+                                <span class="work-item-meta-item">Design Systems</span>
+                                <span class="work-item-meta-item">Storybook</span>
+                                <span class="work-item-meta-item">Production-grade</span>
+                            </div>
+                        </div>
+                    </a>
 
                     <!-- Beyonic -->
                     <div class="work-item">
@@ -173,12 +182,33 @@
             </div>
         </section>
 
-        <!-- More Projects Section -->
+        <!-- Explorations Section -->
         <section class="more-projects-section">
             <div class="container">
-                <h2 class="more-projects-title">Other projects</h2>
-                
+                <div class="explorations-section-header">
+                    <h2 class="more-projects-title">Explorations</h2>
+                    <p class="explorations-section-subtitle">Concepts and experiments outside client work</p>
+                </div>
+
                 <div class="projects-grid">
+                    <!-- Speedi -->
+                    <div class="project-card">
+                        <div class="project-card-image-wrapper">
+                            <img src="assets/speedi-thumbnail.png" alt="Speedi E-Bike" class="project-card-image">
+                        </div>
+                        <div class="project-card-content">
+                            <span class="project-card-category">Product Design · Concept</span>
+                            <h3 class="project-card-title">Speedi</h3>
+                            <p class="project-card-description">A smart e-bike display designed from the ground up for the African market — built around real Kenyan road conditions, not adapted from a foreign product.</p>
+                            <div class="project-card-meta">
+                                <span class="project-card-meta-item">AI-augmented</span>
+                                <span class="project-card-meta-item">Hardware UX</span>
+                                <span class="project-card-meta-item">East Africa</span>
+                            </div>
+                        </div>
+                        <a href="speedi.html" class="work-item-link" onclick="track('case_study_click')"></a>
+                    </div>
+
                     <!-- Immersive luxury private flying -->
                     <div class="project-card">
                         <div class="project-card-image-wrapper">
@@ -208,17 +238,6 @@
                         </div>
                         <a href="https://www.behance.net/gallery/213889963/Regulatory-compliance-management-dashboard" target="_blank" class="work-item-link" onclick="track('external_project_click')"></a>
                     </div>
-
-                    <!-- Fintech Mobile App (UI) -->
-                    <div class="project-card">
-                        <img src="assets/fintech-mobile-app-practice.png" alt="Fintech Mobile App" class="project-card-image">
-                        <div class="project-card-content">
-                            <span class="project-card-category">UI Design</span>
-                            <h3 class="project-card-title">Fintech mobile app</h3>
-                            <p class="project-card-description">UI design</p>
-                        </div>
-                        <a href="https://www.behance.net/gallery/195055929/UI-design-Fintech-app-clone" target="_blank" class="work-item-link" onclick="track('external_project_click')"></a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -230,9 +249,19 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content-wrapper">
-                <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
-                <p class="footer-text">Tyra Hans 2025</p>
+            <div class="footer-full-inner">
+                <div class="footer-full-top">
+                    <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+                    <div class="footer-full-right">
+                        <h3 class="footer-heading">Let's work together</h3>
+                        <div class="footer-contact-row">
+                            <a href="mailto:tyraoyuohans@gmail.com" class="footer-contact-link">tyraoyuohans@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="footer-contact-link">LinkedIn</a>
+                            <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="footer-book-btn" onclick="track('book_call_click')">Book a call</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-copy">Tyra Hans 2026</p>
             </div>
         </div>
     </footer>

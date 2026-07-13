@@ -19,7 +19,17 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxury private flying</title>
+  <title>Luxury Private Flying — Concept Project by Tyra Hans</title>
+  <meta name="description" content="A scroll-driven cinematic UX concept by Tyra Hans — exploring motion design, scrubbed video, and immersive aviation storytelling.">
+  <meta property="og:title" content="Luxury Private Flying — Concept Project by Tyra Hans">
+  <meta property="og:description" content="A scroll-driven cinematic UX concept exploring motion design and immersive aviation storytelling.">
+  <meta property="og:image" content="https://tyra-hans.github.io/Portfolio-update/assets/hero-portrait.png">
+  <meta property="og:url" content="https://tyra-hans.github.io/Portfolio-update/scroll-video.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Luxury Private Flying — Concept Project by Tyra Hans">
+  <meta name="twitter:description" content="A scroll-driven cinematic UX concept exploring motion design and immersive aviation storytelling.">
+  <meta name="twitter:image" content="https://tyra-hans.github.io/Portfolio-update/assets/hero-portrait.png">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +37,26 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #fff; }
+
+    /* ── Concept banner ── */
+    #concept-banner {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      text-align: center;
+      padding: 8px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+    }
 
     #scroll-container { height: calc(1600vh + 2400px); }
 
@@ -576,6 +606,11 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </nav>
+
+  <!-- ── Concept banner ───────────────────────────────────────────────── -->
+  <div id="concept-banner">
+    Concept project — built to explore scroll-driven cinematic UX and motion design
+  </div>
 
   <div id="scroll-container">
     <div id="sticky-wrap">
