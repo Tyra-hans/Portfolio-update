@@ -62,7 +62,7 @@
                     <svg class="cs-hero-logo" viewBox="0 0 190 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <image href="assets/servcraft-logo-dark.svg" width="190" height="43"/>
                     </svg>
-                    <h1 class="cs-hero-title">Redesigning the Messaging Experience:<br>From Debt to Deliberate</h1>
+                    <h1 class="cs-hero-title" style="letter-spacing:-0.5px;">Messages, Redesigned<br>for Speed and Ease</h1>
                     <p class="cs-hero-description">Field service management · Communications · B2B SaaS</p>
                 </div>
 
@@ -79,18 +79,13 @@
                     </div>
                     <div class="msg-meta-divider"></div>
                     <div class="msg-meta-item">
-                        <span class="msg-meta-label">Timeline</span>
-                        <span class="msg-meta-value">2 months</span>
-                    </div>
-                    <div class="msg-meta-divider"></div>
-                    <div class="msg-meta-item">
                         <span class="msg-meta-label">Status</span>
                         <span class="msg-meta-value msg-meta-status">Shipped · monitoring</span>
                     </div>
                 </div>
 
-                <!-- Hero image -->
-                <div style="width:100%;max-width:900px;height:480px;border-radius:16px;margin-top:40px;margin-left:auto;margin-right:auto;background:#d0dce8;"></div>
+                <!-- Hero video -->
+                <video src="assets/cursorful-video-1786171730288.mp4" autoplay loop muted playsinline preload="auto" style="width:100%;max-width:900px;height:480px;object-fit:cover;border-radius:16px;margin-top:40px;margin-left:auto;margin-right:auto;display:block;background:#d0dce8;"></video>
             </div>
         </section>
 
@@ -100,11 +95,28 @@
                 <div class="cs-intro-wrapper cs-content-640">
                     <div class="cs-intro-content">
                         <div class="cs-intro-highlights">
-                            <p class="cs-intro-highlight-bold">When email volume became a paid add-on, the question became: is this experience good enough to charge for? The pricing change became the catalyst for fixing years of design and tech debt.</p>
+                            <p class="cs-intro-highlight-bold">For field service businesses, every job runs on communication — a customer needs to know their technician is on the way, a team needs to know a job is booked. When ServCraft made email a paid add-on, the question sharpened: was this experience good enough to charge for, or was a confusing screen costing customers time and confidence every time someone hit send? That question became the catalyst for fixing years of design and tech debt.</p>
                             <p class="cs-intro-highlight-italic">Confidential information has been omitted or obfuscated. All content is my own and does not reflect the views of ServCraft.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ── See it in action ── -->
+        <section class="cs-redesign">
+            <div class="container">
+                <div class="cs-content-640">
+                    <h2 class="cs-section-title">See It In Action</h2>
+                </div>
+            </div>
+            <div class="cs-solution-image-container" style="margin-top:56px;">
+                <video src="assets/cursorful-video-1786171730288.mp4" class="cs-demo-video" autoplay loop muted playsinline preload="auto"></video>
+                <p class="cs-image-caption cs-content-640">Loading a template, inserting replacement tags, and attaching files</p>
+            </div>
+            <div class="cs-solution-image-container" style="margin-top:64px;">
+                <video src="assets/cursorful-video-1786173690079.mp4" class="cs-demo-video" autoplay loop muted playsinline preload="auto"></video>
+                <p class="cs-image-caption cs-content-640">Selecting multiple recipients and composing with the @ tag picker in the rich-text HTML composer</p>
             </div>
         </section>
 
@@ -113,8 +125,8 @@
             <div class="container">
                 <div class="cs-content-640">
                     <h2 class="cs-section-title">Context</h2>
-                    <h3 class="cs-section-subtitle">The Business Shift That <span class="highlight-blue">Started Everything</span></h3>
-                    <p class="cs-body-text">ServCraft serves field service businesses — plumbers, electricians, HVAC and security firms — that send high volumes of job-related messages daily. The messaging feature had never had a designer look at it. When email became a paid add-on, it needed one.</p>
+                    <h3 class="cs-section-subtitle">The Pricing Change That Made This <span class="highlight-blue">Non-Negotiable</span></h3>
+                    <p class="cs-body-text">Messaging isn't a side feature for ServCraft's customers — it's how their business runs. A job gets created, a status changes, a technician goes en route: each of those moments fires a message, automatically, through a template, to a customer or a teammate. Get that wrong and it's not just a UI problem — it's a business represented poorly, a customer left uncertain, a team out of sync. The messaging feature had never had a designer look at it. When email became a paid add-on, it needed one.</p>
                     <p class="cs-body-text">The 2-month timeline reflects the full project span. The design work itself was more focused, but competing priorities, stability work, and other business demands forced several pauses and de-prioritisations along the way before this shipped.</p>
                 </div>
             </div>
@@ -152,11 +164,15 @@
                     </div>
                 </div>
 
+                <div class="cs-content-640" style="margin-top:48px;">
+                    <p class="cs-body-text">Two separate contact pickers to work through when adding recipients. Three different places to insert a replacement tag, each behaving slightly differently depending on where you were on the screen. A formatting toolbar carrying more options than the flow ever needed. None of it was broken on its own — but stacked together, it slowed people down.</p>
+                </div>
+
                 <!-- Raw before screenshot -->
-                <div class="cs-solution-image-container" style="margin-top:48px;">
+                <div class="cs-solution-image-container" style="margin-top:32px;">
                     <span class="cs-image-badge old-design">Before</span>
                     <img src="assets/Old design.png" alt="ServCraft communication screen before redesign" class="cs-solution-screenshot">
-                    <p class="cs-image-caption cs-content-640">The communication screen before any changes, built lean, without a designer</p>
+                    <p class="cs-image-caption cs-content-640">The communication screen before any changes — crowded, and built lean, without a designer</p>
                 </div>
             </div>
         </section>
@@ -166,7 +182,6 @@
             <div class="container">
                 <div class="cs-content-640">
                     <h2 class="cs-section-title">Breaking Down the Screen</h2>
-                    <h3 class="cs-section-subtitle">Breaking Down the <span class="highlight-blue">UI Design of the Screen</span></h3>
                     <p class="cs-body-text">I annotated every element of the compose screen. Six issues stood out:</p>
                     <ul class="msg-issues-list">
                         <li>Recipient section: two always-open panels with no clear hierarchy, likely slowing users down</li>
@@ -188,7 +203,7 @@
             <div class="container">
                 <div class="cs-content-640">
                     <h2 class="cs-section-title">Benchmarking</h2>
-                    <h3 class="cs-section-subtitle">Looking at <span class="highlight-blue">Some Inspiration</span></h3>
+                    <h3 class="cs-section-subtitle">What <span class="highlight-blue">Other Tools Get Right</span></h3>
                     <p class="cs-body-text">I looked at how other SaaS tools handle multi-channel messaging. Two patterns stood out: single-composer channel toggling, and surfacing recipient context inline.</p>
                 </div>
                 <div class="cs-solution-image-container" style="margin-top:32px;">
@@ -203,7 +218,7 @@
             <div class="container">
                 <div class="cs-content-640">
                     <h2 class="cs-section-title">Scope and Constraints</h2>
-                    <h3 class="cs-section-subtitle">A Long List, Cut Down to <span class="highlight-blue">What Was Actually Feasible</span></h3>
+                    <h3 class="cs-section-subtitle">Cut Down to <span class="highlight-blue">What Was Feasible</span></h3>
                     <p class="cs-body-text">The breakdown surfaced more than V1 could hold. We went through the list together and made hard calls.</p>
                 </div>
 
@@ -244,8 +259,7 @@
             <div class="container">
                 <div class="cs-content-640">
                     <h2 class="cs-section-title">The Redesign</h2>
-                    <h3 class="cs-section-subtitle">What Users Showed Us. <span class="highlight-blue">What We Changed.</span></h3>
-                    <p class="cs-body-text">Many teams had built deep habits around the existing flow. Each change had to earn adoption from both new users and established ones already embedded in the product.</p>
+                    <p class="cs-body-text">Many teams had built deep habits around the existing flow — habits built on trusting that the message would look right and reach the right person. Each change had to earn that same trust: from new users learning the flow for the first time, and from established teams who relied on it every day to keep their business running and their customers informed.</p>
                 </div>
             </div>
         </section>
@@ -262,11 +276,15 @@
             <div class="msg-ba-grid">
                 <div class="msg-img-block">
                     <p class="msg-img-label">Before</p>
-                    <img src="assets/old replacement tags.png" alt="Old curly bracket replacement tags" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/old replacement tags.png" alt="Old curly bracket replacement tags" class="msg-ba-img">
+                    </div>
                 </div>
                 <div class="msg-img-block">
                     <p class="msg-img-label">After</p>
-                    <img src="assets/replacement tags.png" alt="Redesigned replacement tags" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/replacement tags.png" alt="Redesigned replacement tags" class="msg-ba-img">
+                    </div>
                 </div>
             </div>
         </section>
@@ -283,11 +301,15 @@
             <div class="msg-ba-grid">
                 <div class="msg-img-block">
                     <p class="msg-img-label">Before</p>
-                    <img src="assets/Old contact selector.png" alt="Old separate contact panels" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/Old contact selector.png" alt="Old separate contact panels" class="msg-ba-img">
+                    </div>
                 </div>
                 <div class="msg-img-block">
                     <p class="msg-img-label">After</p>
-                    <img src="assets/Tool bar and single contact selector.png" alt="Redesigned single contact selector" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/Tool bar and single contact selector.png" alt="Redesigned single contact selector" class="msg-ba-img">
+                    </div>
                 </div>
             </div>
         </section>
@@ -304,11 +326,15 @@
             <div class="msg-ba-grid">
                 <div class="msg-img-block">
                     <p class="msg-img-label">Before</p>
-                    <img src="assets/Old design.png" alt="Old attachment area" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/Old design.png" alt="Old attachment area" class="msg-ba-img">
+                    </div>
                 </div>
                 <div class="msg-img-block">
                     <p class="msg-img-label">After</p>
-                    <img src="assets/Attachments updated.png" alt="Redesigned attachment area" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/Attachments updated.png" alt="Redesigned attachment area" class="msg-ba-img">
+                    </div>
                 </div>
             </div>
         </section>
@@ -318,18 +344,22 @@
             <div class="container">
                 <div class="msg-solution-header">
                     <span class="msg-solution-number">04</span>
-                    <h4 class="msg-solution-title">Layout: making it feel designed</h4>
+                    <h4 class="msg-solution-title">Layout: from debt to deliberate, one screen at a time</h4>
                     <p class="cs-body-text">The updated layout groups related controls, keeps templates prominent at the top where users start, and surfaces SMS credits inline with the send flow.</p>
                 </div>
             </div>
             <div class="msg-ba-grid">
                 <div class="msg-img-block">
                     <p class="msg-img-label">Before</p>
-                    <img src="assets/Old design.png" alt="Old layout" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/Old design.png" alt="Old layout" class="msg-ba-img">
+                    </div>
                 </div>
                 <div class="msg-img-block">
                     <p class="msg-img-label">After</p>
-                    <img src="assets/Updated messaging.png" alt="Redesigned layout" class="msg-ba-img">
+                    <div class="msg-img-frame">
+                        <img src="assets/Updated messaging.png" alt="Redesigned layout" class="msg-ba-img">
+                    </div>
                 </div>
             </div>
         </section>
@@ -339,8 +369,8 @@
             <div class="container">
                 <div class="cs-content-640">
                     <h2 class="cs-section-title" style="color:#a8c8f0;">Early Signals</h2>
-                    <h3 class="cs-section-subtitle" style="color:#ffffff;">What the Data <span style="color:#5aabff;">Showed After Launch</span></h3>
-                    <p class="cs-body-text" style="color:#b8cfe0;">I returned to the same Clarity metrics used to establish the baseline. Three questions going in: did the redesign reduce friction, are users completing tasks more smoothly, and is email volume increasing? Not all are answerable yet.</p>
+                    <h3 class="cs-section-subtitle" style="color:#ffffff;">Fewer Dead Clicks, <span style="color:#5aabff;">More Email Sent</span></h3>
+                    <p class="cs-body-text" style="color:#b8cfe0;">I returned to the same Clarity metrics used to establish the baseline, and pulled month-to-date email totals from three customer accounts to check the third question directly. Three questions going in: did the redesign reduce friction, are users completing tasks more smoothly, and is email volume increasing? The first two have early answers below — and so does the third.</p>
                 </div>
 
                 <!-- Bar chart: before / after dead clicks -->
@@ -388,10 +418,35 @@
                     <p class="cs-body-text" style="color:#b8cfe0;">Session recordings show adoption has been seamless. Users move through the compose flow smoothly, and the single contact selector appears to be reducing time spent on recipient selection. The dead click reduction directly validates the attachment label fix and the broader UI cleanup.</p>
                 </div>
 
+                <!-- Email volume, three accounts -->
+                <div class="cs-content-640" style="margin-top:48px;">
+                    <span class="msg-chart-metric" style="display:block;margin-bottom:12px;">Email volume, three accounts</span>
+                    <p class="cs-body-text" style="color:#b8cfe0;margin:0 0 24px;">I pulled month-to-date email totals from three customer accounts — where they stood on 24 June, before the redesign, compared to the same 24-day window in July, after launch (with two checkpoints in between to show the trajectory). Company names below are not real, for anonymity — the accounts and numbers are.</p>
+                </div>
+                <div class="msg-compare-chart" style="margin-top:0;">
+                    <div class="msg-chart-row">
+                        <span class="msg-chart-metric">Falcon Security Group</span>
+                        <p class="cs-body-text" style="color:#b8cfe0;margin:0;">3,330 (24 Jun) → 2,240 → 2,626 → 3,292 (24 Jul) — <strong style="color:#a8c8f0;">essentially flat, within 1%</strong></p>
+                    </div>
+                    <div class="msg-chart-divider"></div>
+                    <div class="msg-chart-row">
+                        <span class="msg-chart-metric">Meridian HVAC Services</span>
+                        <p class="cs-body-text" style="color:#b8cfe0;margin:0;">1,721 (24 Jun) → 1,374 → 1,592 → 1,988 (24 Jul) — <strong style="color:#a8c8f0;">up 16%</strong></p>
+                    </div>
+                    <div class="msg-chart-divider"></div>
+                    <div class="msg-chart-row">
+                        <span class="msg-chart-metric">Norwood Plumbing Co.</span>
+                        <p class="cs-body-text" style="color:#b8cfe0;margin:0;">691 (24 Jun) → 705 → 819 → 1,006 (24 Jul) — <strong style="color:#a8c8f0;">up 46%</strong></p>
+                    </div>
+                </div>
+                <div class="cs-content-640" style="margin-top:24px;">
+                    <p class="cs-body-text" style="color:#b8cfe0;">A mixed but encouraging picture — volume held steady for the highest-usage account and grew meaningfully for the other two, with no account sending less than it did before the redesign.</p>
+                </div>
+
                 <!-- What we're still watching -->
-                <div class="msg-watching-list">
-                    <div class="msg-watching-item">Email and SMS volume trends have too many variables to attribute cleanly — new users, seasonal business patterns, and upcoming WhatsApp integration will all affect the numbers.</div>
-                    <div class="msg-watching-item">Revenue from the paid email tier is being tracked as adoption of the add-on grows.</div>
+                <div class="msg-watching-list" style="margin-top:40px;">
+                    <div class="msg-watching-item">Full email and SMS volume trends across all customers still have too many variables to attribute cleanly — new users, seasonal business patterns, and upcoming WhatsApp integration will all affect the numbers. The three accounts above are a promising early read, not a controlled comparison.</div>
+                    <div class="msg-watching-item">Revenue from the email add-on is being tracked as adoption grows.</div>
                     <div class="msg-watching-item">The remaining 12.26% dead click rate is under investigation, likely tied to UI elements outside V1 scope.</div>
                 </div>
             </div>

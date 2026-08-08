@@ -3206,8 +3206,10 @@ a {
 .msg-ba-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 28px;
     width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0 40px;
 }
 
@@ -3225,11 +3227,21 @@ a {
     padding-left: 16px;
 }
 
+.msg-img-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f4f7fb;
+    border: 1px solid rgba(15, 35, 55, 0.08);
+}
+
 .msg-ba-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    border-radius: 12px;
+    object-fit: cover;
+    object-position: top left;
 }
 
 .msg-ba-placeholder {
