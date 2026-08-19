@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     
     <!-- GSAP for Smooth Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -69,28 +69,28 @@
     <section class="hero">
         <div class="hero-main-white">
             <div class="container">
-                <div class="hero-layout">
-                    <!-- Left Column -->
-                    <div class="hero-col hero-col-left">
-                        <h1 class="hero-headline">Transforming complex challenges into simple, intuitive experiences.</h1>
-                        <div class="hero-intro-name">
-                            <span class="intro-text">Hello, my name is</span>
-                            <img src="assets/tyra-hans-signature.png" alt="Tyra Hans" class="signature-image">
-                        </div>
-                        <p class="intro-subtitle">I'm a full stack product designer with 6 years experience.</p>
-                        <p class="hero-availability">Currently open to remote senior product designer roles in fintech and B2B SaaS.</p>
+                <div class="hero-top-row">
+                    <!-- Headline -->
+                    <div class="hero-headline-col">
+                        <h1 class="hero-headline">Transforming complex challenges<br>into simple, intuitive experiences.</h1>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-banner-wrapper">
+                        <img src="assets/Hero_image.png" alt="Design systems, AI native designer, senior designer, remote first, dev background" class="hero-banner-image">
                     </div>
 
-                    <!-- Center Column -->
-                    <div class="hero-col hero-col-center">
-                        <div class="hero-person-wrapper">
-                            <img src="assets/hero-portrait.png" alt="Tyra Hans - Product Designer" class="hero-person-image">
+                    <!-- Intro card fitted inside the banner's notch -->
+                    <div class="hero-intro-col">
+                        <img src="assets/Hero-thumbnail.png" alt="Tyra Hans - Product Designer" class="hero-thumbnail-image">
+                        <div class="hero-intro-text-block">
+                            <div class="hero-intro-name">
+                                <span class="intro-text">Hello, my name is</span>
+                                <img src="assets/tyra-hans-signature.png" alt="Tyra Hans" class="signature-image">
+                            </div>
+                            <p class="intro-subtitle">I'm a full stack product designer with 6 years experience.</p>
                         </div>
-                    </div>
-
-                    <!-- Right Column -->
-                    <div class="hero-col hero-col-right">
-                        <p class="hero-description">I use AI as a co-designer to move faster, take on more responsibility, and explore new interaction models — including agentic workflows, voice, and multimodal UX.</p>
                     </div>
                 </div>
             </div>
@@ -356,7 +356,7 @@
                     <h2 class="cta-title">Looking for a designer? <span class="cta-highlight">Let's chat!</span></h2>
                     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
                         <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="cta-button" onclick="track('resume_download')">See my resume</a>
-                        <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="cta-button" style="background:transparent;border:1.5px solid currentColor;" onclick="track('book_call_click')">Book a call →</a>
+                        <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="cta-button" style="background:transparent;color:#004172;border:1.5px solid #004172;" onclick="track('book_call_click')">Book a call →</a>
                     </div>
                 </div>
                 <div class="cta-contact">
@@ -418,6 +418,12 @@
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
 
+        // Recalculate scroll-trigger positions once all images have finished
+        // loading — image-heavy sections (hero banner, work cards) grow the
+        // page height after triggers are first computed, which otherwise
+        // leaves later sections' triggers permanently unreachable.
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+
         // ── Word-split helper ────────────────────────────────────────────
         function splitWords(el) {
             const raw = el.innerHTML;
@@ -458,10 +464,10 @@
         gsap.from(headlineWords, {
             yPercent: 105, duration: 1.0, stagger: 0.045, ease: 'power3.out', delay: 0.15
         });
+        gsap.from('.hero-thumbnail-image', { scale: 1.06, opacity: 0, duration: 1.0, delay: 0.2, ease: 'power2.out' });
         gsap.from('.hero-intro-name', { y: 22, opacity: 0, duration: 0.8, delay: 0.55, ease: 'power2.out' });
         gsap.from('.intro-subtitle',  { y: 22, opacity: 0, duration: 0.8, delay: 0.7,  ease: 'power2.out' });
-        gsap.from('.hero-person-image', { scale: 1.06, opacity: 0, duration: 1.3, delay: 0.1, ease: 'power2.out' });
-        gsap.from('.hero-description',  { y: 22, opacity: 0, duration: 0.8, delay: 0.5, ease: 'power2.out' });
+        gsap.from('.hero-banner-wrapper', { y: 30, opacity: 0, duration: 1.1, delay: 0.35, ease: 'power2.out' });
         gsap.from('.hero-content-bottom', { y: 18, opacity: 0, duration: 0.8, delay: 1.0, ease: 'power2.out' });
 
         // ── Work section ─────────────────────────────────────────────────
@@ -530,13 +536,13 @@
                 yPercent: 105, duration: 0.85, stagger: 0.04, ease: 'power3.out'
             });
         }
-        gsap.from('.cta-button, .cta-footer-links', {
+        gsap.from('.cta-contact', {
             scrollTrigger: { trigger: '.cta-section', start: 'top 88%' },
-            y: 20, opacity: 0, duration: 0.7, stagger: 0.12, delay: 0.3, ease: 'power2.out'
+            y: 20, opacity: 0, duration: 0.7, delay: 0.3, ease: 'power2.out'
         });
 
-        // ── Hero portrait parallax ───────────────────────────────────────
-        gsap.to('.hero-person-image', {
+        // ── Hero banner parallax ───────────────────────────────────────
+        gsap.to('.hero-banner-image', {
             scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 },
             y: -30, ease: 'none'
         });
