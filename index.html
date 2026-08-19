@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preload" as="image" href="assets/Hero_image.webp" type="image/webp">
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -37,19 +38,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     
     <!-- GSAP for Smooth Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <script defer src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <!-- Header Navigation -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="index.html"><img src="assets/favicon2black.png" alt="Logo" class="logo"></a>
+                <a href="index.html"><img src="assets/favicon2black.webp" alt="Logo" class="logo" decoding="async" width="385" height="356"></a>
                 <button class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -72,22 +73,26 @@
                 <div class="hero-top-row">
                     <!-- Headline -->
                     <div class="hero-headline-col">
-                        <h1 class="hero-headline">Transforming complex challenges<br>into simple, intuitive experiences.</h1>
+                        <h1 class="hero-headline" style="opacity:0">Transforming complex challenges<br>into simple, intuitive experiences.</h1>
+                        <noscript><style>.hero-headline{opacity:1}</style></noscript>
                     </div>
                 </div>
 
                 <div class="hero-visual">
                     <div class="hero-banner-wrapper">
-                        <img src="assets/Hero_image.png" alt="Design systems, AI native designer, senior designer, remote first, dev background" class="hero-banner-image">
+                        <picture>
+                            <source srcset="assets/Hero_image.webp" type="image/webp">
+                            <img src="assets/Hero_image.webp" alt="Design systems, AI native designer, senior designer, remote first, dev background" class="hero-banner-image" width="2046" height="898" fetchpriority="high" decoding="async">
+                        </picture>
                     </div>
 
                     <!-- Intro card fitted inside the banner's notch -->
                     <div class="hero-intro-col">
-                        <img src="assets/Hero-thumbnail.png" alt="Tyra Hans - Product Designer" class="hero-thumbnail-image">
+                        <img src="assets/Hero-thumbnail.webp" alt="Tyra Hans - Product Designer" class="hero-thumbnail-image" loading="lazy" decoding="async" width="192" height="147">
                         <div class="hero-intro-text-block">
                             <div class="hero-intro-name">
                                 <span class="intro-text">Hello, my name is</span>
-                                <img src="assets/tyra-hans-signature.png" alt="Tyra Hans" class="signature-image">
+                                <img src="assets/tyra-hans-signature.webp" alt="Tyra Hans" class="signature-image" loading="lazy" decoding="async" width="1327" height="653">
                             </div>
                             <p class="intro-subtitle">I'm a full stack product designer with 6 years experience.</p>
                         </div>
@@ -101,14 +106,14 @@
                     <div class="hero-companies">
                         <div class="company-group">
                             <p class="company-label">Currently at</p>
-                            <img src="assets/servcraft-logo.png" alt="ServCraft" class="company-logo">
+                            <img src="assets/servcraft-logo.webp" alt="ServCraft" class="company-logo" decoding="async" width="972" height="220">
                         </div>
                         <div class="company-group">
                             <p class="company-label">Previously at</p>
                             <div class="previous-companies">
-                                <img src="assets/Credify logo.png" alt="Credify" class="prev-logo">
+                                <img src="assets/Credify logo.webp" alt="Credify" class="prev-logo" loading="lazy" decoding="async" width="532" height="200">
                                 <span class="and-text">and</span>
-                                <img src="assets/onafriq-logo.png" alt="Onafriq" class="prev-logo">
+                                <img src="assets/onafriq-logo.webp" alt="Onafriq" class="prev-logo" decoding="async" width="1000" height="308">
                             </div>
                         </div>
                     </div>
@@ -130,7 +135,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="messages-update-video.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/Updated messaging.png" alt="ServCraft Messaging Redesign" class="work-card-image">
+                        <img src="assets/Updated messaging.webp" alt="ServCraft Messaging Redesign" class="work-card-image" loading="lazy" decoding="async" width="2170" height="1494">
                         <span class="work-item-badge">New</span>
                     </div>
                     <div class="work-card-content">
@@ -145,7 +150,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper" id="scCardWrapper">
                         <a href="servcraft.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/servcraft-scheduler-showcase.png" alt="ServCraft Project" class="work-card-image" id="scCardThumb">
+                        <img src="assets/servcraft-scheduler-showcase.webp" alt="ServCraft Project" class="work-card-image" id="scCardThumb" loading="lazy" decoding="async" width="2400" height="1107">
                         <video class="work-card-hover-video" id="scCardVideo" src="assets/demo-timeline-week.mp4" muted playsinline loop preload="none"></video>
                     </div>
                     <div class="work-card-content">
@@ -160,7 +165,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="credify.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/credify-thumbnail-new.png" alt="Credify Project" class="work-card-image">
+                        <img src="assets/credify-thumbnail-new.webp" alt="Credify Project" class="work-card-image" loading="lazy" decoding="async" width="2292" height="1580">
                     </div>
                     <div class="work-card-content">
                         <p class="work-card-title">Digitizing trade for Ugandan importers</p>
@@ -181,7 +186,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper" id="speediCardWrapper">
                         <a href="speedi.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/speedi-thumbnail.png" alt="Speedi E-Bike Display" class="work-card-image" id="speediCardThumb">
+                        <img src="assets/speedi-thumbnail.webp" alt="Speedi E-Bike Display" class="work-card-image" id="speediCardThumb" loading="lazy" decoding="async" width="1936" height="1936">
                         <video class="work-card-hover-video" id="speediCardVideo" src="assets/speedi-ad.mp4" muted playsinline loop preload="none"></video>
                     </div>
                     <div class="work-card-content">
@@ -196,7 +201,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="scroll-video.html" target="_blank" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/poster_v1.jpg" alt="Immersive luxury private flying" class="work-card-image">
+                        <img src="assets/poster_v1.webp" alt="Immersive luxury private flying" class="work-card-image" loading="lazy" decoding="async" width="1616" height="1280">
                         <span class="work-item-badge">New</span>
                     </div>
                     <div class="work-card-content">
@@ -298,7 +303,7 @@
         <div class="container">
             <h2 class="tools-title">Tools I find <span class="tools-highlight">most useful</span></h2>
             <div class="tools-grid">
-                <img src="assets/tools-logos.svg" alt="Tools logos grid" class="tools-logos">
+                <img src="assets/tools-logos.svg" alt="Tools logos grid" class="tools-logos" decoding="async">
             </div>
         </div>
     </section>
@@ -314,7 +319,7 @@
                 <!-- Article 1 -->
                 <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card" onclick="track('medium_article_click')">
                     <div class="musing-card-image">
-                        <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover">
+                        <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover" loading="lazy" decoding="async">
                     </div>
                     <div class="musing-card-content">
                         <h3 class="musing-card-title">The Design System Every Small Team Couldn't Afford to Build, But Now Can.</h3>
@@ -327,7 +332,7 @@
                 <!-- Article 2 -->
                 <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card" onclick="track('medium_article_click')">
                     <div class="musing-card-image">
-                        <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover">
+                        <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover" loading="lazy" decoding="async">
                     </div>
                     <div class="musing-card-content">
                         <h3 class="musing-card-title">When Designers are Treated like AI</h3>
@@ -373,7 +378,7 @@
         <div class="container">
             <div class="footer-full-inner">
                 <div class="footer-full-top">
-                    <img src="assets/favicon1.png" alt="Logo" class="footer-logo">
+                    <img src="assets/favicon1.webp" alt="Logo" class="footer-logo" loading="lazy" decoding="async" width="385" height="356">
                     <div class="footer-full-right">
                         <h3 class="footer-heading">Let's work together</h3>
                         <div class="footer-contact-row">
@@ -391,10 +396,11 @@
     <!-- Image Viewer Modal -->
     <div id="imageViewer" class="image-viewer">
         <span class="close-viewer">&times;</span>
-        <img class="viewer-content" id="fullImage">
+        <img class="viewer-content" id="fullImage" loading="lazy" decoding="async">
     </div>
 
     <script>
+      document.addEventListener('DOMContentLoaded', function () {
         // Image Viewer Modal
         const viewer = document.getElementById('imageViewer');
         const viewerImg = document.getElementById('fullImage');
@@ -460,7 +466,11 @@
         }
 
         // ── Hero entrance ────────────────────────────────────────────────
-        const headlineWords = splitWords(document.querySelector('.hero-headline'));
+        // Headline stays invisible (inline style) until it's split into masked
+        // words below, so it never flashes unmasked before the reveal animation.
+        const heroHeadlineEl = document.querySelector('.hero-headline');
+        const headlineWords = splitWords(heroHeadlineEl);
+        heroHeadlineEl.style.opacity = '';
         gsap.from(headlineWords, {
             yPercent: 105, duration: 1.0, stagger: 0.045, ease: 'power3.out', delay: 0.15
         });
@@ -630,6 +640,7 @@
                 document.body.style.overflow = 'auto';
             });
         });
+      });
     </script>
 </body>
 </html>
