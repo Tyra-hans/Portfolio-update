@@ -111,11 +111,11 @@
                 </div>
             </div>
             <div class="cs-solution-image-container" style="margin-top:56px;">
-                <video src="assets/cursorful-video-1786171730288.mp4" class="cs-demo-video" autoplay loop muted playsinline preload="auto"></video>
+                <video data-src="assets/cursorful-video-1786171730288.mp4" class="cs-demo-video lazy-video" loop muted playsinline preload="none"></video>
                 <p class="cs-image-caption cs-content-640">Loading a template, inserting replacement tags, and attaching files</p>
             </div>
             <div class="cs-solution-image-container" style="margin-top:64px;">
-                <video src="assets/cursorful-video-1786173690079.mp4" class="cs-demo-video" autoplay loop muted playsinline preload="auto"></video>
+                <video data-src="assets/cursorful-video-1786173690079.mp4" class="cs-demo-video lazy-video" loop muted playsinline preload="none"></video>
                 <p class="cs-image-caption cs-content-640">Selecting multiple recipients and composing with the @ tag picker in the rich-text HTML composer</p>
             </div>
         </section>
@@ -534,6 +534,22 @@
     </footer>
 
     <script>
+        // Lazy-load below-the-fold demo videos only once they're about to scroll into view
+        document.addEventListener('DOMContentLoaded', () => {
+            const lazyVideos = document.querySelectorAll('video.lazy-video');
+            const videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const video = entry.target;
+                    video.src = video.dataset.src;
+                    video.load();
+                    video.play().catch(() => {});
+                    observer.unobserve(video);
+                });
+            }, { rootMargin: '200px' });
+            lazyVideos.forEach(video => videoObserver.observe(video));
+        });
+
         // Lightbox
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('img.cs-solution-screenshot, img.msg-ba-img').forEach(img => {
