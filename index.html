@@ -131,6 +131,21 @@
             </div>
 
             <div class="work-grid">
+                <!-- ServCraft Preview Project -->
+                <div class="work-card">
+                    <div class="work-card-image-wrapper">
+                        <a href="servcraft-preview.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
+                        <img src="assets/servcraft-preview-thumb.gif" alt="ServCraft Preview mobile app" class="work-card-image" loading="lazy" decoding="async" width="800" height="544">
+                        <span class="work-item-status">Coming soon</span>
+                    </div>
+                    <div class="work-card-content">
+                        <p class="work-card-title">Rebuilding the App Field Teams Carry With Them</p>
+                        <div class="work-card-footer">
+                            <a href="servcraft-preview.html" class="work-card-cta" onclick="track('case_study_click')">Go to case study <span class="arrow-cta">→</span></a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- ServCraft Messaging Project -->
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
@@ -536,6 +551,18 @@
             duration: 1.0,
             ease: 'power2.out'
         });
+
+        // ── Full-width video: scale down when out of view, grow in view ───
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.video-fullwidth-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.6
+            }
+        })
+        .fromTo('.video-fullwidth-wrapper', { scale: 0.9 }, { scale: 1, ease: 'none', duration: 1 })
+        .to('.video-fullwidth-wrapper', { scale: 0.9, ease: 'none', duration: 1 });
 
         // ── CTA section ──────────────────────────────────────────────────
         const ctaTitle = document.querySelector('.cta-title');

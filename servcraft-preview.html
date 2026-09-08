@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "whnfdpjsli");
+    </script>
+    <script>clarity("set", "page_type", "case_study_intro"); clarity("set", "project", "servcraft_preview");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRRW9BX0MN');
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServCraft Preview - Tyra Hans Product Designer</title>
+    <meta name="description" content="ServCraft Preview: a ground-up rebuild of the mobile app on a more robust tech stack, now in beta with 100+ field testers. Coming soon.">
+    <meta property="og:title" content="ServCraft Preview | Tyra Hans">
+    <meta property="og:description" content="A ground-up rebuild of the ServCraft mobile app, now in beta with 100+ field testers. Coming soon.">
+    <meta property="og:image" content="https://tyra-hans.github.io/Portfolio-update/assets/hero-portrait.png">
+    <meta property="og:url" content="https://tyra-hans.github.io/Portfolio-update/servcraft-preview.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .sp-section {
+            padding: 100px 0 80px;
+            background-color: #ffffff;
+        }
+        .sp-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .sp-kicker-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .sp-kicker {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: #085895;
+        }
+        .sp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #0f7a3a;
+            background: #e8f6ec;
+            border: 1px solid #cdebd6;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        .sp-badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #1fa855;
+            box-shadow: 0 0 0 3px rgba(31,168,85,0.18);
+        }
+        .sp-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -2.8px;
+            line-height: 1.2;
+            color: #004172;
+            margin-bottom: 16px;
+        }
+        .sp-description {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            line-height: 1.5;
+            color: #004172;
+        }
+
+        /* Meta strip */
+        .sp-meta-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 32px auto 0;
+            padding: 20px 32px;
+            background: #f4f7fb;
+            border: 1px solid #e0e8f0;
+            border-radius: 16px;
+            max-width: 640px;
+            flex-wrap: wrap;
+        }
+        .sp-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+        .sp-meta-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #6b8299;
+        }
+        .sp-meta-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #004172;
+        }
+        .sp-meta-divider {
+            width: 1px;
+            height: 32px;
+            background: #d0dce8;
+            flex-shrink: 0;
+        }
+
+        /* Phone mockups */
+        .sp-phones-wrapper {
+            max-width: 900px;
+            margin: 56px auto 0;
+        }
+        .sp-phones-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .sp-phone-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            width: 260px;
+        }
+        .sp-phone {
+            position: relative;
+            width: 260px;
+            aspect-ratio: 828 / 1792;
+            background: #0b0f14;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 24px 60px rgba(0, 65, 114, 0.18);
+        }
+        .sp-phone video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 28px;
+            display: block;
+            background: #000;
+        }
+        .sp-phone-caption {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+            line-height: 1.5;
+            color: #4a6178;
+            text-align: center;
+            max-width: 240px;
+        }
+
+        /* Body content */
+        .sp-content {
+            max-width: 640px;
+            margin: 88px auto 0;
+        }
+        .sp-content + .sp-content { margin-top: 64px; }
+        .sp-section-title {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.3;
+            color: #004172;
+            margin-bottom: 16px;
+        }
+        .sp-body-text {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #004172;
+            margin: 0 0 18px;
+        }
+        .sp-body-text:last-child { margin-bottom: 0; }
+        .sp-body-text strong { font-weight: 700; }
+
+        .sp-stats-row {
+            display: flex;
+            gap: 16px;
+            margin: 28px 0 8px;
+            flex-wrap: wrap;
+        }
+        .sp-stat-card {
+            flex: 1;
+            min-width: 150px;
+            background: #f4f7fb;
+            border: 1px solid #e0e8f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+        }
+        .sp-stat-number {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #0091ff;
+            margin-bottom: 4px;
+        }
+        .sp-stat-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #4a6178;
+            line-height: 1.4;
+        }
+
+        .sp-icon-compare {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 28px 0 8px;
+            padding: 32px 24px;
+            background: #f4f7fb;
+            border: 1px solid #e0e8f0;
+            border-radius: 16px;
+        }
+        .sp-icon-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .sp-icon-image {
+            width: 96px;
+            height: 96px;
+            object-fit: contain;
+            border-radius: 22px;
+        }
+        .sp-icon-label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #6b8299;
+        }
+        .sp-icon-arrow {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #a8bccf;
+            flex-shrink: 0;
+        }
+
+        .sp-italic-note {
+            font-size: 15px;
+            font-style: italic;
+            color: #6b8299;
+            line-height: 1.6;
+            margin-top: 24px;
+        }
+
+        .sp-cta-row {
+            max-width: 640px;
+            margin: 56px auto 0;
+            display: flex;
+            justify-content: center;
+        }
+        .sp-cta-btn {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #004172;
+            background-color: #ffffff;
+            border: 1.5px solid #d0dce8;
+            padding: 15px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.3s ease, transform 0.3s ease, border-color .3s ease;
+        }
+        .sp-cta-btn:hover {
+            border-color: #0091ff;
+            transform: translateX(2px);
+        }
+        .sp-back-row {
+            max-width: 640px;
+            margin: 20px auto 0;
+            text-align: center;
+        }
+
+        @media (max-width: 767px) {
+            .sp-section { padding: 70px 0 60px; }
+            .sp-title { font-size: 30px; letter-spacing: -1.5px; }
+            .sp-description { font-size: 16px; }
+            .sp-meta-strip { gap: 16px; padding: 16px 20px; }
+            .sp-meta-divider { display: none; }
+            .sp-phones-row { gap: 28px; }
+            .sp-phone-block { width: 220px; }
+            .sp-phone { width: 220px; }
+            .sp-content { margin-top: 64px; }
+            .sp-section-title { font-size: 22px; }
+            .sp-body-text { font-size: 16px; }
+            .sp-stats-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.webp" alt="Logo" class="logo" decoding="async" width="385" height="356"></a>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav class="nav" id="nav">
+                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="musings.html" class="nav-link">Musings</a>
+                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="case-study-page">
+        <section class="sp-section">
+            <div class="container">
+                <div class="sp-header">
+                    <div class="sp-kicker-row">
+                        <span class="sp-kicker">ServCraft · Mobile App</span>
+                        <span class="sp-badge"><span class="sp-badge-dot"></span>In beta · Coming soon</span>
+                    </div>
+                    <h1 class="sp-title">Rebuilding the App Field Teams Carry With Them</h1>
+                    <p class="sp-description">A ground-up rebuild of the ServCraft mobile app on a more robust tech stack, now live in testing on the App Store and Google Play.</p>
+                </div>
+
+                <div class="sp-meta-strip">
+                    <div class="sp-meta-item">
+                        <span class="sp-meta-label">My role</span>
+                        <span class="sp-meta-value">Product designer</span>
+                    </div>
+                    <div class="sp-meta-divider"></div>
+                    <div class="sp-meta-item">
+                        <span class="sp-meta-label">Platform</span>
+                        <span class="sp-meta-value">iOS &amp; Android</span>
+                    </div>
+                    <div class="sp-meta-divider"></div>
+                    <div class="sp-meta-item">
+                        <span class="sp-meta-label">Status</span>
+                        <span class="sp-meta-value">In active beta testing</span>
+                    </div>
+                </div>
+
+                <!-- Phone mockups -->
+                <div class="sp-phones-wrapper">
+                    <div class="sp-phones-row">
+                        <div class="sp-phone-block">
+                            <div class="sp-phone" style="aspect-ratio:828/1692;">
+                                <video src="assets/servcraft-preview-carousel.mp4" poster="assets/servcraft-preview-carousel-poster.webp" autoplay loop muted playsinline preload="auto"></video>
+                            </div>
+                            <p class="sp-phone-caption">ServCraft Preview, live on the App Store while it's in testing</p>
+                        </div>
+                        <div class="sp-phone-block">
+                            <div class="sp-phone" style="aspect-ratio:828/1622;">
+                                <video src="assets/servcraft-preview-listing.mp4" poster="assets/servcraft-preview-listing-poster.webp" autoplay loop muted playsinline preload="auto"></video>
+                            </div>
+                            <p class="sp-phone-caption">Early screens from the current build: jobs, statuses, and attachments on the go</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-section" style="padding-top:0;">
+            <div class="container">
+                <div class="sp-content">
+                    <h2 class="sp-section-title">Why We're Rebuilding It</h2>
+                    <p class="sp-body-text"><strong>ServCraft Preview is a ground-up rebuild of the mobile app on a more robust tech stack,</strong> built to release fixes and updates more efficiently and serve customers even better in the field.</p>
+                    <p class="sp-body-text">Design is following close behind the rebuild, using it as an opportunity to refine and refactor the experience alongside the new foundation.</p>
+                    <p class="sp-body-text">I also designed the app icon for this release: the existing ServCraft logo with a Preview badge added, so testers can tell the beta apart from the main app at a glance.</p>
+
+                    <div class="sp-icon-compare">
+                        <div class="sp-icon-block">
+                            <img src="assets/servcraft-app-icon-original.webp" alt="Main ServCraft app icon" class="sp-icon-image" loading="lazy" decoding="async" width="400" height="400">
+                            <span class="sp-icon-label">Main app</span>
+                        </div>
+                        <span class="sp-icon-arrow">vs</span>
+                        <div class="sp-icon-block">
+                            <img src="assets/servcraft-preview-app-icon.webp" alt="ServCraft Preview app icon, with a Preview badge added" class="sp-icon-image" loading="lazy" decoding="async" width="344" height="272">
+                            <span class="sp-icon-label">Preview app</span>
+                        </div>
+                    </div>
+
+                    <p class="sp-italic-note">ServCraft Preview is currently available to subscribed ServCraft customers only.</p>
+                </div>
+
+                <div class="sp-content">
+                    <h2 class="sp-section-title">In Testers' Hands</h2>
+                    <p class="sp-body-text">The app is still in its early stages, undergoing a progressive build with real users involved from the start rather than brought in at the end.</p>
+
+                    <div class="sp-stats-row">
+                        <div class="sp-stat-card">
+                            <span class="sp-stat-number">100+</span>
+                            <span class="sp-stat-label">Field users testing the app and feeding back on real jobs</span>
+                        </div>
+                        <div class="sp-stat-card">
+                            <span class="sp-stat-number">2</span>
+                            <span class="sp-stat-label">Platforms in testing: App Store and Google Play</span>
+                        </div>
+                    </div>
+
+                    <p class="sp-body-text" style="margin-top:20px;">Every round of feedback from that group is shaping what gets refined next, before this becomes the version everyone uses.</p>
+                    <p class="sp-italic-note">The full case study will follow once the rebuild is out of beta. For now, this is a look at where it stands.</p>
+                </div>
+
+                <div class="sp-cta-row">
+                    <a href="work.html" class="sp-cta-btn">See more work <span class="arrow-cta">→</span></a>
+                </div>
+                <div class="sp-back-row">
+                    <a href="work.html" class="cs-back-link">← Back to all work</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-full-inner">
+                <div class="footer-full-top">
+                    <img src="assets/favicon1.webp" alt="Logo" class="footer-logo" loading="lazy" decoding="async" width="385" height="356">
+                    <div class="footer-full-right">
+                        <h3 class="footer-heading">Let's work together</h3>
+                        <div class="footer-contact-row">
+                            <a href="mailto:tyraoyuohans@gmail.com" class="footer-contact-link">tyraoyuohans@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="footer-contact-link">LinkedIn</a>
+                            <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="footer-book-btn" onclick="track('book_call_click')">Book a call</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-copy">Tyra Hans 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('.sp-kicker-row, .sp-title, .sp-description', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out', stagger: 0.1 });
+            gsap.from('.sp-meta-strip', { y: 20, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.15 });
+            gsap.from('.sp-phone-block', { y: 24, opacity: 0, duration: 0.9, ease: 'power2.out', delay: 0.25, stagger: 0.12 });
+
+            document.querySelectorAll('.sp-content').forEach((el) => {
+                gsap.from(el.children, {
+                    y: 16,
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: 'power2.out',
+                    stagger: 0.08,
+                    scrollTrigger: { trigger: el, start: 'top 85%' }
+                });
+            });
+
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

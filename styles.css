@@ -558,14 +558,14 @@ a {
     transition: transform 0.3s ease;
 }
 
-.work-card:nth-child(2) .work-card-image-wrapper {
+#scCardWrapper {
     background-color: transparent;
     padding: 0;
     margin: 0;
     border: none;
 }
 
-.work-card:nth-child(2) .work-card-image {
+#scCardThumb {
     transform: scale(1.08); /* Zoom in to hide the baked-in white border from the image file */
     transform-origin: center;
     width: 100%;
@@ -573,7 +573,7 @@ a {
     object-fit: cover;
 }
 
-.work-card:nth-child(2):hover .work-card-image {
+.work-card:hover #scCardThumb {
     transform: scale(1.1); /* Slightly more zoom on hover */
 }
 
@@ -4770,6 +4770,8 @@ a {
     height: 0;
     overflow: hidden;
     transform: translateZ(0);
+    transform-origin: center center;
+    will-change: transform;
 }
 
 .video-fullwidth-wrapper iframe,
