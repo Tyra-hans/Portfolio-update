@@ -34,9 +34,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- YouTube IFrame API -->
+    <script defer src="https://www.youtube.com/iframe_api"></script>
     <style>
         .about-hero {
             padding: 120px 0 64px;
@@ -46,7 +48,7 @@
             font-weight: 700;
             line-height: 1.15;
             max-width: 720px;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
         .about-bio {
             max-width: 640px;
@@ -59,68 +61,111 @@
             line-height: 1.75;
             color: #444;
         }
-        .about-section {
-            padding: 64px 0;
-            border-top: 1px solid #f0f0f0;
+
+        .certs-section {
+            padding: 40px 0 120px;
+            text-align: center;
         }
-        .about-section-label {
-            font-size: 12px;
+        .certs-trophy {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd166, #f4a300);
+        }
+        .certs-trophy svg {
+            width: 30px;
+            height: 30px;
+        }
+        .certs-label {
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: #aaa;
-            margin-bottom: 32px;
-        }
-        .about-section h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
             margin-bottom: 40px;
         }
-        .philosophy-grid {
+        .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 32px;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 28px;
+            max-width: 1320px;
+            margin: 0 auto;
+            justify-content: center;
         }
-        .philosophy-item h3 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .philosophy-item p {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #666;
-        }
-        .about-section .tools-title {
-            letter-spacing: 0px;
-        }
-        .about-cta {
-            padding: 64px 0 80px;
-            text-align: center;
-            border-top: 1px solid #f0f0f0;
-        }
-        .about-cta h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-        .about-cta-btn {
-            display: inline-block;
-            background: #0091ff;
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 16px 36px;
-            border-radius: 100px;
+        .cert-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 30px;
+            border: 1px solid #ececec;
+            border-radius: 20px;
             text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-            box-shadow: 0 4px 16px rgba(0, 145, 255, 0.3);
+            text-align: left;
+            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .about-cta-btn:hover {
-            background: #0080e0;
-            transform: translateY(-1px);
+        .cert-card:hover {
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 65, 114, 0.1);
+        }
+        .cert-card.cert-card-static {
+            cursor: default;
+        }
+        .cert-card.cert-card-static:hover {
+            border-color: #ececec;
+            transform: none;
+            box-shadow: none;
+        }
+        .cert-note {
+            margin-top: 8px;
+            font-size: 14px;
+            font-style: italic;
+            color: #999;
+        }
+        .cert-icon {
+            flex: 0 0 auto;
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            padding: 13px;
+        }
+        .cert-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .cert-body {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+        .cert-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.35;
+        }
+        .cert-meta {
+            font-size: 14px;
+            color: #888;
+        }
+        .cert-link {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
     </style>
 </head>
@@ -138,7 +183,6 @@
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
                     <a href="about.html" class="nav-link active">About</a>
-                    <a href="musings.html" class="nav-link">Musings</a>
                     <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
             </div>
@@ -146,58 +190,143 @@
     </header>
 
     <main>
-        <!-- Hero -->
+        <!-- Hero / bio -->
         <section class="about-hero">
             <div class="container">
-                <h1>I'm Tyra — a product designer who builds for complexity.</h1>
+                <h1>Product designer turning complex systems into interfaces people actually enjoy using.</h1>
                 <div class="about-bio">
-                    <p>I'm a full-stack product designer with 6 years of experience working across fintech, field service software, and hardware UX. I've shipped work used by thousands of users in South Africa, East Africa, and beyond — from enterprise scheduling tools to mobile-first trade finance apps.</p>
-                    <p>I use AI as a genuine co-designer — to move faster, take on broader scope, and explore interaction models that weren't possible before. Right now I'm especially interested in agentic workflows, voice UI, and the design challenges that emerge when software starts acting on your behalf.</p>
-                    <p>Good design earns its keep in production code. I work closely with engineers, care about implementation details, and build design systems that actually get used. If you're solving a hard problem, I want to help you solve it well.</p>
+                    <p>I'm Tyra, a product designer with 6 years of experience across fintech, field service software, and B2B SaaS. I've shipped work used by thousands of people across South Africa, East Africa, and beyond, from enterprise scheduling tools to mobile trade finance apps.</p>
+                    <p>I treat AI as a real design partner. It lets me move faster, take on more scope, and explore interaction models that used to be out of reach. Lately I'm drawn to agentic workflows, voice interfaces, and the design questions that show up when software starts acting on your behalf.</p>
+                    <p>Good design has to survive contact with production code. I work close to engineering, care about the details that make a system usable at scale, and build for the messy version of the problem, not the simplified one.</p>
                 </div>
             </div>
         </section>
 
-        <!-- How I work -->
-        <section class="about-section">
+        <!-- Certifications -->
+        <section class="certs-section">
             <div class="container">
-                <p class="about-section-label">How I work</p>
-                <div class="philosophy-grid">
-                    <div class="philosophy-item">
-                        <h3>Complexity is the brief</h3>
-                        <p>The messiest systems often have the most clarity waiting inside them. I find it by understanding before I solve.</p>
-                    </div>
-                    <div class="philosophy-item">
-                        <h3>Close to the code</h3>
-                        <p>I work closely with engineers and treat the codebase as a design artefact worth understanding. Production is where design proves itself.</p>
-                    </div>
-                    <div class="philosophy-item">
-                        <h3>Speed and depth together</h3>
-                        <p>AI gives me leverage to go deeper faster — more research, more prototypes, more iteration before a decision gets locked in.</p>
-                    </div>
-                    <div class="philosophy-item">
-                        <h3>Context is everything</h3>
-                        <p>Good design fits the person, the market, and the constraint. I care about how work lands in the real world, with real users.</p>
+                <span class="certs-trophy">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 21h8"/>
+                        <path d="M12 17v4"/>
+                        <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/>
+                        <path d="M17 5h2.5a1 1 0 0 1 1 1.17A4.5 4.5 0 0 1 16 10"/>
+                        <path d="M7 5H4.5a1 1 0 0 0-1 1.17A4.5 4.5 0 0 0 8 10"/>
+                    </svg>
+                </span>
+                <p class="certs-label">Certifications</p>
+                <div class="certs-grid">
+                    <a href="https://www.udemy.com/certificate/UC-336cd37b-acd4-4815-81cb-f2f2f5ab8565/" target="_blank" class="cert-card" onclick="track('certificate_click')">
+                        <span class="cert-icon">
+                            <img src="assets/Udemy-Logo.png" alt="Udemy" loading="lazy">
+                        </span>
+                        <span class="cert-body">
+                            <span class="cert-title">Web Accessibility Training: WCAG 2.1 &amp; 2.2 Compliance</span>
+                            <span class="cert-meta">Udemy · Jim Byrne</span>
+                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </span>
+                    </a>
+
+                    <a href="https://www.udemy.com/certificate/UC-483701df-0890-435c-9ece-264cbd90b7cd/" target="_blank" class="cert-card" onclick="track('certificate_click')">
+                        <span class="cert-icon">
+                            <img src="assets/Udemy-Logo.png" alt="Udemy" loading="lazy">
+                        </span>
+                        <span class="cert-body">
+                            <span class="cert-title">Design Rules: Principles + Practices for Great UI Design</span>
+                            <span class="cert-meta">Udemy · Joe Natoli</span>
+                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </span>
+                    </a>
+
+                    <a href="https://ixdf.org/members/tyra-hans/certificate/course/0327f21b-ff3e-4144-8f0a-c98d59083af6" target="_blank" class="cert-card" onclick="track('certificate_click')">
+                        <span class="cert-icon">
+                            <img src="assets/ixdf%20logo.jpg" alt="Interaction Design Foundation" loading="lazy">
+                        </span>
+                        <span class="cert-body">
+                            <span class="cert-title">Fundamentals of UX Design - Become a UX Designer from Scratch</span>
+                            <span class="cert-meta">Interaction Design Foundation · Best in Class</span>
+                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </span>
+                    </a>
+
+                    <a href="assets/certificate-designing-interfaces-awwwards.pdf" target="_blank" class="cert-card" onclick="track('certificate_click')">
+                        <span class="cert-icon">
+                            <img src="assets/awwwards%20logo.webp" alt="Awwwards Academy" loading="lazy">
+                        </span>
+                        <span class="cert-body">
+                            <span class="cert-title">Designing Interfaces: The Missing Piece in Your Design</span>
+                            <span class="cert-meta">Awwwards Academy · Bahaa Samir</span>
+                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </span>
+                    </a>
+
+                    <a href="https://www.dive.club/advanced-figma" target="_blank" class="cert-card" onclick="track('certificate_click')">
+                        <span class="cert-icon">
+                            <img src="assets/logo-figma-academy-2.svg" alt="Figma Academy 2.0" loading="lazy">
+                        </span>
+                        <span class="cert-body">
+                            <span class="cert-title">Figma Academy 2.0: The Most Advanced Design Course on the Internet</span>
+                            <span class="cert-meta">Dive Club · Completed</span>
+                            <span class="cert-note">No certificate offered — completed the full course and learned advanced Figma workflows.</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section (full-width) -->
+        <section class="video-fullwidth-section">
+            <div class="video-fullwidth-wrapper" id="heroVideoWrapper">
+                <div id="heroYouTubePlayer"></div>
+                <div class="video-controls-overlay" id="heroVideoControls">
+                    <div class="video-controls-bar">
+                        <button class="vcb-btn" id="heroPlayPauseBtn" aria-label="Pause video">
+                            <svg id="pauseIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                            <svg id="playIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        </button>
+                        <button class="vcb-btn" id="heroMuteBtn" aria-label="Unmute video">
+                            <svg id="muteIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                            <svg id="unmuteIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tools -->
-        <section class="tools-section about-section" style="border-top: 1px solid #f0f0f0;">
+        <!-- Musings Preview Section -->
+        <section class="musings-preview-section">
             <div class="container">
-                <h2 class="tools-title">Tools I find <span class="tools-highlight">most useful</span></h2>
-                <div class="tools-grid">
-                    <img src="assets/tools-logos.svg" alt="Tools logos grid" class="tools-logos" loading="lazy" decoding="async">
+                <div class="work-header">
+                    <h2 class="work-title">Latest <span class="work-highlight">musings</span></h2>
+                    <a href="https://tyrahans.medium.com" target="_blank" class="all-projects-link" onclick="track('medium_article_click')">All musings</a>
                 </div>
-            </div>
-        </section>
+                <div class="musings-grid">
+                    <!-- Article 1 -->
+                    <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card" onclick="track('medium_article_click')">
+                        <div class="musing-card-image">
+                            <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover" loading="lazy" decoding="async">
+                        </div>
+                        <div class="musing-card-content">
+                            <h3 class="musing-card-title">The Design System Every Small Team Couldn't Afford to Build, But Now Can.</h3>
+                            <p class="musing-card-date">March 28, 2026</p>
+                            <p class="musing-card-description">How AI levels the playing field for small product teams drowning in an opaque codebase.</p>
+                            <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </div>
+                    </a>
 
-        <!-- CTA -->
-        <section class="about-cta">
-            <div class="container">
-                <h2>Want to work together?</h2>
-                <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="about-cta-btn" onclick="track('book_call_click')">Book a call →</a>
+                    <!-- Article 2 -->
+                    <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card" onclick="track('medium_article_click')">
+                        <div class="musing-card-image">
+                            <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover" loading="lazy" decoding="async">
+                        </div>
+                        <div class="musing-card-content">
+                            <h3 class="musing-card-title">When Designers are Treated like AI</h3>
+                            <p class="musing-card-date">May 12, 2025</p>
+                            <p class="musing-card-description">Exploring the intersection of human creativity and artificial intelligence in the design process.</p>
+                            <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -228,16 +357,79 @@
         gsap.from('.about-hero h1', { duration: 0.9, y: 24, opacity: 0, ease: 'power2.out' });
         gsap.from('.about-bio p', { duration: 0.8, y: 18, opacity: 0, stagger: 0.12, delay: 0.3, ease: 'power2.out' });
 
-        gsap.utils.toArray('.philosophy-item').forEach((item, i) => {
-            gsap.from(item, {
-                scrollTrigger: { trigger: item, start: 'top 90%' },
-                y: 24, opacity: 0, duration: 0.7, delay: i * 0.07, ease: 'power2.out'
+        // ── Certifications ───────────────────────────────────────────────
+        gsap.utils.toArray('.cert-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 92%' },
+                y: 24, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power2.out'
             });
         });
 
-        gsap.from('.about-cta h2, .about-cta-btn', {
-            scrollTrigger: { trigger: '.about-cta', start: 'top 88%' },
-            y: 20, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power2.out'
+        // ── Full-width video reveal ───────────────────────────────────────
+        gsap.from('.video-fullwidth-section', {
+            scrollTrigger: { trigger: '.video-fullwidth-section', start: 'top 85%' },
+            opacity: 0,
+            y: 30,
+            duration: 1.0,
+            ease: 'power2.out'
+        });
+
+        // ── Full-width video: scale down when out of view, grow in view ───
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.video-fullwidth-section',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.6
+            }
+        })
+        .fromTo('.video-fullwidth-wrapper', { scale: 0.9 }, { scale: 1, ease: 'none', duration: 1 })
+        .to('.video-fullwidth-wrapper', { scale: 0.9, ease: 'none', duration: 1 });
+
+        // ── Full-width YouTube autoplay video ────────────────────────────
+        var heroPlayer, heroPlaying = true, heroMuted = true;
+
+        window.onYouTubeIframeAPIReady = function() {
+            heroPlayer = new YT.Player('heroYouTubePlayer', {
+                videoId: '_VQFPJxFuJg',
+                playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: '_VQFPJxFuJg', controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
+                events: { onReady: function(e) { e.target.playVideo(); } }
+            });
+        };
+
+        document.getElementById('heroPlayPauseBtn').addEventListener('click', function() {
+            if (!heroPlayer) return;
+            if (heroPlaying) {
+                heroPlayer.pauseVideo(); heroPlaying = false;
+                document.getElementById('pauseIcon').style.display = 'none';
+                document.getElementById('playIcon').style.display = 'block';
+            } else {
+                heroPlayer.playVideo(); heroPlaying = true;
+                track('video_play');
+                document.getElementById('pauseIcon').style.display = 'block';
+                document.getElementById('playIcon').style.display = 'none';
+            }
+        });
+
+        document.getElementById('heroMuteBtn').addEventListener('click', function() {
+            if (!heroPlayer) return;
+            if (heroMuted) {
+                heroPlayer.unMute(); heroMuted = false;
+                document.getElementById('muteIcon').style.display = 'none';
+                document.getElementById('unmuteIcon').style.display = 'block';
+            } else {
+                heroPlayer.mute(); heroMuted = true;
+                document.getElementById('muteIcon').style.display = 'block';
+                document.getElementById('unmuteIcon').style.display = 'none';
+            }
+        });
+
+        // ── Musings cards ────────────────────────────────────────────────
+        gsap.utils.toArray('.musing-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 92%' },
+                y: 35, opacity: 0, duration: 0.75, delay: i * 0.1, ease: 'power2.out'
+            });
         });
 
         // Mobile menu

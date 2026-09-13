@@ -35,15 +35,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     
     <!-- GSAP for Smooth Animations -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Lenis Smooth Scroll -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <!-- YouTube IFrame API -->
-    <script defer src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -59,7 +55,6 @@
                 <nav class="nav" id="nav">
                     <a href="work.html" class="nav-link">Work</a>
                     <a href="about.html" class="nav-link">About</a>
-                    <a href="musings.html" class="nav-link">Musings</a>
                     <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
             </div>
@@ -135,8 +130,8 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="servcraft-preview.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/servcraft-preview-thumb.gif" alt="ServCraft Preview mobile app" class="work-card-image" loading="lazy" decoding="async" width="800" height="544">
-                        <span class="work-item-status">Coming soon</span>
+                        <img src="assets/servcraft-preview-thumb-2.webp" alt="ServCraft Preview mobile app" class="work-card-image" loading="lazy" decoding="async" width="1400" height="1346">
+                        <span class="work-item-status-progress">In progress</span>
                     </div>
                     <div class="work-card-content">
                         <p class="work-card-title">Rebuilding the App Field Teams Carry With Them</p>
@@ -233,25 +228,6 @@
         </div>
     </section>
 
-    <!-- Video Section (full-width) -->
-    <section class="video-fullwidth-section">
-        <div class="video-fullwidth-wrapper" id="heroVideoWrapper">
-            <div id="heroYouTubePlayer"></div>
-            <div class="video-controls-overlay" id="heroVideoControls">
-                <div class="video-controls-bar">
-                    <button class="vcb-btn" id="heroPlayPauseBtn" aria-label="Pause video">
-                        <svg id="pauseIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-                        <svg id="playIcon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    </button>
-                    <button class="vcb-btn" id="heroMuteBtn" aria-label="Unmute video">
-                        <svg id="muteIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-                        <svg id="unmuteIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Work History Section -->
     <section class="work-history-section frame-15143">
         <h2 class="work-history-title">Work history</h2>
@@ -316,46 +292,53 @@
     <!-- Tools Section -->
     <section class="tools-section">
         <div class="container">
-            <h2 class="tools-title">Tools I find <span class="tools-highlight">most useful</span></h2>
-            <div class="tools-grid">
-                <img src="assets/tools-logos.svg" alt="Tools logos grid" class="tools-logos" decoding="async">
-            </div>
-        </div>
-    </section>
+            <div class="tools-circle">
+                <div class="tools-circle-title">
+                    <h2 class="tools-title">Tools I find <span class="tools-highlight">most useful</span></h2>
+                </div>
 
-    <!-- Musings Preview Section -->
-    <section class="musings-preview-section">
-        <div class="container">
-            <div class="work-header">
-                <h2 class="work-title">Latest <span class="work-highlight">musings</span></h2>
-                <a href="musings.html" class="all-projects-link">All musings</a>
-            </div>
-            <div class="musings-grid">
-                <!-- Article 1 -->
-                <a href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" class="musing-card" onclick="track('medium_article_click')">
-                    <div class="musing-card-image">
-                        <img src="https://miro.medium.com/1*sGSzPZOea-qfr8rq9jCqVQ.png" alt="The Design System Every Small Team Couldn't Afford to Build cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="musing-card-content">
-                        <h3 class="musing-card-title">The Design System Every Small Team Couldn't Afford to Build, But Now Can.</h3>
-                        <p class="musing-card-date">March 28, 2026</p>
-                        <p class="musing-card-description">How AI levels the playing field for small product teams drowning in an opaque codebase.</p>
-                        <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
-                    </div>
-                </a>
+                <div class="tool-card tool-card-claude" style="--x: 0px; --y: -195px; --r: -6deg;">
+                    <img src="assets/tool-icon-claude.webp" alt="Claude" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">Claude</span>
+                </div>
 
-                <!-- Article 2 -->
-                <a href="https://tyrahans.medium.com/when-designers-are-treated-like-ai-4f45d816ec80" target="_blank" class="musing-card" onclick="track('medium_article_click')">
-                    <div class="musing-card-image">
-                        <img src="https://miro.medium.com/v2/resize:fit:1038/1*u90zu_egY1R8rHmmCj8NJw.png" alt="When Designers are Treated like AI cover" loading="lazy" decoding="async">
-                    </div>
-                    <div class="musing-card-content">
-                        <h3 class="musing-card-title">When Designers are Treated like AI</h3>
-                        <p class="musing-card-date">May 12, 2025</p>
-                        <p class="musing-card-description">Exploring the intersection of human creativity and artificial intelligence in the design process.</p>
-                        <span class="musing-card-link">Read on Medium <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
-                    </div>
-                </a>
+                <div class="tool-card tool-card-gemini" style="--x: 138px; --y: -138px; --r: 5deg;">
+                    <img src="assets/tool-icon-gemini.webp" alt="Gemini" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">Gemini</span>
+                </div>
+
+                <div class="tool-card tool-card-clarity" style="--x: 195px; --y: 0px; --r: -4deg;">
+                    <img src="assets/tool-icon-clarity.webp" alt="Clarity" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">Clarity</span>
+                </div>
+
+                <div class="tool-card tool-card-figma" style="--x: 138px; --y: 138px; --r: 7deg;">
+                    <img src="assets/tool-icon-figma.webp" alt="Figma" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">Figma</span>
+                </div>
+
+                <div class="tool-card tool-card-htmlcss" style="--x: 0px; --y: 195px; --r: -5deg;">
+                    <img src="assets/tool-icon-htmlcss.webp" alt="HTML and CSS" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">HTML &amp; CSS</span>
+                </div>
+
+                <div class="tool-card tool-card-notion" style="--x: -138px; --y: 138px; --r: 4deg;">
+                    <svg viewBox="0 0 40 40" class="tool-icon">
+                        <rect x="4" y="4" width="32" height="32" rx="7" fill="#fff" stroke="#000" stroke-width="2"/>
+                        <text x="20" y="27" font-family="Georgia, serif" font-size="18" font-weight="700" text-anchor="middle" fill="#000">N</text>
+                    </svg>
+                    <span class="tool-label">Notion</span>
+                </div>
+
+                <div class="tool-card tool-card-jira" style="--x: -195px; --y: 0px; --r: 6deg;">
+                    <img src="assets/tool-icon-jira.webp" alt="Jira" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">Jira</span>
+                </div>
+
+                <div class="tool-card tool-card-claudedesign" style="--x: -138px; --y: -138px; --r: -7deg;">
+                    <img src="assets/tool-icon-claude-design.webp" alt="Claude Design" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-label">Claude Design</span>
+                </div>
             </div>
         </div>
     </section>
@@ -427,17 +410,7 @@
         closeBtn.onclick = function() { viewer.style.display = 'none'; }
         window.onclick = function(e) { if (e.target == viewer) viewer.style.display = 'none'; }
 
-        // ── Lenis smooth scroll ──────────────────────────────────────────
-        const lenis = new Lenis({
-            duration: 0.85,
-            easing: (t) => 1 - Math.pow(1 - t, 3),
-            smoothWheel: true,
-            wheelMultiplier: 1.1
-        });
         gsap.registerPlugin(ScrollTrigger);
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-        gsap.ticker.lagSmoothing(0);
 
         // Recalculate scroll-trigger positions once all images have finished
         // loading — image-heavy sections (hero banner, work cards) grow the
@@ -529,40 +502,113 @@
             });
         });
 
-        // ── Tools section ────────────────────────────────────────────────
-        gsap.from('.tools-title, .tools-logos', {
-            scrollTrigger: { trigger: '.tools-section', start: 'top 88%' },
-            y: 30, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out'
+        // ── Tools section: title fade + cards sweep in, then circle ──────
+        gsap.from('.tools-circle-title', {
+            scrollTrigger: { trigger: '.tools-section', start: 'top 80%' },
+            y: 20, opacity: 0, duration: 0.7, ease: 'power2.out'
         });
 
-        // ── Musings cards ────────────────────────────────────────────────
-        gsap.utils.toArray('.musing-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: 'top 92%' },
-                y: 35, opacity: 0, duration: 0.75, delay: i * 0.1, ease: 'power2.out'
+        (function () {
+            const cards = gsap.utils.toArray('.tool-card');
+            // Tight, slightly overlapping strip (like a deck fanned into a row) —
+            // not spaced-out like the final circle.
+            const rowX = [-252, -180, -108, -36, 36, 108, 180, 252];
+
+            // Card DOM order (0..7) already walks the circle clockwise from the top,
+            // which means cards 0 (Claude) and 7 (Claude Design) — the two ends of
+            // that walk — would sit at the far opposite ends of the row. Since they
+            // share the identical icon, having them cross the whole row to reach
+            // each other reads as one card teleporting rather than two passing.
+            // Instead, cut the line at the BOTTOM of the circle (between Figma and
+            // HTML & CSS) so the two Claude cards land next to each other in the
+            // middle of the row and barely have to move relative to one another.
+            const rowOrder = [4, 5, 6, 7, 0, 1, 2, 3]; // card index at each row slot, left to right
+            const slotOfCard = new Array(cards.length);
+            rowOrder.forEach((cardIdx, slot) => { slotOfCard[cardIdx] = slot; });
+
+            const finals = cards.map((card) => {
+                const xStr = card.style.getPropertyValue('--x') || '0px';
+                const yStr = card.style.getPropertyValue('--y') || '0px';
+                const rStr = card.style.getPropertyValue('--r') || '0deg';
+                return {
+                    x: xStr, y: yStr, r: rStr,
+                    xNum: parseFloat(xStr), yNum: parseFloat(yStr)
+                };
             });
-        });
 
-        // ── Full-width video reveal ───────────────────────────────────────
-        gsap.from('.video-fullwidth-section', {
-            scrollTrigger: { trigger: '.video-fullwidth-section', start: 'top 85%' },
-            opacity: 0,
-            y: 30,
-            duration: 1.0,
-            ease: 'power2.out'
-        });
+            // Start each card off-screen to the right, small and stacked into a tight row —
+            // they visibly grow as they settle into the line, then again as the circle forms.
+            cards.forEach((card, i) => {
+                gsap.set(card, {
+                    '--x': (rowX[slotOfCard[i]] + 1300) + 'px',
+                    '--y': '0px',
+                    '--r': '0deg',
+                    '--s': 0.55,
+                    opacity: 0
+                });
+            });
 
-        // ── Full-width video: scale down when out of view, grow in view ───
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.video-fullwidth-section',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: 0.6
-            }
-        })
-        .fromTo('.video-fullwidth-wrapper', { scale: 0.9 }, { scale: 1, ease: 'none', duration: 1 })
-        .to('.video-fullwidth-wrapper', { scale: 0.9, ease: 'none', duration: 1 });
+            const toolsTl = gsap.timeline({
+                scrollTrigger: { trigger: '.tools-circle', start: 'top 78%' },
+                onComplete: () => {
+                    cards.forEach((card) => {
+                        card.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
+                    });
+                }
+            });
+
+            // Jitter-style easing: a buttery "easeOutExpo" glide for the entrance,
+            // and a snappy spring-overshoot bezier for the settle.
+            const jitterGlide = 'cubic-bezier(0.16, 1, 0.3, 1)';
+            const jitterSpring = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
+
+            const n = cards.length;
+            const lastSlot = n - 1;
+
+            // Phase 1: sweep in from the right until the full line is assembled on screen.
+            // Stagger by ROW SLOT (left to right), not DOM index, so the sweep-in reads
+            // as a clean left-to-right wave regardless of which card sits where.
+            let phase1End = 0;
+            cards.forEach((card, i) => {
+                const slot = slotOfCard[i];
+                const start = slot * 0.07;
+                const dur = 0.75 + ((slot % 3) * 0.07);
+                toolsTl.to(card, {
+                    '--x': rowX[slot] + 'px',
+                    '--s': 1,
+                    opacity: 1,
+                    duration: dur,
+                    ease: jitterGlide
+                }, start);
+                phase1End = Math.max(phase1End, start + dur);
+            });
+
+            // Beat of stillness once the line is fully formed, before it curls.
+            const phase2Start = phase1End + 0.18;
+
+            // Phase 2: the line curls into a circle — one continuous motion per card
+            // (not a lift-then-settle in two steps). The two ends of the row lead,
+            // the rest follow behind them; the spring-ramp ease does the accelerate/
+            // decelerate work in a single smooth curve instead of stacked tweens.
+            cards.forEach((card, i) => {
+                const slot = slotOfCard[i];
+                const distFromEnd = Math.min(slot, lastSlot - slot);
+                const liftDelay = phase2Start + distFromEnd * 0.09;
+                const dur = 0.85 + distFromEnd * 0.05;
+
+                toolsTl.to(card, {
+                    '--x': finals[i].x,
+                    '--y': finals[i].y,
+                    '--r': finals[i].r,
+                    duration: dur,
+                    ease: jitterSpring
+                }, liftDelay);
+            });
+
+            // Play the whole sequence at 2x speed (half the total time), keeping
+            // every stagger and ease ratio intact.
+            toolsTl.timeScale(2);
+        })();
 
         // ── CTA section ──────────────────────────────────────────────────
         const ctaTitle = document.querySelector('.cta-title');
@@ -578,48 +624,10 @@
             y: 20, opacity: 0, duration: 0.7, delay: 0.3, ease: 'power2.out'
         });
 
-        // ── Hero banner parallax ───────────────────────────────────────
+        // ── Hero banner parallax + zoom ─────────────────────────────────
         gsap.to('.hero-banner-image', {
             scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 },
-            y: -30, ease: 'none'
-        });
-
-        // ── Full-width YouTube autoplay video ────────────────────────────
-        var heroPlayer, heroPlaying = true, heroMuted = true;
-
-        window.onYouTubeIframeAPIReady = function() {
-            heroPlayer = new YT.Player('heroYouTubePlayer', {
-                videoId: '_VQFPJxFuJg',
-                playerVars: { autoplay: 1, mute: 1, loop: 1, playlist: '_VQFPJxFuJg', controls: 0, modestbranding: 1, rel: 0, playsinline: 1 },
-                events: { onReady: function(e) { e.target.playVideo(); } }
-            });
-        };
-
-        document.getElementById('heroPlayPauseBtn').addEventListener('click', function() {
-            if (!heroPlayer) return;
-            if (heroPlaying) {
-                heroPlayer.pauseVideo(); heroPlaying = false;
-                document.getElementById('pauseIcon').style.display = 'none';
-                document.getElementById('playIcon').style.display = 'block';
-            } else {
-                heroPlayer.playVideo(); heroPlaying = true;
-                track('video_play');
-                document.getElementById('pauseIcon').style.display = 'block';
-                document.getElementById('playIcon').style.display = 'none';
-            }
-        });
-
-        document.getElementById('heroMuteBtn').addEventListener('click', function() {
-            if (!heroPlayer) return;
-            if (heroMuted) {
-                heroPlayer.unMute(); heroMuted = false;
-                document.getElementById('muteIcon').style.display = 'none';
-                document.getElementById('unmuteIcon').style.display = 'block';
-            } else {
-                heroPlayer.mute(); heroMuted = true;
-                document.getElementById('muteIcon').style.display = 'block';
-                document.getElementById('unmuteIcon').style.display = 'none';
-            }
+            y: -30, scale: 1.15, ease: 'none'
         });
 
         // ── Speedi card hover video preview ─────────────────────────────
