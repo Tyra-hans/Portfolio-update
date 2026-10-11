@@ -41,8 +41,20 @@
     <script defer src="https://www.youtube.com/iframe_api"></script>
     <style>
         .about-hero {
-            padding: 120px 0 64px;
+            position: relative;
+            padding: 48px 0 64px;
         }
+        /* a faint grid behind the hero, strongest around the machine and fading out to the edges */
+        .about-hero::before {
+            content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                linear-gradient(to right, rgba(0, 65, 114, .07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 65, 114, .07) 1px, transparent 1px);
+            background-size: 48px 48px; background-position: center top;
+            -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 35%, #000 30%, transparent 80%);
+            mask-image: radial-gradient(ellipse 70% 75% at 50% 35%, #000 30%, transparent 80%);
+        }
+        .about-hero > .container { position: relative; z-index: 1; }
         .about-hero h1 {
             font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 700;
@@ -62,10 +74,150 @@
             color: #444;
         }
 
+        /* ── Photobooth: a strip feeds out of a brushed-metal machine face (all CSS; sized in em so it scales) ── */
+        /* three layers deep: the machine at the back, the headline across the page over its lower half, the strip hanging in front */
+        .hero-stage { --u: 10px; position: relative; text-align: center; }
+        /* the headline floats over the machine; the bio stays below it in the normal flow */
+        .hero-stage .about-hero-text { position: static; }
+        .hero-stage .about-hero-text h1 { position: absolute; z-index: 2; left: 0; right: 0; top: calc(var(--u) * 21); margin: 0; max-width: none;
+            font-size: clamp(2.6rem, 6.6vw, 6.4rem); line-height: 1.02 !important; letter-spacing: -0.045em !important; text-wrap: balance; }
+        .hero-stage .about-bio { position: relative; z-index: 2; max-width: 620px; margin: 28px auto 0; }
+        .hero-stage .about-bio p { font-size: 17px; line-height: 1.7; color: #3a4652; text-wrap: pretty; }
+        /* the machine is sized to the text block, so the headline and the last bio line share its top and base */
+        .booth, .booth-loose {
+            --metal-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.1 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+        }
+        /* the machine fills the stage behind the text; no z-index here, so its parts layer around the text */
+        .booth {
+            font-size: var(--u); position: relative; width: 32em; height: 54em; margin: 0 auto;
+        }
+        /* the machine face: cool brushed steel, lit from the top left, with a soft falloff to the bottom */
+        .booth-panel {
+            /* only the slot's surround: the steel fades into the page below it */
+            position: absolute; left: 0; right: 0; top: 0; height: 30em; z-index: 1; border-radius: 2.8em 2.8em 0 0; overflow: hidden;
+            background:
+                radial-gradient(120% 70% at 22% 8%, rgba(255,255,255,.55), rgba(255,255,255,0) 60%),
+                linear-gradient(180deg, #ced4db 0%, #b7bec7 45%, #a5adb8 100%);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.8),
+                inset 1px 0 0 rgba(255,255,255,.35), inset -1px 0 0 rgba(0,0,0,.08);
+            -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 50%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 0%, #000 50%, transparent 100%);
+        }
+        .booth-panel::before { /* horizontal brushing */
+            content: ""; position: absolute; inset: 0; background-image: var(--metal-noise); background-size: 300px 300px;
+            mix-blend-mode: overlay; opacity: .55;
+        }
+        .booth-panel::after { /* faint anisotropic sheen band */
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.18) 46%, transparent 62%);
+        }
+        /* the raised bezel around the slot */
+        .booth-bezel {
+            position: absolute; z-index: 1; left: 1em; right: 1em; top: 6.4em; height: 12em; border-radius: 4.2em;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0) 40%, rgba(0,0,0,.08)),
+                linear-gradient(180deg, #d8dde3, #b0b8c2);
+            box-shadow:
+                inset 0 2px 1px rgba(255,255,255,.9), inset 0 -3px 4px rgba(0,0,0,.22),
+                inset 2px 0 2px rgba(255,255,255,.35), inset -2px 0 3px rgba(0,0,0,.08),
+                0 1px 0 rgba(255,255,255,.5), 0 6px 10px -2px rgba(0,40,75,.26), 0 2px 3px rgba(0,40,75,.2);
+        }
+        .booth-bezel::before { /* brushed grain on the bezel too */
+            content: ""; position: absolute; inset: 0; border-radius: inherit; background-image: var(--metal-noise); background-size: 300px 300px;
+            mix-blend-mode: overlay; opacity: .45;
+        }
+        /* the chamfer stepping down into the mouth */
+        .booth-chamfer {
+            position: absolute; left: 1.2em; right: 1.2em; top: 2.2em; bottom: 2.6em; border-radius: 2.8em;
+            background: linear-gradient(180deg, #7d858f 0%, #b8c0c9 55%, #e4e8ec 100%);
+            box-shadow: inset 0 3px 5px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.6);
+        }
+        .booth-mouth {
+            position: absolute; left: .6em; right: .6em; top: .9em; bottom: 1.1em; border-radius: 2.2em;
+            background: radial-gradient(90% 140% at 50% 0%, #000 55%, #141518 100%);
+            box-shadow: inset 0 8px 12px rgba(0,0,0,1), inset 0 -2px 2px rgba(255,255,255,.07);
+        }
+        /* where the paper lives: clipped at the top of the mouth so it appears from inside the machine */
+        .booth-feed {
+            position: absolute; z-index: 3; left: 0; right: 0; top: 9.6em; bottom: -6em;
+            clip-path: inset(0 -6em 0 -6em);
+            pointer-events: none;
+        }
+        .booth-strip {
+            position: absolute; left: 50%; top: 0; width: 25.6em; margin-left: -12.8em;
+            padding: 1em 1em 0; border-radius: 1px;
+            background: #fbfbfa;
+            box-shadow:
+                0 0 0 .5px rgba(0,0,0,.08),
+                0 1px 1px rgba(0,40,75,.16), 0 4px 6px -1px rgba(0,40,75,.2), 0 16px 24px -10px rgba(0,40,75,.32),
+                0 34px 46px -18px rgba(0,30,60,.38);   /* lifted off the plate: casts onto the headline behind it */
+            transform-origin: 50% 0;
+            will-change: transform;
+            cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+            transition: box-shadow .3s ease;
+        }
+        .strip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9em; }
+        .strip-photo {
+            position: relative; aspect-ratio: 11.4 / 12.6; overflow: hidden;
+            background: #fff;
+        }
+        /* true colour and sharp: no tint, grain or vignette */
+        .strip-photo img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%;
+            transform: scale(1.24) translateY(8%);
+        }
+        .strip-photo::after { /* hairline print edge */
+            content: ""; position: absolute; inset: 0; z-index: 2; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.1);
+        }
+        .strip-develop { /* chemical develop: a pale wash that clears after printing */
+            position: absolute; inset: 0; z-index: 3; background: #f1ece3; opacity: 0;
+        }
+        .strip-caption { padding: 1.7em .3em 2em; }
+        .strip-title { display: block; font-size: 3.6em; font-weight: 700; line-height: .95; letter-spacing: -.035em; color: var(--color-primary); }
+        .strip-traits { display: block; margin-top: .6em; font-size: 1.32em; white-space: nowrap; font-weight: 500; color: var(--color-text-secondary); letter-spacing: -.01em; }
+        /* the shadow the mouth casts onto the paper as it exits: fixed to the machine, not the paper */
+        .booth-throat {
+            position: absolute; z-index: 4; left: 3.2em; right: 3.2em; top: 9.6em; height: 5.6em; pointer-events: none;
+            background: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.75) 35%, rgba(0,0,0,.25) 70%, rgba(0,0,0,0) 100%);
+        }
+        /* pulled free: the strip lives in a page-level layer and can be dragged anywhere */
+        .booth-feed .booth-strip { pointer-events: auto; }
+        .booth-loose { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 60; }
+        .booth-strip.is-loose { margin: 0; transform-origin: 50% 12%; }
+        .booth-strip.is-held { cursor: grabbing;
+            box-shadow: 0 0 0 .5px rgba(0,0,0,.08), 0 2px 4px rgba(0,40,75,.14), 0 18px 30px -8px rgba(0,40,75,.28), 0 40px 60px -20px rgba(0,40,75,.3); }
+        .booth-strip img { -webkit-user-drag: none; pointer-events: none; }
+        /* touch screens: the strip is a still print, so it mustn't capture touches or block scrolling */
+        @media (hover: none), (pointer: coarse) { .booth-strip { cursor: default; touch-action: auto; } }
+        /* after the last strip: the machine prints one final note */
+        .booth-note {
+            position: absolute; left: 50%; top: 0; width: 25.6em; margin-left: -12.8em; padding: 6.4em 2.2em 2.6em;
+            text-align: left; border-radius: 1px; pointer-events: auto;
+            background: linear-gradient(180deg, #f6f5f2 0%, #efeee9 70%, #e7e6e1 100%);
+            box-shadow: 0 0 0 .5px rgba(0,0,0,.08), 0 1px 1px rgba(0,40,75,.16), 0 4px 6px -1px rgba(0,40,75,.2),
+                0 16px 24px -10px rgba(0,40,75,.32), 0 34px 46px -18px rgba(0,30,60,.38);
+        }
+        .booth-note b { display: block; margin-bottom: .6em; font-size: 2.2em; line-height: 1.1; letter-spacing: -.03em; color: var(--color-primary); }
+        .booth-note p { margin: 0; font-size: 1.45em; line-height: 1.5; color: #3a4652; }
+        .booth-note p + p { margin-top: .7em; }
+        .booth-note strong { font-weight: 700; color: var(--color-primary); }
+        @media (max-width: 1100px) {
+            .hero-stage { --u: min(10px, calc((100vw - 48px) / 32)); }
+            .hero-stage .about-hero-text h1 { top: calc(var(--u) * 30); }
+        }
+
+        /* when the certificates reach the middle of the screen the page dims to a gallery wall
+           and a picture light above each frame switches on (gallery-mode / is-lit, set in the script below) */
+        body { transition: background-color 0.9s cubic-bezier(.65, 0, .35, 1); }
+        body.gallery-mode { background-color: #1d2a23; }
         .certs-section {
-            padding: 40px 0 120px;
+            padding: 150px 0 190px;
             text-align: center;
         }
+        .certs-label { transition: color 0.9s ease; }
+        .gallery-mode .certs-label { color: rgba(255, 255, 255, 0.55); }
         .certs-trophy {
             width: 56px;
             height: 56px;
@@ -88,84 +240,219 @@
             color: #aaa;
             margin-bottom: 40px;
         }
+        /* ── Certificates: the real certificates, framed and hung on a gallery wall ── */
         .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 28px;
-            max-width: 1320px;
-            margin: 0 auto;
-            justify-content: center;
-        }
-        .cert-card {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: flex-start;
-            gap: 20px;
-            padding: 30px;
-            border: 1px solid #ececec;
-            border-radius: 20px;
-            text-decoration: none;
-            text-align: left;
-            transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            gap: 110px 64px;
+            max-width: 1320px;
+            margin: 40px auto 0;
+            padding: 12px 0 8px;
         }
-        .cert-card:hover {
-            border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(0, 65, 114, 0.1);
-        }
-        .cert-card.cert-card-static {
-            cursor: default;
-        }
-        .cert-card.cert-card-static:hover {
-            border-color: #ececec;
-            transform: none;
-            box-shadow: none;
-        }
-        .cert-note {
-            margin-top: 8px;
-            font-size: 14px;
-            font-style: italic;
-            color: #999;
-        }
-        .cert-icon {
-            flex: 0 0 auto;
-            width: 64px;
-            height: 64px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f5f5;
-            padding: 13px;
-        }
-        .cert-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .cert-body {
+        .cert-piece {
+            position: relative;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            min-width: 0;
+            align-items: center;
+            width: 440px;
+            max-width: 100%;
+            text-decoration: none;
         }
-        .cert-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--color-primary);
-            line-height: 1.35;
+        .cert-piece.is-portrait { width: 300px; }
+
+        /* the frame: a slim satin-black moulding with a catch-light on its top edge and a soft shadow on the wall */
+        .cert-frame {
+            --frame-depth: 0 1px 1px rgba(0, 0, 0, 0.45), 0 14px 22px -10px rgba(0, 0, 0, 0.6), 0 34px 60px -24px rgba(0, 0, 0, 0.55);
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 13px;
+            border-radius: 2px;
+            background: linear-gradient(160deg, #2b2b2b 0%, #141414 38%, #0c0c0c 62%, #1c1c1c 100%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.16),
+                inset 1px 0 0 rgba(255, 255, 255, 0.05),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+                var(--frame-depth);
+            transition: transform 0.5s cubic-bezier(.22, 1, .36, 1), box-shadow 0.5s ease;
+        }
+        /* the inner lip of the moulding where it meets the mat */
+        .cert-frame::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.07);
+            pointer-events: none;
+        }
+        /* the glazing: a barely-there reflection across the glass */
+        .cert-frame::after {
+            content: "";
+            position: absolute;
+            inset: 13px;
+            background: linear-gradient(122deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0) 72%, rgba(255, 255, 255, 0.04) 100%);
+            pointer-events: none;
+        }
+        .cert-piece:hover .cert-frame,
+        .cert-piece:focus-visible .cert-frame {
+            transform: translateY(-3px);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.16),
+                inset 1px 0 0 rgba(255, 255, 255, 0.05),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.7),
+                0 1px 1px rgba(0, 0, 0, 0.45), 0 22px 30px -12px rgba(0, 0, 0, 0.65), 0 46px 80px -28px rgba(0, 0, 0, 0.6);
+        }
+        .cert-piece:focus-visible { outline: none; }
+        .cert-piece:focus-visible .cert-frame { outline: 2px solid var(--color-accent); outline-offset: 6px; }
+
+        /* the mat: a wide warm-white window mount; the frame shades its top edge, and a white bevel
+           core frames the certificate */
+        .cert-mat {
+            display: block;
+            padding: 9%;
+            background: linear-gradient(180deg, #f7f5f0 0%, #efece5 100%);
+            box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+        }
+        .cert-mat img {
+            display: block;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 0 0 3px #fdfcf9, 0 0 0 4px rgba(0, 0, 0, 0.1), 0 -2px 0 3px rgba(0, 0, 0, 0.04);
+        }
+        .cert-note {
+            font-size: 13px;
+            line-height: 1.45;
+            color: #6b7a8c;
+        }
+
+        /* a slim matte-black picture light above each frame */
+        .cert-lamp {
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            z-index: 3;
+            width: 26%;
+            height: 8px;
+            transform: translateX(-50%);
+            border-radius: 4px;
+            background: linear-gradient(180deg, #3b3b3b 0%, #161616 100%);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 4px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            transition: box-shadow 0.5s ease;
+        }
+        /* the arm back to the wall */
+        .cert-lamp::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            width: 3px;
+            height: 16px;
+            transform: translateX(-50%);
+            background: #171717;
+        }
+        /* the warm-white wash it throws down over the frame */
+        .cert-lamp::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 6px;
+            width: 420%;
+            height: 480px;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse 34% 62% at 50% 0%, rgba(255, 238, 212, 0.42) 0%, rgba(255, 230, 196, 0.17) 38%, rgba(255, 226, 190, 0.05) 60%, rgba(255, 226, 190, 0) 76%);
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity 0.5s ease, filter 0.5s ease;
+        }
+        /* lights come on one after another, and all go off together; hovering a frame turns its light up */
+        .certs-section.is-lit .cert-lamp {
+            transition: box-shadow 0.8s ease var(--light-delay, 0s);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(255, 242, 220, 0.9), 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 10px rgba(255, 236, 205, 0.45);
+        }
+        .certs-section.is-lit .cert-lamp::after { opacity: 1; transition: opacity 1.2s ease var(--light-delay, 0s), filter 0.5s ease; }
+        .certs-section.is-lit .cert-piece:hover .cert-lamp::after,
+        .certs-section.is-lit .cert-piece:focus-visible .cert-lamp::after { filter: brightness(1.45); }
+
+        /* the wall: a faint plaster texture and vignette that fade in with the colour */
+        .certs-section { position: relative; }
+        .certs-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 70% at 50% 45%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.32) 100%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(#n)'/%3E%3C/svg%3E");
+            opacity: 0;
+            transition: opacity 0.9s ease;
+            pointer-events: none;
+        }
+        .certs-section > .container { position: relative; }
+        .certs-section.is-lit::before { opacity: 0.55; }
+
+        /* certificate details: a card that fades in just under the frame on hover or focus.
+           It keeps its space in the layout while hidden, so it never covers a frame or shifts the grid */
+        .cert-info {
+            width: calc(100% - 24px);
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 14px 18px 13px;
+            border-radius: 14px;
+            text-align: left;
+            background: #fff;
+            box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.07), 0 10px 28px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+            opacity: 0;
+            transform: translateY(-8px);
+            transition: opacity 0.35s ease, transform 0.45s cubic-bezier(.22, 1, .36, 1);
+        }
+        .cert-piece:hover .cert-info,
+        .cert-piece:focus-visible .cert-info {
+            opacity: 1;
+            transform: none;
         }
         .cert-meta {
-            font-size: 14px;
-            color: #888;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6b7a8c;
+        }
+        .cert-info .cert-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-wrap: balance;
         }
         .cert-link {
-            margin-top: 8px;
-            font-size: 14px;
+            margin-top: 2px;
+            font-size: 13px;
             font-weight: 600;
             color: var(--color-accent);
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
+        }
+        /* touch screens can't hover, so the card sits under the frame instead */
+        @media (hover: none) {
+            .cert-info { opacity: 1; transform: none; }
+        }
+
+        @media (max-width: 768px) {
+            .certs-grid { gap: 96px; }
+            .certs-section { padding: 110px 0 140px; }
+            .cert-piece, .cert-piece.is-portrait { width: 100%; }
+            .cert-info { width: 100%; }
+            .cert-piece.is-portrait { max-width: 280px; }
+            .cert-frame { padding: 10px; }
+            .cert-frame::before { inset: 9px; }
+            .cert-frame::after { inset: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cert-frame, .cert-info, .cert-lamp, .cert-lamp::after, .certs-label, .certs-section::before { transition: none; }
+            body { transition: none; }
         }
     </style>
 </head>
@@ -181,8 +468,9 @@
                     <span></span>
                 </button>
                 <nav class="nav" id="nav">
-                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="index.html" class="nav-link">Home</a>
                     <a href="about.html" class="nav-link active">About</a>
+                    <a href="work.html" class="nav-link">Work</a>
                     <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
             </div>
@@ -193,11 +481,35 @@
         <!-- Hero / bio -->
         <section class="about-hero">
             <div class="container">
-                <h1>Product designer turning complex systems into interfaces people actually enjoy using.</h1>
+                <div class="hero-stage">
+
+                <div class="booth" id="booth" role="img" aria-label="A photobooth strip with four photos of Tyra, captioned Product Designer: Ambitious, Optimistic, Curious">
+                    <div class="booth-panel"></div>
+                    <div class="booth-bezel"><div class="booth-chamfer"><div class="booth-mouth"></div></div></div>
+                    <div class="booth-feed">
+                        <div class="booth-strip" id="boothStrip">
+                            <div class="strip-grid">
+                                <div class="strip-photo"><img src="assets/hero-portrait.webp" alt="" width="576" height="576" decoding="async" draggable="false"><span class="strip-develop"></span></div>
+                                <div class="strip-photo"><img src="assets/hero-portrait.webp" alt="" width="576" height="576" decoding="async" draggable="false"><span class="strip-develop"></span></div>
+                                <div class="strip-photo"><img src="assets/hero-portrait.webp" alt="" width="576" height="576" decoding="async" draggable="false"><span class="strip-develop"></span></div>
+                                <div class="strip-photo"><img src="assets/hero-portrait.webp" alt="" width="576" height="576" decoding="async" draggable="false"><span class="strip-develop"></span></div>
+                            </div>
+                            <div class="strip-caption">
+                                <span class="strip-title">Product<br>Designer</span>
+                                <span class="strip-traits">Ambitious &bull; Optimistic &bull; Curious</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booth-throat"></div>
+                </div>
+                <div class="about-hero-text">
+                <h1>I turn complex systems into intuitive experiences.</h1>
                 <div class="about-bio">
-                    <p>I'm Tyra, a product designer with 6 years of experience across fintech, field service software, and B2B SaaS. I've shipped work used by thousands of people across South Africa, East Africa, and beyond, from enterprise scheduling tools to mobile trade finance apps.</p>
-                    <p>I treat AI as a real design partner. It lets me move faster, take on more scope, and explore interaction models that used to be out of reach. Lately I'm drawn to agentic workflows, voice interfaces, and the design questions that show up when software starts acting on your behalf.</p>
-                    <p>Good design has to survive contact with production code. I work close to engineering, care about the details that make a system usable at scale, and build for the messy version of the problem, not the simplified one.</p>
+                    <p>I'm Tyra, a product designer with 6 years of experience across fintech, field service software, and B2B SaaS. I've designed products used across Africa, turning complex workflows into intuitive experiences people and teams can rely on.</p>
+                    <p>I use AI to explore ideas, push beyond conventional interfaces, and prototype what comes next, from agentic workflows to voice interactions.</p>
+                    <p>I work closely with engineering to turn ambitious ideas into thoughtful, production-ready experiences that succeed in the real world.</p>
+                </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -216,58 +528,53 @@
                 </span>
                 <p class="certs-label">Certifications</p>
                 <div class="certs-grid">
-                    <a href="https://www.udemy.com/certificate/UC-336cd37b-acd4-4815-81cb-f2f2f5ab8565/" target="_blank" class="cert-card" onclick="track('certificate_click')">
-                        <span class="cert-icon">
-                            <img src="assets/Udemy-Logo.png" alt="Udemy" loading="lazy">
-                        </span>
-                        <span class="cert-body">
-                            <span class="cert-title">Web Accessibility Training: WCAG 2.1 &amp; 2.2 Compliance</span>
+                    <a href="https://www.udemy.com/certificate/UC-336cd37b-acd4-4815-81cb-f2f2f5ab8565/" target="_blank" class="cert-piece" onclick="track('certificate_click')">
+                        <span class="cert-lamp" aria-hidden="true"></span>
+                        <span class="cert-frame"><span class="cert-mat"><img src="assets/cert-udemy-web-accessibility.webp" alt="Udemy certificate of completion: Web Accessibility Training Course WCAG 2.1 &amp; 2.2 Compliance, awarded to Tyra Hans Oyuo" width="1200" height="880" loading="lazy" decoding="async"></span></span>
+                        <span class="cert-info">
                             <span class="cert-meta">Udemy · Jim Byrne</span>
+                            <span class="cert-title">Web Accessibility Training: WCAG 2.1 &amp; 2.2 Compliance</span>
                             <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
                         </span>
                     </a>
 
-                    <a href="https://www.udemy.com/certificate/UC-483701df-0890-435c-9ece-264cbd90b7cd/" target="_blank" class="cert-card" onclick="track('certificate_click')">
-                        <span class="cert-icon">
-                            <img src="assets/Udemy-Logo.png" alt="Udemy" loading="lazy">
-                        </span>
-                        <span class="cert-body">
-                            <span class="cert-title">Design Rules: Principles + Practices for Great UI Design</span>
+                    <a href="https://www.udemy.com/certificate/UC-483701df-0890-435c-9ece-264cbd90b7cd/" target="_blank" class="cert-piece" onclick="track('certificate_click')">
+                        <span class="cert-lamp" aria-hidden="true"></span>
+                        <span class="cert-frame"><span class="cert-mat"><img src="assets/cert-udemy-design-rules.webp" alt="Udemy certificate of completion: Design Rules, Principles and Practices for Great UI Design, awarded to Tyra Hans" width="1200" height="880" loading="lazy" decoding="async"></span></span>
+                        <span class="cert-info">
                             <span class="cert-meta">Udemy · Joe Natoli</span>
+                            <span class="cert-title">Design Rules: Principles + Practices for Great UI Design</span>
                             <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
                         </span>
                     </a>
 
-                    <a href="https://ixdf.org/members/tyra-hans/certificate/course/0327f21b-ff3e-4144-8f0a-c98d59083af6" target="_blank" class="cert-card" onclick="track('certificate_click')">
-                        <span class="cert-icon">
-                            <img src="assets/ixdf%20logo.jpg" alt="Interaction Design Foundation" loading="lazy">
-                        </span>
-                        <span class="cert-body">
-                            <span class="cert-title">Fundamentals of UX Design - Become a UX Designer from Scratch</span>
-                            <span class="cert-meta">Interaction Design Foundation · Best in Class</span>
-                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
-                        </span>
-                    </a>
-
-                    <a href="assets/certificate-designing-interfaces-awwwards.pdf" target="_blank" class="cert-card" onclick="track('certificate_click')">
-                        <span class="cert-icon">
-                            <img src="assets/awwwards%20logo.webp" alt="Awwwards Academy" loading="lazy">
-                        </span>
-                        <span class="cert-body">
-                            <span class="cert-title">Designing Interfaces: The Missing Piece in Your Design</span>
-                            <span class="cert-meta">Awwwards Academy · Bahaa Samir</span>
-                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
-                        </span>
-                    </a>
-
-                    <a href="https://www.dive.club/advanced-figma" target="_blank" class="cert-card" onclick="track('certificate_click')">
-                        <span class="cert-icon">
-                            <img src="assets/logo-figma-academy-2.svg" alt="Figma Academy 2.0" loading="lazy">
-                        </span>
-                        <span class="cert-body">
-                            <span class="cert-title">Figma Academy 2.0: The Most Advanced Design Course on the Internet</span>
+                    <a href="https://www.dive.club/advanced-figma" target="_blank" class="cert-piece" onclick="track('certificate_click')">
+                        <span class="cert-lamp" aria-hidden="true"></span>
+                        <span class="cert-frame"><span class="cert-mat"><img src="assets/cert-dive-figma-academy.webp" alt="Dive Club Figma Academy 2.0: the most advanced Figma training ever" width="1200" height="640" loading="lazy" decoding="async"></span></span>
+                        <span class="cert-info">
                             <span class="cert-meta">Dive Club · Completed</span>
+                            <span class="cert-title">Figma Academy 2.0: The Most Advanced Design Course on the Internet</span>
                             <span class="cert-note">No certificate offered — completed the full course and learned advanced Figma workflows.</span>
+                        </span>
+                    </a>
+
+                    <a href="https://ixdf.org/members/tyra-hans/certificate/course/0327f21b-ff3e-4144-8f0a-c98d59083af6" target="_blank" class="cert-piece" onclick="track('certificate_click')">
+                        <span class="cert-lamp" aria-hidden="true"></span>
+                        <span class="cert-frame"><span class="cert-mat"><img src="assets/cert-ixdf-ux-design.webp" alt="IxDF course certificate awarded to Tyra Hans for Become a UX Designer from Scratch, Best in class" width="1200" height="880" loading="lazy" decoding="async"></span></span>
+                        <span class="cert-info">
+                            <span class="cert-meta">Interaction Design Foundation · Best in Class</span>
+                            <span class="cert-title">Fundamentals of UX Design - Become a UX Designer from Scratch</span>
+                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                        </span>
+                    </a>
+
+                    <a href="assets/certificate-designing-interfaces-awwwards.pdf" target="_blank" class="cert-piece is-portrait" onclick="track('certificate_click')">
+                        <span class="cert-lamp" aria-hidden="true"></span>
+                        <span class="cert-frame"><span class="cert-mat"><img src="assets/cert-awwwards-designing-interfaces.webp" alt="Awwwards Academy certificate: Designing Interfaces, The Missing Piece in Your Design, completed by Tyra Hans" width="900" height="1200" loading="lazy" decoding="async"></span></span>
+                        <span class="cert-info">
+                            <span class="cert-meta">Awwwards Academy · Bahaa Samir</span>
+                            <span class="cert-title">Designing Interfaces: The Missing Piece in Your Design</span>
+                            <span class="cert-link">View certificate <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
                         </span>
                     </a>
                 </div>
@@ -357,13 +664,268 @@
         gsap.from('.about-hero h1', { duration: 0.9, y: 24, opacity: 0, ease: 'power2.out' });
         gsap.from('.about-bio p', { duration: 0.8, y: 18, opacity: 0, stagger: 0.12, delay: 0.3, ease: 'power2.out' });
 
+        // ── Photobooth ───────────────────────────────────────────────────
+        // The machine feeds a strip out in motor steps; the prints develop as it comes out.
+        // Grab the strip and pull down: the rollers hold it until it's pulled past the bite, then it comes free
+        // and can be dragged anywhere on the page. The machine then prints another.
+        {
+            const booth = document.getElementById('booth'), feed = booth.querySelector('.booth-feed');
+            const throat = booth.querySelector('.booth-throat');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // pulling, dragging and the waiting motion are for mouse and trackpad only; touch screens get a still print
+            const canPlay = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            const template = document.getElementById('boothStrip').cloneNode(true);
+            template.removeAttribute('id');
+            const layer = document.createElement('div');
+            layer.className = 'booth-loose';
+            document.body.appendChild(layer);
+            let strip = null, docked = false, printed = 0, topZ = 1, pulledOnce = false;
+            const MAX_PRINTS = 6, BITE = 12;
+            const MACHINE_IN = 2.2;   // seconds of reading time before the machine appears
+            let feedTl = null;
+
+            // CSS px → screen px ratio (the body is zoomed on desktop)
+            const scale = () => booth.getBoundingClientRect().width / booth.offsetWidth || 1;
+
+            function print(first) {
+                strip = first ? document.getElementById('boothStrip') : feed.appendChild(template.cloneNode(true));
+                docked = false; printed++;
+                const washes = strip.querySelectorAll('.strip-develop');
+                if (reduce) { gsap.set(throat, { opacity: 1 }); docked = true; return; }
+                // the first print waits so the headline and bio can be read first
+                const h = strip.offsetHeight, wait = first ? MACHINE_IN + 1 : 0.15;
+                gsap.set(strip, { y: -h, x: 0, rotation: 0, autoAlpha: 0 });
+                gsap.set(washes, { opacity: .92 });
+                gsap.set(throat, { opacity: 0 });
+                // it can be grabbed the moment it shows, so the strip counts as ready from the start of the feed
+                docked = true;
+                // the baseline for the play rate: desktop visitors who actually saw the first strip come out
+                const tl = feedTl = gsap.timeline({ delay: wait, onComplete: () => { feedTl = null; if (first && canPlay) track('photobooth_seen'); } });
+                tl.to(throat, { opacity: 1, duration: 0.15 }).set(strip, { autoAlpha: 1 });
+                // feed: a quick, light run of motor bursts (about a second), each ending in a hair of overshoot
+                const steps = [0.24, 0.2, 0.22, 0.18, 0.16];
+                let done = 0;
+                steps.forEach(f => {
+                    done += f;
+                    const y = -h + h * done;
+                    tl.to(strip, { y: y + 1.5, duration: 0.1 + f * 0.25, ease: 'power1.inOut' })
+                      .to(strip, { y, duration: 0.05, ease: 'power1.out' })
+                      .to({}, { duration: 0.03 });
+                });
+                // the last of the paper leaves the rollers: a small drop and a damped swing about the slot
+                tl.to(strip, { y: 3, duration: 0.14, ease: 'power2.in' })
+                  .fromTo(strip, { rotation: 1.4 }, { rotation: 0, x: 0, duration: 1.4, ease: 'elastic.out(1, 0.3)', immediateRender: false }, '<0.1');
+                // develop: each print clears from a pale wash, top-left first, while the strip is still feeding
+                gsap.to(washes, { opacity: 0, duration: 0.9, ease: 'power1.out', stagger: 0.12, delay: wait + 0.4 });
+            }
+
+            // analytics: every strip pulled free is a 'photobooth_pull' (GA4 users = people who played, event count = photos taken);
+            // Clarity also tags the session with how many strips it took, so recordings can be filtered by it
+            function report(n) {
+                try {
+                    if (window.gtag) gtag('event', 'photobooth_pull', { strip_number: n });
+                    if (window.clarity) { clarity('event', 'photobooth_pull'); clarity('set', 'photobooth_strips', String(n)); }
+                    if (n === MAX_PRINTS) track('photobooth_all_strips');
+                } catch (_) {}
+            }
+
+            // once every strip has been taken, the machine prints a note instead
+            function printNote() {
+                const note = document.createElement('div');
+                note.className = 'booth-note';
+                note.innerHTML = '<b>Glad you\u2019re having fun. \uD83C\uDF89</b>' +
+                    '<p>Notice how you knew the images would come out without being told?</p>' +
+                    '<p>That\u2019s my approach to design: <strong>making experiences so intuitive, they speak for themselves.</strong></p>';
+                feed.appendChild(note);
+                if (reduce) { gsap.set(throat, { opacity: 1 }); return; }
+                const h = note.offsetHeight;
+                gsap.set(note, { y: -h, autoAlpha: 0 });
+                gsap.timeline()
+                    .to(throat, { opacity: 1, duration: 0.25 })
+                    .set(note, { autoAlpha: 1 })
+                    .to(note, { y: -h * 0.45, duration: 0.9, ease: 'power1.inOut' })
+                    .to(note, { y: 3, duration: 0.9, ease: 'power1.inOut' }, '+=0.15')
+                    .fromTo(note, { rotation: 1.2 }, { rotation: 0, duration: 1.6, ease: 'elastic.out(1, 0.3)', immediateRender: false }, '<0.7');
+            }
+
+            // lift a docked strip out of the machine into the page layer without it visibly jumping
+            function release(el) {
+                gsap.killTweensOf(el, 'x,y,rotation');
+                const z = scale(), r = el.getBoundingClientRect(), L = layer.getBoundingClientRect();
+                const fs = getComputedStyle(booth).fontSize, rot = gsap.getProperty(el, 'rotation');
+                layer.appendChild(el);
+                el.style.fontSize = fs;
+                el.classList.add('is-loose');
+                if (sticky.has(pulledCount++)) el.dataset.sticks = '1';
+                report(pulledCount);
+                gsap.set(el, { x: 0, y: 0, rotation: 0 });
+                const w = el.offsetWidth, h = el.offsetHeight;
+                el.style.left = ((r.left + r.width / 2 - L.left) / z - w / 2) + 'px';
+                el.style.top = ((r.top + r.height / 2 - L.top) / z - h / 2) + 'px';
+                gsap.set(el, { rotation: rot });
+                gsap.to(throat, { opacity: 0, duration: 0.2 });
+                docked = false; strip = null; pulledOnce = true;
+                gsap.delayedCall(0.5, () => (printed < MAX_PRINTS ? print(false) : printNote()));
+            }
+
+            let drag = null;
+            // two of the six strips, picked at random each visit, snag on the way down and stay; the rest fall away
+            const sticky = new Set(gsap.utils.shuffle([0, 1, 2, 3, 4, 5]).slice(0, 2));
+            let pulledCount = 0;
+            document.addEventListener('pointerdown', e => {
+                const el = e.target.closest('.booth-strip');
+                if (!canPlay || !el || e.button > 0) return;
+                const inMachine = el.parentNode === feed;
+                if (inMachine && el !== strip) return;
+                if (inMachine && feedTl) { feedTl.kill(); feedTl = null; gsap.set(throat, { opacity: 1 }); gsap.set(el, { autoAlpha: 1 }); }
+                e.preventDefault();
+                try { el.setPointerCapture(e.pointerId); } catch (_) {}
+                if (inMachine) gsap.killTweensOf(el, 'rotation');
+                el.style.zIndex = ++topZ;
+                drag = { el, mode: inMachine ? 'pull' : 'free', sx: e.clientX, sy: e.clientY,
+                         x0: gsap.getProperty(el, 'x'), y0: gsap.getProperty(el, 'y'), lx: e.clientX, lt: performance.now(), vx: 0 };
+                if (!inMachine) startFree(e);
+            });
+
+            function startFree(e) {
+                const el = drag.el;
+                drag.mode = 'free';
+                drag.sx = e.clientX; drag.sy = e.clientY;
+                drag.x0 = gsap.getProperty(el, 'x'); drag.y0 = gsap.getProperty(el, 'y');
+                drag.qx = gsap.quickTo(el, 'x', { duration: 0.18, ease: 'power3' });
+                drag.qy = gsap.quickTo(el, 'y', { duration: 0.18, ease: 'power3' });
+                drag.qr = gsap.quickTo(el, 'rotation', { duration: 0.5, ease: 'power3' });
+                el.classList.add('is-held');
+                gsap.to(el, { scale: 1.035, duration: 0.25, ease: 'power2.out' });
+            }
+
+            window.addEventListener('pointermove', e => {
+                if (!drag) return;
+                const z = scale(), el = drag.el;
+                const dx = (e.clientX - drag.sx) / z, dy = (e.clientY - drag.sy) / z;
+                const now = performance.now(), dt = Math.max(now - drag.lt, 1);
+                drag.vx = drag.vx * 0.7 + ((e.clientX - drag.lx) / z / dt) * 0.3;
+                drag.lx = e.clientX; drag.lt = now;
+                if (drag.mode === 'pull') {
+                    // it follows the hand straight out of the slot, and comes free as soon as it has cleared it
+                    const y = Math.max(drag.y0 + dy, drag.y0 - 6);
+                    gsap.set(el, { y, x: dx * 0.15, rotation: gsap.utils.clamp(-4, 4, dx * 0.05) });
+                    if (y > 3 + BITE || (y > 3 && Math.abs(dx) > 24)) { release(el); startFree(e); }
+                } else {
+                    drag.tx = drag.x0 + dx; drag.ty = drag.y0 + dy;
+                    drag.qx(drag.tx); drag.qy(drag.ty);
+                    // swings like paper held near the top: tilts against the direction of travel
+                    drag.qr(gsap.utils.clamp(-16, 16, -drag.vx * 9));
+                }
+            });
+
+            const end = () => {
+                if (!drag) return;
+                const el = drag.el;
+                if (drag.mode === 'pull') {
+                    gsap.to(el, { y: 3, x: 0, rotation: 0, duration: 0.6, ease: 'back.out(2)' });
+                } else {
+                    el.classList.remove('is-held');
+                    const z = scale(), r = el.getBoundingClientRect();
+                    const dir = drag.vx === 0 ? (Math.random() < .5 ? -1 : 1) : Math.sign(drag.vx);
+                    if (el.dataset.sticks) {
+                        // it starts to fall, then snags on something and hangs there at an angle
+                        const drop = Math.max(40, Math.min(240, (window.innerHeight - r.height * 0.55 - r.top) / z));
+                        gsap.killTweensOf(el);
+                        gsap.timeline()
+                            .to(el, { y: '+=' + drop, x: '+=' + (drag.vx * 60 + dir * 14), duration: 0.38, ease: 'power2.in' }, 0)
+                            .to(el, { rotation: '+=' + dir * gsap.utils.random(10, 18), scale: 1, duration: 0.38, ease: 'power1.in' }, 0)
+                            .to(el, { y: '-=7', duration: 0.12, ease: 'power2.out' })
+                            .to(el, { y: '+=7', duration: 0.5, ease: 'bounce.out' })
+                            .to(el, { rotation: '-=' + dir * 6, duration: 1.4, ease: 'elastic.out(1, 0.3)' }, '<');
+                        drag = null;
+                        return;
+                    }
+                    // the rest fall off the screen: they keep a little of the throw, tip over and drop out of view
+                    const fall = (window.innerHeight - r.top) / z + el.offsetHeight + 80;
+                    gsap.killTweensOf(el);
+                    gsap.timeline({ onComplete: () => el.remove() })
+                        .to(el, { y: '+=' + fall, duration: 1.1, ease: 'power2.in' }, 0)
+                        .to(el, { x: '+=' + (drag.vx * 260 + dir * 60), duration: 1.1, ease: 'power1.out' }, 0)
+                        .to(el, { rotation: '+=' + dir * gsap.utils.random(35, 70), scale: 1, duration: 1.1, ease: 'power1.in' }, 0);
+                }
+                drag = null;
+            };
+            window.addEventListener('pointerup', end);
+            window.addEventListener('pointercancel', end);
+
+            // ── Alive while it waits: it sways towards the cursor, swings when the page scrolls,
+            // slides a little further out on hover, and gets a small tug from the machine when left alone
+            let hovering = false, busy = false, lastMove = performance.now();
+            const idle = () => canPlay && strip && docked && !feedTl && !drag && !busy && !reduce;
+            let qr = null, qrFor = null;
+            const sway = v => {
+                if (qrFor !== strip) { qr = gsap.quickTo(strip, 'rotation', { duration: 0.9, ease: 'power3.out' }); qrFor = strip; }
+                qr(v);
+            };
+            window.addEventListener('pointermove', e => {
+                lastMove = performance.now();
+                if (!idle()) return;
+                // hangs from the slot: the bottom swings towards the pointer, more strongly the closer it is
+                const r = booth.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height * 0.25;
+                const dx = e.clientX - cx, reach = Math.max(0, 1 - Math.hypot(dx, e.clientY - cy) / 750);
+                sway(gsap.utils.clamp(-5, 5, -dx / 80) * reach);
+            });
+            let lastY = window.scrollY;
+            window.addEventListener('scroll', () => {
+                const v = window.scrollY - lastY; lastY = window.scrollY;
+                if (!idle() || Math.abs(v) < 1) return;
+                gsap.to(strip, { rotation: gsap.utils.clamp(-4, 4, v * 0.12), duration: 0.25, overwrite: 'auto',
+                    onComplete: () => { if (idle()) gsap.to(strip, { rotation: 0, duration: 1.6, ease: 'elastic.out(1, 0.3)' }); } });
+            }, { passive: true });
+            feed.addEventListener('pointerover', e => {
+                if (e.target.closest('.booth-strip') !== strip || !idle() || hovering) return;
+                hovering = true;
+                gsap.to(strip, { y: 14, duration: 0.45, ease: 'power3.out' });   // offers itself
+            });
+            feed.addEventListener('pointerout', e => {
+                if (!hovering || (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.booth-strip') === strip)) return;
+                hovering = false;
+                if (idle()) gsap.to(strip, { y: 3, duration: 0.5, ease: 'back.out(2)' });
+            });
+            // until the first pull: after a few quiet seconds, the rollers push it out a touch and let it settle
+            setInterval(() => {
+                if (pulledOnce || hovering || !idle() || performance.now() - lastMove < 2500) return;
+                busy = true;
+                gsap.timeline({ onComplete: () => { busy = false; } })
+                    .to(strip, { y: 12, duration: 0.16, ease: 'power2.out' })
+                    .to(strip, { y: 3, duration: 0.8, ease: 'elastic.out(1, 0.4)' })
+                    .to(strip, { rotation: 1.5, duration: 0.12, ease: 'sine.out' }, 0.05)
+                    .to(strip, { rotation: 0, duration: 1.3, ease: 'elastic.out(1, 0.3)' }, 0.17);
+            }, 4200);
+
+            gsap.from('.hero-stage', { duration: 0.9, y: 20, opacity: 0, ease: 'power2.out', delay: 0.05, clearProps: 'transform,opacity' });
+            // the words come first; once they've had a moment, the machine arrives, then it prints.
+            // Its parts animate rather than .booth itself, so the headline stays layered between the machine and the strip.
+            if (!reduce) gsap.from(booth.querySelectorAll('.booth-panel, .booth-bezel'), { opacity: 0, y: -18, duration: 0.8, ease: 'power3.out', delay: MACHINE_IN, clearProps: 'opacity,transform' });
+            print(true);
+        }
+
         // ── Certifications ───────────────────────────────────────────────
-        gsap.utils.toArray('.cert-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: 'top 92%' },
-                y: 24, opacity: 0, duration: 0.7, delay: i * 0.08, ease: 'power2.out'
+        gsap.utils.toArray('.cert-piece').forEach((piece, i) => {
+            gsap.from(piece, {
+                scrollTrigger: { trigger: piece, start: 'top 92%' },
+                y: 24, opacity: 0, duration: 0.7, delay: (i % 3) * 0.08, ease: 'power2.out', clearProps: 'transform'
             });
         });
+
+        // ── Certificates gallery: dim the wall, then switch the picture lights on one by one ──
+        (() => {
+            const section = document.querySelector('.certs-section');
+            section.querySelectorAll('.cert-lamp').forEach((lamp, i) => lamp.style.setProperty('--light-delay', (0.45 + i * 0.18) + 's'));
+            ScrollTrigger.create({
+                trigger: section, start: 'top 45%', end: 'bottom 55%',
+                onToggle: st => {
+                    document.body.classList.toggle('gallery-mode', st.isActive);
+                    section.classList.toggle('is-lit', st.isActive);
+                }
+            });
+        })();
 
         // ── Full-width video reveal ───────────────────────────────────────
         gsap.from('.video-fullwidth-section', {

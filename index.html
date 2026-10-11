@@ -53,8 +53,9 @@
                     <span></span>
                 </button>
                 <nav class="nav" id="nav">
-                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="index.html" class="nav-link active">Home</a>
                     <a href="about.html" class="nav-link">About</a>
+                    <a href="work.html" class="nav-link">Work</a>
                     <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
                 </nav>
             </div>
@@ -130,7 +131,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="servcraft-preview.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/servcraft-preview-thumb-2.webp" alt="ServCraft Preview mobile app" class="work-card-image" loading="lazy" decoding="async" width="1400" height="1346">
+                        <img src="assets/servcraft-preview-thumb-gloved.webp" alt="ServCraft Preview quotes list on a phone held in a gloved hand outdoors" class="work-card-image" loading="lazy" decoding="async" width="1600" height="1088">
                         <span class="work-item-status-progress">In progress</span>
                     </div>
                     <div class="work-card-content">
@@ -146,7 +147,6 @@
                     <div class="work-card-image-wrapper">
                         <a href="messages-update-video.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
                         <img src="assets/Updated messaging.webp" alt="ServCraft Messaging Redesign" class="work-card-image" loading="lazy" decoding="async" width="2170" height="1494">
-                        <span class="work-item-badge">New</span>
                     </div>
                     <div class="work-card-content">
                         <p class="work-card-title">Messages, Redesigned for Speed and Ease</p>
@@ -229,117 +229,81 @@
     </section>
 
     <!-- Work History Section -->
-    <section class="work-history-section frame-15143">
-        <h2 class="work-history-title">Work history</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">July 2025 - PRESENT</div>
-                <div class="timeline-role">
-                    <h3 class="role-title">Product designer</h3>
-                    <div class="role-company">
-                        <span class="company-name">ServCraft</span>
-                        <span class="company-description">Field service management software</span>
-                    </div>
-                </div>
+    <section class="history-section">
+        <div class="container">
+            <div class="history-header">
+                <h2 class="work-title">Work history</h2>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">March - July 2025</div>
-                <div class="timeline-role">
-                    <h3 class="role-title">UI | UX designer</h3>
-                    <div class="role-company">
-                        <span class="company-name">Credify</span>
-                        <span class="company-description">Logistics and trade finance mobile app</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2022 - 2025</div>
-                <div class="timeline-role">
-                    <h3 class="role-title">Design lead</h3>
-                    <div class="role-company">
-                        <span class="company-name">Onafriq</span>
-                        <span class="company-description">Fintech</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2022 - 2025</div>
-                <div class="timeline-role">
-                    <h3 class="role-title">Product designer</h3>
-                    <div class="role-company">
-                        <span class="company-name">Mideva Labs</span>
-                        <span class="company-description">HCD Design lab</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2020</div>
-                <div class="timeline-role">
-                    <h3 class="role-title">Front end developer</h3>
-                    <div class="role-company">
-                        <span class="company-name">Imprint Africa</span>
-                        <span class="company-description">Tech consulting</span>
-                    </div>
-                </div>
-            </div>
+            <ol class="history-list">
+                <li class="history-row is-current">
+                    <span class="history-date"><i class="history-live" aria-hidden="true"></i>July 2025 - PRESENT</span>
+                    <h3 class="history-role">Product designer</h3>
+                    <p class="history-company"><span class="history-company-name">ServCraft</span><span class="history-company-desc">Field service management software</span></p>
+                </li>
+                <li class="history-row">
+                    <span class="history-date">March - July 2025</span>
+                    <h3 class="history-role">UI | UX designer</h3>
+                    <p class="history-company"><span class="history-company-name">Credify</span><span class="history-company-desc">Logistics and trade finance mobile app</span></p>
+                </li>
+                <li class="history-row">
+                    <span class="history-date">2022 - 2025</span>
+                    <h3 class="history-role">Design lead</h3>
+                    <p class="history-company"><span class="history-company-name">Onafriq</span><span class="history-company-desc">Fintech</span></p>
+                </li>
+                <li class="history-row">
+                    <span class="history-date">2022 - 2025</span>
+                    <h3 class="history-role">Product designer</h3>
+                    <p class="history-company"><span class="history-company-name">Mideva Labs</span><span class="history-company-desc">HCD Design lab</span></p>
+                </li>
+                <li class="history-row">
+                    <span class="history-date">2020</span>
+                    <h3 class="history-role">Front end developer</h3>
+                    <p class="history-company"><span class="history-company-name">Imprint Africa</span><span class="history-company-desc">Tech consulting</span></p>
+                </li>
+            </ol>
         </div>
     </section>
 
     <!-- Tools Section -->
     <section class="tools-section">
         <div class="container">
-            <div class="tools-circle">
-                <div class="tools-circle-title">
-                    <h2 class="tools-title">Tools I find <span class="tools-highlight">most useful</span></h2>
-                </div>
-
-                <div class="tool-card tool-card-claude" style="--x: 0px; --y: -195px; --r: -6deg;">
-                    <img src="assets/tool-icon-claude.webp" alt="Claude" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">Claude</span>
-                </div>
-
-                <div class="tool-card tool-card-gemini" style="--x: 138px; --y: -138px; --r: 5deg;">
-                    <img src="assets/tool-icon-gemini.webp" alt="Gemini" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">Gemini</span>
-                </div>
-
-                <div class="tool-card tool-card-clarity" style="--x: 195px; --y: 0px; --r: -4deg;">
-                    <img src="assets/tool-icon-clarity.webp" alt="Clarity" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">Clarity</span>
-                </div>
-
-                <div class="tool-card tool-card-figma" style="--x: 138px; --y: 138px; --r: 7deg;">
-                    <img src="assets/tool-icon-figma.webp" alt="Figma" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">Figma</span>
-                </div>
-
-                <div class="tool-card tool-card-htmlcss" style="--x: 0px; --y: 195px; --r: -5deg;">
-                    <img src="assets/tool-icon-htmlcss.webp" alt="HTML and CSS" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">HTML &amp; CSS</span>
-                </div>
-
-                <div class="tool-card tool-card-notion" style="--x: -138px; --y: 138px; --r: 4deg;">
-                    <svg viewBox="0 0 40 40" class="tool-icon">
-                        <rect x="4" y="4" width="32" height="32" rx="7" fill="#fff" stroke="#000" stroke-width="2"/>
-                        <text x="20" y="27" font-family="Georgia, serif" font-size="18" font-weight="700" text-anchor="middle" fill="#000">N</text>
-                    </svg>
-                    <span class="tool-label">Notion</span>
-                </div>
-
-                <div class="tool-card tool-card-jira" style="--x: -195px; --y: 0px; --r: 6deg;">
-                    <img src="assets/tool-icon-jira.webp" alt="Jira" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">Jira</span>
-                </div>
-
-                <div class="tool-card tool-card-claudedesign" style="--x: -138px; --y: -138px; --r: -7deg;">
-                    <img src="assets/tool-icon-claude-design.webp" alt="Claude Design" class="tool-icon" loading="lazy" decoding="async" width="200" height="200">
-                    <span class="tool-label">Claude Design</span>
-                </div>
+            <div class="tools-header">
+                <h2 class="work-title">Tools I find <span class="work-highlight">most useful</span></h2>
             </div>
+            <ul class="tools-grid">
+                <li class="tool-cell" style="--tint: #F0EEE6;">
+                    <img src="assets/tool-icon-claude.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">Claude</span>
+                </li>
+                <li class="tool-cell" style="--tint: #F3F0FF;">
+                    <img src="assets/tool-icon-gemini.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">Gemini</span>
+                </li>
+                <li class="tool-cell" style="--tint: #EAF3FC;">
+                    <img src="assets/tool-icon-clarity.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">Clarity</span>
+                </li>
+                <li class="tool-cell" style="--tint: #F4F4F4;">
+                    <img src="assets/tool-icon-figma.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">Figma</span>
+                </li>
+                <li class="tool-cell" style="--tint: #FFF3E9;">
+                    <img src="assets/tool-icon-htmlcss.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">HTML &amp; CSS</span>
+                </li>
+                <li class="tool-cell" style="--tint: #F4F4F4;">
+                    <svg viewBox="0 0 40 40" class="tool-logo" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="7" fill="#fff" stroke="#000" stroke-width="2"/><text x="20" y="27" font-family="Georgia, serif" font-size="18" font-weight="700" text-anchor="middle" fill="#000">N</text></svg>
+                    <span class="tool-name">Notion</span>
+                </li>
+                <li class="tool-cell" style="--tint: #EAF1FF;">
+                    <img src="assets/tool-icon-jira.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">Jira</span>
+                </li>
+                <li class="tool-cell" style="--tint: #F1EEFB;">
+                    <img src="assets/tool-icon-claude-design.webp" alt="" class="tool-logo" loading="lazy" decoding="async" width="200" height="200">
+                    <span class="tool-name">Claude Design</span>
+                </li>
+            </ul>
         </div>
     </section>
 
@@ -486,129 +450,18 @@
             });
         });
 
-        // ── Work history ─────────────────────────────────────────────────
-        const historyTitle = document.querySelector('.work-history-title');
-        if (historyTitle) {
-            const words = splitWords(historyTitle);
-            gsap.from(words, {
-                scrollTrigger: { trigger: historyTitle, start: 'top 88%' },
-                yPercent: 105, duration: 0.85, stagger: 0.05, ease: 'power3.out'
-            });
-        }
-        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-            gsap.from(item, {
-                scrollTrigger: { trigger: item, start: 'top 92%' },
-                x: -28, opacity: 0, duration: 0.65, delay: i * 0.07, ease: 'power2.out'
-            });
+        // ── Work history: hairlines draw in, then each row's text rises ──
+        gsap.utils.toArray('.history-row').forEach((row, i) => {
+            const tl = gsap.timeline({ scrollTrigger: { trigger: row, start: 'top 90%' }, delay: i * 0.06 });
+            tl.fromTo(row, { '--line': 0 }, { '--line': 1, duration: 0.8, ease: 'power3.out' })
+              .from(row.children, { y: 12, opacity: 0, duration: 0.55, ease: 'power2.out', stagger: 0.06 }, 0.1);
         });
 
-        // ── Tools section: title fade + cards sweep in, then circle ──────
-        gsap.from('.tools-circle-title', {
-            scrollTrigger: { trigger: '.tools-section', start: 'top 80%' },
-            y: 20, opacity: 0, duration: 0.7, ease: 'power2.out'
+        // ── Tools grid: logos rise into their cells ─────────────────────
+        gsap.from('.tool-cell > *', {
+            scrollTrigger: { trigger: '.tools-grid', start: 'top 82%' },
+            y: 14, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.04
         });
-
-        (function () {
-            const cards = gsap.utils.toArray('.tool-card');
-            // Tight, slightly overlapping strip (like a deck fanned into a row) —
-            // not spaced-out like the final circle.
-            const rowX = [-252, -180, -108, -36, 36, 108, 180, 252];
-
-            // Card DOM order (0..7) already walks the circle clockwise from the top,
-            // which means cards 0 (Claude) and 7 (Claude Design) — the two ends of
-            // that walk — would sit at the far opposite ends of the row. Since they
-            // share the identical icon, having them cross the whole row to reach
-            // each other reads as one card teleporting rather than two passing.
-            // Instead, cut the line at the BOTTOM of the circle (between Figma and
-            // HTML & CSS) so the two Claude cards land next to each other in the
-            // middle of the row and barely have to move relative to one another.
-            const rowOrder = [4, 5, 6, 7, 0, 1, 2, 3]; // card index at each row slot, left to right
-            const slotOfCard = new Array(cards.length);
-            rowOrder.forEach((cardIdx, slot) => { slotOfCard[cardIdx] = slot; });
-
-            const finals = cards.map((card) => {
-                const xStr = card.style.getPropertyValue('--x') || '0px';
-                const yStr = card.style.getPropertyValue('--y') || '0px';
-                const rStr = card.style.getPropertyValue('--r') || '0deg';
-                return {
-                    x: xStr, y: yStr, r: rStr,
-                    xNum: parseFloat(xStr), yNum: parseFloat(yStr)
-                };
-            });
-
-            // Start each card off-screen to the right, small and stacked into a tight row —
-            // they visibly grow as they settle into the line, then again as the circle forms.
-            cards.forEach((card, i) => {
-                gsap.set(card, {
-                    '--x': (rowX[slotOfCard[i]] + 1300) + 'px',
-                    '--y': '0px',
-                    '--r': '0deg',
-                    '--s': 0.55,
-                    opacity: 0
-                });
-            });
-
-            const toolsTl = gsap.timeline({
-                scrollTrigger: { trigger: '.tools-circle', start: 'top 78%' },
-                onComplete: () => {
-                    cards.forEach((card) => {
-                        card.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
-                    });
-                }
-            });
-
-            // Jitter-style easing: a buttery "easeOutExpo" glide for the entrance,
-            // and a snappy spring-overshoot bezier for the settle.
-            const jitterGlide = 'cubic-bezier(0.16, 1, 0.3, 1)';
-            const jitterSpring = 'cubic-bezier(0.34, 1.56, 0.64, 1)';
-
-            const n = cards.length;
-            const lastSlot = n - 1;
-
-            // Phase 1: sweep in from the right until the full line is assembled on screen.
-            // Stagger by ROW SLOT (left to right), not DOM index, so the sweep-in reads
-            // as a clean left-to-right wave regardless of which card sits where.
-            let phase1End = 0;
-            cards.forEach((card, i) => {
-                const slot = slotOfCard[i];
-                const start = slot * 0.07;
-                const dur = 0.75 + ((slot % 3) * 0.07);
-                toolsTl.to(card, {
-                    '--x': rowX[slot] + 'px',
-                    '--s': 1,
-                    opacity: 1,
-                    duration: dur,
-                    ease: jitterGlide
-                }, start);
-                phase1End = Math.max(phase1End, start + dur);
-            });
-
-            // Beat of stillness once the line is fully formed, before it curls.
-            const phase2Start = phase1End + 0.18;
-
-            // Phase 2: the line curls into a circle — one continuous motion per card
-            // (not a lift-then-settle in two steps). The two ends of the row lead,
-            // the rest follow behind them; the spring-ramp ease does the accelerate/
-            // decelerate work in a single smooth curve instead of stacked tweens.
-            cards.forEach((card, i) => {
-                const slot = slotOfCard[i];
-                const distFromEnd = Math.min(slot, lastSlot - slot);
-                const liftDelay = phase2Start + distFromEnd * 0.09;
-                const dur = 0.85 + distFromEnd * 0.05;
-
-                toolsTl.to(card, {
-                    '--x': finals[i].x,
-                    '--y': finals[i].y,
-                    '--r': finals[i].r,
-                    duration: dur,
-                    ease: jitterSpring
-                }, liftDelay);
-            });
-
-            // Play the whole sequence at 2x speed (half the total time), keeping
-            // every stagger and ease ratio intact.
-            toolsTl.timeScale(2);
-        })();
 
         // ── CTA section ──────────────────────────────────────────────────
         const ctaTitle = document.querySelector('.cta-title');

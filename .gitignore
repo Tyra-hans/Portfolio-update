@@ -1,2 +1,5 @@
 .DS_Store
 .claude/worktrees/
+
+# readable sources of password-protected pages: only the encrypted output is published
+private/

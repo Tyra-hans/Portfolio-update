@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- analytics: GA only here; Clarity starts with the unlocked page (loading it on both breaks it after the swap) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        // the unlocked page sends its own page_view, so the lock screen only sends events
+        gtag('config', 'G-KRRW9BX0MN', { send_page_view: false });
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>ServCraft Preview - Tyra Hans Product Designer</title>
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* the case study below is encrypted; this screen asks for the password and decrypts it in the browser */
+        .lock { min-height: calc(100vh - 140px); display: flex; align-items: center; justify-content: center; padding: 48px 20px; }
+        .lock-card { width: 100%; max-width: 420px; text-align: center; }
+        .lock-icon { width: 56px; height: 56px; margin: 0 auto 24px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            background: var(--color-bg-panel); color: var(--color-primary); }
+        .lock-card h1 { margin: 0 0 10px; font-size: 32px; font-weight: 700; color: var(--color-primary); }
+        .lock-card p { margin: 0 0 28px; font-size: 16px; line-height: 1.6; color: var(--color-text-secondary); }
+        .lock-form { display: flex; gap: 10px; }
+        .lock-form input { flex: 1; min-width: 0; height: 48px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--color-border);
+            background: #fff; font: 500 16px 'Plus Jakarta Sans', sans-serif; color: var(--color-primary); outline: none; transition: border-color .2s, box-shadow .2s; }
+        .lock-form input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 4px rgba(0, 145, 255, .12); }
+        .lock-form button { height: 48px; padding: 0 22px; border: 0; border-radius: 12px; cursor: pointer;
+            background: var(--color-accent); color: #fff; font: 700 15px 'Plus Jakarta Sans', sans-serif; transition: background-color .2s; }
+        .lock-form button:hover { background: var(--color-accent-hover); }
+        .lock-form button[disabled] { opacity: .6; cursor: progress; }
+        .lock-error { min-height: 22px; margin-top: 12px; font-size: 14px; color: #c0392b; }
+        .lock-form.shake { animation: lock-shake .4s; }
+        @keyframes lock-shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+        .lock-back { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--color-primary); }
+        @media (max-width: 480px) { .lock-form { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.webp" alt="Logo" class="logo" width="385" height="356"></a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="work.html" class="nav-link">Work</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="lock">
+        <div class="lock-card">
+            <div class="lock-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            </div>
+            <h1>ServCraft Preview</h1>
+            <p>This case study is password protected.</p>
+            <form class="lock-form" id="lockForm">
+                <input type="password" id="lockPassword" placeholder="Password" aria-label="Password" autocomplete="current-password" required autofocus>
+                <button type="submit" id="lockButton">View case study</button>
+            </form>
+            <div class="lock-error" id="lockError" role="alert"></div>
+            <a class="lock-back" href="work.html">&larr; Back to work</a>
+        </div>
+    </main>
+
+    <script id="payload" type="application/json">__PAYLOAD__</script>
+    <script>
+    (() => {
+        const P = JSON.parse(document.getElementById('payload').textContent);
+        const bytes = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+        const b64 = u8 => btoa(String.fromCharCode(...u8));
+        // the derived key is kept for this tab only, so a refresh doesn't ask again; a re-encrypted page (new salt) asks afresh
+        const KEY = 'protected-page:' + P.salt;
+
+        const decrypt = async key => new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: bytes(P.iv) }, key, bytes(P.data)));
+        function show(html) { document.open(); document.write(html); document.close(); }
+        async function keyFrom(password) {
+            const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+            return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: bytes(P.salt), iterations: P.iterations, hash: 'SHA-256' },
+                base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+        }
+
+        try {
+            const saved = sessionStorage.getItem(KEY);
+            if (saved) crypto.subtle.importKey('raw', bytes(saved), 'AES-GCM', false, ['decrypt']).then(decrypt).then(show).catch(() => sessionStorage.removeItem(KEY));
+        } catch (_) {}
+
+        try { if (!sessionStorage.getItem(KEY)) track('protected_page_locked'); } catch (_) { track('protected_page_locked'); }
+        const form = document.getElementById('lockForm'), input = document.getElementById('lockPassword');
+        const button = document.getElementById('lockButton'), error = document.getElementById('lockError');
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            button.disabled = true; error.textContent = '';
+            try {
+                const key = await keyFrom(input.value);
+                const html = await decrypt(key);   // throws on a wrong password
+                try { sessionStorage.setItem(KEY, b64(new Uint8Array(await crypto.subtle.exportKey('raw', key)))); } catch (_) {}
+                track('protected_page_unlocked');
+                show(html);
+            } catch (_) {
+                button.disabled = false;
+                track('protected_page_wrong_password');
+                error.textContent = 'That password isn’t right.';
+                form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
+                input.select();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
