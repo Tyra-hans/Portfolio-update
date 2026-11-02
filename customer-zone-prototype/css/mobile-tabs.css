@@ -1,0 +1,36 @@
+/* Mobile nav (≤620px), shared by home and detail pages:
+   tab bars (home .tabs, job .job-tabs) become a scrollable row of chips,
+   and the breadcrumb collapses to one "← Parent" back link (.crumb-back, built in portal.js). */
+.crumb-back { display: none; }
+
+@media (max-width: 620px) {
+  .tabs, .job-tabs {
+    display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+    border-bottom: 0 !important; padding: 0 !important; margin-bottom: 0;
+    -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity;
+  }
+  .tabs::-webkit-scrollbar, .job-tabs::-webkit-scrollbar { display: none; }
+  .tabs { padding: 14px 14px 0 !important; }
+  .job-tabs { margin: 4px 0 16px !important; }
+
+  .tabs .tab, .job-tabs .job-tab {
+    flex-shrink: 0; scroll-snap-align: start;
+    min-height: 40px; padding: 0 14px !important; margin: 0;
+    border: 1px solid #e5e7eb; border-radius: 999px; background: #fff;
+    font-size: 14px; font-weight: 600; color: #374151;
+  }
+  .tabs .tab svg, .job-tabs .job-tab svg { width: 15px; height: 15px; }
+  .tabs .tab.active, .job-tabs .job-tab.active {
+    background: #003ed0; border-color: #003ed0; color: #fff;
+  }
+  .tabs .tab.active .tab-count, .job-tabs .job-tab.active .job-tab-count {
+    background: rgba(255, 255, 255, .22); color: #fff;
+  }
+
+  .breadcrumb { display: none; }
+  .crumb-back {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+    font-size: 14px; font-weight: 700; color: #003ed0;
+  }
+  .crumb-back svg { width: 18px; height: 18px; }
+}

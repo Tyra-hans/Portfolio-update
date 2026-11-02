@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- DRAFT COPY: all text on this page is a first draft for Tyra to rewrite. -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "whnfdpjsli");
+    </script>
+    <script>clarity("set", "page_type", "case_study"); clarity("set", "project", "servcraft_customer_zone");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRRW9BX0MN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KRRW9BX0MN');
+        function track(e){if(window.clarity)clarity('event',e);if(window.gtag)gtag('event',e);}
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServCraft Customer Zone - Tyra Hans Product Designer</title>
+    <meta name="description" content="Turning a disconnected portal into a complete customer experience: a home screen, connected job records and actions in context, prototyped in HTML.">
+    <meta property="og:title" content="ServCraft Customer Zone | Tyra Hans">
+    <meta property="og:description" content="Turning a disconnected portal into a complete customer experience: a home screen, connected job records and actions in context, prototyped in HTML.">
+    <meta property="og:image" content="https://tyra-hans.github.io/Portfolio-update/assets/customer-zone-home.jpg">
+    <meta property="og:url" content="https://tyra-hans.github.io/Portfolio-update/customer-zone.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="assets/favicon2black.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* overflow-x: hidden on html/body breaks position: sticky; clip keeps the no-scroll behaviour without that */
+        html, body { overflow-x: clip; }
+
+        .cz {
+            --ink: #0b1f33;
+            --body: #3c4a5a;
+            --muted: #5b6b7c;
+            --line: #e3e9f0;
+            --panel: #f5f8fc;
+            --blue: #003ed0;
+            --blue-soft: #eaf0ff;
+            --radius: 20px;
+            color: var(--body);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .cz h1, .cz h2, .cz h3 { font-family: 'Hanken Grotesk', sans-serif; color: var(--ink); margin: 0; }
+        .cz p { margin: 0; font-size: 17px; line-height: 1.7; }
+        .cz-skip { position: absolute; left: 16px; top: -60px; z-index: 10000; background: var(--ink, #0b1f33); color: #fff; padding: 10px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+        .cz-skip:focus { top: 16px; }
+        .cz-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* Hero */
+        .cz-hero { padding: 0 0 96px; background: radial-gradient(1200px 500px at 50% -10%, #e6edff 0%, rgba(230, 237, 255, 0) 70%); }
+        .cz-hero-top { max-width: 1040px; }
+        .cz-hero-top .cz-hero-lede { max-width: 780px; margin-top: 28px; font-size: 21px !important; line-height: 1.6; color: var(--ink); }
+        .cz-hero-more { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin-top: 20px; }
+        .cz-hero-more p { font-size: 16px; line-height: 1.65; }
+        .cz-hero-more.is-single { grid-template-columns: 1fr; max-width: 680px; }
+
+        /* The story in one comparison */
+        .cz-hero h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1.04; letter-spacing: -1.5px; margin-top: 16px; }
+        .cz-hero-lede { font-size: 19px !important; color: var(--body); }
+        .cz-meta { display: grid; grid-template-columns: repeat(3, auto); gap: 12px 32px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); }
+        .cz-meta dt { font-size: 14px; font-weight: 500; color: var(--muted); }
+        .cz-meta dd { margin: 4px 0 0; font-weight: 600; color: var(--ink); font-size: 15px; }
+
+        /* Live demo frames */
+        .cz-demo { position: relative; }
+        .cz-browser { border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid rgba(15, 35, 55, .1); box-shadow: 0 30px 80px rgba(16, 24, 40, .14), 0 2px 6px rgba(16, 24, 40, .06); }
+        .cz-browser-bar { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 14px; background: #f3f5f8; border-bottom: 1px solid var(--line); }
+        .cz-dots { display: flex; gap: 6px; }
+        .cz-dots i { width: 10px; height: 10px; border-radius: 50%; background: #d4d9e0; }
+        .cz-url { flex: 1; max-width: 420px; margin: 0 auto; height: 24px; border-radius: 6px; background: #fff; border: 1px solid var(--line); font-size: 12px; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+        .cz-viewport { position: relative; overflow: hidden; background: #f5f8fc; }
+        .cz-viewport iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; background: #fff; }
+        .cz-phone { width: 300px; margin: 0 auto; padding: 10px; border-radius: 44px; background: #0b1f33; box-shadow: 0 30px 70px rgba(16, 24, 40, .25); }
+        .cz-phone .cz-viewport { border-radius: 34px; }
+        .cz-activate { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; justify-content: center; padding: 24px; border: 0; background: linear-gradient(180deg, rgba(11, 31, 51, 0) 55%, rgba(11, 31, 51, .45)); cursor: pointer; font: inherit; }
+        .cz-activate span { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; background: #fff; color: var(--ink); font-weight: 700; font-size: 15px; box-shadow: 0 8px 24px rgba(16, 24, 40, .2); transition: transform .2s; }
+        
+        .cz-activate:hover span { transform: translateY(-2px); }
+        .cz-activate:focus-visible { outline: 3px solid #003ed0; outline-offset: -3px; }
+        .cz-demo.is-live .cz-activate { display: none; }
+        .cz-demo-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-top: 16px; font-size: 14px; color: var(--muted); }
+        .cz-newtab { color: var(--blue); font-weight: 600; text-decoration: none; }
+        .cz-newtab:hover { text-decoration: underline; }
+        .cz-hero-photo { position: relative; }
+        .cz-hero-photo img { object-position: 50% 22%; }
+        /* the kicker and title sit on the hero photo, over a dark fade for contrast */
+        .cz-hero-caption { position: absolute; inset: 0; display: flex; align-items: flex-end; padding-bottom: 56px; background: linear-gradient(to top, rgba(4, 22, 40, .9) 0%, rgba(4, 22, 40, .6) 38%, rgba(4, 22, 40, 0) 68%), linear-gradient(to right, rgba(4, 22, 40, .55) 0%, rgba(4, 22, 40, 0) 58%); pointer-events: none; }
+        .cz-hero-caption .cz-wrap { width: 100%; }
+        .cz-kicker-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+        .cz-kicker { font-size: 14px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #fff; }
+        .cz-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; border: 1px solid #cdebd6; background: #e8f6ec; color: #0f7a3a; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+        .cz-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #1fa855; box-shadow: 0 0 0 3px rgba(31, 168, 85, .18); }
+        .cz-hero .cz-hero-caption h1 { max-width: 680px; margin: 0; font-size: 48px; line-height: 1.08; letter-spacing: -2px; color: #fff; text-shadow: 0 2px 24px rgba(0, 0, 0, .25); }
+        .cz-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 28px 0 56px; }
+        .cz-try { min-height: 44px; padding: 0 22px; border: 0; border-radius: 999px; background: #003ed0; color: #fff; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
+        .cz-try:hover { background: #0034b0; }
+        .cz-try:focus-visible { outline: 3px solid #003ed0; outline-offset: 3px; }
+        /* the live prototype only shows once opened, large, over the page */
+        .cz-hero-demo:not(.is-expanded) { display: none; }
+        /* Using the prototype opens it large, over the page */
+        .cz-demo.is-expanded { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; margin: 0; padding: 64px 24px 24px; background: rgba(11, 20, 30, .88); }
+        .cz-demo.is-expanded .cz-browser { flex: none; width: var(--expanded-w, 100%); }
+        .cz-demo.is-expanded .cz-demo-foot { display: none; }
+        .cz-close { display: none; position: absolute; top: 12px; right: 16px; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .16); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
+        .cz-close:hover { background: rgba(255, 255, 255, .26); }
+        .cz-close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+        .cz-demo.is-expanded .cz-close { display: flex; }
+        .cz-poster { display: none; width: 100%; height: auto; }
+        .cz-still .cz-poster { display: block; }
+        .cz-gif { margin: 0; }
+        .cz-gif img { display: block; width: 100%; height: auto; }
+        .cz-phone .cz-phone-gif { border-radius: 34px; }
+        .cz-gif .cz-phone + .cz-demo-foot { max-width: 300px; margin-left: auto; margin-right: auto; }
+        .cz-gif-toggle { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; min-height: 32px; }
+        .cz-gif-toggle:focus-visible { outline: 3px solid #003ed0; outline-offset: 2px; }
+
+        /* At a glance */
+        .cz-glance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+        .cz-glance-card { padding: 28px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+        .cz-glance-card b { display: block; font-family: 'Hanken Grotesk', sans-serif; font-size: 21px; color: var(--ink); margin-bottom: 8px; }
+        .cz-glance-card p { font-size: 15px; line-height: 1.6; }
+
+        /* Chapters: a slim row of links instead of a sidebar, so content keeps the full width */
+
+        /* Full-bleed photo mockups between chapters; the image eases out of a slight zoom as it scrolls in */
+        .cz-breather { margin: 0; width: 100%; aspect-ratio: 16 / 9; max-height: 92vh; overflow: hidden; background: #2a2622; }
+        .cz-breather img { display: block; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+
+        /* Colour band: navy for the problem, warming to amber at the turn in the story (same easing as the Preview page) */
+        .cz-band { --band-bg: #0b2438; --band-head: #fff; --band-body: rgba(255, 255, 255, .8); --band-muted: rgba(255, 255, 255, .62); --band-label: #6cc4ff; --band-card: rgba(255, 255, 255, .06); --band-line: rgba(255, 255, 255, .14);
+            background: var(--band-bg); padding: 40px 0 72px; transition: background-color 1.1s cubic-bezier(.65, 0, .35, 1); }
+        .cz-band.is-warm { --band-bg: #f5b73c; --band-head: #1f2733; --band-body: rgba(31, 39, 51, .86); --band-muted: rgba(31, 39, 51, .72); --band-label: #5c3800; --band-card: rgba(255, 255, 255, .32); --band-line: rgba(31, 39, 51, .16); }
+        .cz-band h2, .cz-band .cz-problem b, .cz-band .cz-step b { color: var(--band-head); }
+        .cz-band p, .cz-band .cz-problem { color: var(--band-body); }
+        
+        .cz-band figcaption { color: var(--band-muted); }
+        .cz-band .cz-problem { background: var(--band-card); border-color: var(--band-line); }
+        .cz-band .cz-section { border-top-color: var(--band-line); }
+        .cz-band .cz-step-dot { background: var(--band-head); color: var(--band-bg); box-shadow: 0 0 0 6px var(--band-bg); }
+        .cz-band .cz-zoom img { border-color: var(--band-line); }
+        .cz-band h2, .cz-band p, .cz-band b, .cz-band .cz-problem, .cz-band figcaption, .cz-band .cz-step-dot, .cz-band .cz-section {
+            transition: color 1.1s cubic-bezier(.65, 0, .35, 1), background-color 1.1s cubic-bezier(.65, 0, .35, 1), border-color 1.1s cubic-bezier(.65, 0, .35, 1), box-shadow 1.1s cubic-bezier(.65, 0, .35, 1); }
+
+        .cz-section { padding: 88px 0; border-top: 1px solid var(--line); scroll-margin-top: 90px; }
+        .cz-section:first-child { border-top: 0; }
+        .cz-section-head { max-width: 680px; }
+        .cz-section-head h2 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; letter-spacing: -.8px; margin: 12px 0 18px; }
+        .cz-section-head p + p { margin-top: 14px; }
+        .cz-section-head h2 { margin-top: 0 !important; }
+        .cz-list { margin: 28px 0 0; padding-left: 20px; max-width: 680px; display: grid; gap: 10px; }
+        .cz-list li { font-size: 17px; line-height: 1.65; padding-left: 4px; }
+        .cz-note { max-width: 680px; margin-top: 28px !important; }
+        .cz-privacy { display: grid; gap: 36px; max-width: 680px; margin-top: 40px; }
+        .cz-privacy h3 { font-size: 21px; margin-bottom: 10px; }
+        .cz-privacy p + p, .cz-privacy .cz-list + p { margin-top: 14px; }
+        .cz-privacy .cz-list { margin-top: 14px; }
+        .cz-compare-caption { margin-top: 14px !important; font-size: 15px !important; color: var(--muted); }
+        .cz-decision { scroll-margin-top: 90px; }
+        .cz-figure { margin: 40px 0 0; }
+        .cz-figure img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(15, 35, 55, .08); }
+        .cz-figure figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); }
+
+        /* Problems */
+        .cz-problems { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 32px; counter-reset: p; }
+        .cz-problem { padding: 22px; border-radius: 16px; border: 1px solid var(--line); background: #fff; font-size: 15px; line-height: 1.55; counter-increment: p; }
+        
+        .cz-problem b { display: block; color: var(--ink); margin-bottom: 4px; }
+
+        /* Process stepper */
+        .cz-step-dot { position: relative; width: 40px; height: 40px; border-radius: 50%; background: #003ed0; color: #fff; font-weight: 800; display: grid; place-items: center; font-size: 15px; box-shadow: 0 0 0 6px #fff; }
+
+        /* Decisions */
+        .cz-decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 48px; align-items: center; padding: 48px 0; }
+        .cz-decision + .cz-decision { border-top: 1px dashed var(--line); }
+        .cz-decision.is-stacked { grid-template-columns: 1fr; gap: 28px; }
+        .cz-decision.is-stacked > div:first-child { max-width: 680px; }
+        .cz-decision p + p { margin-top: 12px; }
+        .cz-decision.is-hero h3 { font-size: clamp(30px, 3.4vw, 40px); letter-spacing: -.8px; }
+        .cz-decision.is-hero .cz-compare { box-shadow: 0 30px 80px rgba(16, 24, 40, .16); }
+        .cz-benefits { min-width: 0; }
+        .cz-benefits td:first-child a { color: var(--ink); text-decoration: none; }
+        .cz-benefits td:first-child a:hover { color: #003ed0; text-decoration: underline; }
+        .cz-problem.is-key { border-width: 2px; }
+        .cz-band .cz-problem.is-key { border-color: var(--band-label); }
+        .cz-decision h3 { font-size: 26px; line-height: 1.2; letter-spacing: -.4px; margin: 8px 0 12px; }
+        .cz-decision p { font-size: 16px; }
+
+        /* Before / after slider */
+        .cz-compare { position: relative; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; border: 1px solid rgba(15, 35, 55, .1); background: #e9ecee; --pos: 50%; box-shadow: 0 20px 50px rgba(16, 24, 40, .1); }
+        .cz-compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+        .cz-compare .cz-after { clip-path: inset(0 0 0 var(--pos)); }
+        .cz-compare-line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgba(11, 31, 51, .15); pointer-events: none; }
+        .cz-compare-knob { position: absolute; top: 50%; left: var(--pos); width: 16px; height: 44px; margin: -22px 0 0 -8px; border-radius: 8px; background: #fff; box-shadow: 0 2px 10px rgba(11, 31, 51, .25); pointer-events: none; }
+        .cz-compare input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+        .cz-compare:has(input:focus-visible) { outline: 3px solid #003ed0; outline-offset: 3px; }
+        .cz-compare-label { position: absolute; bottom: 14px; padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; pointer-events: none; }
+        .cz-compare-label.is-before { left: 14px; background: rgba(11, 31, 51, .8); color: #fff; }
+        .cz-compare-label.is-after { right: 14px; background: #003ed0; color: #fff; }
+
+        .cz-pair { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 32px; align-items: center; }
+        #d5 .cz-pair { grid-template-columns: 300px 300px; justify-content: start; gap: 48px; }
+        .cz-old-thumb { margin: 0; }
+        .cz-old-thumb img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid rgba(15, 35, 55, .1); filter: saturate(.8); }
+        .cz-old-thumb figcaption { margin-top: 10px; font-size: 14px; font-weight: 500; color: var(--muted); }
+
+        /* Table */
+        .cz-table-wrap { margin-top: 32px; overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); }
+        .cz-table-wrap:focus-visible { outline: 3px solid #003ed0; outline-offset: 3px; }
+        .cz-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; min-width: 560px; }
+        .cz-table th, .cz-table td { text-align: left; padding: 16px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+        .cz-table tr:last-child td { border-bottom: 0; }
+        .cz-table th { font-size: 14px; font-weight: 600; color: var(--muted); background: var(--panel); }
+        .cz-table td:first-child { font-weight: 700; color: var(--ink); }
+        .cz-tokens { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+        .cz-token { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 13px; font-weight: 600; color: var(--ink); }
+        .cz-token i { width: 22px; height: 22px; border-radius: 50%; display: block; }
+
+        /* Tiles */
+
+        /* Privacy flow */
+
+        /* Lessons */
+
+        .cz-back { display: inline-block; margin: 24px 0 96px; color: var(--blue); font-weight: 700; text-decoration: none; }
+
+        /* Lightbox */
+        .cz-zoom { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 14px; }
+        .cz-zoom:focus-visible { outline: 3px solid #003ed0; outline-offset: 3px; }
+        .cz-viewer { position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, .92); display: flex; align-items: center; justify-content: center; padding: 32px; }
+        .cz-viewer img { max-width: 88vw; max-height: 86vh; border-radius: 10px; object-fit: contain; }
+        .cz-viewer-close { position: absolute; top: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .16); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
+        .cz-viewer-close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+        @media (max-width: 900px) {
+            .cz-hero-top, .cz-decision { grid-template-columns: 1fr; gap: 28px; }
+            .cz-glance-grid, .cz-flow, .cz-hero-more, .cz-compare-key { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .cz-wrap { padding: 0 16px; }
+            /* no live prototype on phones, so the hero goes straight to the story */
+            .cz-hero-actions { display: none; }
+            .cz-hero-top { padding-top: 36px; }
+            .cz-breather.cz-hero-photo { aspect-ratio: 4 / 5; }
+            .cz-hero { padding-bottom: 56px; }
+            .cz-hero-caption { padding-bottom: 28px; background: linear-gradient(to top, rgba(4, 22, 40, .9) 0%, rgba(4, 22, 40, .55) 32%, rgba(4, 22, 40, 0) 58%); }
+            .cz-hero .cz-hero-caption h1 { font-size: 32px; letter-spacing: -1.2px; }
+            .cz-meta { grid-template-columns: 1fr 1fr; }
+            .cz-pair, #d5 .cz-pair { grid-template-columns: 1fr; gap: 28px; }
+            .cz-old-thumb { max-width: 300px; }
+            .cz-phone { width: 270px; }
+            /* taller crop on phones, aimed at the device in each photo */
+            .cz-breather { aspect-ratio: 4 / 3; }
+            .cz-breather img { object-position: var(--focus, 50% 50%); }
+            /* No live demos on phones: show a still screenshot instead */
+            .cz-viewport { height: auto !important; }
+            .cz-viewport iframe, .cz-activate, .cz-hint, .cz-newtab { display: none !important; }
+            .cz-poster { display: block; }
+            .cz-phone .cz-poster { border-radius: 34px; }
+            .cz p { font-size: 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cz-band, .cz-band * { transition: none !important; }
+            .cz * { transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <a class="cz-skip" href="#main">Skip to content</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html"><img src="assets/favicon2black.webp" alt="Tyra Hans, home" class="logo" decoding="async" width="385" height="356"></a>
+                <button class="hamburger" id="hamburger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav class="nav" id="nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="work.html" class="nav-link">Work</a>
+                    <a href="assets/Tyra Resume 2026.pdf" target="_blank" class="nav-link nav-link-button" onclick="track('resume_download')">See my resume</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main" class="cz">
+
+        <!-- ── Hero ── -->
+        <section class="cz-hero">
+            <div class="cz-breather cz-hero-photo" style="--focus: 48% 40%">
+                <img src="assets/customer-zone-mockup-laptop.jpg" alt="A laptop on a workshop bench, surrounded by tools on a pegboard, showing the redesigned Regal Electrical customer portal." width="2560" height="1707" fetchpriority="high" decoding="async">
+                <div class="cz-hero-caption">
+                    <div class="cz-wrap">
+                        <div class="cz-kicker-row">
+                            <span class="cz-kicker">ServCraft · Customer Zone</span>
+                            <!-- TODO Tyra: confirm status wording -->
+                            <span class="cz-badge"><span class="cz-badge-dot"></span>Shipped</span>
+                        </div>
+                        <h1>From a confusing list of jobs to a connected customer portal experience.</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="cz-wrap">
+                <div class="cz-hero-actions">
+                    <button class="cz-try" type="button" data-open-demo>Use the live prototype</button>
+                    <a class="cz-newtab" href="customer-zone-prototype/index.html" target="_blank" rel="noopener">Open the prototype in a new tab</a>
+                </div>
+
+                <div class="cz-demo cz-hero-demo" data-demo>
+                    <div class="cz-browser">
+                        <div class="cz-browser-bar" aria-hidden="true">
+                            <div class="cz-dots"><i></i><i></i><i></i></div>
+                            <div class="cz-url">Customer Zone</div>
+                        </div>
+                        <div class="cz-viewport" data-width="1280" data-height="800">
+                            <iframe data-src="customer-zone-prototype/index.html" title="Live prototype: Customer Zone home" loading="lazy" tabindex="-1"></iframe>
+                            
+                            <button class="cz-activate" type="button"><span>Click to use the prototype</span></button>
+                        </div>
+                    </div>
+                    <button class="cz-close" type="button" aria-label="Close the prototype">&times;</button>
+                </div>
+
+                <div class="cz-hero-top">
+                    <p class="cz-hero-lede">I redesigned ServCraft's Customer Zone, the portal where a trade business's customers follow their jobs. It went from a fragmented, read-only list to one place where customers can track progress, review quotes, pay invoices and take action.</p>
+                    <div class="cz-hero-more is-single">
+                        <p>A home screen, connected records and actions in context help customers find their way without calling the business. I also built a working HTML prototype so the team could test changes quickly.</p>
+                    </div>
+                </div>
+                <dl class="cz-meta">
+                    <div><dt>My role</dt><dd>Product designer</dd></div>
+                    <div><dt>Platform</dt><dd>Web and mobile web</dd></div>
+                    <!-- TODO Tyra: confirm status wording -->
+                    <div><dt>Status</dt><dd>Improvements shipped</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- the problem is told on navy; when the story turns to how I worked, the band warms to amber -->
+        <div class="cz-band" id="band">
+            <div class="cz-wrap">
+                    <!-- ── Problem ── -->
+                    <section class="cz-section" id="problem">
+                        <div class="cz-section-head">
+                            <h2>The problem</h2>
+                            <p>Customer Zone is ServCraft's client portal, the same kind of tool as Jobber's client hub or Housecall Pro's customer portal. Homeowners and business clients use it to keep up with the work a trade business is doing for them.</p>
+                            <p>The old version gave them their records but little guidance. They landed on a jobs list with no overview, and quotes, invoices and appointments lived in separate sections.</p>
+                        </div>
+                        <figure class="cz-figure">
+                            <button class="cz-zoom" type="button" aria-label="Enlarge: original Customer Zone jobs page">
+                                <img src="assets/customer-zone-old-jobs.jpg" alt="Original Customer Zone jobs page: a left sidebar with Jobs, Quotes, Invoices and Appointments, a grey page with three plain job cards grouped as Open and Closed, a Load more link, and a yellow banner reading 'Click here to win more business with ServCraft'." width="2878" height="1793" loading="lazy" decoding="async">
+                            </button>
+                            <figcaption>The original jobs page.</figcaption>
+                        </figure>
+                        <div class="cz-problems">
+                            <div class="cz-problem is-key"><b>No starting point</b>No overview of their activity, and no guidance on where to go next.</div>
+                            <div class="cz-problem"><b>Information scattered across sections</b>Customers moved between pages to piece together a job's history.</div>
+                            <div class="cz-problem"><b>Little ability to act</b>Simple tasks meant leaving the portal or calling the business.</div>
+                            <div class="cz-problem"><b>The business lost its identity</b>ServCraft's banner competed with the business's branding.</div>
+                            <div class="cz-problem"><b>Mobile navigation added friction</b>A menu stood between customers and every section.</div>
+                            <div class="cz-problem"><b>Sign-off lacked context</b>Little explanation of what customers were agreeing to.</div>
+                        </div>
+                    </section>
+
+                    <!-- ── Process ── -->
+                    <section class="cz-section" id="process">
+                        <div class="cz-section-head">
+                            <h2>Process</h2>
+                            <!-- TODO Tyra: add real numbers, e.g. number of iterations, time per round, how many customers saw it -->
+                            <p>I built the portal as a working HTML prototype, the one embedded at the top of this page. Product, engineering and support clicked through flows instead of reviewing static frames, gave specific feedback on a working link, and the improvements went out to customers.</p>
+                        </div>
+                    </section>
+            </div>
+        </div>
+
+        <figure class="cz-breather" style="--focus: 82% 50%">
+            <img src="assets/customer-zone-mockup-phones.jpg" alt="Two phones over a tradesperson's amber work jacket and flannel shirt, showing a quote with Accept and Decline buttons and a job with its Overview, Quotes and Invoices tabs." width="2560" height="1440" loading="lazy" decoding="async">
+        </figure>
+
+        <div class="cz-wrap">
+                    <!-- ── Redesign ── -->
+                    <section class="cz-section" id="redesign">
+                        <div class="cz-section-head">
+                            <h2>The redesign</h2>
+                            <p>I started from one question: what does a customer need to understand and do when they open this portal? I then organised the experience around their journey instead of ServCraft's record types.</p>
+                        </div>
+                        <div class="cz-table-wrap" tabindex="0" role="region" aria-label="Design decisions and customer benefits">
+                            <table class="cz-table cz-benefits">
+                                <thead><tr><th scope="col">Design decision</th><th scope="col">Customer benefit</th></tr></thead>
+                                <tbody>
+                                    <tr><td><a href="#d1">A home screen</a></td><td>Know what's happening and where to go next.</td></tr>
+                                    <tr><td><a href="#d2">Connected job records</a></td><td>Find everything related to a job in one place.</td></tr>
+                                    <tr><td><a href="#d3">Actions in context</a></td><td>Complete tasks without unnecessary navigation.</td></tr>
+                                    <tr><td><a href="#d4">Clearer sign-off</a></td><td>Understand and confidently complete the process.</td></tr>
+                                    <tr><td><a href="#d5">Mobile navigation</a></td><td>Access information and act easily from a phone.</td></tr>
+                                    <tr><td><a href="#privacy">Secure, expiring links</a></td><td>Keep personal information protected, in line with POPIA.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="cz-decision is-stacked is-hero" id="d1">
+                            <div>
+                                <h3>A home screen to start from</h3>
+                                <p>The old portal opened straight onto a jobs list.</p>
+                                <p>The new home screen is where every visit starts. Customers see their jobs and what's coming up, then go where they need.</p>
+                            </div>
+                            <div>
+                                <div class="cz-compare">
+                                    <img src="assets/customer-zone-old-jobs.jpg" alt="Before: the original portal opening straight onto a jobs list, with a sidebar and a yellow ServCraft ad banner." width="2878" height="1793" loading="lazy" decoding="async">
+                                    <img class="cz-after" src="assets/customer-zone-home.jpg" alt="After: the new home screen with Regal Electrical's crest, a welcome message, tabs for jobs, quotes, invoices and appointments, the next appointment and a WhatsApp shortcut." width="2400" height="1666" loading="lazy" decoding="async">
+                                    <span class="cz-compare-label is-before" aria-hidden="true">Before</span>
+                                    <span class="cz-compare-label is-after" aria-hidden="true">After</span>
+                                    <span class="cz-compare-line" aria-hidden="true"></span>
+                                    <span class="cz-compare-knob" aria-hidden="true"></span>
+                                    <input type="range" min="0" max="100" value="50" aria-label="Compare before and after: slide to reveal more of the redesign">
+                                </div>
+                                <p class="cz-compare-caption">The old jobs list on the left, the new home screen on the right.</p>
+                            </div>
+                        </div>
+
+                        <div id="d2" class="cz-decision is-stacked">
+                            <div>
+                                <h3>Connected job records</h3>
+                                <p>One home card with tabs and search replaced four list pages. Each job shows its quotes, invoices and appointments, and every record links back to its job.</p>
+                            </div>
+                            <div class="cz-demo cz-still">
+                                <div class="cz-browser">
+                                    <div class="cz-browser-bar" aria-hidden="true"><div class="cz-dots"><i></i><i></i><i></i></div><div class="cz-url">Job JC-10234</div></div>
+                                    <div class="cz-viewport">
+                                        <img class="cz-poster" src="assets/customer-zone-job.jpg" alt="Job JC-10234 with Overview, Quotes, Invoices and Appointments tabs, each with a count." width="2400" height="1666" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="d3" class="cz-decision is-stacked">
+                            <div>
+                                <h3>Actions in context</h3>
+                                <p>A sticky action bar keeps Accept, Decline, WhatsApp and Print in reach, with the total shown first.</p>
+                            </div>
+                            <div class="cz-demo cz-still">
+                                <div class="cz-browser">
+                                    <div class="cz-browser-bar" aria-hidden="true"><div class="cz-dots"><i></i><i></i><i></i></div><div class="cz-url">Quote QT-1024</div></div>
+                                    <div class="cz-viewport">
+                                        <img class="cz-poster" src="assets/customer-zone-quote.jpg" alt="Quote QT-1024 with Decline, Accept, WhatsApp, message and Print in the action bar and a highlighted total of R 1 863.00." width="2400" height="1666" loading="lazy" decoding="async">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="d4" class="cz-decision is-stacked">
+                            <div>
+                                <h3>Clearer sign-off</h3>
+                                <p>Sign-off now sits inside the job. It asks who is signing, then confirms with the same notification the main app uses.</p>
+                            </div>
+                            <div class="cz-pair">
+                                <figure class="cz-old-thumb">
+                                    <button class="cz-zoom" type="button" aria-label="Enlarge: original sign-off">
+                                        <img src="assets/customer-zone-old-signoff.jpg" alt="Original job sign-off: a yellow ad banner, a name field, a View Terms link, a Sign button and a typed signature." width="947" height="1797" loading="lazy" decoding="async">
+                                    </button>
+                                    <figcaption>Before</figcaption>
+                                </figure>
+                                <figure class="cz-gif">
+                                    <div class="cz-browser">
+                                        <div class="cz-browser-bar" aria-hidden="true"><div class="cz-dots"><i></i><i></i><i></i></div><div class="cz-url">Sign JC-10234</div></div>
+                                        <img src="assets/customer-zone-signature.gif" data-gif="assets/customer-zone-signature.gif" data-still="assets/customer-zone-signature-still.jpg" alt="Animation: the customer presses Sign, draws a signature on the pad and presses Confirm, and a 'Signature captured successfully' notification appears." width="1000" height="593" loading="lazy" decoding="async">
+                                    </div>
+                                    <figcaption class="cz-demo-foot">
+                                        <span>Signing JC-10234 in the prototype.</span>
+                                        <button class="cz-gif-toggle" type="button" data-paused="false">Pause animation</button>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div id="d5" class="cz-decision is-stacked">
+                            <div>
+                                <h3>Mobile navigation</h3>
+                                <p>Most customers open the portal on a phone. Tabs become swipeable chips, breadcrumbs become a back link, and secondary actions shrink to 44×44 icons.</p>
+                            </div>
+                            <div class="cz-pair">
+                                <figure class="cz-old-thumb">
+                                    <button class="cz-zoom" type="button" aria-label="Enlarge: original mobile view">
+                                        <img src="assets/customer-zone-old-mobile.jpg" alt="Original mobile view: a menu icon, the yellow ad banner and two plain job cards." width="787" height="1677" loading="lazy" decoding="async">
+                                    </button>
+                                    <figcaption>Before</figcaption>
+                                </figure>
+                                <figure class="cz-gif">
+                                    <div class="cz-phone">
+                                        <img class="cz-phone-gif" src="assets/customer-zone-mobile-nav.gif" data-gif="assets/customer-zone-mobile-nav.gif" data-still="assets/customer-zone-mobile-nav-still.jpg" alt="Animation on a phone: the customer swipes the Jobs, Quotes, Invoices and Appointments chips, opens Quotes, opens job JC-10234, switches to its Quotes chip, then taps the back link to Jobs." width="560" height="1120" loading="lazy" decoding="async">
+                                    </div>
+                                    <figcaption class="cz-demo-foot">
+                                        <span>The prototype at phone size.</span>
+                                        <button class="cz-gif-toggle" type="button" data-paused="false">Pause animation</button>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </section>
+        </div>
+
+        <figure class="cz-breather" style="--focus: 66% 50%">
+            <img src="assets/customer-zone-mockup-pool.jpg" alt="A customer on a call beside their swimming pool, next to a phone showing their pool drain inspection job from Pool Experts Ltd in Customer Zone." width="2560" height="1440" loading="lazy" decoding="async">
+        </figure>
+
+        <div class="cz-wrap">
+                    <!-- ── Design system ── -->
+                    <section class="cz-section" id="system">
+                        <div class="cz-section-head">
+                            <h2>Design system</h2>
+                            <p>The portal uses ServCraft's tokens. Where a value felt too heavy for a customer-facing page, I changed it and wrote down why.</p>
+                        </div>
+                        <div class="cz-tokens" aria-label="Design system tokens used">
+                            <span class="cz-token"><i style="background:#003ED0"></i>Brand #003ED0</span>
+                            <span class="cz-token"><i style="background:#51CB68"></i>Success #51CB68</span>
+                            <span class="cz-token"><i style="background:#F26101"></i>Orange #F26101</span>
+                            <span class="cz-token"><i style="background:#FC2E50"></i>Error #FC2E50</span>
+                            <span class="cz-token"><i style="background:#fff;border:1px solid #cfd8e3;border-radius:4px"></i>4px radius</span>
+                            <span class="cz-token"><i style="background:#0b1f33"></i>Proxima Nova</span>
+                        </div>
+                        <div class="cz-table-wrap" tabindex="0" role="region" aria-label="Design system deviations table">
+                            <table class="cz-table">
+                                <thead>
+                                    <tr><th scope="col">Element</th><th scope="col">Design system</th><th scope="col">Portal</th><th scope="col">Why</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Card elevation</td><td>Hard 20% black drop shadow</td><td>Soft two-layer shadow</td><td>Looked dated on white</td></tr>
+                                    <tr><td>Surfaces</td><td>Grey card fills</td><td>Pure white cards</td><td>Read dull to customers</td></tr>
+                                    <tr><td>Status pills</td><td>Often with a coloured dot</td><td>No dot, label only</td><td>The label carries the meaning</td></tr>
+                                    <tr><td>Status backgrounds</td><td>Ad-hoc transparent tints</td><td>Existing flat background tokens</td><td>Tints went muddy</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="cz-note">All deviations live in two CSS blocks, so developers have one place to reconcile them with the design system.</p>
+                    </section>
+
+                    <!-- ── Accessibility ── -->
+                    <!-- TODO Tyra: the green and orange status pill text does not meet 4.5:1 contrast on its tint; decide whether to fix it and mention it here -->
+                    <section class="cz-section" id="access">
+                        <div class="cz-section-head">
+                            <h2>Accessibility</h2>
+                            <p>Customers use the portal on whatever device they have, often in a hurry, so accessibility was part of the brief from the start.</p>
+                        </div>
+                        <ul class="cz-list">
+                            <li>Icon-only actions are at least 44×44px, and main buttons are at least 44px tall.</li>
+                            <li>A 16px base size keeps dates and totals readable without zooming.</li>
+                            <li>Every status has a text label, so meaning never depends on colour.</li>
+                            <li>The action bar stays on screen for people who zoom in or scroll slowly.</li>
+                        </ul>
+                    </section>
+
+                    <!-- ── Privacy ── -->
+                    <section class="cz-section" id="privacy">
+                        <div class="cz-section-head">
+                            <h2>Secure access</h2>
+                            <p>Customers open Customer Zone from a link, without creating an account. That keeps the portal easy to use, but it also makes the link the key to a customer's personal information. So I designed how people get into the portal with the same care as the screens they land on.</p>
+                        </div>
+                        <div class="cz-privacy">
+                            <div>
+                                <h3>The trade-off</h3>
+                                <p>Links travel by email, SMS and WhatsApp, and messages stay in inboxes for years. A link that never expires means anyone who later gets hold of that message can open a customer's name, phone number, address, quotes and invoices.</p>
+                            </div>
+                            <div>
+                                <h3>Designing for POPIA</h3>
+                                <p>POPIA, South Africa's Protection of Personal Information Act, has been enforced since July 2021. Every trade business using ServCraft is responsible for its customers' data under the Act, which requires them to:</p>
+                                <ul class="cz-list">
+                                    <li>keep personal information secure against loss and unauthorised access</li>
+                                    <li>limit who can see it, and for how long</li>
+                                    <li>tell the Information Regulator and the people affected if it is exposed</li>
+                                </ul>
+                                <p>Serious breaches can lead to fines of up to R10 million, so the portal needed to help businesses meet these obligations by default.</p>
+                            </div>
+                            <div>
+                                <h3>The decision</h3>
+                                <!-- TODO Tyra: add how long links now last and what a customer sees when one expires -->
+                                <p>We made expiring links a requirement of the redesign and put the case to the CTO together: the risk, what POPIA asks of our customers, and how to keep access simple for the people who need it. The CTO agreed, and the team scoped, built and tested link expiry as part of the release.</p>
+                                <p>The aim was a link that stays valid long enough for a customer to act on, without staying open indefinitely.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ── Outcomes ── -->
+                    <!-- TODO Tyra: add any numbers you have, e.g. quote acceptance rate, support tickets, customer or sales quotes -->
+                    <section class="cz-section" id="outcomes">
+                        <div class="cz-section-head">
+                            <h2>Outcomes</h2>
+                            <p>Customers can now get things done in Customer Zone instead of only looking things up.</p>
+                        </div>
+                        <ul class="cz-list">
+                            <li>Customers have a clear starting point, and each job's quotes, invoices and appointments sit together.</li>
+                            <li>Quotes, invoices, messages and sign-off all happen inside the portal.</li>
+                            <li>Each business gets a branded portal it can be proud to send to clients, which also gave the sales team more to show.</li>
+                            <li>Expiring links help every business protect its customers' data under POPIA.</li>
+                        </ul>
+                        <p class="cz-note">The biggest lesson was how much faster decisions came once people could click through an idea instead of commenting on static screens.</p>
+                        <a href="work.html" class="cz-back">← Back to all work</a>
+                    </section>
+        </div>
+    </main>
+
+    <nav class="cs-footer-nav" aria-label="More case studies">
+        <div class="container">
+            <div class="footer-nav-wrapper">
+                <a href="servcraft-preview.html" class="footer-nav-prev">← Previous</a>
+                <a href="servcraft-messaging.html" class="footer-nav-next">Next →</a>
+            </div>
+        </div>
+    </nav>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-full-inner">
+                <div class="footer-full-top">
+                    <img src="assets/favicon1.webp" alt="" class="footer-logo" loading="lazy" decoding="async" width="385" height="356">
+                    <div class="footer-full-right">
+                        <h2 class="footer-heading">Let's work together</h2>
+                        <div class="footer-contact-row">
+                            <a href="mailto:tyraoyuohans@gmail.com" class="footer-contact-link">tyraoyuohans@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/tyra-hans/" target="_blank" class="footer-contact-link">LinkedIn</a>
+                            <a href="https://calendar.app.google/DVhsJNu9rRGqx4m16" target="_blank" class="footer-book-btn" onclick="track('book_call_click')">Book a call</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="footer-copy">Tyra Hans 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // Live demos: each iframe renders the prototype at a real device width, then scales to fit its frame.
+            // Desktop frames switch to a phone-width layout on small screens, where a scaled desktop would be unreadable.
+            const phone = window.matchMedia('(max-width: 768px)');
+            const viewports = phone.matches ? [] : document.querySelectorAll('[data-demo] .cz-viewport');
+            function fit(vp) {
+                const iframe = vp.querySelector('iframe');
+                const isPhoneFrame = vp.closest('.cz-phone');
+                const small = !isPhoneFrame && vp.clientWidth < 480;
+                const w = small ? 390 : +vp.dataset.width;
+                const h = small ? 700 : +vp.dataset.height;
+                const scale = Math.min(1, vp.clientWidth / w);
+                iframe.style.width = w + 'px';
+                iframe.style.height = h + 'px';
+                iframe.style.transform = 'scale(' + scale + ')';
+                if (small) iframe.style.left = Math.max(0, (vp.clientWidth - w * scale) / 2) + 'px';
+                else iframe.style.left = '0';
+                vp.style.height = (h * scale) + 'px';
+            }
+            const ro = new ResizeObserver(entries => entries.forEach(e => fit(e.target)));
+            viewports.forEach(vp => { fit(vp); ro.observe(vp); });
+
+            // Load each prototype just before it scrolls into view
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const iframe = entry.target.querySelector('iframe');
+                    iframe.src = iframe.dataset.src;
+                    obs.unobserve(entry.target);
+                });
+            }, { rootMargin: '400px' });
+            viewports.forEach(vp => io.observe(vp));
+
+            // Demos stay passive until clicked, so scrolling the page never gets trapped inside an iframe.
+            // Clicking opens the prototype large, over the page; closing puts it back in place.
+            document.querySelectorAll('[data-demo]').forEach(demo => {
+                const btn = demo.querySelector('.cz-activate');
+                const close = demo.querySelector('.cz-close');
+                const iframe = demo.querySelector('iframe');
+                const vp = demo.querySelector('.cz-viewport');
+                let spacer = null;
+                const size = () => {
+                    const cs = getComputedStyle(demo);
+                    const w = +vp.dataset.width, h = +vp.dataset.height;
+                    const availW = demo.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+                    const availH = demo.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 42;
+                    demo.style.setProperty('--expanded-w', Math.floor(Math.min(w, availW, availH * w / h)) + 'px');
+                };
+                const onKey = e => { if (e.key === 'Escape') shrink(); };
+                let opener = btn;
+                function expand() {
+                    spacer = document.createElement('div');
+                    spacer.style.height = demo.offsetHeight + 'px';
+                    demo.before(spacer);
+                    demo.classList.add('is-expanded');
+                    demo.setAttribute('role', 'dialog');
+                    demo.setAttribute('aria-modal', 'true');
+                    demo.setAttribute('aria-label', 'Customer Zone prototype');
+                    document.body.style.overflow = 'hidden';
+                    size();
+                    addEventListener('resize', size);
+                    document.addEventListener('keydown', onKey);
+                }
+                function shrink() {
+                    if (!demo.classList.contains('is-expanded')) return;
+                    demo.classList.remove('is-expanded', 'is-live');
+                    ['role', 'aria-modal', 'aria-label'].forEach(a => demo.removeAttribute(a));
+                    demo.style.removeProperty('--expanded-w');
+                    spacer.remove();
+                    document.body.style.overflow = '';
+                    removeEventListener('resize', size);
+                    document.removeEventListener('keydown', onKey);
+                    iframe.setAttribute('tabindex', '-1');
+                    opener.focus();
+                }
+                // Escape pressed inside the prototype reaches the page as a message (see the prototype's topnav.js)
+                addEventListener('message', e => { if (e.source === iframe.contentWindow && e.data === 'cz-escape') shrink(); });
+                document.querySelectorAll('[data-open-demo]').forEach(b => b.addEventListener('click', () => { btn.click(); opener = b; }));
+                btn.addEventListener('click', () => {
+                    opener = btn;
+                    if (!iframe.src) iframe.src = iframe.dataset.src;
+                    expand();
+                    demo.classList.add('is-live');
+                    iframe.removeAttribute('tabindex');
+                    iframe.focus();
+                    track('customer_zone_demo');
+                });
+                close.addEventListener('click', shrink);
+            });
+
+            // The GIF is moving content, so it gets a pause control and starts paused for reduced motion
+            document.querySelectorAll('.cz-gif').forEach(fig => {
+                const img = fig.querySelector('img');
+                const btn = fig.querySelector('.cz-gif-toggle');
+                const setPaused = paused => {
+                    img.src = paused ? img.dataset.still : img.dataset.gif;
+                    btn.textContent = paused ? 'Play animation' : 'Pause animation';
+                    btn.dataset.paused = paused;
+                };
+                btn.addEventListener('click', () => setPaused(btn.dataset.paused !== 'true'));
+            });
+
+            // Before/after slider: a native range input, so it works with mouse, touch and arrow keys
+            document.querySelectorAll('.cz-compare').forEach(c => {
+                const input = c.querySelector('input');
+                const set = () => c.style.setProperty('--pos', input.value + '%');
+                input.addEventListener('input', set);
+                set();
+            });
+
+            // The band warms to amber when "How I worked" comes up, and cools again on the way back up
+            const band = document.getElementById('band');
+            const turn = document.getElementById('process');
+            const checkBand = () => band.classList.toggle('is-warm', turn.getBoundingClientRect().top < innerHeight * 0.65);
+            addEventListener('scroll', checkBand, { passive: true });
+            checkBand();
+
+            // Accessible image viewer: focus moves into the dialog and back to the image on close
+            let lastTrigger = null;
+            function closeViewer(viewer) {
+                viewer.remove();
+                document.body.style.overflow = '';
+                if (lastTrigger) lastTrigger.focus();
+            }
+            document.querySelectorAll('.cz-zoom').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const src = btn.querySelector('img');
+                    lastTrigger = btn;
+                    const viewer = document.createElement('div');
+                    viewer.className = 'cz-viewer';
+                    viewer.setAttribute('role', 'dialog');
+                    viewer.setAttribute('aria-modal', 'true');
+                    viewer.setAttribute('aria-label', btn.getAttribute('aria-label').replace('Enlarge: ', ''));
+                    const img = document.createElement('img');
+                    img.src = src.src;
+                    img.alt = src.alt;
+                    const close = document.createElement('button');
+                    close.type = 'button';
+                    close.className = 'cz-viewer-close';
+                    close.setAttribute('aria-label', 'Close');
+                    close.innerHTML = '&times;';
+                    close.addEventListener('click', () => closeViewer(viewer));
+                    viewer.addEventListener('click', e => { if (e.target === viewer) closeViewer(viewer); });
+                    // Only one focusable element, so Tab stays on the close button
+                    viewer.addEventListener('keydown', e => {
+                        if (e.key === 'Escape') closeViewer(viewer);
+                        if (e.key === 'Tab') { e.preventDefault(); close.focus(); }
+                    });
+                    viewer.append(img, close);
+                    document.body.appendChild(viewer);
+                    document.body.style.overflow = 'hidden';
+                    close.focus();
+                });
+            });
+
+            // Mobile menu
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('nav');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                const open = nav.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', open);
+                document.body.style.overflow = open ? 'hidden' : 'auto';
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Entrance animations, skipped when the visitor prefers reduced motion
+            if (reduceMotion) return;
+            gsap.registerPlugin(ScrollTrigger);
+            // clearProps: a leftover transform would stop the prototype opening over the page
+            // the hero starts in view, so it pushes in gently as the page scrolls away from it
+            gsap.fromTo('.cz-hero-photo img', { scale: 1, yPercent: 0 }, { scale: 1.12, yPercent: 5, ease: 'none', scrollTrigger: { trigger: '.cz-hero-photo', start: 'top top', end: 'bottom top', scrub: true } });
+            gsap.from('.cz-hero-caption .cz-wrap, .cz-hero-actions, .cz-hero-lede, .cz-hero-more, .cz-meta', { y: 24, opacity: 0, duration: .8, stagger: .08, delay: .2, ease: 'power3.out' });
+            document.querySelectorAll('.cz-breather:not(.cz-hero-photo) img').forEach(img => {
+                gsap.fromTo(img, { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'center center', scrub: true } });
+            });
+            gsap.utils.toArray('.cz-problem').forEach((el, i) => {
+                gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 92%' }, y: 24, opacity: 0, duration: .6, delay: (i % 5) * .06, ease: 'power2.out' });
+            });
+            gsap.utils.toArray('.cz-section-head, .cz-decision').forEach(el => {
+                gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 88%' }, y: 30, opacity: 0, duration: .8, ease: 'power2.out' });
+            });
+        });
+    </script>
+</body>
+</html>

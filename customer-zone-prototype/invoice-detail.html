@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Invoice Detail — Customer Portal</title>
+<link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/mobile-tabs.css" />
+</head>
+<body>
+<div id="nav"></div>
+<div class="page">
+  <div id="hero"></div>
+  <div class="wrap" id="wrap">
+    <div id="portal-id"></div>
+    <div class="card">
+      <div id="switch"></div>
+      <div class="card-inner"><div class="detail" id="content"></div></div>
+    </div>
+    <div id="support"></div>
+  </div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/demo-data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/topnav.js"></script>
+<script src="js/portal.js"></script>
+<script>
+  const invId = decodeURIComponent(location.hash.slice(1)) || getQueryParam("id");
+  const inv = INVOICES.find((i) => i.id === invId) || INVOICES[0];
+
+  renderChrome({ active: "invoices", crumbs: [{ label: "Invoices", href: "index.html#invoices/all" }, { label: inv.id }] });
+
+  const itemRows = inv.items
+    .map(
+      (i) => `<tr>
+        <td class="code" data-label="Code">${i.code}</td>
+        <td data-label="Description">${i.description}</td>
+        <td class="num" data-label="Quantity">${i.qty}</td>
+        <td class="num" data-label="Price">${formatCurrency(i.price)}</td>
+        <td class="num" data-label="Discount %">${i.discount}</td>
+        <td class="num strong" data-label="Amount">${formatCurrency(i.amount)}</td>
+      </tr>`
+    )
+    .join("");
+
+  const subtotal = inv.items.reduce((s, i) => s + i.amount, 0);
+  const vat = inv.total - subtotal;
+
+  const payments = inv.payments || [];
+  const hasPayments = payments.length > 0;
+  const paymentsReceived = payments.reduce((s, p) => s + p.amount, 0);
+  const amountDue = inv.total - paymentsReceived;
+
+  const paymentRows = payments
+    .map(
+      (p) => `<tr>
+        <td data-label="Payment Date">${p.date}</td>
+        <td data-label="Reference">${p.reference}</td>
+        <td data-label="Description">${p.description || ""}</td>
+        <td class="num strong" data-label="Amount">${formatCurrency(p.amount)}</td>
+      </tr>`
+    )
+    .join("");
+
+  const paymentsPanel = hasPayments
+    ? `<div class="panel">
+      <h2 class="panel-title">Payments</h2>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Payment Date</th><th>Reference</th><th>Description</th><th class="num">Amount</th></tr></thead>
+          <tbody>${paymentRows}</tbody>
+        </table>
+      </div>
+    </div>`
+    : "";
+
+  const paymentTotals = hasPayments
+    ? `<div class="totals-row"><span>Payments Received</span><span class="t-amt">−${formatCurrency(paymentsReceived)}</span></div>
+          <div class="totals-row due"><span>Amount Due</span><span class="t-amt">${formatCurrency(amountDue)}</span></div>`
+    : "";
+
+  const bank = TENANT.banking;
+  const bankingPanel = bank && amountDue > 0
+    ? `<div class="panel">
+      <h2 class="panel-title">Banking Details</h2>
+      <dl class="bank-list">
+        <dt>Bank</dt><dd>${bank.bank}</dd>
+        <dt>Account Name</dt><dd>${bank.accountName}</dd>
+        <dt>Account Number</dt><dd>${bank.accountNumber}</dd>
+        <dt>Branch Code</dt><dd>${bank.branchCode}</dd>
+        <dt>Reference</dt><dd>${inv.id}</dd>
+      </dl>
+    </div>`
+    : "";
+
+  const payBtn = inv.payable && amountDue > 0
+    ? `<button class="act pay" type="button" data-toast="${inv.id} — payment flow is prototype only">Pay Now</button>`
+    : "";
+
+  document.getElementById("content").innerHTML = `
+    <div class="detail-header">
+      <h1 class="d-id">${inv.id}</h1>
+      <div class="d-actions">
+        ${payBtn}
+        <button class="act" type="button" data-toast="WhatsApp — prototype only">${ICONS.whatsapp}<span>WhatsApp</span></button>
+        <button class="act icon-only" type="button" data-toast="Messaging — prototype only">${ICONS.message}</button>
+        <button class="act" type="button" data-print>${ICONS.printer}<span>Print</span></button>
+      </div>
+    </div>
+
+    ${linkedJobHtml(inv.jobId)}
+
+    <div class="contact">
+      <span class="c-name">${CUSTOMER.name}</span>
+      <span class="c-line">${CUSTOMER.company}</span>
+      <span class="c-line">${CUSTOMER.phone}</span>
+      <span class="c-line">${CUSTOMER.email}</span>
+      <span class="c-line">${CUSTOMER.address}</span>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2 class="panel-title">Invoice Detail</h2>
+        ${badge(inv.statusLabel, inv.statusTone, true)}
+      </div>
+      <div class="total-summary">
+        <span class="ts-label">${hasPayments ? "Amount Due" : "Total Incl VAT"}</span>
+        <span class="ts-value">${formatCurrency(hasPayments ? amountDue : inv.total)}</span>
+      </div>
+      <div class="qd-body">
+        <div class="qd-col">
+          <div class="field"><span class="f-label">Reference Number</span><span class="f-value">${inv.ref}</span></div>
+          <div class="fields">
+            <div class="field"><span class="f-label">Invoice Date</span><span class="f-value">${inv.invoiceDate}</span></div>
+            <div class="field"><span class="f-label">Due Date</span><span class="f-value">${inv.dueDate}</span></div>
+          </div>
+        </div>
+        <div class="qd-col">
+          <div class="field"><span class="f-label">Comments</span><span class="f-value">${inv.comments}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 class="panel-title">Invoice Items</h2>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Code</th><th>Description</th><th class="num">Quantity</th><th class="num">Price</th><th class="num">Discount %</th><th class="num">Amount</th></tr></thead>
+          <tbody>${itemRows}</tbody>
+        </table>
+      </div>
+      <div class="totals-align">
+        <div class="totals-card">
+          <div class="totals-row"><span>Subtotal Excl VAT</span><span class="t-amt">${formatCurrency(subtotal)}</span></div>
+          <div class="totals-row"><span>Total Excl VAT</span><span class="t-amt">${formatCurrency(subtotal)}</span></div>
+          <div class="totals-row"><span>VAT (15%)</span><span class="t-amt">${formatCurrency(vat)}</span></div>
+          <div class="totals-row grand"><span>Total Incl VAT</span><span class="t-amt">${formatCurrency(inv.total)}</span></div>
+          ${paymentTotals}
+        </div>
+      </div>
+    </div>
+    ${paymentsPanel}
+    ${bankingPanel}`;
+</script>
+</body>
+</html>

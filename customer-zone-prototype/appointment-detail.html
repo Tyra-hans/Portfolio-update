@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Appointment Detail — Customer Portal</title>
+<link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/mobile-tabs.css" />
+</head>
+<body>
+<div id="nav"></div>
+<div class="page">
+  <div id="hero"></div>
+  <div class="wrap" id="wrap">
+    <div id="portal-id"></div>
+    <div class="card">
+      <div id="switch"></div>
+      <div class="card-inner"><div class="detail" id="content"></div></div>
+    </div>
+    <div id="support"></div>
+  </div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/demo-data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/topnav.js"></script>
+<script src="js/portal.js"></script>
+<script>
+  const apptId = decodeURIComponent(location.hash.slice(1)) || getQueryParam("id");
+  const appt = APPOINTMENTS.find((a) => a.id === apptId) || APPOINTMENTS[0];
+
+  renderChrome({ active: "appointments", crumbs: [{ label: "Appointments", href: "index.html#appointments/all" }, { label: appt.dateLabel }] });
+
+  const employees = appt.employees.map((e) => e.name).join(", ");
+
+  document.getElementById("content").innerHTML = `
+    <div class="detail-header">
+      <h1 class="d-id">${appt.dateLabel}</h1>
+      <div class="d-actions">
+        <button class="act" type="button" data-toast="WhatsApp — prototype only">${ICONS.whatsapp}<span>WhatsApp</span></button>
+        <button class="act icon-only" type="button" data-toast="Messaging — prototype only">${ICONS.message}</button>
+      </div>
+    </div>
+
+    ${linkedJobHtml(appt.jobId)}
+
+    <div class="contact">
+      <span class="c-name">${CUSTOMER.name}</span>
+      <span class="c-line">${CUSTOMER.company}</span>
+      <span class="c-line">${CUSTOMER.phone}</span>
+      <span class="c-line">${CUSTOMER.email}</span>
+      <span class="c-line">${CUSTOMER.address}</span>
+    </div>
+
+    <div class="panel">
+      <h2 class="panel-title">Appointment Detail</h2>
+      <div class="fields">
+        <div class="field wide"><span class="f-label">Subject</span><span class="f-value">${appt.subject}</span></div>
+        <div class="field"><span class="f-label">Start</span><span class="f-value">${appt.start}</span></div>
+        <div class="field"><span class="f-label">End</span><span class="f-value">${appt.end}</span></div>
+        <div class="field wide"><span class="f-label">Employees</span><span class="f-value">${employees}</span></div>
+      </div>
+    </div>`;
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quote Detail — Customer Portal</title>
+<link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/mobile-tabs.css" />
+</head>
+<body>
+<div id="nav"></div>
+<div class="page">
+  <div id="hero"></div>
+  <div class="wrap" id="wrap">
+    <div id="portal-id"></div>
+    <div class="card">
+      <div id="switch"></div>
+      <div class="card-inner"><div class="detail boxed" id="content"></div></div>
+    </div>
+    <div id="support"></div>
+  </div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/demo-data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/topnav.js"></script>
+<script src="js/portal.js"></script>
+<script>
+  const quoteId = decodeURIComponent(location.hash.slice(1)) || getQueryParam("id");
+  const quote = QUOTES.find((q) => q.id === quoteId) || QUOTES[0];
+
+  renderChrome({ active: "quotes", crumbs: [{ label: "Quotes", href: "index.html#quotes/all" }, { label: quote.id }] });
+
+  const itemRows = quote.items
+    .map(
+      (i) => `<tr>
+        <td class="code" data-label="Code">${i.code}</td>
+        <td data-label="Description">${i.description}</td>
+        <td data-label="Quantity">${i.qty}</td>
+        <td data-label="Price">${formatCurrency(i.price)}</td>
+        <td data-label="Discount %">${i.discount}</td>
+        <td class="strong" data-label="Amount">${formatCurrency(i.amount)}</td>
+      </tr>`
+    )
+    .join("");
+
+  const subtotal = quote.items.reduce((s, i) => s + i.amount, 0);
+  const vat = quote.total - subtotal;
+
+  const respond = quote.canRespond
+    ? `<button class="act decline" type="button" data-toast="${quote.id} declined — prototype only">Decline</button>
+       <button class="act accept" type="button" data-toast="${quote.id} accepted — prototype only">Accept</button>`
+    : "";
+
+  document.getElementById("content").innerHTML = `
+    <div class="detail-header">
+      <h1 class="d-id">${quote.id}</h1>
+      <div class="d-actions">
+        ${respond}
+        <button class="act" type="button" data-toast="WhatsApp — prototype only">${ICONS.whatsapp}<span>WhatsApp</span></button>
+        <button class="act icon-only" type="button" data-toast="Messaging — prototype only">${ICONS.message}</button>
+        <button class="act" type="button" data-print>${ICONS.printer}<span>Print</span></button>
+      </div>
+    </div>
+
+    ${linkedJobHtml(quote.jobId)}
+
+    <div class="contact boxed">
+      <span class="c-name">${CUSTOMER.name}</span>
+      <span class="c-line">${CUSTOMER.company}</span>
+      <span class="c-line">${CUSTOMER.phone}</span>
+      <span class="c-line">${CUSTOMER.email}</span>
+      <span class="c-line">${CUSTOMER.address}</span>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2 class="panel-title">Quote Detail</h2>
+        ${badge(quote.status, quote.statusTone, true)}
+      </div>
+      <div class="total-summary">
+        <span class="ts-label">Total Incl VAT</span>
+        <span class="ts-value">${formatCurrency(quote.total)}</span>
+      </div>
+      <div class="qd-body">
+        <div class="qd-col">
+          <div class="field"><span class="f-label">Reference Number</span><span class="f-value">${quote.ref}</span></div>
+          <div class="fields">
+            <div class="field"><span class="f-label">Quote Date</span><span class="f-value">${quote.quoteDate}</span></div>
+            <div class="field"><span class="f-label">Expiry Date</span><span class="f-value">${quote.expiryDate}</span></div>
+          </div>
+        </div>
+        <div class="qd-col">
+          <div class="field"><span class="f-label">Comments</span><span class="f-value">${quote.comments}</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 class="panel-title">Quote Items</h2>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Code</th><th>Description</th><th>Quantity</th><th>Price</th><th>Discount %</th><th>Amount</th></tr></thead>
+          <tbody>${itemRows}</tbody>
+        </table>
+      </div>
+      <div class="totals-align">
+        <div class="totals-card">
+          <div class="totals-row"><span>Subtotal Excl VAT</span><span class="t-amt">${formatCurrency(subtotal)}</span></div>
+          <div class="totals-row"><span>Total Excl VAT</span><span class="t-amt">${formatCurrency(subtotal)}</span></div>
+          <div class="totals-row"><span>VAT (15%)</span><span class="t-amt">${formatCurrency(vat)}</span></div>
+          <div class="totals-row grand"><span>Total Incl VAT</span><span class="t-amt">${formatCurrency(quote.total)}</span></div>
+        </div>
+      </div>
+    </div>`;
+</script>
+</body>
+</html>

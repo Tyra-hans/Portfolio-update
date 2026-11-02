@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Signature — Customer Portal</title>
+<link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/mobile-tabs.css" />
+</head>
+<body>
+<div id="nav"></div>
+<div class="page">
+  <div id="hero"></div>
+  <div class="wrap" id="wrap">
+    <div id="portal-id"></div>
+    <div class="card">
+      <div id="switch"></div>
+      <div class="card-inner"><div class="detail" id="content"></div></div>
+    </div>
+    <div id="support"></div>
+  </div>
+</div>
+
+<div class="modal-scrim" id="replace-modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="replace-title">
+    <h3 id="replace-title">Replace signature?</h3>
+    <p id="replace-body"></p>
+    <div class="modal-actions">
+      <button class="act" type="button" id="replace-cancel">Cancel</button>
+      <button class="act outline-danger" type="button" id="replace-confirm">Re-sign</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/demo-data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/topnav.js"></script>
+<script src="js/portal.js"></script>
+<script src="js/signature-pad.js"></script>
+<script>
+  const SIG_MARK =
+    '<svg viewBox="0 0 82 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14c4-9 7-9 9-2s4 8 6 1 4-9 6-2 4 8 6 2 4-9 6-2 4 8 6 2 5-8 7-3 5 6 9 3"/></svg>';
+
+  function params() { return new URLSearchParams(location.hash.slice(1)); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+
+  function nowStamp() {
+    const d = new Date();
+    const mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][d.getMonth()];
+    const p = (n) => String(n).padStart(2, "0");
+    return `${p(d.getDate())} ${mon} ${d.getFullYear()}, ${p(d.getHours())}:${p(d.getMinutes())}`;
+  }
+
+  /* ---- signing history, persisted per job ---- */
+  function sigKey(id) { return "cp-sig:" + id; }
+
+  function history(id) {
+    // Only a signature actually captured in this session counts. We deliberately
+    // do NOT seed from the mock job.signed flag — a fresh visit always starts on
+    // the unsigned "who is signing?" screen, and the record / re-sign state only
+    // appears once you've signed here first.
+    try {
+      const s = JSON.parse(localStorage.getItem(sigKey(id)) || "null");
+      if (s && Array.isArray(s.history) && s.history.length) return s.history;
+    } catch (e) {}
+    return null;
+  }
+
+  function saveHistory(id, hist) {
+    try { localStorage.setItem(sigKey(id), JSON.stringify({ history: hist })); } catch (e) {}
+  }
+
+  /* ---- ServCraft success toast (matches the app's Mantine notification) ---- */
+  function scAlert(message) {
+    let el = document.getElementById("sc-alert");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "sc-alert";
+      el.className = "sc-alert";
+      el.setAttribute("role", "status");
+      document.body.appendChild(el);
+    }
+    el.innerHTML =
+      '<svg class="sc-alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' +
+      '<span class="sc-alert-msg">' + message + "</span>" +
+      '<button type="button" class="sc-alert-x" aria-label="Dismiss">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+    el.querySelector(".sc-alert-x").onclick = () => el.classList.remove("show");
+    void el.offsetHeight;
+    el.classList.add("show");
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.classList.remove("show"), 5000);
+  }
+
+  function render() {
+    const p = params();
+    const jobId = p.get("job") || "JC-10234";
+    const step = p.get("step");
+    const isResign = p.get("resign") === "1";
+    const hist = history(jobId);
+    const lastSigner = hist && hist.length ? hist[hist.length - 1].by : CUSTOMER.name;
+    const name = p.get("name") || lastSigner || CUSTOMER.name;
+
+    renderChrome({ active: "jobs", crumbs: [
+      { label: "Jobs", href: "index.html#jobs/all" },
+      { label: jobId, href: `job-detail.html#${jobId}` },
+      { label: "Signature" },
+    ] });
+    const content = document.getElementById("content");
+
+    /* ---- signing pad ---- */
+    if (step === "sign") {
+      content.innerHTML = `
+        <h1 class="sign-center-title" style="text-align:left">${isResign ? "Re-sign" : "Signature"} for ${jobId}</h1>
+        <div class="sign-field">
+          <label for="signer2">${isResign ? "Re-signed by" : "Signed by"} *</label>
+          <input class="sign-input" id="signer2" type="text" value="${esc(name)}" />
+        </div>
+        <p class="sign-attest">I, <span id="attest-name">${esc(name)}</span>, confirm that the job described above has been completed to my satisfaction.</p>
+        ${isResign ? `
+        <div class="sign-field">
+          <label for="reason">Reason for re-signing *</label>
+          <textarea class="sign-input" id="reason" placeholder="e.g. Corrected the completion date"></textarea>
+        </div>` : ""}
+        <div class="sign-pad-shell">
+          <div class="sign-pad-card">
+            <canvas id="sign-pad"></canvas>
+            <div class="sign-baseline"></div>
+            <span class="sign-hint">Sign above the line</span>
+          </div>
+          <div class="sign-pad-actions">
+            <button class="act" type="button" id="clear-btn">Clear</button>
+            <button class="act primary" type="button" id="confirm-btn">Confirm</button>
+          </div>
+        </div>`;
+
+      const signerField = document.getElementById("signer2");
+      const attestName = document.getElementById("attest-name");
+      signerField.addEventListener("input", () => {
+        attestName.textContent = signerField.value.trim() || "…";
+      });
+
+      const pad = createSignaturePad(document.getElementById("sign-pad"));
+      document.getElementById("clear-btn").addEventListener("click", () => pad.clear());
+      document.getElementById("confirm-btn").addEventListener("click", () => {
+        const signer = signerField.value.trim();
+        if (!signer) { toast("Enter who is signing"); signerField.focus(); return; }
+        if (pad.isEmpty()) { toast("Add a signature first"); return; }
+        const reason = isResign ? document.getElementById("reason").value.trim() : "";
+        if (isResign && !reason) { toast("Add a reason for re-signing"); return; }
+
+        let updated = hist ? hist.slice() : [];
+        if (isResign) {
+          updated.push({ action: "Re-signed", by: signer, at: nowStamp(), reason });
+        } else {
+          updated = [{ action: "Signed", by: signer, at: nowStamp() }];
+        }
+        saveHistory(jobId, updated);
+        scAlert("Signature captured successfully");
+        setTimeout(() => { location.hash = `job=${encodeURIComponent(jobId)}`; }, 900);
+      });
+      return;
+    }
+
+    /* ---- already signed: success screen with the signing record ---- */
+    if (hist) {
+      const lastResign = [...hist].reverse().find((h) => h.action === "Re-signed");
+      const recordRows = hist
+        .map(
+          (h) => `<div class="sign-record-row">
+            <span class="sr-action">${h.action}</span>
+            <span class="sr-meta">${esc(h.by)} &middot; ${esc(h.at)}</span>
+          </div>`
+        )
+        .join("");
+
+      content.innerHTML = `
+        <h1 class="sign-center-title">Signature for ${jobId}</h1>
+        <div class="sign-card">
+          <span class="sign-glyph ok">${ICONS.check}</span>
+          <span class="sign-success-t">${lastResign ? "Signature replaced" : "Signed successfully"}</span>
+          <p class="sign-success-p">Your signature has been recorded for this job.</p>
+          <div class="sign-divider"></div>
+          <div class="sign-details">
+            <div class="sign-detail-row"><span class="sd-k">Job</span><span class="sd-v">${jobId}</span></div>
+          </div>
+          <div class="sign-record">
+            ${recordRows}
+            ${lastResign && lastResign.reason ? `<p class="sign-record-note"><strong>Note:</strong> ${esc(lastResign.reason)}</p>` : ""}
+          </div>
+          <div class="sig-thumb">${SIG_MARK}</div>
+          <div class="sign-field">
+            <label for="signer">Signed by</label>
+            <input class="sign-input" id="signer" type="text" value="${esc(lastSigner)}" readonly />
+          </div>
+          <button class="act primary sign-submit" type="button" id="open-replace">${ICONS.penSign}<span>Re-sign</span></button>
+        </div>`;
+
+      const modal = document.getElementById("replace-modal");
+      const signer = () => document.getElementById("signer").value.trim() || lastSigner;
+      document.getElementById("replace-body").textContent =
+        "The current signature on this job will be permanently replaced. On the next step you'll confirm who is re-signing, give a reason, and add a new signature. This can't be undone.";
+      document.getElementById("open-replace").addEventListener("click", () => { modal.hidden = false; });
+      document.getElementById("replace-cancel").addEventListener("click", () => (modal.hidden = true));
+      modal.addEventListener("click", (e) => { if (e.target === modal) modal.hidden = true; });
+      document.getElementById("replace-confirm").addEventListener("click", () => {
+        modal.hidden = true;
+        location.hash = `job=${encodeURIComponent(jobId)}&step=sign&resign=1&name=${encodeURIComponent(signer())}`;
+      });
+      return;
+    }
+
+    /* ---- not signed yet: who is signing ---- */
+    content.innerHTML = `
+      <h1 class="sign-center-title">Signature for ${jobId}</h1>
+      <div class="sign-card">
+        <span class="sign-glyph">${ICONS.penSign}</span>
+        <span class="sign-q">Who is signing this document?</span>
+        <div class="sign-field">
+          <label for="signer">Customer *</label>
+          <input class="sign-input" id="signer" type="text" value="${esc(CUSTOMER.name)}" />
+        </div>
+        <button class="act primary sign-submit" type="button" id="to-sign">${ICONS.penSign}<span>Sign</span></button>
+      </div>`;
+    document.getElementById("to-sign").addEventListener("click", () => {
+      const v = document.getElementById("signer").value.trim() || CUSTOMER.name;
+      location.hash = `job=${encodeURIComponent(jobId)}&step=sign&name=${encodeURIComponent(v)}`;
+    });
+  }
+
+  render();
+  window.addEventListener("hashchange", render);
+</script>
+</body>
+</html>

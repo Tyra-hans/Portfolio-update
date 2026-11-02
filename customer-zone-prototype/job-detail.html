@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Job Detail — Customer Portal</title>
+<link href="https://fonts.cdnfonts.com/css/proxima-nova-2" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/mobile-tabs.css" />
+</head>
+<body>
+<div id="nav"></div>
+<div class="page">
+  <div id="hero"></div>
+  <div class="wrap" id="wrap">
+    <div id="portal-id"></div>
+    <div class="card">
+      <div id="switch"></div>
+      <div class="card-inner"><div class="detail" id="content"></div></div>
+    </div>
+    <div id="support"></div>
+  </div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/demo-data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/topnav.js"></script>
+<script src="js/portal.js"></script>
+<script>
+  const jobId = decodeURIComponent(location.hash.slice(1)) || getQueryParam("id");
+  const job = JOBS.find((j) => j.id === jobId) || JOBS[0];
+
+  renderChrome({ active: "jobs", crumbs: [{ label: "Jobs", href: "index.html#jobs/all" }, { label: job.id }] });
+
+  const assetRows = job.assets.length
+    ? job.assets
+        .map((a) => `<tr><td class="code" data-label="Code">${a.code}</td><td data-label="Description">${a.description}</td><td data-label="Quantity">${a.qty}</td></tr>`)
+        .join("")
+    : `<tr><td class="muted" colspan="3">No assets recorded for this job</td></tr>`;
+
+  const flowRows = job.statusFlow
+    .map((s) => `<tr><td data-label="Date">${s.date}</td><td data-label="Description">${s.desc}</td></tr>`)
+    .join("");
+
+  const employees = job.employees
+    .map((e) => `<span class="chip"><span class="avatar">${e.initials}</span><span class="chip-name">${e.name}</span></span>`)
+    .join("");
+
+  const signAction = job.canSign
+    ? `<a class="act primary" href="signature.html#job=${encodeURIComponent(job.id)}">${ICONS.penSign}<span>${job.signed ? "Re-sign" : "Sign"}</span></a>`
+    : "";
+
+  const rel = relatedTo(job.id);
+  // Tabs: Overview (the job itself) + the quotes / invoices / appointments related to this job, as cards.
+  const JOB_TABS = [
+    { key: "overview", label: "Overview", icon: "clipboardList" },
+    { key: "quotes", label: "Quotes", icon: "fileText", noun: "quotes",
+      card: (q) => miniCard(`quote-detail.html#${q.id}`, q.id, badge(q.status, q.statusTone),
+        row("fileText", q.comments) + row("clock", q.expiryLabel) + row("dollar", `<b>${formatCurrency(q.total)}</b>`)) },
+    { key: "invoices", label: "Invoices", icon: "receipt", noun: "invoices",
+      card: (i) => miniCard(`invoice-detail.html#${i.id}`, i.id, badge(i.statusLabel, i.statusTone),
+        row("receipt", i.comments) + row("clock", i.dueLabel) + row("dollar", `<b>${formatCurrency(i.total)}</b>`)) },
+    { key: "appointments", label: "Appointments", icon: "calendar", noun: "appointments",
+      card: (ap) => miniCard(`appointment-detail.html#${ap.id}`, ap.subject, "",
+        row("calendar", ap.dateLabel) + row("clock", ap.time) + row("mapPin", ap.address)) },
+  ];
+  const jobTab = (t) =>
+    `<button class="job-tab" type="button" data-key="${t.key}">${ICONS[t.icon]}<span>${t.label}</span>${t.key === "overview" ? "" : `<span class="job-tab-count">${rel[t.key].length}</span>`}</button>`;
+  const jobTabs = JOB_TABS.map(jobTab).join("");
+  const relatedPane = (t) => `
+    <div class="job-pane" data-pane="${t.key}" hidden>
+      ${rel[t.key].length ? `<div class="grid">${rel[t.key].map(t.card).join("")}</div>` : `<p class="rel-empty">No ${t.noun} for this job yet</p>`}
+    </div>`;
+
+  document.getElementById("content").innerHTML = `
+    <div class="detail-header">
+      <h1 class="d-id">${job.id}</h1>
+      <div class="d-actions">
+        <button class="act" type="button" data-toast="WhatsApp — prototype only">${ICONS.whatsapp}<span>WhatsApp</span></button>
+        <button class="act icon-only" type="button" data-toast="Messaging — prototype only">${ICONS.message}</button>
+        <button class="act" type="button" data-print>${ICONS.printer}<span>Print</span></button>
+        ${signAction}
+      </div>
+    </div>
+
+    <div class="job-tabs" role="tablist">${jobTabs}</div>
+
+    <div class="job-pane" data-pane="overview">
+    <div class="contact">
+      <span class="c-name">${CUSTOMER.name}</span>
+      <span class="c-line">${CUSTOMER.company}</span>
+      <span class="c-line">${CUSTOMER.phone}</span>
+      <span class="c-line">${CUSTOMER.email}</span>
+      <span class="c-line">${CUSTOMER.address}</span>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2 class="panel-title">Job Detail</h2>
+        ${badge(job.status, job.statusTone)}
+      </div>
+      <div class="fields">
+        <div class="field"><span class="f-label">Start Date</span><span class="f-value">${job.startDate}</span></div>
+        <div class="field"><span class="f-label">Job Type</span><span class="f-value">${job.jobType}</span></div>
+        <div class="field wide"><span class="f-label">Comments</span><span class="f-value">${job.comments}</span></div>
+      </div>
+      <hr class="divider" />
+      <div class="section">
+        <h3 class="subhead">Customer Assets</h3>
+        <div class="table-wrap">
+          <table class="tbl">
+            <thead><tr><th>Code</th><th>Description</th><th>Quantity</th></tr></thead>
+            <tbody>${assetRows}</tbody>
+          </table>
+        </div>
+      </div>
+      <hr class="divider" />
+      <div class="section">
+        <h3 class="subhead">Assigned Employees</h3>
+        <div>${employees}</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2 class="panel-title">Summary</h2>
+      <div class="table-wrap">
+        <table class="tbl">
+          <thead><tr><th>Date</th><th>Description</th></tr></thead>
+          <tbody>${flowRows}</tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    ${JOB_TABS.slice(1).map(relatedPane).join("")}`;
+
+
+  function selectJobTab(key) {
+    const t = JOB_TABS.find((x) => x.key === key) || JOB_TABS[0];
+    document.querySelectorAll(".job-tab").forEach((b) => b.classList.toggle("active", b.dataset.key === t.key));
+    document.querySelectorAll(".job-pane").forEach((p) => (p.hidden = p.dataset.pane !== t.key));
+  }
+  document.querySelector(".job-tabs").addEventListener("click", (e) => {
+    const b = e.target.closest(".job-tab");
+    if (b) selectJobTab(b.dataset.key);
+  });
+  selectJobTab("overview");
+</script>
+</body>
+</html>
