@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>(function(){var c=navigator.connection||{},d=document.documentElement;if(c.saveData||/(^|-)(2g|3g)$/.test(c.effectiveType||'')||(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2))d.className+=' lite';})();</script>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -31,9 +32,9 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
     <style>
         .sp-section {
             padding: 100px 0 80px;
@@ -759,7 +760,7 @@
         <section class="sp-section sp-hero">
             <div class="container">
                 <div class="sp-breather sp-hero-image">
-                    <img src="assets/servcraft-preview-mockup-jobs.webp" alt="A hand holding an iPhone showing the ServCraft Preview jobs list" fetchpriority="high" decoding="async" width="2560" height="1440">
+                    <img src="assets/servcraft-preview-mockup-jobs-1280.webp" srcset="assets/servcraft-preview-mockup-jobs-1280.webp 1280w, assets/servcraft-preview-mockup-jobs.webp 2560w" sizes="100vw" alt="A hand holding an iPhone showing the ServCraft Preview jobs list" fetchpriority="high" decoding="async" width="2560" height="1440">
                     <div class="sp-hero-caption">
                         <div class="container">
                             <div class="sp-kicker-row">
@@ -830,15 +831,15 @@
                     <h2 class="sp-old-title" id="oldAppTitle">The old app</h2>
                     <div class="sp-old-row">
                         <figure>
-                            <img src="assets/servcraft-preview-old-quotes.jpg" alt="The old quotes list, with large cards and the value and assignee below a divider" width="828" height="1792" loading="lazy" decoding="async">
+                            <img src="assets/servcraft-preview-old-quotes.webp" alt="The old quotes list, with large cards and the value and assignee below a divider" width="828" height="1792" loading="lazy" decoding="async">
                             <figcaption>Quotes had their own card layout</figcaption>
                         </figure>
                         <figure>
-                            <img src="assets/servcraft-preview-old-customers.jpg" alt="The old customers list, with tags and contact details stacked in each card. Phone numbers and emails are blurred" width="828" height="1792" loading="lazy" decoding="async">
+                            <img src="assets/servcraft-preview-old-customers.webp" alt="The old customers list, with tags and contact details stacked in each card. Phone numbers and emails are blurred" width="828" height="1792" loading="lazy" decoding="async">
                             <figcaption>Customers used another layout</figcaption>
                         </figure>
                         <figure>
-                            <img src="assets/servcraft-preview-old-filters.jpg" alt="The old filters screen, with dates, workflow and job types, status, scope and options all collapsed" width="828" height="1792" loading="lazy" decoding="async">
+                            <img src="assets/servcraft-preview-old-filters.webp" alt="The old filters screen, with dates, workflow and job types, status, scope and options all collapsed" width="828" height="1792" loading="lazy" decoding="async">
                             <figcaption>Filters hid every option</figcaption>
                         </figure>
                     </div>
@@ -927,7 +928,7 @@
                 </div>
 
                 <figure class="sp-breather">
-                    <img src="assets/servcraft-preview-mockup-quotes.webp" alt="A gloved hand holding a phone showing the ServCraft Preview quotes list outdoors" loading="lazy" decoding="async" width="2560" height="1440">
+                    <img src="assets/servcraft-preview-mockup-quotes-1280.webp" srcset="assets/servcraft-preview-mockup-quotes-1280.webp 1280w, assets/servcraft-preview-mockup-quotes.webp 2560w" sizes="100vw" alt="A gloved hand holding a phone showing the ServCraft Preview quotes list outdoors" loading="lazy" decoding="async" width="2560" height="1440">
                 </figure>
 
                 <!-- 02 · Search -->
@@ -938,7 +939,7 @@
                         <p class="sp-feature-lede">Made search collapse on scroll, giving job cards more screen space without losing access to search.</p>
                         <div class="sp-before-phone">
                             <div class="sp-old-shot">
-                                <img src="assets/servcraft-preview-old-list.jpg" alt="The old jobs list. The search field and tabs are highlighted above two large job cards" width="828" height="1792" loading="lazy" decoding="async">
+                                <img src="assets/servcraft-preview-old-list.webp" alt="The old jobs list. The search field and tabs are highlighted above two large job cards" width="828" height="1792" loading="lazy" decoding="async">
                                 <span class="sp-waste" aria-hidden="true"></span>
                             </div>
                             <div class="sp-waste-note">
@@ -1085,7 +1086,7 @@
     <!-- What's changed: mockups rebuilt from the ServCraft mobile prototype, animated with GSAP -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('lite');
         const $ = (s, r = document) => r.querySelector(s);
         const R = (root, name) => root.querySelector(`[data-r="${name}"]`);
 

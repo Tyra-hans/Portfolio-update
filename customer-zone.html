@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>(function(){var c=navigator.connection||{},d=document.documentElement;if(c.saveData||/(^|-)(2g|3g)$/.test(c.effectiveType||'')||(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2))d.className+=' lite';})();</script>
     <!-- DRAFT COPY: all text on this page is a first draft for Tyra to rewrite. -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -32,9 +33,9 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="vendor/ScrollTrigger.min.js"></script>
     <style>
         /* overflow-x: hidden on html/body breaks position: sticky; clip keeps the no-scroll behaviour without that */
         html, body { overflow-x: clip; }
@@ -297,7 +298,7 @@
         <!-- ── Hero ── -->
         <section class="cz-hero">
             <div class="cz-breather cz-hero-photo" style="--focus: 48% 40%">
-                <img src="assets/customer-zone-mockup-laptop.jpg" alt="A laptop on a workshop bench, surrounded by tools on a pegboard, showing the redesigned Regal Electrical customer portal." width="2560" height="1707" fetchpriority="high" decoding="async">
+                <picture style="display:contents"><source type="image/webp" sizes="100vw" srcset="assets/customer-zone-mockup-laptop-1280.webp 1280w, assets/customer-zone-mockup-laptop-1920.webp 1920w"><img src="assets/customer-zone-mockup-laptop.jpg" alt="A laptop on a workshop bench, surrounded by tools on a pegboard, showing the redesigned Regal Electrical customer portal." width="2560" height="1707" fetchpriority="high" decoding="async"></picture>
                 <div class="cz-hero-caption">
                     <div class="cz-wrap">
                         <div class="cz-kicker-row">
@@ -382,7 +383,7 @@
         </div>
 
         <figure class="cz-breather" style="--focus: 82% 50%">
-            <img src="assets/customer-zone-mockup-phones.jpg" alt="Two phones over a tradesperson's amber work jacket and flannel shirt, showing a quote with Accept and Decline buttons and a job with its Overview, Quotes and Invoices tabs." width="2560" height="1440" loading="lazy" decoding="async">
+            <picture style="display:contents"><source type="image/webp" sizes="100vw" srcset="assets/customer-zone-mockup-phones-1280.webp 1280w, assets/customer-zone-mockup-phones-1920.webp 1920w"><img src="assets/customer-zone-mockup-phones.jpg" alt="Two phones over a tradesperson's amber work jacket and flannel shirt, showing a quote with Accept and Decline buttons and a job with its Overview, Quotes and Invoices tabs." width="2560" height="1440" loading="lazy" decoding="async"></picture>
         </figure>
 
         <div class="cz-wrap">
@@ -508,7 +509,7 @@
         </div>
 
         <figure class="cz-breather" style="--focus: 66% 50%">
-            <img src="assets/customer-zone-mockup-pool.jpg" alt="A customer on a call beside their swimming pool, next to a phone showing their pool drain inspection job from Pool Experts Ltd in Customer Zone." width="2560" height="1440" loading="lazy" decoding="async">
+            <picture style="display:contents"><source type="image/webp" sizes="100vw" srcset="assets/customer-zone-mockup-pool-1280.webp 1280w, assets/customer-zone-mockup-pool-1920.webp 1920w"><img src="assets/customer-zone-mockup-pool.jpg" alt="A customer on a call beside their swimming pool, next to a phone showing their pool drain inspection job from Pool Experts Ltd in Customer Zone." width="2560" height="1440" loading="lazy" decoding="async"></picture>
         </figure>
 
         <div class="cz-wrap">
@@ -828,5 +829,6 @@
             });
         });
     </script>
+    <script>if (document.documentElement.classList.contains('lite')) document.querySelectorAll('.cz-phone-gif[data-still]').forEach(function (i) { i.src = i.dataset.still; });</script>
 </body>
 </html>

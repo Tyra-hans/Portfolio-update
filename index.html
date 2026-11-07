@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <script>(function(){var c=navigator.connection||{},d=document.documentElement;if(c.saveData||/(^|-)(2g|3g)$/.test(c.effectiveType||'')||(navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2))d.className+=' lite';})();</script>
+    <script>(function(){var d=document.documentElement;if(/\blite\b/.test(d.className))return;d.className+=' hero-wait';setTimeout(function(){d.className=d.className.replace(' hero-wait','');},1200);})();</script>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -35,11 +37,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="hero-filter.css">
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
     <!-- GSAP for Smooth Animations -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="vendor/gsap.min.js"></script>
+    <script defer src="vendor/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -69,10 +71,9 @@
                 <div class="hero-top-row">
                     <!-- Headline -->
                     <div class="hero-headline-col">
-                        <h1 class="hero-headline" style="opacity:0">I simplify complex software across web and mobile, including an app with over 5,000 daily users.</h1>
+                        <h1 class="hero-headline">I simplify complex software across web and mobile, including an app with over 5,000 daily users.</h1>
                         <p class="hero-lede">I'm a product designer at ServCraft, working from research and design systems to prototypes built with AI. Before that, I designed trade finance products at Credify and fintech products at Onafriq.</p>
-                        <noscript><style>.hero-headline{opacity:1}</style></noscript>
-                    </div>
+                                            </div>
                 </div>
 
                 <div class="hero-visual">
@@ -104,10 +105,10 @@
             </div></div></div>
                                 </a>
                                 <a class="hero-reel-slide" href="servcraft-preview.html" data-name="ServCraft mobile app" onclick="track('case_study_click')">
-                                    <img src="assets/servcraft-preview-mockup-jobs.webp" alt="The redesigned ServCraft jobs list on a phone held in one hand" width="2560" height="1440" fetchpriority="high" decoding="async" style="object-position: 50% 28%">
+                                    <img src="assets/servcraft-preview-mockup-jobs-1280.webp" srcset="assets/servcraft-preview-mockup-jobs-1280.webp 1280w, assets/servcraft-preview-mockup-jobs.webp 2560w" sizes="(max-width: 768px) 100vw, 1200px" alt="The redesigned ServCraft jobs list on a phone held in one hand" width="2560" height="1440" loading="lazy" decoding="async" style="object-position: 50% 28%">
                                 </a>
                                 <a class="hero-reel-slide" href="customer-zone.html" data-name="ServCraft Customer Zone" onclick="track('case_study_click')">
-                                    <img data-src="assets/customer-zone-mockup-laptop.jpg" alt="The redesigned Customer Zone on a laptop in a workshop" width="2560" height="1707" decoding="async" style="object-position: 50% 22%">
+                                    <img data-src="assets/customer-zone-mockup-laptop-1920.webp" alt="The redesigned Customer Zone on a laptop in a workshop" width="2560" height="1707" decoding="async" style="object-position: 50% 22%">
                                 </a>
                                 <a class="hero-reel-slide" href="messages-update-video.html" data-name="ServCraft Messaging" onclick="track('case_study_click')">
                                     <img data-src="assets/Updated messaging.webp" alt="The redesigned ServCraft message composer on desktop" width="2170" height="1494" decoding="async" style="object-position: 50% 0">
@@ -197,7 +198,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="customer-zone.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/customer-zone-thumb.jpg" alt="The redesigned Customer Zone home screen on a laptop in a workshop" class="work-card-image" style="object-position: 55% 25%" loading="lazy" decoding="async" width="1400" height="933">
+                        <img src="assets/customer-zone-thumb-1000.webp" alt="The redesigned Customer Zone home screen on a laptop in a workshop" class="work-card-image" style="object-position: 55% 25%" loading="lazy" decoding="async" width="1400" height="933">
                         <span class="work-item-badge">New</span>
                     </div>
                     <div class="work-card-content">
@@ -226,7 +227,7 @@
                 <div class="work-card">
                     <div class="work-card-image-wrapper">
                         <a href="credify.html" class="work-card-link-overlay" onclick="track('case_study_click')"></a>
-                        <img src="assets/credify-thumbnail-new.webp" alt="Credify Project" class="work-card-image" loading="lazy" decoding="async" width="2292" height="1580">
+                        <img src="assets/credify-thumbnail-1200.webp" alt="Credify Project" class="work-card-image" loading="lazy" decoding="async" width="2292" height="1580">
                     </div>
                     <div class="work-card-content">
                         <p class="work-card-title">Digitizing trade for Ugandan importers</p>
@@ -475,9 +476,13 @@
         // plain text is restored so it keeps wrapping naturally at any width.
         const heroHeadlineEl = document.querySelector('.hero-headline');
         const heroLedeEl = document.querySelector('.hero-lede');
-        const heroMotionOff = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const heroMotionOff = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('lite');
         function revealHeroText() {
-            if (heroMotionOff) { heroHeadlineEl.style.opacity = ''; return; }
+            // the text never waits on this: if the page wasn't ready in time it is already showing, so skip the effect
+            const root = document.documentElement, ready = root.classList.contains('hero-wait');
+            root.classList.remove('hero-wait');
+            if (heroMotionOff || !ready) return;
+            gsap.set(heroLedeEl, { opacity: 0 });
             const text = heroHeadlineEl.textContent;
             heroHeadlineEl.innerHTML = text.split(' ').map(w => '<span style="display:inline-block">' + w + '</span>').join(' ');
             const lines = [];
@@ -487,13 +492,11 @@
                 else lines.push({ top: w.offsetTop, words: [w.textContent] });
             });
             heroHeadlineEl.innerHTML = lines.map(l => '<span class="hero-line">' + l.words.join(' ') + '</span>').join(' ');
-            heroHeadlineEl.style.opacity = '';
             const soft = { opacity: 0, y: 12, filter: 'blur(8px)' };
             const sharp = { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' };
             gsap.fromTo('.hero-line', soft, { ...sharp, stagger: 0.1, delay: 0.1, onComplete: () => { heroHeadlineEl.textContent = text; } });
             gsap.fromTo(heroLedeEl, { opacity: 0, y: 8, filter: 'blur(5px)' }, { ...sharp, opacity: 0.86, delay: 0.1 + lines.length * 0.1 + 0.25, clearProps: 'filter,transform,opacity' });
         }
-        gsap.set(heroLedeEl, { opacity: heroMotionOff ? 1 : 0 });
         Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 700))]).then(revealHeroText);
         gsap.from('.hero-thumbnail-image', { scale: 1.06, opacity: 0, duration: 1.0, delay: 0.2, ease: 'power2.out' });
         gsap.from('.hero-intro-name', { y: 22, opacity: 0, duration: 0.8, delay: 0.55, ease: 'power2.out' });
@@ -559,7 +562,7 @@
             const slides = [...reel.querySelectorAll('.hero-reel-slide')];
             const name = document.getElementById('heroReelName');
             const toggle = document.getElementById('heroReelToggle');
-            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('lite');
             const phone = window.matchMedia('(max-width: 768px)');
             const DUR = [8200, 5000, 5000, 5000, 5000];
             let i = 0, stopped = reduce, hovering = false, visible = true, elapsed = -1800;
@@ -660,7 +663,7 @@
                 toggle.setAttribute('aria-label', (stopped ? 'Play' : 'Pause') + ' the work reel');
             };
             toggle.addEventListener('click', e => {
-                e.preventDefault(); stopped = !stopped; setToggle();
+                e.preventDefault(); stopped = !stopped; setToggle(); if (!stopped) loadRest();
                 if (demoTl) stopped ? demoTl.pause() : demoTl.resume();
             });
             reel.addEventListener('pointerenter', () => setHover(true));
@@ -670,7 +673,8 @@
             new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(reel);
 
             const loadRest = () => slides.forEach(sl => { const im = sl.querySelector('img[data-src]'); if (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); } });
-            if (document.readyState === 'complete') loadRest(); else window.addEventListener('load', loadRest);
+            // on reduced motion or lite mode the other slides only download if the reel is started
+            if (!reduce) { if (document.readyState === 'complete') loadRest(); else window.addEventListener('load', loadRest); }
             window.addEventListener('resize', () => { fitPhone(); placed.forEach(([k, , , x2, y2]) => put(cursors[k], x2, y2)); });
             fitPhone();
             setToggle();
