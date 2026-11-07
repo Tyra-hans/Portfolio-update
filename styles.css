@@ -24,9 +24,11 @@
     box-sizing: border-box;
 }
 
+/* clip, not hidden: hidden turns html and body into scroll containers, which stops the header sticking */
 html {
     scroll-behavior: auto;
-    overflow-x: hidden;
+    overflow-x: clip;
+    scroll-padding-top: 90px;
 }
 
 body {
@@ -34,7 +36,7 @@ body {
     background-color: var(--color-bg);
     color: var(--color-primary);
     line-height: 1.5;
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     zoom: 0.85; /* Zoom out to 85% */
@@ -315,6 +317,66 @@ a {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* Hero work reel: keeps the banner's shape, with the notch for the intro card cut by #heroNotch */
+.hero-banner-wrapper { aspect-ratio: 2046 / 898; }
+.hero-reel { position: relative; width: 100%; height: 92.76%; overflow: hidden; clip-path: url(#heroNotch); background: #e9edf2; }
+.hero-reel-slides { position: absolute; inset: 0; will-change: transform; }
+.hero-reel-slide { position: absolute; inset: 0; display: block; opacity: 0; visibility: hidden; transition: opacity .9s ease, visibility 0s linear .9s; }
+.hero-reel-slide.is-active { opacity: 1; visibility: visible; transition: opacity .9s ease, visibility 0s; }
+.hero-reel-slide img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); transition: transform 6s ease-out; }
+.hero-reel-slide.is-active img { transform: scale(1); }
+.hero-reel-slide.is-credify { background: linear-gradient(180deg, #0a5a9c 0%, #5aa9d8 62%, #cfdde8 100%); }
+.hero-reel-slide.is-credify img { object-fit: contain; object-position: 50% 100%; padding: 3% 27% 0 0; }
+.hero-tags { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+/* cursors, as in a shared design file: they glide between relevant spots and drift slightly at rest */
+.hero-cursor { position: absolute; left: 0; top: 0; opacity: 0; transition: transform 1.7s cubic-bezier(.45, .02, .2, 1), opacity .4s ease; will-change: transform; }
+.hero-cursor.is-on { opacity: 1; }
+.hero-cursor.no-move { transition: none; }
+.hero-cursor-in { display: block; position: relative; animation: heroCursorDrift 4.6s ease-in-out infinite alternate; }
+.hero-cursor:nth-child(2n) .hero-cursor-in { animation-duration: 5.8s; animation-delay: -2s; }
+.hero-reel.is-stopped .hero-cursor-in { animation-play-state: paused; }
+@keyframes heroCursorDrift { from { transform: translate(0, 0); } to { transform: translate(7px, -6px); } }
+.hero-cursor svg { display: block; width: 20px; height: 20px; fill: var(--c); filter: drop-shadow(0 2px 3px rgba(10, 30, 50, .3)); }
+.hero-cursor-label { position: absolute; left: 15px; top: 17px; padding: 4px 10px; border-radius: 3px 10px 10px 10px; font-size: 13px; font-weight: 500; line-height: 1.3; color: #fff; white-space: nowrap; background: var(--c); box-shadow: 0 4px 12px rgba(10, 30, 50, .2); }
+/* the filter slide: the case study's phone demo on the same warm sand as the portrait */
+.hf-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, #f4eee4, #e5dbcc); }
+.hf-stage .mk-frame { box-shadow: 0 0 0 calc(9px * var(--s)) #14181f, 0 18px 44px rgba(70, 50, 20, .22); }
+.hero-headline-col:has(.hero-lede) { flex-direction: column; gap: 20px; }
+.hero-headline-col .hero-headline { font-weight: 600; }
+.hero-line { display: block; will-change: filter, transform, opacity; }
+.hero-lede { margin: 0; max-width: min(760px, 66%); font-size: 18px; line-height: 1.6; color: var(--color-primary); opacity: .86; text-wrap: pretty; }
+@media screen and (min-width: 769px) { .hero-headline-col .hero-headline { max-width: 86%; font-size: 46px; line-height: 1.22; letter-spacing: -1.2px; text-wrap: balance; } }
+@media screen and (min-width: 769px) and (max-width: 1180px) {
+    .hero-headline-col .hero-headline { max-width: 68%; font-size: 38px; }
+    .hero-intro-col { width: 25%; gap: 10px; }
+    .hero-thumbnail-image { width: 96px; }
+    .intro-subtitle { font-size: 14px; line-height: 1.4; }
+    .hero-intro-name { flex-wrap: wrap; }
+}
+@media screen and (max-width: 768px) { .hero-lede { max-width: none; } .hero-headline-col .hero-headline { font-size: 30px; line-height: 1.22; letter-spacing: -.6px; } .hero-lede { font-size: 16px; } }
+.hero-reel-bar { position: absolute; left: 2%; bottom: 4%; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 16px; border-radius: 999px; background: rgba(11, 36, 56, .78); color: #fff; font-size: 14px; font-weight: 500; white-space: nowrap; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.hero-reel-toggle { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%; color: #fff; background: rgba(255, 255, 255, .16); cursor: pointer; }
+.hero-reel-toggle:hover { background: rgba(255, 255, 255, .28); }
+.hero-reel-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.hero-reel-toggle svg { width: 12px; height: 12px; fill: currentColor; }
+.hero-reel-toggle .icon-play, .hero-reel-toggle.is-stopped .icon-pause { display: none; }
+.hero-reel-toggle.is-stopped .icon-play { display: block; }
+@media (prefers-reduced-motion: reduce) {
+    .hero-reel-slide, .hero-reel-slide img, .hero-reel-slide.is-active { transition: none; }
+    .hero-cursor { transition: opacity .2s; }
+    .hero-cursor-in { animation: none; }
+    .hero-reel-slide img { transform: none; }
+}
+@media screen and (max-width: 768px) {
+    .hero-banner-wrapper { aspect-ratio: 1 / 1; }
+    .hero-reel { height: 100%; clip-path: none; border-radius: 16px; }
+    .hf-stage { justify-content: flex-end; padding-right: 10%; }
+    .hero-cursor-label { font-size: 11px; padding: 3px 8px; }
+    .hero-cursor svg { width: 16px; height: 16px; }
+    .hero-reel-bar { font-size: 12px; bottom: 3%; padding-left: 12px; }
+    .hero-reel-slide.is-credify img { padding: 6% 2% 0; }
 }
 
 .hero-headline {

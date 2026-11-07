@@ -75,15 +75,26 @@
         }
 
         /* ── Photobooth: a strip feeds out of a brushed-metal machine face (all CSS; sized in em so it scales) ── */
-        /* three layers deep: the machine at the back, the headline across the page over its lower half, the strip hanging in front */
-        .hero-stage { --u: 10px; position: relative; text-align: center; }
-        /* the headline floats over the machine; the bio stays below it in the normal flow */
-        .hero-stage .about-hero-text { position: static; }
-        .hero-stage .about-hero-text h1 { position: absolute; z-index: 2; left: 0; right: 0; top: calc(var(--u) * 21); margin: 0; max-width: none;
-            font-size: clamp(2.6rem, 6.6vw, 6.4rem); line-height: 1.02 !important; letter-spacing: -0.045em !important; text-wrap: balance; }
-        .hero-stage .about-bio { position: relative; z-index: 2; max-width: 620px; margin: 28px auto 0; }
-        .hero-stage .about-bio p { font-size: 17px; line-height: 1.7; color: #3a4652; text-wrap: pretty; }
-        /* the machine is sized to the text block, so the headline and the last bio line share its top and base */
+        /* side by side on desktop, so the strip never covers the headline; stacked with the headline first on smaller screens */
+        .hero-stage { --u: 10px; position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px; text-align: center; }
+        .hero-stage .about-hero-text { display: contents; }
+        .hero-stage .about-hero-text h1 { order: 1; margin: 0; max-width: 720px;
+            font-size: clamp(2.4rem, 8vw, 4rem); line-height: 1.06 !important; letter-spacing: -0.04em !important; text-wrap: balance; }
+        .hero-stage .booth { order: 2; }
+        .hero-stage .about-bio { order: 3; max-width: 620px; margin: 0; }
+        .hero-stage .about-bio p { font-size: 17px; line-height: 1.7; color: var(--color-primary); opacity: .84; text-wrap: pretty; }
+        /* harmony on desktop: the headline and last bio line share the machine's top and base, the headline and bio share one measure,
+           and the columns sit on the page's own edges (the logo on the left, the resume button on the right) */
+        @media (min-width: 1000px) {
+            .hero-stage { --u: 10px; display: grid; grid-template-columns: minmax(0, 1fr) calc(var(--u) * 32); grid-template-rows: auto 1fr; column-gap: 72px; row-gap: 32px; align-items: start; text-align: left; }
+            .hero-stage .about-hero-text h1 { grid-column: 1; grid-row: 1; max-width: 760px; font-size: clamp(3rem, 4.5vw, 4.1rem); text-wrap: wrap; }
+            .hero-stage .about-bio { grid-column: 1; grid-row: 2; align-self: end; max-width: 760px; gap: 16px; }
+            .hero-stage .about-bio p { font-size: 19px; line-height: 1.6; }
+            .hero-stage .booth { grid-column: 2; grid-row: 1 / span 2; margin: 0; height: 43.4em; }
+        }
+        @media (min-width: 1000px) and (max-width: 1320px) {
+            .hero-stage .about-hero-text h1 { text-wrap: balance; }
+        }
         .booth, .booth-loose {
             --metal-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004 0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.1 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
             --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
@@ -174,9 +185,9 @@
         .strip-develop { /* chemical develop: a pale wash that clears after printing */
             position: absolute; inset: 0; z-index: 3; background: #f1ece3; opacity: 0;
         }
-        .strip-caption { padding: 1.7em .3em 2em; }
-        .strip-title { display: block; font-size: 3.6em; font-weight: 700; line-height: .95; letter-spacing: -.035em; color: var(--color-primary); }
-        .strip-traits { display: block; margin-top: .6em; font-size: 1.32em; white-space: nowrap; font-weight: 500; color: var(--color-text-secondary); letter-spacing: -.01em; }
+        .strip-caption { padding: 1.7em .3em 2em; text-align: center; }
+        /* a quiet print caption, so the page keeps one headline */
+        .strip-title { display: block; font-size: 2.1em; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; color: var(--color-primary); }
         /* the shadow the mouth casts onto the paper as it exits: fixed to the machine, not the paper */
         .booth-throat {
             position: absolute; z-index: 4; left: 3.2em; right: 3.2em; top: 9.6em; height: 5.6em; pointer-events: none;
@@ -203,9 +214,27 @@
         .booth-note p { margin: 0; font-size: 1.45em; line-height: 1.5; color: #3a4652; }
         .booth-note p + p { margin-top: .7em; }
         .booth-note strong { font-weight: 700; color: var(--color-primary); }
-        @media (max-width: 1100px) {
+        @media (max-width: 999px) {
             .hero-stage { --u: min(10px, calc((100vw - 48px) / 32)); }
-            .hero-stage .about-hero-text h1 { top: calc(var(--u) * 30); }
+        }
+
+        /* How I work: one edge shared with the hero text, one reading measure, a quiet line between stories */
+        .how-section { padding: 88px 0 24px; position: relative; z-index: 1; }
+        .how-title { margin: 0 0 32px; font-size: clamp(2rem, 3.4vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--color-primary); }
+        .how-row { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 760px); column-gap: 56px; padding: 32px 0; border-top: 1px solid rgba(0, 65, 114, 0.14); }
+        .how-row:last-child { border-bottom: 1px solid rgba(0, 65, 114, 0.14); }
+        .how-label { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; color: var(--color-primary); }
+        .how-story p { margin: 0; font-size: 18px; line-height: 1.6; color: var(--color-primary); opacity: .84; text-wrap: pretty; }
+        .how-links { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+        .how-link { display: inline-block; margin-top: 14px; font-size: 16px; font-weight: 600; color: var(--color-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+        .how-link span { display: inline-block; transition: transform .2s ease; }
+        .how-link:hover span { transform: translateX(3px); }
+        .how-link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: 2px; }
+        @media (max-width: 768px) {
+            .how-section { padding: 56px 0 8px; }
+            .how-row { grid-template-columns: 1fr; row-gap: 10px; padding: 24px 0; }
+            .how-label { font-size: 20px; }
+            .how-story p { font-size: 16px; }
         }
 
         /* when the certificates reach the middle of the screen the page dims to a gallery wall
@@ -218,6 +247,16 @@
         }
         .certs-label { transition: color 0.9s ease; }
         .gallery-mode .certs-label { color: rgba(255, 255, 255, 0.55); }
+        /* the text from the white part of the page stays readable once the wall dims, changing in step with the background */
+        .about-hero h1, .about-bio p, .how-title, .how-label, .how-story p, .how-link { transition: color 0.9s cubic-bezier(.65, 0, .35, 1); }
+        .how-row { transition: border-color 0.9s cubic-bezier(.65, 0, .35, 1); }
+        .gallery-mode .about-hero h1, .gallery-mode .about-bio p, .gallery-mode .how-title, .gallery-mode .how-label,
+        .gallery-mode .how-story p, .gallery-mode .how-link { color: #f3f6f4; }
+        .gallery-mode .how-row { border-color: rgba(255, 255, 255, 0.2); }
+        .gallery-mode .how-link:focus-visible { outline-color: #f3f6f4; }
+        @media (prefers-reduced-motion: reduce) {
+            .about-hero h1, .about-bio p, .how-title, .how-label, .how-story p, .how-link, .how-row { transition: none; }
+        }
         .certs-trophy {
             width: 56px;
             height: 56px;
@@ -394,6 +433,9 @@
         /* certificate details: a card that fades in just under the frame on hover or focus.
            It keeps its space in the layout while hidden, so it never covers a frame or shifts the grid */
         .cert-info {
+            /* stays above the frame throughout, so the frame's drop shadow never lands on it when the fade ends */
+            position: relative;
+            z-index: 2;
             width: calc(100% - 24px);
             margin-top: 16px;
             display: flex;
@@ -483,7 +525,7 @@
             <div class="container">
                 <div class="hero-stage">
 
-                <div class="booth" id="booth" role="img" aria-label="A photobooth strip with four photos of Tyra, captioned Product Designer: Ambitious, Optimistic, Curious">
+                <div class="booth" id="booth" role="img" aria-label="A photobooth strip with four photos of Tyra, captioned Product Designer">
                     <div class="booth-panel"></div>
                     <div class="booth-bezel"><div class="booth-chamfer"><div class="booth-mouth"></div></div></div>
                     <div class="booth-feed">
@@ -495,8 +537,7 @@
                                 <div class="strip-photo"><img src="assets/hero-portrait.webp" alt="" width="576" height="576" decoding="async" draggable="false"><span class="strip-develop"></span></div>
                             </div>
                             <div class="strip-caption">
-                                <span class="strip-title">Product<br>Designer</span>
-                                <span class="strip-traits">Ambitious &bull; Optimistic &bull; Curious</span>
+                                <span class="strip-title">Product Designer</span>
                             </div>
                         </div>
                     </div>
@@ -510,6 +551,52 @@
                     <p>I work closely with engineering to turn ambitious ideas into thoughtful, production-ready experiences that succeed in the real world.</p>
                 </div>
                 </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How I work -->
+        <section class="how-section" aria-labelledby="howTitle">
+            <div class="container">
+                <h2 class="how-title" id="howTitle">How I work</h2>
+                <div class="how-list">
+                    <article class="how-row">
+                        <h3 class="how-label">Research</h3>
+                        <div class="how-story">
+                            <p>Research is where I start, because it changes what gets built. I worked in human-centred design at Mideva Labs. At ServCraft, my research showed that the mobile app&rsquo;s users span varying segments, so separate apps for technicians and owners would have been counterintuitive. We also found that people were scrolling too much and that filters took too long when they needed to find something. Standing in front of their own customer, that reflected badly on them, and our product was causing it.</p>
+                            <a class="how-link" href="servcraft-preview.html#research">See how it shaped the mobile app <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
+                    <article class="how-row">
+                        <h3 class="how-label">Prototyping with AI</h3>
+                        <div class="how-story">
+                            <p>I prototype in HTML with AI, so ideas can be tried as working screens instead of being described. It has transformed design and development handoff: developers now implement my designs more accurately than ever, and far faster. I also ship work myself and create useful assets for the team to use.</p>
+                            <a class="how-link" href="customer-zone.html">See the Customer Zone prototype <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
+                    <article class="how-row">
+                        <h3 class="how-label">Tradeoffs</h3>
+                        <div class="how-story">
+                            <p>Most of my decisions balance what customers need against UX best practice, and the work to be done against developer availability and technical feasibility. On ServCraft&rsquo;s job card, customers needed nine fields where most lists carry two or three, and Hick&rsquo;s law argues for showing less. I kept all nine and made the card configurable, so people can choose what it shows.</p>
+                            <a class="how-link" href="servcraft-preview.html#change-atom">See the job card <span aria-hidden="true">&rarr;</span></a>
+                        </div>
+                    </article>
+                    <article class="how-row">
+                        <h3 class="how-label">Design systems</h3>
+                        <div class="how-story">
+                            <p>I design in reusable parts, so products stay consistent. ServCraft&rsquo;s job card is built from atomic parts, and one structure now carries jobs, quotes and customers. I also wrote about how AI puts this kind of system within reach of small teams.</p>
+                            <div class="how-links">
+                                <a class="how-link" href="servcraft-preview.html#change-atom">See the card <span aria-hidden="true">&rarr;</span></a>
+                                <a class="how-link" href="https://tyrahans.medium.com/the-design-system-every-small-team-couldnt-afford-to-build-but-now-can-f754f196ebd5" target="_blank" rel="noopener" onclick="track('medium_article_click')">Read the article <span aria-hidden="true">&rarr;</span></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="how-row">
+                        <h3 class="how-label">Feedback</h3>
+                        <div class="how-story">
+                            <p>I give feedback to designers and team members, and I seek it out too, because the team and customers always enrich the product.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -681,7 +768,7 @@
             document.body.appendChild(layer);
             let strip = null, docked = false, printed = 0, topZ = 1, pulledOnce = false;
             const MAX_PRINTS = 6, BITE = 12;
-            const MACHINE_IN = 2.2;   // seconds of reading time before the machine appears
+            const MACHINE_IN = 0.25;   // the text no longer sits under the machine, so it can appear straight away
             let feedTl = null;
 
             // CSS px → screen px ratio (the body is zoomed on desktop)
@@ -692,8 +779,8 @@
                 docked = false; printed++;
                 const washes = strip.querySelectorAll('.strip-develop');
                 if (reduce) { gsap.set(throat, { opacity: 1 }); docked = true; return; }
-                // the first print waits so the headline and bio can be read first
-                const h = strip.offsetHeight, wait = first ? MACHINE_IN + 1 : 0.15;
+                // the first print follows the machine almost at once
+                const h = strip.offsetHeight, wait = first ? MACHINE_IN + 0.35 : 0.15;
                 gsap.set(strip, { y: -h, x: 0, rotation: 0, autoAlpha: 0 });
                 gsap.set(washes, { opacity: .92 });
                 gsap.set(throat, { opacity: 0 });
@@ -985,6 +1072,13 @@
                 document.getElementById('unmuteIcon').style.display = 'none';
             }
         });
+
+        // ── How I work ─────────────────────────────────────────────────
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            gsap.utils.toArray('.how-row').forEach(row => {
+                gsap.from(row, { scrollTrigger: { trigger: row, start: 'top 90%' }, y: 18, opacity: 0, duration: 0.7, ease: 'power2.out' });
+            });
+        }
 
         // ── Musings cards ────────────────────────────────────────────────
         gsap.utils.toArray('.musing-card').forEach((card, i) => {

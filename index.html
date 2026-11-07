@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="preload" as="image" href="assets/Hero_image.webp" type="image/webp">
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -35,7 +34,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hero-filter.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Open+Sans:wght@400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- GSAP for Smooth Animations -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -69,22 +69,73 @@
                 <div class="hero-top-row">
                     <!-- Headline -->
                     <div class="hero-headline-col">
-                        <h1 class="hero-headline" style="opacity:0">Transforming complex challenges<br>into simple, intuitive experiences.</h1>
+                        <h1 class="hero-headline" style="opacity:0">I simplify complex software across web and mobile, including an app with over 5,000 daily users.</h1>
+                        <p class="hero-lede">I'm a product designer at ServCraft, working from research and design systems to prototypes built with AI. Before that, I designed trade finance products at Credify and fintech products at Onafriq.</p>
                         <noscript><style>.hero-headline{opacity:1}</style></noscript>
                     </div>
                 </div>
 
                 <div class="hero-visual">
                     <div class="hero-banner-wrapper">
-                        <picture>
-                            <source srcset="assets/Hero_image.webp" type="image/webp">
-                            <img src="assets/Hero_image.webp" alt="Design systems, AI native designer, senior designer, remote first, dev background" class="hero-banner-image" width="2046" height="898" fetchpriority="high" decoding="async">
-                        </picture>
+                        <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><clipPath id="heroNotch" clipPathUnits="objectBoundingBox"><path transform="scale(0.000488759 0.00120048)" d="M40,0 H1442 Q1492,0 1492,50 V188 Q1492,238 1542,238 H1990 Q2046,238 2046,294 V793 Q2046,833 2006,833 H40 Q0,833 0,793 V40 Q0,0 40,0 Z"/></clipPath></defs></svg>
+                        <div class="hero-reel" id="heroReel" role="group" aria-roledescription="carousel" aria-label="Selected work">
+                            <div class="hero-reel-slides">
+                                <a class="hero-reel-slide is-active is-filter" href="servcraft-preview.html#change-prefs" data-name="ServCraft filters" aria-label="The ServCraft jobs list: filters open in one sheet, and a preset narrows the list" onclick="track('case_study_click')">
+                                    <div class="hf-stage mk" id="hfStage" aria-hidden="true"><div class="mk-frame"><div class="mk-phone">
+                <div class="mk-status"><span>9:41</span><span class="mk-batt"></span></div>
+                <div class="mk-sync"></div>
+                <div class="mk-head"><span class="mk-ib"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M5 12l6 6M5 12l6-6"/></svg></span><span class="mk-h">Jobs</span><span class="mk-ib" data-r="prefs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M4 6l8 0"/><path d="M16 6l4 0"/><path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M4 12l2 0"/><path d="M10 12l10 0"/><path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M4 18l11 0"/><path d="M19 18l1 0"/></svg><span class="mk-badge" data-r="badge">2</span></span></div>
+                <div class="mk-searchwrap" data-r="search"><div class="mk-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Search Jobs</span></div></div>
+                <div class="mk-fbar" data-r="fbar"><span class="mk-fchip">Today<i>&times;</i></span><span class="mk-fchip">Assigned to me<i>&times;</i></span><span class="mk-reset" data-r="reset">Reset</span></div>
+                <div class="mk-list"><div data-r="listAll"><div class="mk-sect">Today<span>5</span></div><div class="mk-cards"><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1047</span><span class="mk-nm">Corobrik Rosslyn</span><span class="mk-sub">Willem Botha</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.67 0.16 55)">KR</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1048</span><span class="mk-nm">Marlene Kruger</span><span class="mk-sub">Pieter Kruger</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.46 0.03 265);background:color-mix(in oklch, oklch(0.46 0.03 265) 13%, transparent)">On Way To Site</span><span class="mk-pic"  style="background:oklch(0.58 0.16 260)">TH</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1049</span><span class="mk-nm">Eastvale Clinic</span><span class="mk-sub">Dr. R. Naicker</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.63 0.14 158);background:color-mix(in oklch, oklch(0.63 0.14 158) 13%, transparent)">Work In Progress</span><span class="mk-pic"  style="background:oklch(0.63 0.15 155)">SG</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1050</span><span class="mk-nm">Northgate Offices</span><span class="mk-sub">Devan Pillay</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.60 0.17 305)">BW</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1051</span><span class="mk-nm">Sunrise Retail Park</span><span class="mk-sub">Marlene Kruger</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.58 0.16 260)">TH</span></div></div></div></div><div class="mk-sect">Tomorrow<span>4</span></div><div class="mk-cards"><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1052</span><span class="mk-nm">Riverside Lodge</span><span class="mk-sub">Thandi Nene</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.70 0.13 75);background:color-mix(in oklch, oklch(0.70 0.13 75) 13%, transparent)">Work Completed</span><span class="mk-pic"  style="background:oklch(0.58 0.20 27)">WI</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1053</span><span class="mk-nm">Westside Warehouse</span><span class="mk-sub">Karabo Sithole</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.46 0.03 265);background:color-mix(in oklch, oklch(0.46 0.03 265) 13%, transparent)">On Way To Site</span><span class="mk-pic"  style="background:oklch(0.74 0.13 85)">EJ</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1054</span><span class="mk-nm">Amanda Nel</span><span class="mk-sub">Amanda Nel</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.56 0.03 260)">FC</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1055</span><span class="mk-nm">Thabiso Molefe</span><span class="mk-sub">Naledi Molefe</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.63 0.14 158);background:color-mix(in oklch, oklch(0.63 0.14 158) 13%, transparent)">Work In Progress</span><span class="mk-pic"  style="background:oklch(0.63 0.15 155)">SG</span></div></div></div></div><div class="mk-sect">This week<span>8</span></div><div class="mk-cards"><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1056</span><span class="mk-nm">Blue Crane Estate</span><span class="mk-sub">Johan Pretorius</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.70 0.13 75);background:color-mix(in oklch, oklch(0.70 0.13 75) 13%, transparent)">Work Completed</span><span class="mk-pic"  style="background:oklch(0.70 0.12 210)">LM</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1057</span><span class="mk-nm">Highveld Mall</span><span class="mk-sub">Lerato Mahlangu</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.58 0.20 5)">NS</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1058</span><span class="mk-nm">Sipho Dlamini</span><span class="mk-sub">Sipho Dlamini</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.46 0.03 265);background:color-mix(in oklch, oklch(0.46 0.03 265) 13%, transparent)">On Way To Site</span><span class="mk-pic"  style="background:oklch(0.60 0.17 305)">BW</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1059</span><span class="mk-nm">Eastvale Clinic</span><span class="mk-sub">Dr. R. Naicker</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.67 0.16 55)">KR</span></div></div></div></div></div><div data-r="listMine" style="display:none"><div class="mk-sect">Today<span>2</span></div><div class="mk-cards"><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1048</span><span class="mk-nm">Marlene Kruger</span><span class="mk-sub">Pieter Kruger</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.46 0.03 265);background:color-mix(in oklch, oklch(0.46 0.03 265) 13%, transparent)">On Way To Site</span><span class="mk-pic"  style="background:oklch(0.58 0.16 260)">TH</span></div></div></div><div class="mk-card"><div class="mk-chead"><div class="mk-cmain"><span class="mk-lbl">JB1051</span><span class="mk-nm">Sunrise Retail Park</span><span class="mk-sub">Marlene Kruger</span></div><div class="mk-cside"><span class="mk-pill"  style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 13%, transparent)">Job Booked</span><span class="mk-pic"  style="background:oklch(0.58 0.16 260)">TH</span></div></div></div></div></div></div>
+                <div class="mk-tabbar"><span class="mk-tab"><svg viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></svg>Home</span><span class="mk-tab on"><svg viewBox="0 0 24 24"><path d="M3 7m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"/><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"/><path d="M12 12l0 .01"/><path d="M3 13a20 20 0 0 0 18 0"/></svg>Jobs</span><span class="mk-tab"><svg viewBox="0 0 24 24"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg>Customers</span><span class="mk-tab"><svg viewBox="0 0 24 24"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><path d="M9 9l1 0"/><path d="M9 13l6 0"/><path d="M9 17l6 0"/></svg>Quotes</span><span class="mk-tab"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>Menu</span></div>
+                <div class="mk-scrim" data-r="scrim"></div>
+                <div class="mk-sheet" data-r="sheet"><div class="mk-grab"></div>
+                    <div class="mk-sheet-top"><b>Preferences</b><span>Reset</span></div>
+                    <div class="mk-sheet-body">
+                        <div class="mk-grp"><div class="mk-gl">Quick filters</div><div class="mk-chips"><span class="mk-chip" data-r="qMine"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>My jobs today</span><span class="mk-chip"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>My week</span></div></div>
+                        <div class="mk-grp"><div class="mk-gl">When</div><div class="mk-chips"><span class="mk-chip" data-r="wToday"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Today</span><span class="mk-chip"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>This week</span><span class="mk-chip"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Past jobs</span><span class="mk-chip"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unscheduled</span><span class="mk-chip"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Recently modified</span></div></div>
+                        <div class="mk-grp"><div class="mk-gl">Assignee</div><div class="mk-chips"><span class="mk-chip" data-r="aMe"><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Assigned to me</span><span class="mk-chip add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="18"/><line x1="6" y1="12" x2="18" y2="12"/></svg>Choose people</span></div></div>
+                        <div class="mk-grp"><div class="mk-gl">Status</div><div class="mk-chips"><span class="mk-chip" style="color:oklch(0.58 0.16 260);background:color-mix(in oklch, oklch(0.58 0.16 260) 12%, transparent);border-color:color-mix(in oklch, oklch(0.58 0.16 260) 40%, transparent)">Job Booked</span><span class="mk-chip" style="color:oklch(0.46 0.03 265);background:color-mix(in oklch, oklch(0.46 0.03 265) 12%, transparent);border-color:color-mix(in oklch, oklch(0.46 0.03 265) 40%, transparent)">On Way To Site</span><span class="mk-chip" style="color:oklch(0.63 0.14 158);background:color-mix(in oklch, oklch(0.63 0.14 158) 12%, transparent);border-color:color-mix(in oklch, oklch(0.63 0.14 158) 40%, transparent)">Work In Progress</span><span class="mk-chip" style="color:oklch(0.70 0.13 75);background:color-mix(in oklch, oklch(0.70 0.13 75) 12%, transparent);border-color:color-mix(in oklch, oklch(0.70 0.13 75) 40%, transparent)">Work Completed</span><span class="mk-more">Show all 11 ›</span></div></div>
+                    </div>
+                    <div class="mk-foot"><div class="mk-btn" data-r="apply">Show 57 jobs</div></div>
+                </div>
+                <div class="mk-touch" data-r="touch"></div>
+            </div></div></div>
+                                </a>
+                                <a class="hero-reel-slide" href="servcraft-preview.html" data-name="ServCraft mobile app" onclick="track('case_study_click')">
+                                    <img src="assets/servcraft-preview-mockup-jobs.webp" alt="The redesigned ServCraft jobs list on a phone held in one hand" width="2560" height="1440" fetchpriority="high" decoding="async" style="object-position: 50% 28%">
+                                </a>
+                                <a class="hero-reel-slide" href="customer-zone.html" data-name="ServCraft Customer Zone" onclick="track('case_study_click')">
+                                    <img data-src="assets/customer-zone-mockup-laptop.jpg" alt="The redesigned Customer Zone on a laptop in a workshop" width="2560" height="1707" decoding="async" style="object-position: 50% 22%">
+                                </a>
+                                <a class="hero-reel-slide" href="messages-update-video.html" data-name="ServCraft Messaging" onclick="track('case_study_click')">
+                                    <img data-src="assets/Updated messaging.webp" alt="The redesigned ServCraft message composer on desktop" width="2170" height="1494" decoding="async" style="object-position: 50% 0">
+                                </a>
+                                <a class="hero-reel-slide is-credify" href="credify.html" data-name="Credify" onclick="track('case_study_click')">
+                                    <img data-src="assets/credify-mockup-hero.webp" alt="Five screens of the Credify trade finance mobile app" width="1920" height="1031" decoding="async">
+                                </a>
+                            </div>
+                            <div class="hero-tags" id="heroCursors">
+                                <span class="hero-cursor" data-c="ds" style="--c:#a92ac6"><span class="hero-cursor-in"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5l15 5.6-6.6 2.2-2.2 6.7z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><span class="hero-cursor-label">Design systems</span></span></span>
+                                <span class="hero-cursor" data-c="ai" style="--c:#b86f08"><span class="hero-cursor-in"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5l15 5.6-6.6 2.2-2.2 6.7z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><span class="hero-cursor-label">AI native designer</span></span></span>
+                                <span class="hero-cursor" data-c="senior" style="--c:#1f6fd1"><span class="hero-cursor-in"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5l15 5.6-6.6 2.2-2.2 6.7z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><span class="hero-cursor-label">Senior designer</span></span></span>
+                                <span class="hero-cursor" data-c="remote" style="--c:#d92525"><span class="hero-cursor-in"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5l15 5.6-6.6 2.2-2.2 6.7z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><span class="hero-cursor-label">Remote first</span></span></span>
+                                <span class="hero-cursor" data-c="dev" style="--c:#0d8f42"><span class="hero-cursor-in"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 2.5l15 5.6-6.6 2.2-2.2 6.7z" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><span class="hero-cursor-label">Dev background</span></span></span>
+                            </div>
+                            <div class="hero-reel-bar">
+                                <span class="hero-reel-name" id="heroReelName">ServCraft filters</span>
+                                <button type="button" class="hero-reel-toggle" id="heroReelToggle" aria-label="Pause the work reel" aria-pressed="false">
+                                    <svg class="icon-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 2h2v8H3zM7 2h2v8H7z"/></svg>
+                                    <svg class="icon-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 2l7 4-7 4z"/></svg>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Intro card fitted inside the banner's notch -->
                     <div class="hero-intro-col">
-                        <img src="assets/Hero-thumbnail.webp" alt="Tyra Hans - Product Designer" class="hero-thumbnail-image" loading="lazy" decoding="async" width="192" height="147">
+                        <img src="assets/hero-portrait-sand.webp" alt="Tyra Hans - Product Designer" class="hero-thumbnail-image" decoding="async" width="484" height="484">
                         <div class="hero-intro-text-block">
                             <div class="hero-intro-name">
                                 <span class="intro-text">Hello, my name is</span>
@@ -420,12 +471,30 @@
         // ── Hero entrance ────────────────────────────────────────────────
         // Headline stays invisible (inline style) until it's split into masked
         // words below, so it never flashes unmasked before the reveal animation.
+        // Hero text comes into focus line by line. Lines are measured after the fonts load, then the
+        // plain text is restored so it keeps wrapping naturally at any width.
         const heroHeadlineEl = document.querySelector('.hero-headline');
-        const headlineWords = splitWords(heroHeadlineEl);
-        heroHeadlineEl.style.opacity = '';
-        gsap.from(headlineWords, {
-            yPercent: 105, duration: 1.0, stagger: 0.045, ease: 'power3.out', delay: 0.15
-        });
+        const heroLedeEl = document.querySelector('.hero-lede');
+        const heroMotionOff = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function revealHeroText() {
+            if (heroMotionOff) { heroHeadlineEl.style.opacity = ''; return; }
+            const text = heroHeadlineEl.textContent;
+            heroHeadlineEl.innerHTML = text.split(' ').map(w => '<span style="display:inline-block">' + w + '</span>').join(' ');
+            const lines = [];
+            heroHeadlineEl.querySelectorAll('span').forEach(w => {
+                const last = lines[lines.length - 1];
+                if (last && last.top === w.offsetTop) last.words.push(w.textContent);
+                else lines.push({ top: w.offsetTop, words: [w.textContent] });
+            });
+            heroHeadlineEl.innerHTML = lines.map(l => '<span class="hero-line">' + l.words.join(' ') + '</span>').join(' ');
+            heroHeadlineEl.style.opacity = '';
+            const soft = { opacity: 0, y: 12, filter: 'blur(8px)' };
+            const sharp = { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' };
+            gsap.fromTo('.hero-line', soft, { ...sharp, stagger: 0.1, delay: 0.1, onComplete: () => { heroHeadlineEl.textContent = text; } });
+            gsap.fromTo(heroLedeEl, { opacity: 0, y: 8, filter: 'blur(5px)' }, { ...sharp, opacity: 0.86, delay: 0.1 + lines.length * 0.1 + 0.25, clearProps: 'filter,transform,opacity' });
+        }
+        gsap.set(heroLedeEl, { opacity: heroMotionOff ? 1 : 0 });
+        Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 700))]).then(revealHeroText);
         gsap.from('.hero-thumbnail-image', { scale: 1.06, opacity: 0, duration: 1.0, delay: 0.2, ease: 'power2.out' });
         gsap.from('.hero-intro-name', { y: 22, opacity: 0, duration: 0.8, delay: 0.55, ease: 'power2.out' });
         gsap.from('.intro-subtitle',  { y: 22, opacity: 0, duration: 0.8, delay: 0.7,  ease: 'power2.out' });
@@ -478,10 +547,136 @@
         });
 
         // ── Hero banner parallax + zoom ─────────────────────────────────
-        gsap.to('.hero-banner-image', {
+        gsap.to('.hero-reel-slides', {
             scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5 },
             y: -30, scale: 1.15, ease: 'none'
         });
+
+        // ── Hero work reel: opens on the filter demo, then crossfades real work. Two cursors per slide
+        //    glide to something relevant. All of it stops on request, and the reel holds on hover or off screen ──
+        (function () {
+            const reel = document.getElementById('heroReel');
+            const slides = [...reel.querySelectorAll('.hero-reel-slide')];
+            const name = document.getElementById('heroReelName');
+            const toggle = document.getElementById('heroReelToggle');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const phone = window.matchMedia('(max-width: 768px)');
+            const DUR = [8200, 5000, 5000, 5000, 5000];
+            let i = 0, stopped = reduce, hovering = false, visible = true, elapsed = -1800;
+            const HOVER_SPEED = 0.45;   // hovering slows the reel so it can be read; only the pause button stops it
+
+            /* the filter demo: same steps as the case study. The sheet slides up, a preset is tapped, the list filters */
+            const stageEl = document.getElementById('hfStage'), frame = stageEl.querySelector('.mk-frame'), ph = stageEl.querySelector('.mk-phone');
+            const r = n => stageEl.querySelector('[data-r="' + n + '"]');
+            const touch = r('touch'), picked = [r('qMine'), r('wToday'), r('aMe')];
+            function fitPhone() { frame.style.setProperty('--s', (stageEl.offsetHeight - (phone.matches ? 20 : 28)) / 780); }
+            const P = el => { const pr = ph.getBoundingClientRect(), er = el.getBoundingClientRect(), k = pr.width / 390; return { x: (er.left + er.width / 2 - pr.left) / k, y: (er.top + er.height / 2 - pr.top) / k }; };
+            const resetDemo = () => {
+                r('scrim').classList.remove('on'); r('sheet').classList.remove('on');
+                picked.forEach(c => c.classList.remove('on'));
+                r('apply').textContent = 'Show 57 jobs';
+                r('fbar').classList.remove('on'); r('badge').classList.remove('on');
+                r('listAll').style.display = ''; r('listMine').style.display = 'none';
+            };
+            const applied = () => {
+                r('scrim').classList.remove('on'); r('sheet').classList.remove('on');
+                picked.forEach(c => c.classList.add('on'));
+                r('fbar').classList.add('on'); r('badge').classList.add('on');
+                r('listAll').style.display = 'none'; r('listMine').style.display = '';
+            };
+            let demoTl = null;
+            function playDemo(delay) {
+                if (reduce) { applied(); return; }
+                if (demoTl) demoTl.kill();
+                resetDemo();
+                const tap = (tl, target, action) => tl.to(touch, { x: () => P(target).x - 17, y: () => P(target).y - 17, opacity: 1, duration: .55, ease: 'power2.inOut' })
+                    .to(touch, { scale: .75, duration: .12, yoyo: true, repeat: 1 }).call(action);
+                gsap.set(touch, { x: 330, y: 420, opacity: 0, scale: 1 });
+                demoTl = gsap.timeline({ delay: delay || 0, paused: stopped });
+                demoTl.timeScale(hovering ? HOVER_SPEED : 1);
+                tap(demoTl, r('prefs'), () => { r('scrim').classList.add('on'); r('sheet').classList.add('on'); });
+                demoTl.to({}, { duration: .9 });
+                tap(demoTl, r('qMine'), () => { picked.forEach(c => c.classList.add('on')); r('apply').textContent = 'Show 2 jobs'; });
+                demoTl.to({}, { duration: 1 });
+                tap(demoTl, r('apply'), applied);
+                demoTl.to(touch, { opacity: 0, duration: .25 }, '+=.2');
+            }
+
+            /* the cursors: [name, start x%, start y%, end x%, end y%], first one is kept on phones */
+            const SCENES = [
+                [['ds', 22, 28, 30, 50], ['dev', 64, 42, 62, 64]],
+                [['ds', 52, 40, 47, 60], ['senior', 66, 42, 63, 62]],
+                [['ai', 40, 30, 50, 50], ['remote', 76, 46, 70, 66]],
+                [['ds', 30, 34, 42, 62], ['dev', 74, 44, 66, 70]],
+                [['senior', 36, 26, 32, 56], ['remote', 78, 44, 76, 66]]
+            ];
+            const cursors = {}; reel.querySelectorAll('.hero-cursor').forEach(c => { cursors[c.dataset.c] = c; });
+            let moves = [], placed = [];
+            const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+            const put = (c, x, y) => {
+                const px = phone.matches ? clamp(x, 10, 36) : x, py = phone.matches ? clamp(y, 18, 62) : y;
+                c.style.transform = 'translate(' + (reel.offsetWidth * px / 100) + 'px,' + (reel.offsetHeight * py / 100) + 'px)';
+            };
+            function stage(n, first) {
+                moves.forEach(clearTimeout); moves = [];
+                const scene = phone.matches ? (n === 0 ? [] : SCENES[n].slice(0, 1)) : SCENES[n];
+                const on = scene.map(s => s[0]);
+                Object.entries(cursors).forEach(([k, c]) => { if (!on.includes(k)) c.classList.remove('is-on'); });
+                placed = scene;
+                scene.forEach(([k, x1, y1, x2, y2], idx) => {
+                    const c = cursors[k], wasOn = c.classList.contains('is-on');
+                    if (!wasOn) { c.classList.add('no-move'); put(c, x1, y1); void c.offsetWidth; c.classList.remove('no-move'); }
+                    else put(c, x1, y1);
+                    moves.push(setTimeout(() => c.classList.add('is-on'), (first ? 2000 : 250) + idx * 500));
+                    if (!reduce) moves.push(setTimeout(() => { if (!stopped) put(c, x2, y2); }, (first ? 2800 : 1500) + idx * 500));
+                });
+            }
+
+            function go(n) {
+                slides[i].classList.remove('is-active');
+                i = n; slides[i].classList.add('is-active');
+                name.textContent = slides[i].dataset.name;
+                if (i === 0) playDemo(.5);
+                stage(i);
+                elapsed = 0;
+            }
+            // the reel's own clock: runs at full speed, slows on hover, stops only when paused or off screen
+            let lastTick = performance.now();
+            setInterval(() => {
+                const now = performance.now(), step = Math.min(now - lastTick, 1500);
+                lastTick = now;
+                if (stopped || !visible || document.hidden) return;
+                elapsed += step * (hovering ? HOVER_SPEED : 1);
+                if (elapsed < DUR[i]) return;
+                const n = (i + 1) % slides.length, im = slides[n].querySelector('img');
+                if (im && (im.dataset.src || !im.complete)) return;
+                go(n);
+            }, 100);
+            const setHover = on => { hovering = on; if (demoTl) demoTl.timeScale(on ? HOVER_SPEED : 1); };
+            const setToggle = () => {
+                reel.classList.toggle('is-stopped', stopped);
+                toggle.classList.toggle('is-stopped', stopped);
+                toggle.setAttribute('aria-pressed', String(stopped));
+                toggle.setAttribute('aria-label', (stopped ? 'Play' : 'Pause') + ' the work reel');
+            };
+            toggle.addEventListener('click', e => {
+                e.preventDefault(); stopped = !stopped; setToggle();
+                if (demoTl) stopped ? demoTl.pause() : demoTl.resume();
+            });
+            reel.addEventListener('pointerenter', () => setHover(true));
+            reel.addEventListener('pointerleave', () => setHover(false));
+            reel.addEventListener('focusin', () => setHover(true));
+            reel.addEventListener('focusout', () => setHover(false));
+            new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(reel);
+
+            const loadRest = () => slides.forEach(sl => { const im = sl.querySelector('img[data-src]'); if (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); } });
+            if (document.readyState === 'complete') loadRest(); else window.addEventListener('load', loadRest);
+            window.addEventListener('resize', () => { fitPhone(); placed.forEach(([k, , , x2, y2]) => put(cursors[k], x2, y2)); });
+            fitPhone();
+            setToggle();
+            playDemo(1.8);
+            stage(0, true);
+        })();
 
         // ── Speedi card hover video preview ─────────────────────────────
         (function () {

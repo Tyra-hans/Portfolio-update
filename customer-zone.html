@@ -90,8 +90,6 @@
         .cz-activate:focus-visible { outline: 3px solid #003ed0; outline-offset: -3px; }
         .cz-demo.is-live .cz-activate { display: none; }
         .cz-demo-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-top: 16px; font-size: 14px; color: var(--muted); }
-        .cz-newtab { color: var(--blue); font-weight: 600; text-decoration: none; }
-        .cz-newtab:hover { text-decoration: underline; }
         .cz-hero-photo { position: relative; }
         .cz-hero-photo img { object-position: 50% 22%; }
         /* the kicker and title sit on the hero photo, over a dark fade for contrast */
@@ -264,7 +262,7 @@
             .cz-breather img { object-position: var(--focus, 50% 50%); }
             /* No live demos on phones: show a still screenshot instead */
             .cz-viewport { height: auto !important; }
-            .cz-viewport iframe, .cz-activate, .cz-hint, .cz-newtab { display: none !important; }
+            .cz-viewport iframe, .cz-activate, .cz-hint { display: none !important; }
             .cz-poster { display: block; }
             .cz-phone .cz-poster { border-radius: 34px; }
             .cz p { font-size: 16px; }
@@ -314,7 +312,6 @@
             <div class="cz-wrap">
                 <div class="cz-hero-actions">
                     <button class="cz-try" type="button" data-open-demo>Use the live prototype</button>
-                    <a class="cz-newtab" href="customer-zone-prototype/index.html" target="_blank" rel="noopener">Open the prototype in a new tab</a>
                 </div>
 
                 <div class="cz-demo cz-hero-demo" data-demo>
