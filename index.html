@@ -493,11 +493,11 @@
             });
             heroHeadlineEl.innerHTML = lines.map(l => '<span class="hero-line">' + l.words.join(' ') + '</span>').join(' ');
             const soft = { opacity: 0, y: 12, filter: 'blur(8px)' };
-            const sharp = { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' };
-            gsap.fromTo('.hero-line', soft, { ...sharp, stagger: 0.1, delay: 0.1, onComplete: () => { heroHeadlineEl.textContent = text; } });
-            gsap.fromTo(heroLedeEl, { opacity: 0, y: 8, filter: 'blur(5px)' }, { ...sharp, opacity: 0.86, delay: 0.1 + lines.length * 0.1 + 0.25, clearProps: 'filter,transform,opacity' });
+            const sharp = { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, ease: 'power3.out' };
+            gsap.fromTo('.hero-line', soft, { ...sharp, stagger: 0.07, delay: 0.05, onComplete: () => { heroHeadlineEl.textContent = text; } });
+            gsap.fromTo(heroLedeEl, { opacity: 0, y: 8, filter: 'blur(5px)' }, { ...sharp, opacity: 0.86, delay: 0.05 + lines.length * 0.07 + 0.1, clearProps: 'filter,transform,opacity' });
         }
-        Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 700))]).then(revealHeroText);
+        Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 300))]).then(revealHeroText);
         gsap.from('.hero-thumbnail-image', { scale: 1.06, opacity: 0, duration: 1.0, delay: 0.2, ease: 'power2.out' });
         gsap.from('.hero-intro-name', { y: 22, opacity: 0, duration: 0.8, delay: 0.55, ease: 'power2.out' });
         gsap.from('.intro-subtitle',  { y: 22, opacity: 0, duration: 0.8, delay: 0.7,  ease: 'power2.out' });
@@ -564,8 +564,8 @@
             const toggle = document.getElementById('heroReelToggle');
             const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('lite');
             const phone = window.matchMedia('(max-width: 768px)');
-            const DUR = [8200, 5000, 5000, 5000, 5000];
-            let i = 0, stopped = reduce, hovering = false, visible = true, elapsed = -1800;
+            const DUR = [5600, 3800, 3800, 3800, 3800];
+            let i = 0, stopped = reduce, hovering = false, visible = true, elapsed = -900;
             const HOVER_SPEED = 0.45;   // hovering slows the reel so it can be read; only the pause button stops it
 
             /* the filter demo: same steps as the case study. The sheet slides up, a preset is tapped, the list filters */
@@ -592,15 +592,15 @@
                 if (reduce) { applied(); return; }
                 if (demoTl) demoTl.kill();
                 resetDemo();
-                const tap = (tl, target, action) => tl.to(touch, { x: () => P(target).x - 17, y: () => P(target).y - 17, opacity: 1, duration: .55, ease: 'power2.inOut' })
-                    .to(touch, { scale: .75, duration: .12, yoyo: true, repeat: 1 }).call(action);
+                const tap = (tl, target, action) => tl.to(touch, { x: () => P(target).x - 17, y: () => P(target).y - 17, opacity: 1, duration: .38, ease: 'power2.inOut' })
+                    .to(touch, { scale: .75, duration: .09, yoyo: true, repeat: 1 }).call(action);
                 gsap.set(touch, { x: 330, y: 420, opacity: 0, scale: 1 });
                 demoTl = gsap.timeline({ delay: delay || 0, paused: stopped });
                 demoTl.timeScale(hovering ? HOVER_SPEED : 1);
                 tap(demoTl, r('prefs'), () => { r('scrim').classList.add('on'); r('sheet').classList.add('on'); });
-                demoTl.to({}, { duration: .9 });
+                demoTl.to({}, { duration: .45 });
                 tap(demoTl, r('qMine'), () => { picked.forEach(c => c.classList.add('on')); r('apply').textContent = 'Show 2 jobs'; });
-                demoTl.to({}, { duration: 1 });
+                demoTl.to({}, { duration: .6 });
                 tap(demoTl, r('apply'), applied);
                 demoTl.to(touch, { opacity: 0, duration: .25 }, '+=.2');
             }
@@ -630,8 +630,8 @@
                     const c = cursors[k], wasOn = c.classList.contains('is-on');
                     if (!wasOn) { c.classList.add('no-move'); put(c, x1, y1); void c.offsetWidth; c.classList.remove('no-move'); }
                     else put(c, x1, y1);
-                    moves.push(setTimeout(() => c.classList.add('is-on'), (first ? 2000 : 250) + idx * 500));
-                    if (!reduce) moves.push(setTimeout(() => { if (!stopped) put(c, x2, y2); }, (first ? 2800 : 1500) + idx * 500));
+                    moves.push(setTimeout(() => c.classList.add('is-on'), (first ? 1000 : 150) + idx * 300));
+                    if (!reduce) moves.push(setTimeout(() => { if (!stopped) put(c, x2, y2); }, (first ? 1500 : 800) + idx * 300));
                 });
             }
 
@@ -639,7 +639,7 @@
                 slides[i].classList.remove('is-active');
                 i = n; slides[i].classList.add('is-active');
                 name.textContent = slides[i].dataset.name;
-                if (i === 0) playDemo(.5);
+                if (i === 0) playDemo(.3);
                 stage(i);
                 elapsed = 0;
             }
@@ -678,7 +678,7 @@
             window.addEventListener('resize', () => { fitPhone(); placed.forEach(([k, , , x2, y2]) => put(cursors[k], x2, y2)); });
             fitPhone();
             setToggle();
-            playDemo(1.8);
+            playDemo(.9);
             stage(0, true);
         })();
 
